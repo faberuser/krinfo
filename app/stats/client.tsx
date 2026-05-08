@@ -7,10 +7,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ArrowRight, Plus, Trash2 } from "lucide-react"
-import { DiffRow } from "@/app/stats/components/diff-primitives"
+import { DiffRow, DiffText, ValueRow, NumericChange } from "@/app/stats/components/diff-primitives"
 import { HeroSection } from "@/app/stats/components/hero-section"
+import Image from "@/components/next-image"
 import { computeRunesDiff, computeClassesDiff, computeHeroesDiff, STAT_NAMES } from "@/app/stats/diff-utils"
 import type { StatsClientProps, HeroSegment } from "./types"
+
+function runeImageSrc(runeName: string): string {
+	// "Rune of Agility: Ancient" → "/kingsraid-data/assets/runes/Rune_of_Agility_Ancient.png"
+	const filename = runeName.replace(": ", "_").replace(/ /g, "_")
+	return `/kingsraid-data/assets/runes/${filename}.png`
+}
 
 export default function StatsClient({
 	versionLabels,
@@ -18,6 +25,7 @@ export default function StatsClient({
 	runesMap,
 	classesMap,
 	heroesMap,
+	classesPairMap,
 }: StatsClientProps) {
 	const [versions, setVersions] = useState<string[]>([
 		availableVersions[availableVersions.length - 1] ?? availableVersions[0],
@@ -183,14 +191,12 @@ export default function StatsClient({
 		<div>
 			<div className="space-y-2 mb-4">
 				<div className="items-baseline">
-					<div className="text-xl font-bold">
-						Version Stats <span className="text-sm font-normal text-red-500">(WIP)</span>
-					</div>
+					<div className="text-xl font-bold">Version Stats</div>
 				</div>
 			</div>
 
 			{/* Version Chain Selector */}
-			<div className="mb-8 p-4 border rounded-lg bg-muted/30 space-y-3">
+			<div className="mb-4 p-4 border rounded-lg bg-muted/30 space-y-3">
 				<div className="flex flex-wrap items-center gap-2">
 					{versions.map((v, i) => (
 						<div key={i} className="flex items-center gap-2">
@@ -275,7 +281,7 @@ export default function StatsClient({
 				<Tabs defaultValue="heroes">
 					<TabsList className="mb-2">
 						<TabsTrigger value="heroes">Heroes ({allHeroEntries.length})</TabsTrigger>
-						<TabsTrigger value="class-perks">T3 Perks ({classesChangeCount})</TabsTrigger>
+						<TabsTrigger value="class-perks">T2 Perks ({classesChangeCount})</TabsTrigger>
 						<TabsTrigger value="runes">Runes ({runesChangeCount})</TabsTrigger>
 					</TabsList>
 
@@ -301,17 +307,26 @@ export default function StatsClient({
 								return (
 									<div key={`${seg.versionA}_${seg.versionB}`} className="space-y-3">
 										{segments.length > 1 && (
-											<h2 className="text-sm font-bold uppercase tracking-wide text-muted-foreground border-b pb-1">
+											<div className="text-sm font-bold uppercase tracking-wide text-muted-foreground border-b pb-1">
 												{segLabel}
-											</h2>
+											</div>
 										)}
 										{seg.runesDiff.map((rd) => (
 											<div key={rd.runeName} className="border rounded-md p-3">
 												<div className="flex items-center gap-2 mb-2">
+													<Image
+														src={runeImageSrc(rd.runeName)}
+														alt={rd.runeName}
+														width={32}
+														height={32}
+														className="rounded shrink-0 object-contain"
+														style={{ width: 32, height: 32 }}
+														onError={(e) => {
+															;(e.currentTarget as HTMLImageElement).style.display =
+																"none"
+														}}
+													/>
 													<span className="font-medium text-sm">{rd.runeName}</span>
-													<Badge variant="outline" className="text-xs">
-														{rd.grade}
-													</Badge>
 													{rd.status === "added" && (
 														<Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border border-green-500/30 text-xs">
 															Added
@@ -325,12 +340,9 @@ export default function StatsClient({
 												</div>
 												{rd.status === "changed" &&
 													rd.changes.map((c, i) => (
-														<DiffRow
-															key={i}
-															field={STAT_NAMES[c.stat] ?? c.stat}
-															from={c.from}
-															to={c.to}
-														/>
+														<ValueRow key={i} label={STAT_NAMES[c.stat] ?? c.stat}>
+															<NumericChange from={c.from} to={c.to} />
+														</ValueRow>
 													))}
 											</div>
 										))}
@@ -376,23 +388,54 @@ export default function StatsClient({
 												{segLabel}
 											</h2>
 										)}
-										{seg.classesDiff.map((cd) => (
-											<div key={cd.className}>
-												<h4 className="font-semibold text-sm mb-2 text-foreground">
-													{cd.className}
-												</h4>
-												<div className="space-y-3">
-													{cd.changes.map((c, i) => (
-														<div key={i} className="border rounded-md p-3">
-															<div className="text-xs font-medium mb-1.5 text-foreground">
-																{c.perkName}
-															</div>
-															<DiffRow field="Description" from={c.from} to={c.to} />
-														</div>
-													))}
+										{seg.classesDiff.map((cd) => {
+											const pairKey = `${seg.versionA}_vs_${seg.versionB}`
+											const enrichedClass = classesPairMap[pairKey]?.classes[cd.className]
+											const iconBase = `/kingsraid-data/assets/perks/t2/${cd.className.toLowerCase()}`
+											return (
+												<div key={cd.className}>
+													<h4 className="font-semibold text-sm mb-2 text-foreground">
+														{cd.className}
+													</h4>
+													<div className="space-y-3">
+														{cd.changes.map((c, i) => {
+															const enrichedPerk = enrichedClass?.[c.perkName]
+															return (
+																<div key={i} className="border rounded-md p-3">
+																	<div className="flex items-center gap-2 mb-1.5">
+																		<Image
+																			src={`${iconBase}/${c.perkName}.png`}
+																			alt={c.perkName}
+																			width={24}
+																			height={24}
+																			className="rounded shrink-0 object-contain"
+																			style={{ width: 24, height: 24 }}
+																			onError={(e) => {
+																				;(
+																					e.currentTarget as HTMLImageElement
+																				).style.display = "none"
+																			}}
+																		/>
+																		<div className="text-xs font-medium text-foreground">
+																			{c.perkName}
+																		</div>
+																	</div>
+																	{enrichedPerk?.description ? (
+																		<DiffText diff={enrichedPerk.description} />
+																	) : (
+																		<DiffRow
+																			field="Description"
+																			from={c.from}
+																			to={c.to}
+																		/>
+																	)}
+																</div>
+															)
+														})}
+													</div>
 												</div>
-											</div>
-										))}
+											)
+										})}
 									</div>
 								)
 							})}

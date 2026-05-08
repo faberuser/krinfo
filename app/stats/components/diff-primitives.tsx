@@ -12,8 +12,8 @@ export function DiffText({ diff }: { diff: TextDiff }) {
 	if (diff.unified) return <UnifiedDiffText text={diff.unified} />
 	return (
 		<div className="space-y-0.5 text-sm">
-			<div className="text-red-600 dark:text-red-400 line-through leading-relaxed">{diff.from ?? "—"}</div>
-			<div className="text-green-600 dark:text-green-400 font-medium leading-relaxed">{diff.to ?? "—"}</div>
+			<div className="text-red-600 dark:text-red-400 line-through leading-relaxed">{diff.from ?? "-"}</div>
+			<div className="text-green-600 dark:text-green-400 font-medium leading-relaxed">{diff.to ?? "-"}</div>
 		</div>
 	)
 }
@@ -70,9 +70,9 @@ export function UnifiedDiffText({ text }: { text: string }) {
 export function NumericChange({ from, to }: { from: string | null | undefined; to: string | null | undefined }) {
 	return (
 		<span className="inline-flex items-baseline gap-1">
-			<span className="text-red-600 dark:text-red-400 line-through">{from ?? "—"}</span>
+			<span className="text-red-600 dark:text-red-400 line-through">{from ?? "-"}</span>
 			<span className="text-muted-foreground text-[10px]">→</span>
-			<span className="text-green-600 dark:text-green-400 font-medium">{to ?? "—"}</span>
+			<span className="text-green-600 dark:text-green-400 font-medium">{to ?? "-"}</span>
 		</span>
 	)
 }
@@ -80,7 +80,7 @@ export function NumericChange({ from, to }: { from: string | null | undefined; t
 export function ValueRow({ label, children }: { label: string; children: ReactNode }) {
 	return (
 		<div className="flex gap-2 text-sm py-0.5">
-			<span className="text-muted-foreground shrink-0 w-28">{label}</span>
+			<span className="text-muted-foreground shrink-0 w-35 whitespace-nowrap">{label}</span>
 			<span className="leading-relaxed min-w-0 break-words">{children}</span>
 		</div>
 	)
@@ -89,9 +89,9 @@ export function ValueRow({ label, children }: { label: string; children: ReactNo
 export function TierChange({ from, to }: { from: string | null | undefined; to: string | null | undefined }) {
 	return (
 		<span className="text-xs">
-			<span className="text-red-600 dark:text-red-400 line-through">{from ?? "—"}</span>
+			<span className="text-red-600 dark:text-red-400 line-through">{from ?? "-"}</span>
 			<span className="text-muted-foreground mx-1 text-[10px]">→</span>
-			<span className="text-green-600 dark:text-green-400 font-medium">{to ?? "—"}</span>
+			<span className="text-green-600 dark:text-green-400 font-medium">{to ?? "-"}</span>
 		</span>
 	)
 }
@@ -106,7 +106,7 @@ export function DiffRow({ field, from, to }: { field: string; from: string | nul
 					from === null ? "text-muted-foreground italic" : "bg-red-500/10 text-red-700 dark:text-red-400",
 				)}
 			>
-				{from ?? "—"}
+				{from ?? "-"}
 			</div>
 			<ArrowRight className="w-3 h-3 text-muted-foreground shrink-0 mt-1.5" />
 			<div
@@ -115,7 +115,7 @@ export function DiffRow({ field, from, to }: { field: string; from: string | nul
 					to === null ? "text-muted-foreground italic" : "bg-green-500/10 text-green-700 dark:text-green-400",
 				)}
 			>
-				{to ?? "—"}
+				{to ?? "-"}
 			</div>
 		</div>
 	)

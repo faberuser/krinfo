@@ -79,6 +79,12 @@ interface SWData {
 	advancement: Record<string, string>
 }
 
+interface ClassDataInput {
+	perks?: {
+		t2?: Record<string, string>
+	}
+}
+
 interface BatchQueueItem {
 	id: string
 	label: string
@@ -162,6 +168,20 @@ export interface HeroComparison {
 		uses?: TextDiff
 		advancement: Record<string, TextDiff>
 	}
+}
+
+// ── Classes output format ────────────────────────────────────────────────────
+
+export interface ClassPerkEntry {
+	hasChanges: boolean
+	description?: TextDiff
+}
+
+export interface ClassesComparison {
+	versionA: string
+	versionB: string
+	generatedAt: string
+	classes: Record<string, Record<string, ClassPerkEntry>>
 }
 
 // ── LLM ──────────────────────────────────────────────────────────────────────
@@ -398,6 +418,18 @@ function readJson<T>(filePath: string): T | null {
 	}
 }
 
+function loadClasses(version: string): Record<string, ClassDataInput> {
+	const dir = path.join(TABLE_DATA, version, "classes")
+	if (!fs.existsSync(dir)) return {}
+	const result: Record<string, ClassDataInput> = {}
+	for (const file of fs.readdirSync(dir)) {
+		if (!file.endsWith(".json")) continue
+		const data = readJson<ClassDataInput>(path.join(dir, file))
+		if (data) result[file.replace(".json", "")] = data
+	}
+	return result
+}
+
 function getVersions(): string[] {
 	const desc = readJson<{ data_versions: Record<string, unknown> }>(path.join(TABLE_DATA, "description.json"))
 	return desc ? Object.keys(desc.data_versions) : ["cbt-phase-2", "cbt-phase-1", "ccbt", "legacy"]
@@ -619,6 +651,42 @@ function buildComparison(
 	return hasContent ? comp : null
 }
 
+function buildClassesComparison(
+	fromClasses: Record<string, ClassDataInput>,
+	toClasses: Record<string, ClassDataInput>,
+	versionA: string,
+	versionB: string,
+): ClassesComparison | null {
+	const comp: ClassesComparison = {
+		versionA,
+		versionB,
+		generatedAt: new Date().toISOString(),
+		classes: {},
+	}
+
+	const allClassNames = new Set([...Object.keys(fromClasses), ...Object.keys(toClasses)])
+	for (const className of allClassNames) {
+		const fromPerks = fromClasses[className]?.perks?.t2 ?? {}
+		const toPerks = toClasses[className]?.perks?.t2 ?? {}
+		const allPerkNames = new Set([...Object.keys(fromPerks), ...Object.keys(toPerks)])
+		const classEntries: Record<string, ClassPerkEntry> = {}
+
+		for (const perkName of allPerkNames) {
+			const f = stripColorCodes(fromPerks[perkName] ?? "")
+			const t = stripColorCodes(toPerks[perkName] ?? "")
+			if (!f || !t || f === t) continue
+			if (!hasNumericChange(f, t)) continue
+			classEntries[perkName] = { hasChanges: true, description: { from: f, to: t } }
+		}
+
+		if (Object.keys(classEntries).length > 0) {
+			comp.classes[className] = classEntries
+		}
+	}
+
+	return Object.keys(comp.classes).length > 0 ? comp : null
+}
+
 // ── LLM enrichment ───────────────────────────────────────────────────────────
 
 function queueComparisonForEnrichment(comp: HeroComparison): void {
@@ -779,6 +847,28 @@ function applyBatchEnrichment(comp: HeroComparison): void {
 	}
 }
 
+function queueClassesForEnrichment(comp: ClassesComparison): void {
+	for (const [className, perks] of Object.entries(comp.classes)) {
+		for (const [perkName, perkEntry] of Object.entries(perks)) {
+			if (perkEntry.description) {
+				const diffId = queueTextDiffForEnrichment(perkEntry.description, `class ${className} perk ${perkName}`)
+				perkEntry.description._queueId = diffId
+			}
+		}
+	}
+}
+
+function applyBatchEnrichmentToClasses(comp: ClassesComparison): void {
+	for (const perks of Object.values(comp.classes)) {
+		for (const perkEntry of Object.values(perks)) {
+			if (perkEntry.description?._queueId) {
+				perkEntry.description = getEnrichedTextDiff(perkEntry.description, perkEntry.description._queueId)
+				delete perkEntry.description._queueId
+			}
+		}
+	}
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -803,9 +893,27 @@ async function main() {
 
 	// Store comparisons and their output paths for batch processing
 	const comparisonsToWrite: Array<{ outFile: string; comparison: HeroComparison }> = []
+	const classesComparisonsToWrite: Array<{ outFile: string; comparison: ClassesComparison }> = []
 
 	for (const [versionA, versionB] of pairs) {
 		console.log(`\n📊 ${versionA} → ${versionB}`)
+
+		// Classes
+		const classesOutFile = path.join(STATS_DIR, `${versionA}_vs_${versionB}`, "classes.json")
+		if (!fs.existsSync(classesOutFile)) {
+			const fromClasses = loadClasses(versionA)
+			const toClasses = loadClasses(versionB)
+			const classesComp = buildClassesComparison(fromClasses, toClasses, versionA, versionB)
+			if (classesComp) {
+				queueClassesForEnrichment(classesComp)
+				classesComparisonsToWrite.push({ outFile: classesOutFile, comparison: classesComp })
+				console.log(`  classes.json queued (${Object.keys(classesComp.classes).length} class(es) changed)`)
+			} else {
+				console.log(`  classes.json – no numeric changes`)
+			}
+		} else {
+			console.log(`  classes.json already exists, skipping`)
+		}
 
 		const fromHeroes = loadHeroes(versionA)
 		const toHeroes = loadHeroes(versionB)
@@ -856,10 +964,16 @@ async function main() {
 		for (const { comparison } of comparisonsToWrite) {
 			applyBatchEnrichment(comparison)
 		}
+		for (const { comparison } of classesComparisonsToWrite) {
+			applyBatchEnrichmentToClasses(comparison)
+		}
 	}
 
 	// Write all files after enrichment is complete
 	for (const { outFile, comparison } of comparisonsToWrite) {
+		fs.writeFileSync(outFile, JSON.stringify(comparison, null, 2))
+	}
+	for (const { outFile, comparison } of classesComparisonsToWrite) {
 		fs.writeFileSync(outFile, JSON.stringify(comparison, null, 2))
 	}
 

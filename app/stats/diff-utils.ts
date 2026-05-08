@@ -18,32 +18,43 @@ export function normalizeDesc(text: string): string {
 }
 
 export const STAT_NAMES: Record<string, string> = {
-	PhysicalDodgeChance: "P.Dodge",
-	AddMpOnAttackR: "Mana Recovery/Attack",
-	MagicalBlockPower: "M.Block DEF",
-	MagicalBlockChance: "M.Block",
 	AddPhysicalAttackR: "ATK",
 	AddMagicalAttackR: "ATK",
-	MagicalDodgeChance: "M.Dodge",
-	PhysicalCriticalPower: "Crit DMG",
-	MagicalCriticalPower: "Crit DMG",
-	PhysicalBlockPower: "P.Block DEF",
-	AddPhysicalDefenseR: "P.DEF",
-	AddMpOnDamageR: "Mana Recovery/DMG",
-	PhysicalHitChance: "ACC",
-	MagicalHitChance: "ACC",
-	AddMagicalDefenseR: "M.DEF",
-	AntiCcChance: "CC Resist",
 	PhysicalPiercePower: "Penetration",
 	MagicalPiercePower: "Penetration",
-	AddMaxHpR: "Max HP",
-	PhysicalBlockChance: "P.Block",
-	HpStealPower: "Lifesteal",
-	PhysicalToughness: "P.Tough",
-	MagicalToughness: "M.Tough",
+	PhysicalCriticalPower: "Crit DMG",
+	MagicalCriticalPower: "Crit DMG",
+	PhysicalHitChance: "ACC",
+	MagicalHitChance: "ACC",
 	PhysicalCriticalChance: "Crit",
 	MagicalCriticalChance: "Crit",
+
+	PhysicalBlockPower: "P.Block DEF",
+	PhysicalToughness: "P.Tough",
+	MagicalBlockPower: "M.Block DEF",
+	MagicalToughness: "M.Tough",
+	PhysicalBlockChance: "P.Block",
+	AddPhysicalDefenseR: "P.DEF",
+	MagicalBlockChance: "M.Block",
+	AddMagicalDefenseR: "M.DEF",
+	PhysicalDodgeChance: "P.Dodge",
+	MagicalDodgeChance: "M.Dodge",
+
+	HpStealPower: "Lifesteal",
+	AddMpOnAttackR: "Mana Recovery/Attack",
+	AntiCcChance: "CC Resist",
+	AddMaxHpR: "Max HP",
+	AddMpOnDamageR: "Mana Recovery/DMG",
 	AttackSpeed: "ATK Spd",
+}
+
+/** Extract sorted numeric values from text. Used to detect pure wording-only changes. */
+function extractNumbers(text: string): string {
+	return (text.match(/\d+(?:\.\d+)?/g) ?? []).sort().join(",")
+}
+
+function hasNumericChange(a: string, b: string): boolean {
+	return extractNumbers(a) !== extractNumbers(b)
 }
 
 export const GRADE_ORDER: Record<string, number> = {
@@ -90,6 +101,13 @@ export function computeRunesDiff(fromRunes: RuneEntry[], toRunes: RuneEntry[]): 
 				changes.push(c)
 			}
 		}
+		// Sort stats by STAT_NAMES declaration order
+		const statKeys = Object.keys(STAT_NAMES)
+		changes.sort((a, b) => {
+			const ai = statKeys.indexOf(a.stat)
+			const bi = statKeys.indexOf(b.stat)
+			return (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi)
+		})
 
 		if (changes.length > 0) {
 			result.push({ runeName: name, grade: fromRune.grade, changes, status: "changed" })
@@ -99,6 +117,13 @@ export function computeRunesDiff(fromRunes: RuneEntry[], toRunes: RuneEntry[]): 
 	return result.sort((a, b) => {
 		const gradeDiff = (GRADE_ORDER[a.grade] ?? 99) - (GRADE_ORDER[b.grade] ?? 99)
 		if (gradeDiff !== 0) return gradeDiff
+		const statKeys = Object.keys(STAT_NAMES)
+		const aStat = a.changes[0]?.stat ?? ""
+		const bStat = b.changes[0]?.stat ?? ""
+		const ai = aStat ? statKeys.indexOf(aStat) : 9999
+		const bi = bStat ? statKeys.indexOf(bStat) : 9999
+		const statDiff = (ai === -1 ? 9999 : ai) - (bi === -1 ? 9999 : bi)
+		if (statDiff !== 0) return statDiff
 		return a.runeName.localeCompare(b.runeName)
 	})
 }
@@ -119,7 +144,8 @@ export function computeClassesDiff(
 		for (const perkName of allPerks) {
 			const f = fromPerks[perkName] ?? null
 			const t = toPerks[perkName] ?? null
-			if (f !== t) changes.push({ perkName, from: f, to: t })
+			if (f !== null && t !== null && f !== t && hasNumericChange(f, t))
+				changes.push({ perkName, from: f, to: t })
 		}
 
 		if (changes.length > 0) result.push({ className, changes })
