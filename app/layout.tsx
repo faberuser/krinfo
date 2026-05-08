@@ -1,6 +1,6 @@
 import "@/app/globals.css"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Comfortaa } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import SidebarProviderWithStorage from "@/components/sidebar/sidebar-provider-with-storage"
 import SidebarWrapper from "@/components/sidebar/sidebar-wrapper"
@@ -19,14 +19,20 @@ const geistMono = Geist_Mono({
 	subsets: ["latin"],
 })
 
+const comfortaa = Comfortaa({
+	variable: "--font-comfortaa",
+	subsets: ["latin"],
+	weight: "700",
+})
+
 export const metadata: Metadata = {
-	title: "King's Raid",
+	title: "krinfo",
 	description: "Comprehensive resource for Kings Raid",
 	openGraph: {
-		title: "King's Raid",
-		description: "Comprehensive resource for Kings Raid",
+		title: "krinfo",
+		description: "Comprehensive resource for King's Raid",
 		url: process.env.NEXT_PUBLIC_SITE_URL || "https://kingsraid.k-clowd.top",
-		siteName: "King's Raid",
+		siteName: "krinfo",
 	},
 	metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://kingsraid.k-clowd.top"),
 }
@@ -40,7 +46,7 @@ export default function RootLayout({
 		<>
 			<html lang="en" suppressHydrationWarning>
 				<head />
-				<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				<body className={`${geistSans.variable} ${geistMono.variable} ${comfortaa.variable} antialiased`}>
 					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 						<DataVersionProvider>
 							<CompareModeProvider>

@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-	title: "Version Stats - King's Raid",
+	title: "Version Stats",
 	description: "Compare game data changes between versions.",
 	openGraph: {
-		title: "Version Stats - King's Raid",
+		title: "Version Stats",
 		description: "Compare game data changes between versions.",
 	},
 }

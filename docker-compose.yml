@@ -1,7 +1,7 @@
 services:
     app:
-        image: ${DOCKER_IMAGE:-ghcr.io/faberuser/kingsraid:latest}
-        container_name: ${CONTAINER_NAME:-kingsraid}
+        image: ${DOCKER_IMAGE:-ghcr.io/faberuser/krinfo:latest}
+        container_name: ${CONTAINER_NAME:-krinfo}
         environment:
             - NEXT_PUBLIC_ENABLE_MODELS_VOICES=${NEXT_PUBLIC_ENABLE_MODELS_VOICES:-false}
         ports:

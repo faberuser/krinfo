@@ -1,4 +1,4 @@
-# King's Raid Info
+# krinfo
 
 A web application that provides a number of data from the mobile game King's Raid.
 
@@ -20,8 +20,8 @@ Data and illustrations are stored in [kingsraid-data](https://github.com/faberus
 Firstly, clone the repository:
 
 ```bash
-git clone https://github.com/faberuser/kingsraid.git
-cd kingsraid
+git clone https://github.com/faberuser/krinfo.git
+cd krinfo
 ```
 
 ### Default Setup
@@ -96,13 +96,13 @@ The application can be deployed using Docker:
 1. Build the image:
 
 ```bash
-docker build -t kingsraid .
+docker build -t krinfo .
 ```
 
 2. Run the container:
 
 ```bash
-docker run -p 3000:3000 kingsraid
+docker run -p 3000:3000 krinfo
 ```
 
 ### Full Build (with Models and Voices)
@@ -112,13 +112,13 @@ To include 3D models and voices:
 1. Build the image with the environment variable:
 
 ```bash
-docker build --build-arg NEXT_PUBLIC_ENABLE_MODELS_VOICES=true -t kingsraid .
+docker build --build-arg NEXT_PUBLIC_ENABLE_MODELS_VOICES=true -t krinfo .
 ```
 
 2. Run the container:
 
 ```bash
-docker run -p 3000:3000 kingsraid
+docker run -p 3000:3000 krinfo
 ```
 
 ### Using Docker Compose
@@ -146,11 +146,11 @@ Create a `.env` file for local usage. See `.env.example` for all available optio
 ### Environment Variables:
 
 - `NEXT_PUBLIC_ENABLE_MODELS_VOICES`: Set to "true" to enable Models and Voices features (optional, default: false)
-- `NEXT_PUBLIC_BASE_PATH`: Base path for the application (e.g., "/kingsraid" for GitHub Pages) (optional)
+- `NEXT_PUBLIC_BASE_PATH`: Base path for the application (e.g., "/krinfo" for GitHub Pages) (optional)
 - `NEXT_STATIC_EXPORT`: Set to "true" when building for static export (optional, default: false)
 - `NEXT_PUBLIC_SITE_URL`: Site URL for metadata (optional)
-- `DOCKER_IMAGE`: Docker Compose's image, mostly for custom registry in case you want full build (optional, default: "ghcr.io/faberuser/kingsraid:latest")
-- `CONTAINER_NAME`: Docker Compose's container name (optional, default: "kingsraid")
+- `DOCKER_IMAGE`: Docker Compose's image, mostly for custom registry in case you want full build (optional, default: "ghcr.io/faberuser/krinfo:latest")
+- `CONTAINER_NAME`: Docker Compose's container name (optional, default: "krinfo")
 - `DOCKER_PORT`: Docker Compose's container port (optional, default: 3000)
 
 ## Known Bugs

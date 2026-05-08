@@ -2,9 +2,9 @@ name: Deploy Next.js site to Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  NEXT_PUBLIC_BASE_PATH: /kingsraid
+  NEXT_PUBLIC_BASE_PATH: /krinfo
   NEXT_STATIC_EXPORT: true
 
 jobs:

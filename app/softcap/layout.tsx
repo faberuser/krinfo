@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-	title: "Softcap - King's Raid",
+	title: "Softcap",
 	description: "Calculate actual stats after softcap adjustments.",
 	openGraph: {
-		title: "Softcap - King's Raid",
+		title: "Softcap",
 		description: "Calculate actual stats after softcap adjustments.",
 	},
 }

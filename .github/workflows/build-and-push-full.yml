@@ -1,7 +1,7 @@
 name: Build and Push Docker Image (Models and Voices)
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
       - name: Clean up Docker Resources
         run: |
           docker image prune -f || true
-          docker images ${{ secrets.REGISTRY }}/${{ secrets.NAMESPACE }}/kingsraid \
+          docker images ${{ secrets.REGISTRY }}/${{ secrets.NAMESPACE }}/krinfo \
             --format "{{.ID}} {{.CreatedAt}}" \
             | sort -k2 -r \
             | tail -n +2 \
@@ -48,7 +48,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.REGISTRY }}/${{ secrets.NAMESPACE }}/kingsraid:latest
+          tags: ${{ secrets.REGISTRY }}/${{ secrets.NAMESPACE }}/krinfo:latest
           build-args: |
             NEXT_PUBLIC_ENABLE_MODELS_VOICES=true
           cache-from: type=local,src=/var/tmp/.buildx-cache
@@ -61,7 +61,7 @@ jobs:
           append: false
           use: true
           install: false
-          endpoint: kingsraid-builder
+          endpoint: krinfo-builder
 
       - name: Update Portainer Stack
         run: curl -X POST ${{ secrets.PORTAINER_WEBHOOK_URL }}

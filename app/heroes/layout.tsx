@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import { HeroesLayoutClient } from "@/app/heroes/layout-client"
 
 export const metadata: Metadata = {
-	title: "Heroes - King's Raid",
+	title: "Heroes",
 	description: "Discover heroes, skills, gears, and more.",
 	openGraph: {
-		title: "Heroes - King's Raid",
+		title: "Heroes",
 		description: "Discover heroes, skills, gears, and more.",
 	},
 }

@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import { TeamBuilderLayoutClient } from "@/app/team-builder/layout-client"
 
 export const metadata: Metadata = {
-	title: "Team Builder - King's Raid",
+	title: "Team Builder",
 	description: "Build and share your King's Raid team compositions.",
 	openGraph: {
-		title: "Team Builder - King's Raid",
+		title: "Team Builder",
 		description: "Build and share your King's Raid team compositions.",
 	},
 }
