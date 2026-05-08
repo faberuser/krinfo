@@ -67,7 +67,7 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 
 	return (
 		<Sidebar collapsible="icon">
-			<SidebarHeader className={"px-5 py-4 border-b mt-1 " + (state === "collapsed" ? "p-2" : "")}>
+			<SidebarHeader className={"px-5 py-2 border-b mt-1 " + (state === "collapsed" ? "p-2" : "")}>
 				<div className="flex items-center justify-between gap-2">
 					{state === "collapsed" ? null : (
 						<Link href="/" className="flex items-center space-x-2 group-data-[collapsible=icon]:hidden">
