@@ -4,9 +4,8 @@ import { useState, useMemo } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, Plus, Trash2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { DiffRow, DiffText, ValueRow, NumericChange } from "@/app/stats/components/diff-primitives"
 import { HeroSection } from "@/app/stats/components/hero-section"
 import Image from "@/components/next-image"
@@ -172,17 +171,6 @@ export default function StatsClient({
 
 	const hasInvalidSegment = segments.some((s) => s.versionA === s.versionB)
 
-	function addVersion() {
-		const last = versions[versions.length - 1]
-		const idx = availableVersions.indexOf(last)
-		const next = availableVersions[Math.max(0, idx - 1)]
-		setVersions((prev) => [...prev, next])
-	}
-
-	function removeVersion(index: number) {
-		setVersions((prev) => prev.filter((_, i) => i !== index))
-	}
-
 	function updateVersion(index: number, value: string) {
 		setVersions((prev) => prev.map((v, i) => (i === index ? value : v)))
 	}
@@ -203,52 +191,23 @@ export default function StatsClient({
 							{i > 0 && <ArrowRight className="w-4 h-4 mt-5 text-muted-foreground shrink-0" />}
 							<div className="flex flex-col gap-1">
 								<label className="text-xs font-medium text-muted-foreground">
-									{i === 0 ? "Base" : `Step ${i + 1}`}
+									{i === 0 ? "From" : "To"}
 								</label>
-								<div className="flex items-center gap-1">
-									<Select value={v} onValueChange={(val) => updateVersion(i, val)}>
-										<SelectTrigger className="w-40">
-											<SelectValue />
-										</SelectTrigger>
-										<SelectContent>
-											{availableVersions.map((av) => (
-												<SelectItem key={av} value={av}>
-													{versionLabels[av] ?? av}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-									{versions.length > 2 && (
-										<Button
-											variant="ghost"
-											size="icon"
-											className="h-8 w-8 text-muted-foreground hover:text-destructive"
-											onClick={() => removeVersion(i)}
-											title="Remove this step"
-										>
-											<Trash2 className="w-3.5 h-3.5" />
-										</Button>
-									)}
-								</div>
+								<Select value={v} onValueChange={(val) => updateVersion(i, val)}>
+									<SelectTrigger className="w-40">
+										<SelectValue />
+									</SelectTrigger>
+									<SelectContent>
+										{availableVersions.map((av) => (
+											<SelectItem key={av} value={av}>
+												{versionLabels[av] ?? av}
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
 							</div>
 						</div>
 					))}
-					<div className="flex flex-col gap-1">
-						{versions.length > 0 && <div className="h-4" />}
-						<div className="flex items-center gap-2">
-							{versions.length > 1 && <ArrowRight className="w-4 h-4 text-muted-foreground shrink-0" />}
-							<Button
-								variant="outline"
-								size="sm"
-								onClick={addVersion}
-								className="h-10 gap-1.5"
-								disabled={versions.length >= availableVersions.length}
-							>
-								<Plus className="w-3.5 h-3.5" />
-								Add Step
-							</Button>
-						</div>
-					</div>
 				</div>
 
 				{!hasInvalidSegment && (
