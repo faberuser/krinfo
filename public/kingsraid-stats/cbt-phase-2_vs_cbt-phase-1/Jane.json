@@ -2,7 +2,7 @@
   "heroName": "Jane",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.425Z",
+  "generatedAt": "2026-05-08T11:43:35.370Z",
   "skills": {
     "2": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "5"
       },
       "description": {
-        "from": "Engraves [Mark of Death] on all enemies for 15 sec, dealing 9*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 6.9% ATK M.DMG every 1 sec and reducing M.DEF by 10%. If recast within 15 sec, the M.DEF reduction increases by 50% and stacks up to 5 times. The M.DEF reduction increase effect cannot be dispelled.",
-        "to": "Engraves [Mark of Death] on all enemies for 15sec, dealing 9*(1+0.3*Skill Level)+6.9% of Attack Power Magic DoT every second and reducing Magic Defense by 10%. If recast within 15sec, the Magic Defense reduction is increased by 50%, stacking up to 5times.This increase effect cannot be dispelled."
+        "unified": "Engraves [Mark of Death] on all enemies for 15sec, dealing Magic DoT every second and reducing Magic Defense by 10%. If recast within 15sec, the Magic Defense reduction is increased by 50%, stacking up to 5times. This increase effect cannot be dispelled."
       }
     },
     "3": {
@@ -26,15 +25,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 106*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 81.4% ATK M.DMG every 1 sec to all enemies for 22 sec, and recovers HP equal to 50% of damage dealt. During the duration, reduces M.DMG taken by 11% for 4 allies with the lowest M.DEF, and deals additional 81.4% ATK M.DMG to enemies inflicted with [Mark of Death].",
-        "to": "Deals 127*(0.7+(0.3*Skill Level*Awakening Coefficient))+97.6% of Attack Power as Magic Damage every second to all enemies for 14 sec, and recovers HP equal to 75% of damage dealt. During the duration, all allies take 10% reduced Physical Damage, and enemies affected by [Mark of Death] take additional Magic Damage equal to 97.6% of Attack Power."
+        "unified": "Deals Magic Damage every second to all enemies for [22 sec->14 sec], and recovers HP equal to [50%->75%] of damage dealt. During the duration, [all allies take 10% reduced Physical Damage->4 allies with the lowest M.DEF take 11% reduced M.DMG], and enemies affected by [Mark of Death] take additional Magic Damage."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases M.DEF of the ally with the lowest M.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)). When taking fatal damage, enters [Coffin] state for 5 sec, restoring 197*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 153.7% ATK + 10% Max HP.\n\n[Coffin]: Unaffected by ATK Spd changes, becomes immune to all damage, and deals M.DMG equal to 5% of Max HP to nearby enemies every 1 sec.",
-        "to": "Increases all allies’ Physical Defense by 55*(1+0.3*Skill Level). When taking damage that would be fatal, enters [Coffin] state for 5sec, restoring 197*(1+0.3*Skill Level)+153.7% of Attack Power + 10% of Max HP. [Coffin]:Attack Speed changes do not affect the target. The target is immune to all damage and deals Magic Damage equal to 5% of Max HP to nearby enemies every 1sec."
+        "unified": "Increases all allies’ Physical Defense by 55*(1+0.3*Skill Level). When taking damage that would be fatal, enters [Coffin] state for 5sec, restoring restored HP + 10% of Max HP. [Coffin]: Attack Speed changes do not affect the target. The target is immune to all damage and deals Magic Damage equal to 5% of Max HP to nearby enemies every 1sec."
       }
     }
   },
@@ -45,8 +42,7 @@
       "name": "Funeral Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Funeral Rites] reduces the target's CC Resist by 320 and Magic Block chance by {0} for 4 sec.",
-        "to": "[Funeral Rites] reduces the target’s CC Resist by 320 and Magic Block chance by {0} for 4 sec."
+        "unified": "[Funeral Rites] reduces the target’s CC Resist by 320 and Magic Block chance by {0} for 4 sec."
       },
       "values": {}
     },
@@ -54,8 +50,7 @@
       "name": "Flowers of a Forgotten Dukedom",
       "hasChanges": true,
       "description": {
-        "from": "[Day of Ruin] increases DMG by {0}% and reduces the target's M.DEF by 3% for 5 sec each time damage is dealt. This effect can stack up to 10 times.",
-        "to": "[Day of Ruin] increases DMG by {0}% and reduces the target’s M.DEF by 3% for 5 sec each time damage is dealt. This effect can stack up to 10 times."
+        "unified": "[Day of Ruin] increases DMG by {0}% and reduces the target’s M.DEF by 3% for 5 sec each time damage is dealt. This effect can stack up to 10 times."
       },
       "values": {}
     },
@@ -63,8 +58,7 @@
       "name": "First Friend Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Rest in Peace] Sets cooldown to 45 sec, and after activation, reduces M.DMG taken by {0}% for 10 sec.",
-        "to": "[Rest in Peace] reduces all DMG taken by {0}% for 10 sec after use. Cooldown set to 40 sec."
+        "unified": "[Rest in Peace] [(added) reduces all DMG taken by {0}% for 10 sec after use]. Cooldown set to [45 sec->40 sec]."
       },
       "values": {
         "0": {
@@ -77,8 +71,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals M.DMG equal to {0}% of ATK every sec to nearby enemies, reduces their ATK by {1}%, and recovers HP equal to 100% of damage dealt.",
-      "to": "Deals Magic Damage equal to {0}% of Attack Power per second to nearby enemies, reduces their Attack by {1}%, and recovers HP equal to 100% of damage dealt."
+      "unified": "Deals Magic Damage equal to {0}% of Attack Power per second to nearby enemies, reduces their Attack by {1}%, and recovers HP equal to 100% of damage dealt."
     },
     "values": {}
   }

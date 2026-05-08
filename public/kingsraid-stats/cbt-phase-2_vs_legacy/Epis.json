@@ -2,7 +2,7 @@
   "heroName": "Epis",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.459Z",
+  "generatedAt": "2026-05-08T11:43:35.395Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "12"
       },
       "description": {
-        "from": "Deals 871*(0.7+(0.3*Skill Level*Awakening Coefficient))+500.2% ATK Magic DMG to an enemy and recovers HP equal to 25% of the damage dealt. Increases own ATK by 4% for 15sec. This ATK increase effect stacks up to 6 times.",
-        "to": "Deals ??? M.DMG that ignores enemy DEF, and heals 25% of DMG as HP."
+        "unified": "Deals ??? M.DMG that ignores enemy DEF, and heals 25% of DMG as HP."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "8"
       },
       "description": {
-        "from": "Moves to the rearmost enemy and deals 484*(0.7+(0.3*Skill Level*Awakening Coefficient))+278% ATK Magic DMG to the target and nearby enemies. Increases Magic DMG taken by 20% and reduces Status Resistance by 320 for 5sec.",
-        "to": "Moves behind the furthest enemy and deals ??? M.DMG. Hit enemies take 30% increased M.DMG for 10 sec."
+        "unified": "Moves behind the furthest enemy and deals ??? M.DMG. Hit enemies take [20%->30%] increased M.DMG for [5 sec->10 sec]."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 458*(0.7+(0.3*Skill Level*Awakening Coefficient))+263.6% ATK Magic DMG to enemies within range 4 times. While casting, the caster is immune to status effects and all damage taken is reduced by 60%.",
-        "to": "Deals ??? M.DMG to all enemies in range. Gains CC immunity while using this skill."
+        "unified": "Deals ??? M.DMG to all enemies in range. Gains CC immunity while using this skill."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Upon killing an enemy, reduces the Cooldown of all skills by 30% and gains 1 stacks of [Harvest].\n\n[Harvest]: Increases ATK by 80*(0.7+(0.3*Skill Level*Awakening Coefficient)), stacking up to 10 times.",
-        "to": "When an enemy is killed by this hero, ATK is increased by ??? for 12 sec, and all skill cooldown is reduced by 30%."
+        "unified": "When an enemy is killed by this hero, ATK is increased by ??? for [15 sec->12 sec], and all skill cooldown is reduced by 30%."
       }
     }
   },
@@ -50,8 +46,7 @@
       "skillName": "Harvest",
       "hasChanges": true,
       "IV": {
-        "from": "When [Harvest] is triggered, restores 1000 of your Mana.",
-        "to": "Per each kill, recovers 1 orb of mana."
+        "unified": "Per each kill, recovers [1000->1 orb] of mana."
       }
     }
   },
@@ -59,41 +54,34 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Cooldown is reduced by 2 sec.",
-        "to": "Ignores enemy Block."
+        "unified": "Ignores enemy Block."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       },
       "dark": {
-        "from": "Mana cost increases by 2000, but after using a skill, if there are nearby enemies, additionally uses [Absorbing Blow].",
-        "to": "Mana consumption is increased by 1, and upon using the skill, [Absorbing Blow] is activated. Cannot use when there are no enemies in range."
+        "unified": "Mana consumption is increased by [2000->1], and upon using the skill, [Absorbing Blow] is activated. Cannot use when there are no enemies in range."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Damage is reduced by 30%, but the number of hits is doubled.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by 40%."
       },
       "dark": {
-        "from": "Mana cost increases by 1000, but triggers [Harvest] once.",
-        "to": "DMG taken is reduced by 50% while skill is in use."
+        "unified": "DMG taken is reduced by 50% while skill is in use."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Increases Mana recovery per second by {1}% per stack.",
-        "to": "Each stack increases Mana recovery per sec by 50%."
+        "unified": "Each stack increases Mana recovery per sec by [???->50%]."
       },
       "dark": {
-        "from": "If stacks are 6 or more, cooldown is additionally reduced by 1 sec every second.",
-        "to": "While stack number is higher than 5, Mana is always at 100% and cooldowns are decreased by an additional 1 sec per each sec."
+        "unified": "While stack number is higher than 5, [(added) Mana is always at 100% and] cooldowns are decreased by an additional 1 sec per each sec."
       }
     }
   },
@@ -102,8 +90,7 @@
       "name": "Green Fairy",
       "hasChanges": true,
       "description": {
-        "from": "[Absorbing Blow] increases DMG by {0}% and resets its Cooldown upon killing an enemy.",
-        "to": "[Absorbing Blow] Increases DMG by {0}% and upon killing an enemy, ATK is increased by 20% for 10 sec. ATK increase effect can be stacked up to max 3 times."
+        "unified": "[Absorbing Blow] Increases DMG by {0}% and upon killing an enemy, ATK is increased by [(added) 20%] for [(added) 10 sec]. ATK increase effect can be stacked up to max [(added) 3 times]."
       },
       "values": {}
     },
@@ -111,8 +98,7 @@
       "name": "Seductress Shoes",
       "hasChanges": true,
       "description": {
-        "from": "[Devil's Prom] Reduces Mana Cost by 1 and increases DMG by {0}%.",
-        "to": "[Devil's Prom] Mana cost is reduced by 1, and Crit DMG is increased by {0}%."
+        "unified": "[Devil's Prom] Mana cost is reduced by 1, and Crit DMG is increased by {0}%."
       },
       "values": {}
     }
@@ -120,15 +106,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When attacking with a skill, increases Epis’s Attack by 4% and Armor Penetration by 4%. This effect stacks up to 5 times.",
-      "to": "All of Epis's attacks decrease the M.DEF of hit enemies by 20% for 10 sec. ATK rises by 2% per each enemy hit. Maximum stack number is 10."
+      "unified": "All of Epis's attacks decrease the M.DEF of hit enemies by 20% for 10 sec. ATK rises by [4%->2%] per each enemy hit. Maximum stack number is [5->10]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, has a 25% chance to deal additional Magic DMG equal to {0}% of ATK and increase your Attack by {1}%. The Attack increase stacks up to 5 times.",
-      "to": "Upon attacking, there is a 25% chance of dealing {0}% of ATK as extra M.DMG, and ATK being increased by {1}% ATK boost can be stacked up to 10 times max."
+      "unified": "Upon attacking, there is a 25% chance of dealing {0}% of ATK as extra M.DMG, and ATK being increased by {1}% ATK boost can be stacked up to [5->10] times max."
     },
     "values": {
       "1": {
@@ -140,17 +124,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the Soul of the Seductress, Guillotine for 8sec, increasing own ATK by 40%. During the duration, Normal and Skill attacks have a 20% chance to deal 150% of ATK M.DMG. This effect gains an additional {4} Magic DEF Penetration, and triggers with a 100% chance when [Absorbing Blow] hits.",
-      "to": "Summons the Soul of The Seductress, Guillotine, and increases own ATK by 40% for 8 sec. For the duration of Skill, Normal and Skill attacks have 20% chance to deal ??? M.DMG that ignores DEF to a target. If [Absorbing Blow] hits a target, this effect will activate with a 100% chance."
+      "unified": "Summons the Soul of The Seductress, Guillotine, and increases own ATK by 40% for 8 sec. For the duration of Skill, Normal and Skill attacks have 20% chance to deal ??? M.DMG that ignores DEF to a target. If [Absorbing Blow] hits a target, this effect will activate with a 100% chance."
     },
     "advancement": {
       "1": {
         "from": "Increases DMG by 50%.",
-        "to": "Activation chance is changed to 30%, and DMG is increased by 50%."
+        "to": "Activation chance is changed to 30%, and DMG is increased by 50%.",
+        "unified": "Activation chance is changed to [(added) 30%], and DMG is increased by 50%."
       },
       "2": {
         "from": "Changes activation chance to 40%.",
-        "to": "The M.DMG now ignores Block, and increases the M.DMG the hit enemy takes by 30% for 7 sec."
+        "to": "The M.DMG now ignores Block, and increases the M.DMG the hit enemy takes by 30% for 7 sec.",
+        "unified": "The M.DMG now ignores Block, and increases the M.DMG the hit enemy takes by 30% for 7 sec."
       }
     }
   }

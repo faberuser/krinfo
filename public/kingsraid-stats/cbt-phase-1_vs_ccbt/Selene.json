@@ -2,34 +2,30 @@
   "heroName": "Selene",
   "versionA": "cbt-phase-1",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.492Z",
+  "generatedAt": "2026-05-08T11:43:35.414Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 161*(0.7+(0.3*Skill Level*Awakening Coefficient))+70.7% ATK Physical DMG to a random enemy 12 times.",
-        "to": "Deals 161(1+0.3Skill Level)+70.7% of Attack Power as Physical Damage 12 times to a random enemy."
+        "unified": "Deals Physical Damage 12 times to a random enemy."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Summons 5 homing arrow that tracks enemies. Upon attacking, consumes 1 arrow to deal 351*(0.7+(0.3*Skill Level*Awakening Coefficient))+154.3% ATK additional Physical DMG to the enemy.",
-        "to": "Summons 5 homing arrows that track enemies. On attack, consumes 1 arrow to deal 351(1+0.3Skill Level)+154.3% of Attack Power as additional Physical Damage."
+        "unified": "Summons 5 homing arrows that track enemies. On attack, consumes 1 arrow to deal additional Physical Damage."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals up to 1530*(0.7+(0.3*Skill Level*Awakening Coefficient))+671% ATK Physical DMG to enemies in a straight line based on their remaining HP and knocks them down. This skill applies an additional 800 Physical Defense Penetration, and against Bosses, deals additional 765*(0.7+(0.3*Skill Level*Awakening Coefficient))+335.5% ATK Physical DMG.",
-        "to": "Deals up to 1530(1+0.3Skill Level)+671% of Attack Power as Physical Damage to enemies in a line based on their remaining HP and knocks them down. This skill has an additional 500 Physical Defense Penetration, and if the target is a boss, deals an additional 765(1+0.3Skill Level)+335.5% of Attack Power as Physical Damage."
+        "unified": "Deals Physical Damage to enemies in a line based on their remaining HP and knocks them down. This skill has an additional [800->500] Physical Defense Penetration, and if the target is a boss, deals an additional Physical Damage."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "After using a Skill or Normal Attack, increases ATK by 24*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Critical Hit Chance by 80 for 7sec. [Moonlight Arrow] stacks up to 6 times. At max stacks, [Moonlight Arrow] cannot be gained during the duration, but Normal Attacks fire 3 additional arrows, each dealing 143% ATK Physical DMG.",
-        "to": "After using a skill or Normal Attack, increases Attack by 24(1+0.3Skill Level) and Critical Hit Chance by 100 for 5 sec. [Moonlight Arrow] stacks up to 6 times. At maximum stacks, you cannot gain additional [Moonlight Arrow] during the duration, but Normal Attacks fire 3 extra arrows that each deal 143% of Attack Power as Physical Damage."
+        "unified": "After using a skill or Normal Attack, increases Attack by 24(1+0.3Skill Level) and Critical Hit Chance by [80->100] for [7sec->5 sec]. [Moonlight Arrow] stacks up to 6 times. At maximum stacks, you cannot gain additional [Moonlight Arrow] during the duration, but Normal Attacks fire 3 extra arrows that each deal 143% of Attack Power as Physical Damage."
       }
     }
   },
@@ -38,30 +34,25 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Damage dealt is increased by 40%."
+        "unified": "Damage dealt is increased by [50%->40%]."
       },
       "dark": {
-        "from": "Has a 50% chance to stun enemies hit for 0.5 sec.",
-        "to": "Has a 50% chance to stun enemies hit for 0.6 sec."
+        "unified": "Has a 50% chance to stun enemies hit for [0.5 sec->0.6 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Damage dealt is increased by 40%."
+        "unified": "Damage dealt is increased by [50%->40%]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Attack Speed increases by 5% per stack.",
-        "to": "Attack Speed is increased by 8% per stack."
+        "unified": "Attack Speed is increased by [5%->8%] per stack."
       },
       "dark": {
-        "from": "Damage dealt to bosses increases by 5% per stack.",
-        "to": "At the start of battle, Attack is increased by 10%. This Attack increase stacks up to 10 times, and at 10 stacks, damage dealt to bosses is increased by 20%. This effect cannot be dispelled."
+        "unified": "At the start of battle, Attack is increased by 10%. This Attack increase stacks up to 10 times, and at 10 stacks, damage dealt to bosses is increased by 20%. This effect cannot be dispelled."
       }
     }
   },
@@ -69,8 +60,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Your Critical Rate is reduced by 300, but Critical DMG increases by 70%.",
-      "to": "Your Critical Hit Chance is reduced by 300, but Critical Damage is increased by 150%."
+      "unified": "Your Critical Hit Chance is reduced by 300, but Critical Damage is increased by [70%->150%]."
     }
   },
   "uw": {

@@ -2,7 +2,7 @@
   "heroName": "Frey",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.475Z",
+  "generatedAt": "2026-05-08T11:43:35.404Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "5"
       },
       "description": {
-        "from": "Dispels harmful effects from the ally with the lowest current HP and restores HP 529*(0.7+(0.3*Skill Level*Awakening Coefficient))+330.6% ATK 3times, and when healing the target, nearby allies are additionally healed for 40% of the healing amount.",
-        "to": "Dispels harmful effects from the ally with the lowest current HP and restores HP 1159*(0.7+(0.3*Skill Level*Awakening Coefficient))+188.1% ATK 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount."
+        "unified": "Dispels harmful effects from the ally with the lowest current HP and restores HP 1159*(0.7+(0.3*Skill Level*Awakening Coefficient))+188.1% ATK 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount."
       }
     },
     "2": {
@@ -22,15 +21,13 @@
         "to": "14"
       },
       "description": {
-        "from": "Grants all allies a shield that absorbs 2080*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 800.6% of ATK damage for 4sec. While the shield is active, Healing Power is increased by 120% and Status Resistance is increased by 800.",
-        "to": "Grants a shield to 4 ally with the highest damage dealt, absorbing 795*(0.7+(0.3*Skill Level*Awakening Coefficient))+129% ATK damage for 16 sec. While the shield is active, Healing Rate increases by 11% and CC Resistance increases by 100."
+        "unified": "Grants a shield to 4 ally with the highest damage dealt, absorbing [2080->795]*(0.7+(0.3*Skill Level*Awakening Coefficient))+[800.6%->129%] ATK damage for [4 sec->16 sec]. While the shield is active, Healing Rate increases by [120%->11%] and CC Resistance increases by [800->100]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Every 20sec, restores 14% of Max HP to the 2 allies with the lowest current HP, and increases their Magic DEF by 60*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec.",
-        "to": "For 15 sec, heals 2 allies with the lowest current HP for 1.5% of Max HP 10 times, and increases Magic DEF by 157+(0.3*Skill Level*Awakening Coefficient)."
+        "unified": "For 15 sec, heals 2 allies with the lowest current HP for [14% of Max HP (once)->1.5% of Max HP 10 times], and increases Magic DEF by [60*(0.7+(0.3*Skill Level*Awakening Coefficient))->157+(0.3*Skill Level*Awakening Coefficient)]."
       }
     }
   },
@@ -51,8 +48,7 @@
       "name": "Forgotten Arbiter's Feather",
       "hasChanges": true,
       "description": {
-        "from": "[Heaven’s Vengeance] increases the target’s M.DMG taken by 20% for 10 sec and extends Blind duration by {0} sec.",
-        "to": "[Heaven's Vengeance] changes the attack target to a random target and increases Blind duration by {0} sec."
+        "unified": "[Heaven's Vengeance] changes the attack target to a random target and increases Blind duration by {0} sec."
       },
       "values": {
         "0": {
@@ -65,8 +61,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 8 sec, heals the 4 allies with the lowest current HP by {0}% of ATK, and increases the Critical Rate of the 4 allies with the highest ATK by 200, and Critical DMG by {1}% for 8 sec.",
-      "to": "Every 8sec, heals 4 allies with the lowest current HP for {0}% of ATK, and increases the Critical Rate by 160 and Critical DMG by {1}% of 4 allies with the highest ATK for 8 sec."
+      "unified": "Every 8sec, heals 4 allies with the lowest current HP for {0}% of ATK, and increases the Critical Rate by [200->160] and Critical DMG by {1}% of 4 allies with the highest ATK for 8 sec."
     },
     "values": {
       "0": {

@@ -1,7 +1,7 @@
 name: Build and Push Docker Image (Models and Voices)
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:

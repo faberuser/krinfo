@@ -2,34 +2,30 @@
   "heroName": "Kasel",
   "versionA": "ccbt",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.529Z",
+  "generatedAt": "2026-05-08T11:43:35.441Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 267*(1+0.3*Skill Level)+168.3% ATK Physical DMG to enemies in the frontal area 2 times and inflicts Down for 1.5 sec.\n[God's Proxy] : Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec.",
-        "to": "Deals 267*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK 168.3% Physical DMG to enemies in the frontal area 2 times, and inflicts Down for 1.5 sec.\n\n[God's Proxy]: Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec."
+        "unified": "Deals Physical DMG to enemies in the frontal area 2 times, and inflicts Down for 1.5 sec. [God's Proxy]: Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Dashes behind the enemy and deals 233*(1+0.3*Skill Level)+146.9% ATK Physical DMG to enemies in range 3 times, increasing Physical DMG taken by 30% for 4 sec.\n[God's Proxy] : Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied 500 higher.",
-        "to": "Dashes behind the enemy and deals 233*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK 146.9% Physical DMG to enemies in range 3 times, increasing Physical DMG taken by 24% for 5 sec.\n\n[God's Proxy]: Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied 600 higher."
+        "unified": "Dashes behind the enemy and deals Physical DMG to enemies in range 3 times, increasing Physical DMG taken by [30%->24%] for [4 sec->5 sec]. [God's Proxy]: Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied [500->600] higher."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 200*(1+0.3*Skill Level)+126% ATK Physical DMG to nearby enemies and inflicts Stun for 2 sec. Then enters [God's Proxy] state for 10 sec, empowering skills.\n[God's Proxy] : ATK increases by 264*(1+0.3*Skill Level), Attack Speed by 30%, Physical Evasion by 300, Normal Attack DMG by 150%, and Status Resistance by 600. This effect cannot be dispelled.",
-        "to": "Deals 200*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK126% Physical DMG to nearby enemies and inflicts Stun for 1 sec. Then enters [God's Proxy] state for 10 sec, empowering skills.\n\n[God's Proxy]: ATK increases by 264*(0.7+(0.3*Skill Level*Awakening Coefficient)), Normal Attack DMG increases by 100%. This effect cannot be dispelled."
+        "unified": "Deals Physical DMG to nearby enemies and inflicts Stun for [2 sec->1 sec]. Then enters [God's Proxy] state for 10 sec, empowering skills. [God's Proxy]: ATK increases, Normal Attack DMG [increases by 150%->increases by 100%]. [(removed) Attack Speed by 30%, Physical Evasion by 300, and Status Resistance by 600.]"
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Magic DEF increases by 85*(1+0.3*Skill Level), and Magic Evasion increases by 250.\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 30%, and damage taken is reduced by 30%.",
-        "to": "ATK increases by 135*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Magic Evasion increases by 360.\n\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 20%, and damage taken from non-hero enemies is reduced by 20%."
+        "unified": "ATK increases, and Magic Evasion increases by [250->360]. When [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by [30%->20%], and damage taken [is reduced by 30%->from non-hero enemies is reduced by 20%]. [(removed) Magic DEF increases.]"
       }
     }
   },
@@ -38,45 +34,37 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Increases DMG by 40%.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by [40%->50%]."
       },
       "dark": {
-        "from": "When there is only 1 enemy, damage increases by 100%.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by 1000."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by 50%."
       },
       "dark": {
-        "from": "On hit, reduces the target’s Physical DEF by 35% for 10 sec.",
-        "to": "On hit, increases the target’s Physical DMG taken by 24% for 5 sec."
+        "unified": "On hit, increases the target’s Physical DMG taken by 24% for 5 sec."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces Physical DMG taken by 25% during the duration.",
-        "to": "Physical Evasion increases by 600 for the duration.."
+        "unified": "Physical Evasion increases by 600 for the duration.."
       },
       "dark": {
-        "from": "Mana cost increases by 1000, but damage dealt to non-hero enemies increases by 100% during the duration.",
-        "to": "Damage dealt to non-hero enemies increases by 34% for the duration."
+        "unified": "Damage dealt to non-hero enemies increases by [100%->34%] for the duration."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Physical Evasion increases by 150.\nOn evasion, restores 5% of Max HP. This effect can only trigger once every 3 sec.",
-        "to": "ATK increase amount increases by 50%."
+        "unified": "ATK increase amount increases by 50%."
       },
       "dark": {
-        "from": "Damage taken from Heroes is reduced by 15%.",
-        "to": "On evasion, restores 6% of Max HP every 3 sec."
+        "unified": "On evasion, restores 6% of Max HP every 3 sec."
       }
     }
   },
@@ -85,8 +73,7 @@
       "name": "Crown of Light",
       "hasChanges": true,
       "description": {
-        "from": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max 10 times and is irremovable.",
-        "to": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max 5 times and is irremovable."
+        "unified": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max [10 times->5 times] and is irremovable."
       },
       "values": {
         "0": {
@@ -99,8 +86,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, deals additional Physical DMG equal to 80% of ATK. Applied at 160% against non-hero enemies and can only trigger once every 0.5 sec.",
-      "to": "On hit, deals additional Physical DMG equal to 60% of ATK. Applied at 120% against non-hero enemies and can only trigger once every 0.5 sec."
+      "unified": "On hit, deals additional Physical DMG equal to [80%->60%] of ATK. Applied at [160%->120%] against non-hero enemies and can only trigger once every 0.5 sec."
     }
   }
 }

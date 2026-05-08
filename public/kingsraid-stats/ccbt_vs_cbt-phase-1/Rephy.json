@@ -2,13 +2,12 @@
   "heroName": "Rephy",
   "versionA": "ccbt",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.533Z",
+  "generatedAt": "2026-05-08T11:43:35.443Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores 108*(1+0.3Skill Level)+67.5% of Attack Power HP every 0.5 sec for 5 sec. This effect cannot be dispelled.",
-        "to": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores 88*(0.7+(0.3*Skill Level*Awakening Coefficient))+40.5% ATK HP every 1sec for 10sec. This effect cannot be dispelled."
+        "unified": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores ATK HP every [0.5 sec->1sec] for [5 sec.->10sec.]"
       }
     },
     "2": {
@@ -18,15 +17,13 @@
         "to": "2"
       },
       "description": {
-        "from": "Removes harmful effects from all allies and increases their Magic Defense by 50(1+0.3Skill Level) for 6 sec.",
-        "to": "Removes all harmful effects from all allies and increases their Magic DEF by 50*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec."
+        "unified": "Removes all harmful effects from all allies and increases their Magic DEF for [6 sec.->15sec.]"
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 88(1+0.3Skill Level)+55.8% of Attack Power as Magic Damage to enemies within range 10 time(s), and reduces their Attack Speed by 25% for 10 sec.",
-        "to": "Deals 88*(0.7+(0.3*Skill Level*Awakening Coefficient))+55.8% ATK Magic DMG to enemies within range 10 time, and reduces their ATK Spd by 10% for 10sec."
+        "unified": "Deals Magic DMG to enemies within range 10 time, and reduces their ATK Spd by [25%->10%] for 10sec."
       }
     },
     "4": {
@@ -36,8 +33,7 @@
         "to": "8"
       },
       "description": {
-        "from": "Every 7 sec, restores 1000 Mana and 264(1+0.3Skill Level)+165.3% of Attack Power HP to 1 ally with the lowest HP.",
-        "to": "Every 8sec, restores 1000 Mana and 264*(0.7+(0.3*Skill Level*Awakening Coefficient))+165.3% ATK HP to 1 ally with the lowest HP."
+        "unified": "Every [7 sec->8sec], restores 1000 Mana and ATK HP to 1 ally with the lowest HP."
       }
     }
   },
@@ -46,24 +42,21 @@
       "skillName": "Healing Soul",
       "hasChanges": true,
       "IV": {
-        "from": "Increases Mana Recovery per sec of the target by 50%.",
-        "to": "Increases Mana Recovery per sec of the target by 15%."
+        "unified": "Increases Mana Recovery per sec of the target by [50%->15%]."
       }
     },
     "2": {
       "skillName": "Salvation",
       "hasChanges": true,
       "IV": {
-        "from": "Increases CC Resist by 300 for 6 sec.",
-        "to": "Increases CC Resist by 120 for 15 sec."
+        "unified": "Increases CC Resist by [300->120] for [6 sec.->15 sec.]"
       }
     },
     "3": {
       "skillName": "Soulrush",
       "hasChanges": true,
       "IV": {
-        "from": "Reduces the target's Mana by 25.",
-        "to": "Reduces the target's Mana by 200."
+        "unified": "Reduces the target's Mana by [25->200]."
       }
     }
   },
@@ -71,19 +64,16 @@
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Magic Defense is additionally increased by 13%.",
-        "to": "Magic Defense additionally increases by 10%."
+        "unified": "Magic Defense additionally increases by [13%->10%]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Magic Damage taken by the target is increased by 25%.",
-        "to": "Increases the target’s Magic DMG taken by 10%."
+        "unified": "Increases the target’s Magic DMG taken by [25%->10%]."
       },
       "dark": {
-        "from": "Physical Damage taken by the target is increased by 25%.",
-        "to": "Increases the target’s Physical DMG taken by 10%."
+        "unified": "Increases the target’s Physical DMG taken by [25%->10%]."
       }
     }
   },
@@ -91,15 +81,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, has a 10% chance to reduce all of the target's Defense by 20% and reduce the cooldown of all your skills by 5%.",
-      "to": "All allies’ Mana recovery per second increases by 30%, and your cooldown of all skills is reduced by 5%."
+      "unified": "All allies’ Mana recovery per second increases by [(added) 30%], and your cooldown of all skills is reduced by 5%. [(removed) On hit, has a 10% chance to reduce all of the target's Defense by 20%]"
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by 50%.",
-      "to": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by 35%."
+      "unified": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by [50%->35%]."
     },
     "values": {
       "0": {

@@ -2,7 +2,7 @@
   "heroName": "Epis",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.423Z",
+  "generatedAt": "2026-05-08T11:43:35.370Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -29,8 +29,7 @@
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Upon killing an enemy, reduces the Cooldown of all skills by 30% and gains 1 stacks of [Harvest].\n\n[Harvest]: Increases ATK by 80*(0.7+(0.3*Skill Level*Awakening Coefficient)), stacking up to 10 times.",
-        "to": "Upon killing an enemy, reduces the Cooldown of all skills by 30% and gains [Harvest] stacks 1.\n\n[Harvest]: Increases ATK by 80*(0.7+(0.3*Skill Level*Awakening Coefficient)), stacking up to 10 times."
+        "unified": "Upon killing an enemy, reduces the Cooldown of all skills by 30% and gains [Harvest] stacks 1. [Harvest]: Increases ATK by 80*(0.7+(0.3*Skill Level*Awakening Coefficient)), stacking up to 10 times."
       }
     }
   },
@@ -39,8 +38,7 @@
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Increases Mana recovery per second by {1}% per stack.",
-        "to": "Mana recovery per second increases by 10% per stack."
+        "unified": "Mana recovery per second increases by 10% per stack."
       }
     }
   },
@@ -48,8 +46,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, has a 25% chance to deal additional Magic DMG equal to {0}% of ATK and increase your Attack by {1}%. The Attack increase stacks up to 5 times.",
-      "to": "On hit, has a 25% chance to deal additional Magic Damage equal to {0}% of Attack Power and increase your Attack by {1}%. The Attack increase stacks up to 5 times."
+      "unified": "On hit, has a 25% chance to deal additional Magic Damage equal to {0}% of Attack Power and increase your Attack by {1}%. The Attack increase stacks up to 5 times."
     },
     "values": {}
   }

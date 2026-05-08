@@ -2,13 +2,12 @@
   "heroName": "Jane",
   "versionA": "ccbt",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.547Z",
+  "generatedAt": "2026-05-08T11:43:35.452Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 361*(1+0.3Skill Level)+277.6% of Attack Power damage to enemies within range and stuns them for 3 sec.",
-        "to": "Deals ??? M.DMG to enemies in range, stunning them for 5 sec."
+        "unified": "Deals ??? M.DMG to enemies in range, stunning them for [3 sec->5 sec]."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Engraves [Mark of Death] on all enemies for 15 sec, dealing 9(1+0.3Skill Level)+6.9% of Attack Power continuous Magic Damage. Enemies with [Mark of Death] take 25% increased Magic Damage, and if recast within 15 sec, the effect is increased by 20%. This effect stacks up to 5 times and cannot be dispelled.",
-        "to": "Engraves a Mark on all enemies for 30 sec and deals ??? M.DMG over time. Enemies engraved with Mark takes 25% more M.DMG. This effect increases by 20% upon every use. This effect can be stacked up to max 5 times and is irremovable."
+        "unified": "Engraves a Mark on all enemies for [15 sec->30 sec] and deals ??? M.DMG over time. Enemies engraved with Mark takes 25% more M.DMG. This effect increases by 20% upon every use. This effect can be stacked up to max 5 times and is irremovable."
       }
     },
     "3": {
@@ -33,8 +31,7 @@
         "to": "12"
       },
       "description": {
-        "from": "Deals 127(1+0.3Skill Level)+97.6% of Attack Power Magic Damage per second to all enemies for 12 sec, recovers HP equal to 130% of damage dealt, and has a 10% chance to stun them for 0.6 sec.\nDuring the duration, all allies take 20% reduced Physical Damage, and enemies with [Mark of Death] take additional Magic Damage equal to 97.6% of Attack Power.",
-        "to": "Deals M.DMG to all enemies every sec for 15 sec, heals own HP equal to 100% of DMG dealt, and inflicts Stun on the hit target for 1 sec with a 10% chance. For the duration of Skill, gains immunity to CC. Against Marked targets, deals increased ??? M.DMG."
+        "unified": "Deals M.DMG to all enemies every sec for [12 sec->15 sec], heals own HP equal to [130%->100%] of DMG dealt, and inflicts Stun on the hit target for [0.6 sec->1 sec] with a 10% chance. For the duration of Skill, gains immunity to CC. Against Marked targets, deals increased ??? M.DMG."
       }
     },
     "4": {
@@ -44,8 +41,7 @@
         "to": null
       },
       "description": {
-        "from": "Increases all allies’ Physical Defense by 45(1+0.3Skill Level).\nWhen taking damage that would be fatal, enters [Coffin] state for 5 sec, restoring 197(1+0.3Skill Level)+153.7% of Attack Power + 6% of Max HP.\nWhile in [Coffin] state, Attack Speed changes do not affect you, you are immune to all damage, and deal Magic Damage equal to 5% of Max HP per second to nearby enemies.",
-        "to": "Increases M.DEF of all allies. Upon taking fatal DMG, enters a coffin for 5 sec and heals HP equal to proportional to ATK + 6% of Max HP. While inside the coffin, Jane is not affected by ATK Spd effects, ignores All DMG, and deals M.DMG equal to 5% of Max HP to nearby enemies every sec."
+        "unified": "Increases M.DEF of all allies. Upon taking fatal DMG, enters a coffin for 5 sec and heals HP equal to proportional to ATK + 6% of Max HP. While inside the coffin, Jane is not affected by ATK Spd effects, ignores All DMG, and deals M.DMG equal to 5% of Max HP to nearby enemies every sec."
       }
     }
   },
@@ -54,33 +50,28 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Recovers HP equal to 50% of damage dealt.",
-        "to": "Target takes 25% increased M.DMG for 10 sec."
+        "unified": "Target takes 25% increased M.DMG for 10 sec."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but pulls the target to your vicinity with a 100% success rate.",
-        "to": "In exchange for 1 additional Mana Cost, the skill has a 100% chance to draw the target in."
+        "unified": "In exchange for 1 additional Mana Cost, the skill has a 100% chance to draw the target in."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Debuff duration is reduced to 10 sec, but damage is increased by 500%.",
-        "to": "Duration is reduced to 10 sec and DMG is boosted by 250%."
+        "unified": "Duration is reduced to 10 sec and DMG is boosted by [500%->250%]."
       }
     },
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but cooldown is reduced by 7 sec.",
-        "to": "Upon use, dispels negative effects of all allies."
+        "unified": "Upon use, dispels negative effects of all allies."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "When the effect triggers, stuns all enemies for 1.2 sec.",
-        "to": "Upon activation, stun all enemies for 2 sec."
+        "unified": "Upon activation, stun all enemies for [1.2 sec->2 sec]."
       }
     }
   },
@@ -89,8 +80,7 @@
       "name": "Funeral Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Funeral Rites] reduces the target’s CC Resist by 400 and Magic Block chance by {0} for 4 sec.",
-        "to": "[Funeral Rites] For 10 sec, reduces the target's CC Resist by 250 and M.Block by {0}."
+        "unified": "[Funeral Rites] For [4 sec->10 sec], reduces the target's CC Resist by [400->250] and M.Block by {0}."
       },
       "values": {
         "0": {
@@ -103,8 +93,7 @@
       "name": "Death-imbued Cushion",
       "hasChanges": true,
       "description": {
-        "from": "[Mark of Death] When a marked enemy dies, increases own ATK by 5% and Crit DMG by {0}% for 20 sec. Stacks up to 16 times.",
-        "to": "[Mark of Death] Increases ATK by 5% and Crit DMG by {0}% for 20 sec when the marked enemy dies. This effect stacks up to 8 times."
+        "unified": "[Mark of Death] Increases ATK by 5% and Crit DMG by {0}% for 20 sec when the marked enemy dies. This effect stacks up to [16 times->8 times]."
       },
       "values": {}
     },
@@ -112,8 +101,7 @@
       "name": "Flowers of a Forgotten Dukedom",
       "hasChanges": true,
       "description": {
-        "from": "[Day of Ruin] increases DMG by {0}% and reduces the target’s M.DEF by 3% for 5 sec each time damage is dealt. This effect can stack up to 10 times.",
-        "to": "[Day of Ruin] DMG is increased by {0}% and with every DMG dealt, target's M.DEF is reduced by 5% for 5 sec. This effect can stack a max 10 times."
+        "unified": "[Day of Ruin] DMG is increased by {0}% and with every DMG dealt, target's M.DEF is reduced by [3%->5%] for 5 sec. This effect can stack a max 10 times."
       },
       "values": {}
     },
@@ -121,8 +109,7 @@
       "name": "First Friend Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Rest in Peace] reduces all DMG taken by {0}% for 10 sec after use. Cooldown set to 40 sec.",
-        "to": "[Rest in Peace] Upon activation, dispels all negative effects from all allies and reduces All DMG dealt on self by {0}% for 10 sec."
+        "unified": "[Rest in Peace] Upon activation, dispels all negative effects from all allies and reduces All DMG dealt on self by {0}% for 10 sec."
       },
       "values": {}
     }
@@ -130,8 +117,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals Magic Damage equal to {0}% of Attack Power per second to nearby enemies, reduces their Attack by {1}%, and recovers HP equal to 75% of damage dealt.\nThe 4 allies with the highest Attack (excluding yourself) deal {2}% increased damage to non-hero enemies. This effect cannot be dispelled.",
-      "to": "Deals M.DMG equal to {0}% of ATK to nearby enemies and reduces their ATK by {1}% every sec. Additionally, increases DMG dealt against Non-Hero enemies of the ally with the highest ATK excluding self by {2}%. The DMG Boost effect is irremovable. When the Passive Skill is activated, recovers 30% of Mana."
+      "unified": "Deals M.DMG equal to {0}% of ATK to nearby enemies and reduces their ATK by {1}% every sec. Additionally, increases DMG dealt against Non-Hero enemies of the ally with the highest ATK excluding self by {2}%. The DMG Boost effect is irremovable. [(added) When the Passive Skill is activated, recovers 30% of Mana.]"
     },
     "values": {
       "0": {

@@ -2,13 +2,12 @@
   "heroName": "Sonia",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.574Z",
+  "generatedAt": "2026-05-08T11:43:35.470Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Causes an electric explosion ahead, dealing ??? M.DMG to enemies in range and placing an electric field for 3 sec. The electric field deals a total of ??? M.DMG over 10 attacks and with 25% chance, stuns the enemy for 0.5 sec.",
-        "to": "Detonates lightning in front, dealing 333*(0.7+(0.3*Skill Level*Awakening Coefficient))+ 208.8% of ATK M.DMG to enemies within range and creates [Electric Field] for 4sec.\n\n[Electric Field]: Deals 48*(0.7+(0.3*Skill Level*Awakening Coefficient))+ 30.2% of ATK M.DMG every 0.4sec, and each hit has a 25% chance to stun enemies for 0.3sec."
+        "unified": "Detonates lightning in front, dealing M.DMG to enemies within range and creates [Electric Field] for [3 sec->4sec]. [Electric Field]: Deals M.DMG every 0.4sec, and each hit has a 25% chance to stun enemies for [0.5sec->0.3sec]."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "For 10 sec, ATK is increased by ??? and all DEF is increased by ???. While the skill is in use, each auto attack has a 30% chance of dealing extra ??? M.DMG to 2 random enemies and stunning them for 0.5 sec.",
-        "to": "For 15sec, increases M.DEF by 224*(0.7+(0.3*Skill Level*Awakening Coefficient))[ and ATK Spd by 30%. During the duration, on Normal Attack, has a 30% chance to deal 0.3 additional M.DMG to 2allies and stun them for {7}sec."
+        "unified": "For 15sec, increases M.DEF by 224*(0.7+(0.3*Skill Level*Awakening Coefficient)) and ATK Spd by [(added) 30%]. During the duration, on Normal Attack, has a 30% chance to deal 0.3 additional M.DMG to 2 allies and stun them for {7}sec."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals a total of ??? M.DMG over 3 attacks to nearby enemies in a circular range. Then causes an Electric Explosion, dealing a total of ??? M.DMG over 3 attacks and stunning them for 5 sec.",
-        "to": "Attacks enemies in a circular area around self, dealing 148*(0.7+(0.3*Skill Level*Awakening Coefficient))+ 92.8% of ATK M.DMG 3 time(s), then detonates lightning to deal 222*(0.7+(0.3*Skill Level*Awakening Coefficient))+ 139.2% of ATK M.DMG 3 times and stun enemies for 3sec."
+        "unified": "Attacks enemies in a circular area around self, dealing M.DMG 3 time(s), then detonates lightning to deal M.DMG 3 times and stun enemies for [5sec->3sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "With every attack, injects Electricity to targets not inflicted by Shock and increases M.DMG taken by 1% for 10 sec. Electricity can be stacked up to 30 times, and the 30th stack will consume all Electricity to deal ??? M.DMG and Shock the target for 7 sec. Enemies inflicted by Shock take 70% increased M.DMG, and when they are inflicted by Stun, the duration is increased by 0.7 sec.",
-        "to": "On attack, infuses [Charge] into enemies not under [Shock], increasing M.DMG taken by 1% for 10sec. [Charge] stacks up to 30 times. At 30 stacks, consumes all stacks to deal 926*(0.7+(0.3*Skill Level*Awakening Coefficient))+ 580% of ATK M.DMG and inflict [Shock] for 5sec.\n\n[Shock]: Increases duration of all received Stun effects by 0.7sec and increases M.DMG taken by 40%."
+        "unified": "On attack, infuses [Charge] into enemies not under [Shock], increasing M.DMG taken by 1% for 10sec. [Charge] stacks up to 30 times. At 30 stacks, consumes all stacks to deal M.DMG and inflict [Shock] for [7sec->5sec]. [Shock]: Increases duration of all received Stun effects by 0.7sec and increases M.DMG taken by [70%->40%]."
       }
     }
   },
@@ -50,33 +46,28 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "Mana cost increases by 1000, but DMG is increased by 80%."
+        "unified": "Mana cost increases by 1000, but DMG is increased by 80%."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Additional DMG effect applies to all enemies.",
-        "to": "Additional DMG is applied to up to 4 enemies."
+        "unified": "Additional DMG is applied to up to 4 enemies."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "While in use, gain immunity to CC.",
-        "to": "When there is only 1 enemy, DMG is increased by 100%."
+        "unified": "When there is only 1 enemy, DMG is increased by 100%."
       },
       "dark": {
-        "from": "Stun duration is increased by 2 sec.",
-        "to": "Stun duration is increased by 1.2 sec."
+        "unified": "Stun duration is increased by [2 sec->1.2 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Shock duration is increased by 2 sec.",
-        "to": "[Shock] duration is increased by 1.5 sec."
+        "unified": "[Shock] duration is increased by [2 sec->1.5 sec]."
       }
     }
   },
@@ -85,8 +76,7 @@
       "name": "Jewel of Amplification",
       "hasChanges": true,
       "description": {
-        "from": "[Lightning Strike!] Extends the duration of electric field by 1 sec, and upon each hit, increases own ATK Spd by {0} for 5 sec. This effect can be stacked up to max 30 times.",
-        "to": "[Lightning Strike! ] Increases the duration of the electric field by 2 sec, and on each hit, increases own M.DEF by {0}% for 5 sec. This effect stacks up to 10 times."
+        "unified": "[Lightning Strike! ] Increases the duration of the electric field by [1 sec->2 sec], and on each hit, increases own [ATK Spd->M.DEF] by {0}[->%] for 5 sec. This effect stacks up to [30->10] times."
       },
       "values": {
         "0": {
@@ -99,8 +89,7 @@
       "name": "Lightning Tent",
       "hasChanges": true,
       "description": {
-        "from": "[Power of Lightning!] Changes the effect irremovable and increases the chance to trigger an additional damage by {0}% additionally.",
-        "to": "[Power of Lightning! ] Converts the M.DEF increase effect into an ATK increase effect, and on attack, increases ATK by {0}% for 5 sec."
+        "unified": "[Power of Lightning! ] Converts the M.DEF increase effect into an ATK increase effect, and on attack, increases ATK by {0}% for 5 sec. [(removed) Changes effect irremovable and increases chance to trigger additional damage]"
       },
       "values": {
         "0": {
@@ -113,8 +102,7 @@
       "name": "Heart of Baikal",
       "hasChanges": true,
       "description": {
-        "from": "[Electric Explosion!] When attacking enemy inflicted by Shock, the enemy takes 100% of ATK as extra M.DMG and target's M.DEF and P.DEF is reduced by {0}% for 5 sec.",
-        "to": "[Electric Explosion!] Grants immunity to CC during casting, and on each hit, has a {0}% chance to apply 3 stacks of Charge. This effect also Stacks on enemies in Shock state."
+        "unified": "[Electric Explosion!] Grants [(added) immunity to CC during casting], and on each hit, has a {0}% chance to apply 3 stacks of Charge. This effect also Stacks on enemies in Shock state. [(removed) additional M.DMG and DEF reduction]"
       },
       "values": {
         "0": {
@@ -127,8 +115,7 @@
       "name": "Lightning Gloves",
       "hasChanges": true,
       "description": {
-        "from": "[Shock] Enemies under [Shock] take 100% increased M.DMG, and normal attacks have {0}% chance to inflict 1 stack of Electricity to the enemy. This effect also applies to enemies under [Shock].",
-        "to": "[Shock] Increases Magic DMG taken by enemies in Shock state by 60%, and additionally reduces their M.DEF by {0}%."
+        "unified": "[Shock] Increases Magic DMG taken by enemies in Shock state by [100%->60%], and additionally reduces their M.DEF by {0}%. [(removed) normal attacks have {0}% chance to inflict Charge]"
       },
       "values": {
         "0": {
@@ -141,8 +128,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Shock duration is increased by {0} sec. When auto attacking an enemy inflicted by Shock, all cooldowns are reduced by {1}%.",
-      "to": "[Shock] duration is changed to {0}. When attacking a target in [Shock] state with a Normal Attack, reduces cooldown by {1}% and deals additional Magic DMG equal to 100% of ATK."
+      "unified": "[Shock] duration is changed to {0}. When attacking a target in [Shock] state with a Normal Attack, reduces cooldown by {1}% and deals additional Magic DMG equal to [(added) 100% of ATK]."
     },
     "values": {
       "0": {
@@ -158,17 +144,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the Soul of Eye of the Storm, Yanadis, and deals ??? M.DMG to enemies in a wide frontal range and stuns them for 3 sec. Afterward, places [Raging Magnetic Field] for 6 sec. Enemies within the [Raging Magnetic Field] take 30% increased M.DMG, and the duration of all CC effects the enemies take increases by 30%.",
-      "to": "Summons the Soul of Eye of the Storm, Yanadis, dealing 300% of ATK M.DMG to enemies in a wide frontal area and stunning them for 3sec. Afterwards, creates [Raging Magnetic Field] for 6sec.\n\n[Raging Magnetic Field]: Increases the duration of CC effects enemies take by 30%."
+      "unified": "Summons the Soul of Eye of the Storm, Yanadis, dealing M.DMG to enemies in a wide frontal area and stunning them for 3sec. Afterwards, creates [Raging Magnetic Field] for 6sec. [Raging Magnetic Field]: Increases the duration of CC effects enemies take by 30%. [(removed) Enemies take 30% increased M.DMG]"
     },
     "advancement": {
       "1": {
         "from": "Increases the duration of Raging Magnetic Field by 3 sec.",
-        "to": "Increases the duration of [Raging Magnetic Field] by 3 sec."
+        "to": "Increases the duration of [Raging Magnetic Field] by 3 sec.",
+        "unified": "Increases the duration of [Raging Magnetic Field] by 3 sec."
       },
       "2": {
         "from": "Deals M.DMG equal to 3% of Sonia's Max HP every sec to enemies within Raging Magnetic Field.",
-        "to": "Deals 25% of ATK + 3% of Sonia’s Max HP as M.DMG to enemies within [Raging Magnetic Field] every 1 sec."
+        "to": "Deals 25% of ATK + 3% of Sonia’s Max HP as M.DMG to enemies within [Raging Magnetic Field] every 1 sec.",
+        "unified": "Deals 25% of ATK + 3% of Sonia’s Max HP as M.DMG to enemies within [Raging Magnetic Field] every 1 sec."
       }
     }
   }

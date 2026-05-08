@@ -2,13 +2,12 @@
   "heroName": "Kaulah",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.477Z",
+  "generatedAt": "2026-05-08T11:43:35.405Z",
   "skills": {
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "For 6sec, restores HP equal to 384*(0.7+(0.3*Skill Level*Awakening Coefficient))+240% ATK every 1sec. The caster cannot perform other actions while the skill is active, but all allies take 60% reduced Magic DMG.",
-        "to": "For 6 sec, restores HP by 552*(0.7+(0.3*Skill Level*Awakening Coefficient))+89.6% ATK every 6sec. The caster cannot perform other actions while the skill is active, but all allies take 60% reduced Magic DMG."
+        "unified": "For 6 sec, restores HP every [1sec->6sec]. The caster cannot perform other actions while the skill is active, but all allies take 60% reduced Magic DMG."
       }
     }
   },

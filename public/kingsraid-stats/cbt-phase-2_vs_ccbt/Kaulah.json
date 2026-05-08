@@ -2,13 +2,12 @@
   "heroName": "Kaulah",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.439Z",
+  "generatedAt": "2026-05-08T11:43:35.380Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 148*(0.7+(0.3*Skill Level*Awakening Coefficient))+93.4% ATK Magic DMG to a random enemy 5 times and inflicts Electrocute. Enemies afflicted with Electrocute are stunned for 2sec.",
-        "to": "Deals 148(1+0.3Skill Level)+93.4% of Attack Power as Magic Damage 5 times to a random enemy and inflicts Shock. Enemies in Shock are stunned for 1.8 sec."
+        "unified": "Deals Magic Damage 5 times to a random enemy and inflicts [Electrocute -> Shock]. Enemies [afflicted with Electrocute -> in Shock] are stunned for [2sec -> 1.8 sec]."
       }
     },
     "2": {
@@ -18,22 +17,19 @@
         "to": "11"
       },
       "description": {
-        "from": "For 6 sec, restores HP by 552*(0.7+(0.3*Skill Level*Awakening Coefficient))+89.6% ATK every 6sec. The caster cannot perform other actions while the skill is active, but all allies take 60% reduced Magic DMG.",
-        "to": "For 6 sec, restores HP by 384(1+0.3Skill Level)+240% of Attack Power every 1 sec. You cannot take other actions while the skill is active, but all allies' Magic Damage taken is reduced by 25%."
+        "unified": "For 6 sec, restores HP every [6sec -> 1 sec]. You cannot take other actions while the skill is active, but all allies' Magic Damage taken is reduced by [60% -> 25%]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "For 7sec, increases the ATK of all allies by 206*(0.7+(0.3*Skill Level*Awakening Coefficient)), Attack Speed by 42%, and Critical Rate by 150.",
-        "to": "For 7 sec, increases all allies' Attack by 206(1+0.3Skill Level), Attack Speed by 42%, and Critical Hit Chance by 420."
+        "unified": "For 7 sec, increases all allies' Attack, Attack Speed by 42%, and [Critical Rate by 150 -> Critical Hit Chance by 420]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Every 15sec, deals 174*(0.7+(0.3*Skill Level*Awakening Coefficient))+109.2% ATK Magic DMG to 4 enemy, inflicts Electrocute for 20sec, and stuns the target for 0.6sec on a Critical Hit.\nDamage taken is reduced by 15% per enemy afflicted with Electrocute, stacking up to 3 times.\n\nElectrocute: Deals DoT equal to 25% ATK every 1sec for 20sec.",
-        "to": "Deals 174(1+0.3Skill Level)+109.2% of Attack Power as Magic Damage to 4 enemies, then inflicts Shock for 20 sec. On a critical hit, stuns them for 0.6 sec.\nFor each enemy in Shock, damage taken by you is reduced by 15%, up to 3 stacks.\nShock: For 20 sec, deals continuous Magic Damage equal to 25% of Attack Power every 1 sec."
+        "unified": "Deals Magic Damage to 4 enemies, then inflicts [Electrocute -> Shock] for 20 sec. On a critical hit, stuns them for 0.6 sec. For each enemy in [Electrocute -> Shock], damage taken by you is reduced by 15%, up to 3 stacks. [Electrocute -> Shock]: For 20 sec, deals continuous Magic Damage equal to 25% of Attack Power every 1 sec."
       }
     }
   },
@@ -42,15 +38,13 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Increases the target’s Magic DMG taken by 10% for 10 sec.",
-        "to": "For 10 sec, the target's Magic Damage taken is increased by 30%."
+        "unified": "For 10 sec, the target's Magic Damage taken is increased by [10% -> 30%]."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "If the number of enemies is 3 or fewer, removes the target's beneficial effects.",
-        "to": "If the number of enemies is {1} or fewer, removes the target's beneficial effects."
+        "unified": "If the number of enemies is [{1} -> {1}] or fewer, removes the target's beneficial effects."
       }
     }
   },
@@ -58,15 +52,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When hit, reduces the attacker's Attack Speed by 200% and their Mana by 100 per sec for 5 sec. This effect can only trigger once every 5 sec.",
-      "to": "When hit, reduces the attacker's Attack Speed by {2}% and their Mana by {3} per sec for {1} sec. This effect can only trigger once every {4} sec."
+      "unified": "When hit, reduces the attacker's Attack Speed by [200% -> {2}%] and their Mana by [100 -> {3}] per sec for [5 -> {1}] sec. This effect can only trigger once every [5 -> {4}] sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On Normal Attack, has a 30% chance to deal Magic Damage equal to {0}% of Attack Power to 2 random enemies and reduce their Attack by {1}% for 10 sec. If they are shocked, they are stunned for 0.5 sec.",
-      "to": "On Normal Attack, has a {0}% chance to deal Magic Damage equal to {1}% of Attack Power to 2 random enemies and reduce their Attack by {2}% for 10 sec. If they are shocked, they are stunned for 2 sec."
+      "unified": "On Normal Attack, has a [30% -> {0}%] chance to deal Magic Damage equal to [{1}% -> {1}%] of Attack Power to 2 random enemies and reduce their Attack by [{1}% -> {2}%] for 10 sec. If they are shocked, they are stunned for [0.5 sec -> 2 sec]."
     },
     "values": {
       "0": {

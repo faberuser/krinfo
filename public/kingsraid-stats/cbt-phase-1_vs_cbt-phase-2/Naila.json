@@ -2,7 +2,7 @@
   "heroName": "Naila",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.479Z",
+  "generatedAt": "2026-05-08T11:43:35.407Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -14,8 +14,7 @@
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Removes your harmful effects and puts all allies into [Reading the Wind] state for 7sec, increasing ATK by 333*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion Chance by 300.\nWhen a target in [Reading the Wind] state successfully evades, all allies’ Critical DMG is increased by 2% for 7sec. This effect stacks up to 10 times.",
-        "to": "Removes all negative effects from self and grants all allies [Reading the Wind] for 7sec, increasing ATK by 302*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion by 300.\nIf a target under [Reading the Wind] successfully evades, all allies’ Crit DMG is increased by 2% for 7sec. This effect stacks up to 10 times."
+        "unified": "Removes all negative effects from self and grants all allies [Reading the Wind] for 7sec, increasing ATK by [333->302] and Physical Evasion by 300. If a target under [Reading the Wind] successfully evades, all allies’ Crit DMG is increased by 2% for 7sec. This effect stacks up to 10 times."
       }
     }
   },
@@ -26,8 +25,7 @@
       "name": "Green Ribbon",
       "hasChanges": true,
       "description": {
-        "from": "[Tornado Strike] increases the chance of dealing additional DMG by 5%, and if the target is a Hero, deals additional P.DMG equal to {0}% of the target’s Max HP.",
-        "to": "[Tornado Strike] increases the chance of dealing additional DMG by 5%, and if the target is a Hero, deals additional P.DMG equal to {0}% of the target's Max HP."
+        "unified": "[Tornado Strike] increases the chance of dealing additional DMG by 5%, and if the target is a Hero, deals additional P.DMG equal to {0}% of the target's Max HP."
       },
       "values": {}
     }
@@ -35,8 +33,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, increases the target’s Physical Damage taken by {0}% and reduces Status Ailment Resistance by {1} for 10 sec.\nIf the target is a boss, damage dealt to the boss is increased by {2}%, and this boss damage increase effect stacks up to 10 times.",
-      "to": "On hit, increases the target's Physical Damage taken by {0}% and reduces Status Ailment Resistance by 100 for {1} sec. If the target is a boss, damage dealt to the boss is increased by {4}%, and this boss damage increase effect stacks up to 10 times."
+      "unified": "On hit, increases the target's Physical Damage taken by {0}% and reduces Status Ailment Resistance by [ {1} -> 100 ] for [10 sec -> {1} sec]. If the target is a boss, damage dealt to the boss is increased by [ {2}% -> {4}% ], and this boss damage increase effect stacks up to 10 times."
     },
     "values": {
       "0": {

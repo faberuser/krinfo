@@ -2,13 +2,12 @@
   "heroName": "Roi",
   "versionA": "ccbt",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.522Z",
+  "generatedAt": "2026-05-08T11:43:35.435Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 243*(1+0.3*Skill Level)+140% ATK Physical DMG to a random enemy 3 times, applies [Grievous Wound] stacks 1, and increases Physical DMG taken by 30% for 4 sec.",
-        "to": "Deals 243*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 140% of ATK Physical DMG to a random enemy 3times, applies [Grievous Wound] 1 stack, and increases Physical DMG taken by 30% for 4sec."
+        "unified": "Deals Physical DMG to a random enemy 3times, applies [Grievous Wound] 1 stack, and increases Physical DMG taken by 30% for 4sec."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "10"
       },
       "description": {
-        "from": "For 7 sec, increases all allies’ ATK by 393*(1+0.3*Skill Level) and Physical Evasion by 300, and grants self [Breath of Death] for 7 sec.\n[Breath of Death] : Attack Speed increases by 30%, damage dealt to enemies increases by 25%, and all Physical Attacks are evaded.",
-        "to": "For 5sec, increases all allies’ ATK by 300*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion by 150, and grants self [Breath of Death] for 7sec.\n\n[Breath of Death]: Evades all Physical Attacks.."
+        "unified": "For [7 sec->5sec], increases all allies’ ATK and Physical Evasion by [300->150], and grants self [Breath of Death] for 7sec. [Breath of Death]: Evades all Physical Attacks. [(removed) Attack Speed increases by 30%, damage dealt to enemies increases by 25%]"
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "5"
       },
       "description": {
-        "from": "Moves behind the enemy and deals 799*(1+0.3*Skill Level)+459.4% ATK Physical DMG, consuming all [Grievous Wound] stacks on the target and dealing additional Physical DMG equal to 137.8% ATK per 1 stack consumed. On Critical Hit, applies Bleed stacks 1 and resets the cooldown of [Slaughter].\nBleed : Deals 5% ATK Physical DoT every 1 sec for 15 sec, stacking up to 20 times.",
-        "to": "Moves behind the enemy and deals 799*(0.7+(0.3*Skill Level*Awakening Coefficient))+244.5% ATK Physical DMG, then consumes all [Grievous Wound] stacks on the target to deal additional Physical DMG equal to 180.7% ATK per 1 stacks consumed. On Critical Hit, applies Bleed stacks 1 and resets the cooldown of [Slaughter].\n\nBleed : Deals 5% ATK Physical Damage over Time every 1sec for 15sec, and stacks up to 20 times.."
+        "unified": "Moves behind the enemy and deals Physical DMG, then consumes all [Grievous Wound] stacks on the target to deal additional Physical DMG per 1 stacks consumed. On Critical Hit, applies Bleed stacks 1 and resets the cooldown of [Slaughter]. Bleed : Deals 5% ATK Physical Damage over Time every 1sec for 15sec, and stacks up to 20 times."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Critical Rate increases by 300.\nEvery 10 sec, when a Normal Attack lands as a Critical Hit, deals 96*(1+0.3*Skill Level)+54.9% ATK Physical DMG 6 times, with a 50% chance per hit to apply [Grievous Wound] stacks 1.\n[Grievous Wound] : Deals 15% ATK Physical DoT every 1 sec for 15 sec, stacking up to 5 times.",
-        "to": "Every 10sec, when a Normal Attack lands as a Critical Hit, deals 96*(0.7+(0.3*Skill Level*Awakening Coefficient))+54.9% ATK Physical DMG 6 times. Each hit has a 65% chance to apply [Grievous Wound] stacks 1.\n\n[Grievous Wound] : Deals 15% ATK Physical Damage over Time every 1sec for 15sec, stacking up to 5 times."
+        "unified": "Every 10sec, when a Normal Attack lands as a Critical Hit, deals Physical DMG 6 times. Each hit has a [50%->65%] chance to apply [Grievous Wound] stacks 1. [Grievous Wound] : Deals 15% ATK Physical Damage over Time every 1sec for 15sec, stacking up to 5 times."
       }
     }
   },
@@ -46,22 +42,19 @@
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Normal Attack damage increases by 115% for the duration.",
-        "to": "Increases Attack Speed of all allies by 10% for the duration."
+        "unified": "Increases Attack Speed of all allies by 10% for the duration. [(removed) Normal Attack damage increases by 115%]"
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 1000 and damage increases by 100%.",
-        "to": "When there is only 1 enemy, damage increases by 100%."
+        "unified": "When there is only 1 enemy, damage increases by 100%. [(removed) Mana cost increases by 1000]"
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "On each hit, reduces the target's Mana by 150.",
-        "to": "Roi’s Critical Rate increases by 360."
+        "unified": "Roi’s Critical Rate increases by 360. [(removed) On each hit, reduces the target's Mana by 150.]"
       }
     }
   },
@@ -90,8 +83,7 @@
       "name": "Specter's Ring",
       "hasChanges": true,
       "description": {
-        "from": "[Hack] increases DMG by {0}% and applies 1 stack of [Bleed] to the target on Crit.",
-        "to": "[Hack] increases DMG by {0}% and applies 1 Stack of [Bleed] to the target on Crit."
+        "unified": "[Hack] increases DMG by {0}% and applies 1 Stack of [Bleed] to the target on Crit."
       },
       "values": {}
     }
@@ -99,15 +91,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On critical hit, Attack Speed is increased by 300% and Critical Damage by 60% for 5 sec. This effect can only be triggered once every 5 sec.",
-      "to": "On critical hit, Attack Speed is increased by 24% and Critical Damage by 48% for 5 sec. This effect can only be triggered once every 5 sec."
+      "unified": "On critical hit, Attack Speed is increased by [300%->24%] and Critical Damage by [60%->48%] for 5 sec. This effect can only be triggered once every 5 sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] stack.",
-      "to": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] Stack."
+      "unified": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] Stack."
     },
     "values": {
       "0": {

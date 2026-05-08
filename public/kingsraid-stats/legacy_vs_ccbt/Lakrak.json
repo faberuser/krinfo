@@ -2,13 +2,12 @@
   "heroName": "Lakrak",
   "versionA": "legacy",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.603Z",
+  "generatedAt": "2026-05-08T11:43:35.498Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks all frontal enemies in a straight line, dealing ??? P.DMG and stunning them for 3 sec. If the target is not a Hero, deals ??? additional P.DMG. [Experiment Success!] Removes Cooldown",
-        "to": "Deals 739(1+0.3Skill Level)+355.4% of Attack Power as Physical Damage to enemies in a straight line ahead, stunning them for 1.8 sec. Deals an additional 339(1+0.3Skill Level)+185.4% of Attack Power as Physical Damage to non-hero enemies.\n[Experiment Successful!]: No cooldown is incurred."
+        "unified": "Deals Physical Damage to enemies in a straight line ahead, stunning them for [3 sec->1.8 sec]. Deals additional Physical Damage to non-hero enemies. [Experiment Successful!]: No cooldown is incurred."
       }
     },
     "2": {
@@ -18,22 +17,19 @@
         "to": "2"
       },
       "description": {
-        "from": "Deals ??? P.DMG to target and nearby enemies within range and inflict them with [Explosive Meterial] for 10 sec, causing them to take 20% increased P.DMG and additional inflicting Blind for 4 sec. [Experiment Success!] Dispels positive effects from enemies within range.",
-        "to": "Deals 443(1+0.3Skill Level)+213.5% of Attack Power as Physical Damage to the target and nearby enemies, inflicting them with [Explosive Material] for 7 sec, which increases Physical Damage taken by 25% and blinds them for 2.4 sec.\n[Experiment Successful!]: Removes beneficial effects from enemies within range."
+        "unified": "Deals Physical Damage to the target and nearby enemies, inflicting them with [Explosive Material] for [10 sec->7 sec], which increases Physical Damage taken by [20%->25%] and blinds them for [4 sec->2.4 sec]. [Experiment Successful!]: Removes beneficial effects from enemies within range."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Attaches a Glue Bomb to a random enemy that explodes in 3 sec, dealing ??? P.DMG to the target and nearby enemies, inflicting Stun for 3 sec. If the target is inflicted with [Explosive Material], deals ??? additional P.DMG. [Experiment Success!] Glue Bomb explodes immediately after attachment.",
-        "to": "Attaches a sticky bomb to a random enemy.\nAfter 3 sec, the bomb explodes, dealing 1500(1+0.3Skill Level)+755.2% of Attack Power as Physical Damage to the target and nearby enemies and stunning them for 1.8 sec. Enemies with [Explosive Material] take an additional 1001(1+0.3Skill Level)+477.5% of Attack Power as Physical Damage.\n[Experiment Successful!]: The bomb explodes immediately upon attaching, triggering its effects."
+        "unified": "Attaches a sticky bomb to a random enemy. After 3 sec, the bomb explodes, dealing Physical Damage to the target and nearby enemies and stunning them for [3 sec->1.8 sec]. Enemies with [Explosive Material] take additional Physical Damage. [Experiment Successful!]: The bomb explodes immediately upon attaching, triggering its effects."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Each auto attack has a 15% chance of firing a bomb that deals ??? P.DMG and stuns them for 2 sec. After each Skill use, Lakrak conducts an experiment. The experiment has a 50% success rate. Upon success, enhances the effects of the next Skill use. Experiment does not occur when Lakrak uses the enhanced Skill.",
-        "to": "On Normal Attack, has a 15% chance to fire a shell that deals 345(1+0.3Skill Level)+166.3% of Attack Power as Physical Damage to the target and nearby enemies, stunning them for 1.2 sec.\nAt the end of each skill, attempts an [Experiment]. There is a 50% chance for success, which empowers the next skill. Empowered skills do not attempt an [Experiment]."
+        "unified": "On Normal Attack, has a 15% chance to fire a shell that deals Physical Damage to the target and nearby enemies, stunning them for [2 sec->1.2 sec]. At the end of each skill, attempts an [Experiment]. There is a 50% chance for success, which empowers the next skill. Empowered skills do not attempt an [Experiment]."
       }
     }
   },
@@ -42,26 +38,22 @@
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost reduced by 1.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1->1000]."
       },
       "dark": {
-        "from": "Blind duration is increased by 2 sec.",
-        "to": "Increases the duration of Blind by 1.2 sec."
+        "unified": "Increases the duration of Blind by [2 sec->1.2 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1, and attacks a random target 2 times.",
-        "to": "Mana cost is increased by 1000, and the number of bomb placements is changed to 2."
+        "unified": "Mana cost is increased by [1->1000], and the number of bomb placements is changed to 2."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Activation chance is boosted by 10% and stun duration increases by 1 sec.",
-        "to": "Shell activation chance is increased by 10%, and stun duration is increased by 0.6 sec."
+        "unified": "Shell activation chance is increased by 10%, and stun duration is increased by [1 sec->0.6 sec]."
       }
     }
   },
@@ -70,8 +62,7 @@
       "name": "Cudgel Bullet",
       "hasChanges": true,
       "description": {
-        "from": "[Rapid Fire] Increases DMG by 50% and restores {0} mana on critical hit",
-        "to": "[Rapid Fire] Increases DMG by 50%, and recovers {0} Mana upon a Critical Hit."
+        "unified": "[Rapid Fire] Increases DMG by 50%, and recovers {0} Mana upon a Critical Hit."
       },
       "values": {}
     },
@@ -79,8 +70,7 @@
       "name": "Special Gas Mask",
       "hasChanges": true,
       "description": {
-        "from": "[Smoke Bomb] Reduces Cooldown by 30% and increases blind duration by {0} sec.",
-        "to": "[Smoke Bomb] Reduces Cooldown by 30% and increases the duration of Blind by {0} sec."
+        "unified": "[Smoke Bomb] Reduces Cooldown by 30% and increases the duration of Blind by {0} sec."
       },
       "values": {}
     },
@@ -88,8 +78,7 @@
       "name": "Goblincraft Special High-Density Gunpowder",
       "hasChanges": true,
       "description": {
-        "from": "[Glue Bomb] Increases DMG by 50% and reduces Heal Rate of the hit target by {0}% for 7 sec.",
-        "to": "[Glue Bomb] Increases DMG by 50% and reduces the Heal Rate of the hit target by {0}% for 7 sec."
+        "unified": "[Glue Bomb] Increases DMG by 50% and reduces the Heal Rate of the hit target by {0}% for 7 sec."
       },
       "values": {}
     }
@@ -97,15 +86,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Each time Lakrak succeed an Experiment, his attack rate increase by 300 for 10 sec.",
-      "to": "On [Experiment] success, increases Attack Speed by 300% and Status Ailment Accuracy by 300 for 10 sec."
+      "unified": "On [Experiment] success, increases Attack Speed by [300->300%] and Status Ailment Accuracy by [(added) 300] for 10 sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Lakrak's chances of successful Experiment are increased by {0}%, and each successful experiment increases his ATK by {1}%, ATK Spd by {2} and damage against none-Heroes by {3}%. This effect can stack up to 4 times and is irremovable.",
-      "to": "[Experiment] success chance is increased by {0}%.\nOn [Experiment] success, Attack increases by {1}%, Attack Speed by {2}%, and damage dealt to non-hero enemies by {3}%. This effect stacks up to 4 times and cannot be dispelled."
+      "unified": "[Experiment] success chance is increased by {0}%. On [Experiment] success, Attack increases by {1}%, Attack Speed by {2}[->%], and damage dealt to non-hero enemies by {3}%. This effect stacks up to 4 times and cannot be dispelled."
     },
     "values": {
       "1": {

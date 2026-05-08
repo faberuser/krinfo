@@ -2,13 +2,12 @@
   "heroName": "Lorraine",
   "versionA": "ccbt",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.549Z",
+  "generatedAt": "2026-05-08T11:43:35.453Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 333(1+0.3Skill Level)+153.2% of Attack Power as Magic Damage 3 times to a random enemy and nearby enemies, stunning them for 1.8 sec.",
-        "to": "Attacks a random enemy and its nearby enemies 3 times, dealing a total of ??? M.DMG and inflicting Stun for 3 sec."
+        "unified": "Attacks a random enemy and its nearby enemies 3 times, dealing a total of ??? M.DMG and inflicting Stun for [1.8 sec->3 sec]."
       }
     },
     "2": {
@@ -18,22 +17,19 @@
         "to": "15"
       },
       "description": {
-        "from": "Creates [Belladonna Seed] in the area around the target for 7 sec.\n[Belladonna Seed]: Deals 403(1+0.3Skill Level)+146.2% of Attack Power as Magic Damage every 1 sec to nearby enemies and reduces their healing received by 25% for 1 sec.",
-        "to": "Creates a Seed of Belladonna around the target for 10 sec. The seed deals ??? M.DMG to nearby enemies every 2 sec, increasing M.DMG the target takes by 30% and reducing Heal Rate by 30% for 5 sec."
+        "unified": "Creates a [Belladonna Seed->Seed of Belladonna] around the target for [7 sec->10 sec]. The seed deals ??? M.DMG to nearby enemies every [1 sec->2 sec], [reducing their healing received by 25% for 1 sec->increasing M.DMG the target takes by 30% and reducing Heal Rate by 30% for 5 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 304(1+0.3Skill Level)+112.2% of Attack Power as Magic Damage 6 time to enemies in a wide area in front and knocks them down for 1.8 sec.",
-        "to": "Attacks enemies within a wide frontal range of self 6 times, dealing a total of ??? M.DMG and knocking them down for 3 sec."
+        "unified": "Attacks enemies [within a wide frontal range of self->in a wide area in front] 6 times, dealing a total of ??? M.DMG and knocking them down for [1.8 sec->3 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On Normal and skill attacks, inflicts [Poison] on the target, dealing continuous Magic Damage equal to 100% of Attack Power every 1 sec for 20 sec and reducing their healing received by 5%. This effect stacks up to 5 times.",
-        "to": "Normal and Skill attacks inflicts Poison on a target, dealing a total of ??? continuous M.DMG and reducing Heal Rate by 5% over 20 sec. Poison can be stacked up to max 5 times. If Lorraine dies, Poison effect on enemies will disappear."
+        "unified": "Normal and Skill attacks inflicts Poison on a target, dealing a total of ??? continuous M.DMG and reducing [their healing received->Heal Rate] by 5% over 20 sec. Poison [stacks up to 5 times->can be stacked up to max 5 times]. [(added) If Lorraine dies, Poison effect on enemies will disappear.]"
       }
     }
   },
@@ -42,33 +38,28 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but damage dealt is increased by 100%.",
-        "to": "Recovers own Mana by 250 upon a Critical Hit."
+        "unified": "Recovers own Mana by 250 upon a Critical Hit."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Enemies hit suffer increased status ailment duration by 30% for {1} sec.",
-        "to": "The duration of the CC on hit enemies increases by 30% for 5 sec."
+        "unified": "The duration of the [status ailment->CC] on hit enemies increases by 30% for [ {1} ->5] sec."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, but damage dealt is increased by 80%.",
-        "to": "Mana cost is increased by 1 but DMG is boosted by 100%."
+        "unified": "Mana cost is increased by [1000->1] but DMG is [increased->boosted] by [80%->100%]."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but removes beneficial effects from enemies within range.",
-        "to": "Increases Mana Cost by 1 and dispels positive effects of enemies within range."
+        "unified": "[Increases->Increases] Mana Cost by [1000->1] and dispels [beneficial->positive] effects [from->of] enemies within range."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "If the target is a boss, [Poison] damage is increased by 70%.",
-        "to": "If the target is a boss, increases DMG of Poison by x3."
+        "unified": "If the target is a boss, increases DMG of Poison by [70%->x3]."
       }
     }
   },
@@ -77,8 +68,7 @@
       "name": "Book of Life",
       "hasChanges": true,
       "description": {
-        "from": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0} sec.",
-        "to": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0}."
+        "unified": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0} [(removed) sec]."
       },
       "values": {}
     },
@@ -96,8 +86,7 @@
       "name": "Root of the World Tree",
       "hasChanges": true,
       "description": {
-        "from": "[Wrath of the Forest] Increases DMG by {0}%. Upon a Crit Hit on enemies with 5 or more stacks of Poison, reduces Cooldown by 4%.",
-        "to": "[Wrath of the Forest] DMG is increased by {0}%. Upon Crit Hit on enemies with over 5 stacks of Poison, skill cooldown is reduced by 4%."
+        "unified": "[Wrath of the Forest] [DMG is increased->DMG is increased] by {0}%. Upon [a->] Crit Hit on enemies with [5 or more->over 5] stacks of Poison, [reduces->skill] cooldown [is reduced->] by 4%."
       },
       "values": {}
     },
@@ -105,8 +94,7 @@
       "name": "Terrarium of Circulation",
       "hasChanges": true,
       "description": {
-        "from": "[Poison] makes Poison effect irremovable and increases DMG dealt to Bosses by {0}%.",
-        "to": "[Poison] Poison effect becomes irremovable and for the duration of Poison, target takes {0}% increased M.DMG"
+        "unified": "[Poison] Poison effect [makes Poison effect irremovable->becomes irremovable] and [increases DMG dealt to Bosses by {0}%->for the duration of Poison, target takes {0}% increased M.DMG]"
       },
       "values": {
         "0": {
@@ -119,15 +107,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "At the start of battle, all skill cooldowns are reduced by 30%, and damage dealt to non-hero enemies is increased by 10% for 90 sec. The damage increase stacks up to 5 times and cannot be dispelled.",
-      "to": "At the beginning of each battle, immediately reduces all Skill Cooldown of self by 30% and increases DMG dealt to Non-Hero enemies by 20% for 90 sec. DMG Boost effect stacks up to max 5 times and is irremovable."
+      "unified": "At the [start->beginning] of [battle->each battle], [all skill cooldowns are reduced by 30%, and damage dealt to non-hero enemies is increased by 10% for 90 sec. The damage increase stacks up to 5 times and cannot be dispelled->immediately reduces all Skill Cooldown of self by 30% and increases DMG dealt to Non-Hero enemies by 20% for 90 sec. DMG Boost effect stacks up to max 5 times and is irremovable]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 7 sec, deals Magic Damage equal to {0}% of Attack Power to poisoned enemies, reduces their Magic Defense by {1}% for 10 sec, and increases their Magic Damage taken by {2}%.",
-      "to": "Deals M.DMG equal to {0}% of ATK to enemies inflicted with Poison every 7 secm reducing M.DEF by {1}% and increasing M.DMG the target takes by {2}% for 10 sec."
+      "unified": "Deals M.DMG equal to {0}% of ATK to [poisoned enemies->enemies inflicted with Poison] every 7 sec[, reducing Magic Defense by {1}% for 10 sec, and increases their Magic Damage taken by {2}%->reducing M.DEF by {1}% and increasing M.DMG the target takes by {2}% for 10 sec]."
     },
     "values": {
       "2": {

@@ -2,13 +2,12 @@
   "heroName": "Rephy",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.467Z",
+  "generatedAt": "2026-05-08T11:43:35.399Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Restores HP of the 4 allies with the lowest HP by 10% of Max HP, and additionally restores 100*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 16.1% ATK HP every 1sec for 10sec. This effect cannot be dispelled.",
-        "to": "Heals 4 allies with lowest HP 10% of Max HP, and heals extra ??? HP over 8 sec. This effect cannot be dispelled."
+        "unified": "Heals 4 allies with lowest HP 10% of Max HP, and heals extra ??? HP over [10 sec->8 sec]. This effect cannot be dispelled."
       }
     },
     "2": {
@@ -18,15 +17,13 @@
         "to": "1"
       },
       "description": {
-        "from": "Removes all negative effects from all allies and increases their M.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec.",
-        "to": "Dispels all negative effects. M.DEF is increased by ??? for 20 sec."
+        "unified": "Dispels all negative effects. M.DEF is increased by ??? for [15 sec->20 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 88*(0.7+(0.3*Skill Level*Awakening Coefficient))+55.8% ATK Magic DMG to enemies within range 10 time, and reduces their ATK Spd by 10% for 10sec.",
-        "to": "Deals a total of ??? M.DMG over 10 attacks to enemies within range. Hit enemies' ATK Spd is reduced by 25%."
+        "unified": "Deals a total of ??? M.DMG over 10 attacks to enemies within range. Hit enemies' ATK Spd is reduced by [10%->25%]."
       }
     },
     "4": {
@@ -36,8 +33,7 @@
         "to": null
       },
       "description": {
-        "from": "Every 8sec, restores 1000 Mana and 2208*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 358.4% ATK HP to 1 ally with the lowest HP.",
-        "to": "Every 7 sec, an ally with the lowest Hp recovers 1 orb of mana and ??? HP."
+        "unified": "Every [8 sec->7 sec], an ally with the lowest Hp recovers [1000 Mana->1 orb of mana] and ??? HP."
       }
     }
   },
@@ -46,24 +42,21 @@
       "skillName": "Healing Soul",
       "hasChanges": true,
       "IV": {
-        "from": "Increases Mana Recovery per sec of the target by 15%.",
-        "to": "Mana Recovery per sec of the target is increased by 50%."
+        "unified": "Mana Recovery per sec of the target is increased by [15%->50%]."
       }
     },
     "2": {
       "skillName": "Salvation",
       "hasChanges": true,
       "IV": {
-        "from": "Increases CC Resist by 120 for 15 sec.",
-        "to": "CC Resist is increased by 250 for 20 sec."
+        "unified": "CC Resist is increased by [120->250] for [15 sec->20 sec]."
       }
     },
     "3": {
       "skillName": "Soulrush",
       "hasChanges": true,
       "IV": {
-        "from": "Reduces the target's Mana by 200.",
-        "to": "All DMG the target takes is increased by 25%."
+        "unified": "All DMG the target takes is increased by 25%."
       }
     }
   },
@@ -71,37 +64,31 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, and the effect now applies to all allies.",
-        "to": "Mana Cost is increased by 1 and skill effect range changes to all allies."
+        "unified": "Mana Cost is increased by 1 and skill effect range changes to all allies."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Increases the target’s Magic DMG taken by 10%.",
-        "to": "Each hit removes 250 mana from the target."
+        "unified": "Each hit removes 250 mana from the target."
       },
       "dark": {
-        "from": "Increases the target’s Physical DMG taken by 10%.",
-        "to": "In exchange for 1 additional Mana Cost, Silence enemies in range for 1 sec."
+        "unified": "In exchange for 1 additional Mana Cost, Silence enemies in range for 1 sec."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Cooldown is reduced by 2 sec.",
-        "to": "Uses the skill every 5 sec."
+        "unified": "Uses the skill every 5 sec."
       },
       "dark": {
-        "from": "Additionally restores 500 Mana to the 2 allies with the highest Attack.",
-        "to": "Also supplies 1 orb of mana to the ally with the highest ATK."
+        "unified": "Also supplies [500 Mana->1 orb of mana] to the ally with the highest ATK."
       }
     }
   },
@@ -110,8 +97,7 @@
       "name": "Haven of Souls",
       "hasChanges": true,
       "description": {
-        "from": "[Soulrush] Reduces Mana Cost by 1 and heals all allies' HP by {0}% of DMG.",
-        "to": "[Soulrush] Mana cost is reduced by 1 and heals all allies' HP by {0}% of DMG."
+        "unified": "[Soulrush] Mana cost is reduced by 1 and heals all allies' HP by {0}% of DMG."
       },
       "values": {}
     }
@@ -119,15 +105,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "All allies’ Mana recovery per second increases by 30%, and your cooldown of all skills is reduced by 5%.",
-      "to": "Upon attacking, there is a 10% chance to reduce all DEF of the target by 20% and reduce all the hero's cooldowns by 5%."
+      "unified": "Upon attacking, there is a 10% chance to reduce all DEF of the target by 20% and reduce all the hero's cooldowns by 5%."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second increases by 35%.",
-      "to": "Every 20 sec, an ally with the lowest HP turns invisible for {0} sec. An invisible ally becomes immune to P.DMG, and HP will not drop below 1%. MP Recovery per sec is increased to {1}%."
+      "unified": "Every 20 sec, [the 2 allies->an ally] with the lowest HP turns [invisible->Spirit Form] for {0} sec. An invisible ally becomes immune to P.DMG, and HP will not drop below 1%. MP Recovery per sec is increased to [35%->{1}%]."
     },
     "values": {
       "0": {
@@ -139,13 +123,13 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of God’s Lamp, Kurulati for 10sec, increasing all allies’ ATK SPD by {2} and Mana Recovery by 15%. Afterward, every 3sec, inflicts Hallucination on a random enemy, reducing ACC by 350 for 3sec.",
-      "to": "Summons the soul of God's Lamp, Kurulati for 10 sec, increasing all allies' ATK Spd by 300 and Mana recovery per sec by 100%, inflicts hallucination upon one random enemy every 3 sec, reducing their ACC by 350 for 3 sec."
+      "unified": "Summons the soul of God's Lamp, Kurulati for 10 sec, increasing all allies' ATK Spd by [300->300] and Mana recovery per sec by [15%->100%], inflicts hallucination upon one random enemy every 3 sec, reducing their ACC by 350 for 3 sec."
     },
     "advancement": {
       "2": {
         "from": "Upon activation, immediately activates the invisibility effect of God's Lamp, Kurulati on {1} allies.",
-        "to": "Upon activation, immediately activates the invisibility effect of God's Lamp, Kurulati on 2 allies."
+        "to": "Upon activation, immediately activates the invisibility effect of God's Lamp, Kurulati on 2 allies.",
+        "unified": "Upon activation, immediately activates the invisibility effect of God's Lamp, Kurulati on [1->2] allies."
       }
     }
   }

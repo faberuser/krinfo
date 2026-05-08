@@ -2,13 +2,12 @@
   "heroName": "Reina",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.429Z",
+  "generatedAt": "2026-05-08T11:43:35.372Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Quickly stabs the enemy, dealing 240*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 152% ATK P.DMG. On Crit Hit, applies [Wound] 1 stack and resets the cooldown. This skill’s DMG is increased by 20% per stack of [Wound].",
-        "to": "Quickly stabs the enemy, dealing 277*(0.7+(0.3*Skill Level*Awakening Coefficient))+160.5% ATK as Physical DMG. On a Critical Hit, applies [Wound] 1 stack and resets the cooldown. This skill’s DMG is increased by 20% per stack of [Wound]."
+        "unified": "Quickly stabs the enemy, dealing Physical DMG. On a Critical Hit, applies [Wound] 1 stack and resets the cooldown. This skill’s DMG is increased by 20% per stack of [Wound]."
       }
     },
     "2": {
@@ -21,8 +20,7 @@
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Performs a series of attacks, dealing 320*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 202.7% ATK P.DMG 9 times, then finishes with a powerful thrust that deals 1918*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 1215.7% ATK P.DMG and knocks the enemy far away. The DMG of this skill is increased by 20% per stack of [Wound], and all stacks are consumed on the final hit.",
-        "to": "Performs a series of attacks, dealing 126*(0.7+(0.3*Skill Level*Awakening Coefficient))+72.3% ATK Physical Damage 9 times, then finishes with a powerful thrust that deals 1132*(0.7+(0.3*Skill Level*Awakening Coefficient))651.5% ATK Physical Damage and knocks the enemy far away. The damage of this skill is increased by 20% per [Wound] stack, and all [Wound] stacks are consumed on the final hit."
+        "unified": "Performs a series of attacks, dealing Physical Damage 9 times, then finishes with a powerful thrust that deals Physical Damage and knocks the enemy far away. The damage of this skill is increased by 20% per [Wound] stack, and all [Wound] stacks are consumed on the final hit."
       }
     }
   },
@@ -33,8 +31,7 @@
       "name": "Wing of Lightning Flash",
       "hasChanges": true,
       "description": {
-        "from": "[Float Like a Butterfly] Increases DMG by {0}% and increases Armor Penetration by 800 while casting.",
-        "to": "[Float Like a Butterfly] Increases DMG by {0}%, and reduces the target's P.Block Chance by 500 for 10 sec."
+        "unified": "[Float Like a Butterfly] Increases DMG by {0}%, and [(added) reduces the target's P.Block Chance by 500 for 10 sec -> (removed) increases Armor Penetration by 800 while casting]."
       },
       "values": {
         "0": {
@@ -47,8 +44,7 @@
       "name": "Master's Ring",
       "hasChanges": true,
       "description": {
-        "from": "[Sharp End] Increases ATK Boost by 50% and recovers additional {0} MP upon a Crit Hit for the Skill's duration.",
-        "to": "[Sharp End] Increases ATK Boost by 50% and recovers additional {0} MP upon a Crit Hit for the skill's duration."
+        "unified": "[Sharp End] Increases ATK Boost by 50% and recovers additional {0} MP upon a Crit Hit for the skill's duration."
       },
       "values": {}
     }
@@ -56,8 +52,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On each Crit Hit, increases own ATK Spd by {0}% and Crit DMG by {1}% for 15 sec. This effect stacks up to 8 times.",
-      "to": "Each time a Critical Hit occurs, for 15 sec own Attack Speed is increased by {0} and Critical Damage is increased by {1}%. This effect stacks up to 8 times."
+      "unified": "Each time a Critical Hit occurs, for 15 sec own Attack Speed is increased by {0} and Critical Damage is increased by {1}%. This effect stacks up to 8 times."
     },
     "values": {
       "0": {

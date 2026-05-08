@@ -2,27 +2,24 @@
   "heroName": "Rephy",
   "versionA": "legacy",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.606Z",
+  "generatedAt": "2026-05-08T11:43:35.499Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Heals 4 allies with lowest HP 10% of Max HP, and heals extra ??? HP over 8 sec. This effect cannot be dispelled.",
-        "to": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores 108*(1+0.3Skill Level)+67.5% of Attack Power HP every 0.5 sec for 5 sec. This effect cannot be dispelled."
+        "unified": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores HP every 0.5 sec for [8 sec->5 sec]. This effect cannot be dispelled."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Dispels all negative effects. M.DEF is increased by ??? for 20 sec.",
-        "to": "Removes harmful effects from all allies and increases their Magic Defense by 50(1+0.3Skill Level) for 6 sec."
+        "unified": "Removes harmful effects from all allies and increases their Magic Defense by [???->50(1+0.3Skill Level)] for [20 sec->6 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals a total of ??? M.DMG over 10 attacks to enemies within range. Hit enemies' ATK Spd is reduced by 25%.",
-        "to": "Deals 88(1+0.3Skill Level)+55.8% of Attack Power as Magic Damage to enemies within range 10 time(s), and reduces their Attack Speed by 25% for 10 sec."
+        "unified": "Deals Magic Damage to enemies within range 10 time(s), and reduces their Attack Speed by 25% for [(added) 10 sec]."
       }
     },
     "4": {
@@ -32,8 +29,7 @@
         "to": "7"
       },
       "description": {
-        "from": "Every 7 sec, an ally with the lowest Hp recovers 1 orb of mana and ??? HP.",
-        "to": "Every 7 sec, restores 1000 Mana and 264(1+0.3Skill Level)+165.3% of Attack Power HP to 1 ally with the lowest HP."
+        "unified": "Every 7 sec, restores [1 orb of mana->1000 Mana] and HP to [1 ally->1 ally] with the lowest HP."
       }
     }
   },
@@ -42,8 +38,7 @@
       "skillName": "Salvation",
       "hasChanges": true,
       "IV": {
-        "from": "CC Resist is increased by 250 for 20 sec.",
-        "to": "Increases CC Resist by 300 for 6 sec."
+        "unified": "Increases CC Resist by [250->300] for [20 sec->6 sec]."
       }
     }
   },
@@ -51,41 +46,34 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana Cost is increased by 1 and skill effect range changes to all allies.",
-        "to": "Mana cost is increased by 1000, and the effect now applies to all allies."
+        "unified": "Mana cost is increased by [1->1000], and the effect now applies to all allies."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1->1000]."
       },
       "dark": {
-        "from": "Increases additional M.DEF by 10% of own M.DEF.",
-        "to": "Magic Defense is additionally increased by 13%."
+        "unified": "Magic Defense is additionally increased by [10% of own M.DEF.->13%]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Each hit removes 250 mana from the target.",
-        "to": "Magic Damage taken by the target is increased by 25%."
+        "unified": "Magic Damage taken by the target is increased by [(added) 25%], [(removed) Each hit removes 250 mana from the target]."
       },
       "dark": {
-        "from": "In exchange for 1 additional Mana Cost, Silence enemies in range for 1 sec.",
-        "to": "Physical Damage taken by the target is increased by 25%."
+        "unified": "Physical Damage taken by the target is increased by [(added) 25%], [(removed) In exchange for 1 additional Mana Cost, Silence enemies in range for 1 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Uses the skill every 5 sec.",
-        "to": "Cooldown is reduced by 2 sec."
+        "unified": "Cooldown is reduced by [(added) 2 sec], [(removed) Uses the skill every 5 sec]."
       },
       "dark": {
-        "from": "Also supplies 1 orb of mana to the ally with the highest ATK.",
-        "to": "Additionally restores 500 Mana to the 2 allies with the highest Attack."
+        "unified": "Additionally restores [???->500] Mana to the [ally->2 allies] with the highest Attack."
       }
     }
   },
@@ -94,8 +82,7 @@
       "name": "Haven of Souls",
       "hasChanges": true,
       "description": {
-        "from": "[Soulrush] Mana cost is reduced by 1 and heals all allies' HP by {0}% of DMG.",
-        "to": "[Soulrush] Reduces Mana Cost by 1 and heals all allies' HP by {0}% of DMG."
+        "unified": "[Soulrush] Reduces Mana Cost by 1 and heals all allies' HP by {0}% of DMG."
       },
       "values": {}
     }
@@ -103,8 +90,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 20 sec, an ally with the lowest HP turns invisible for {0} sec. An invisible ally becomes immune to P.DMG, and HP will not drop below 1%. MP Recovery per sec is increased to {1}%.",
-      "to": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by 50%."
+      "unified": "Every 20 sec, puts the [lowest HP->2 allies with the lowest HP] into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased [to {1}%->by 50%]."
     },
     "values": {
       "1": {

@@ -2,7 +2,7 @@
   "heroName": "Kasel",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.426Z",
+  "generatedAt": "2026-05-08T11:43:35.371Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -18,15 +18,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 200*(0.7+(0.3*Skill Level*Awakening Coefficient))+126% ATK Physical DMG to nearby enemies and inflicts Stun for 1 sec, then enters [God's Proxy] state for 10 sec, enhancing skills.\n\n[God's Proxy]: ATK increases by 314*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Normal Attack DMG increases by 100%. This effect cannot be dispelled.",
-        "to": "Deals 200*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK126% Physical DMG to nearby enemies and inflicts Stun for 1 sec. Then enters [God's Proxy] state for 10 sec, empowering skills.\n\n[God's Proxy]: ATK increases by 264*(0.7+(0.3*Skill Level*Awakening Coefficient)), Normal Attack DMG increases by 100%. This effect cannot be dispelled."
+        "unified": "Deals Physical DMG to nearby enemies and inflicts Stun for 1 sec. Then enters [God's Proxy] state for 10 sec, empowering skills. [God's Proxy]: ATK increases by 264*(0.7+(0.3*Skill Level*Awakening Coefficient)), Normal Attack DMG increases by 100%. This effect cannot be dispelled."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "ATK increases by 192*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Magic Evasion increases by 240.\n\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 20%, and damage taken from non-hero enemies is reduced by 20%.",
-        "to": "ATK increases by 135*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Magic Evasion increases by 360.\n\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 20%, and damage taken from non-hero enemies is reduced by 20%."
+        "unified": "ATK increases by 135*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Magic Evasion increases by [240->360]. When [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 20%, and damage taken from non-hero enemies is reduced by 20%."
       }
     }
   },
@@ -35,8 +33,7 @@
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Physical Evasion increases by 140 for the duration.",
-        "to": "Physical Evasion increases by 600 for the duration.."
+        "unified": "Physical Evasion increases by [140->600] for the duration."
       }
     }
   },
@@ -45,8 +42,7 @@
       "name": "Emperor's Gauntlet",
       "hasChanges": true,
       "description": {
-        "from": "[Valiant Dash] Stuns the target for 1.5 sec, and reduces Cooldown by {0}% upon a Critical Hit.",
-        "to": "[Valiant Dash] Increases DMG by {0}% and reduces Cooldown by 10% upon a Crit Hit."
+        "unified": "[Valiant Dash] [(added) Increases DMG by {0}%] and reduces Cooldown by [???%->10%] upon a Crit Hit."
       },
       "values": {
         "0": {
@@ -59,8 +55,7 @@
       "name": "Proxy's Insignia",
       "hasChanges": true,
       "description": {
-        "from": "[Proxy of God] increases Dodge Chance by an additional 400 and ATK Spd by an additional {0} for the duration of the Skill.",
-        "to": "[Proxy of God] increases Dodge Chance by an additional 250 and ATK Spd by an additional {0} for the duration of the Skill."
+        "unified": "[Proxy of God] increases Dodge Chance by an additional [400->250] and ATK Spd by an additional {0} for the duration of the Skill."
       },
       "values": {
         "0": {
@@ -73,8 +68,7 @@
       "name": "Lua's Tear",
       "hasChanges": true,
       "description": {
-        "from": "[Goddess Strike] Increases Magic Evasion by 360 and increases DMG dealt to heroes by {0}%.",
-        "to": "[Goddess Strike] Increases DEF Boost by 50%, and own DMG dealt to bosses by {0}%."
+        "unified": "[Goddess Strike] [(added) Increases DEF Boost by 50%, and own DMG dealt to bosses by {0}%] [(removed) Increases Magic Evasion by 360 and increases DMG dealt to heroes by {0}%]."
       },
       "values": {
         "0": {

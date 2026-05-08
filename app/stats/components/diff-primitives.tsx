@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import type { TextDiff, FieldChange } from "@/app/stats/types"
 
 export function DiffText({ diff }: { diff: TextDiff }) {
+	if (diff.unified) return <UnifiedDiffText text={diff.unified} />
 	return (
 		<div className="space-y-0.5 text-sm">
 			<div className="text-red-600 dark:text-red-400 line-through leading-relaxed">{diff.from ?? "—"}</div>
@@ -17,7 +18,56 @@ export function DiffText({ diff }: { diff: TextDiff }) {
 	)
 }
 
-export function NumericChange({ from, to }: { from: string | null; to: string | null }) {
+/**
+ * Renders LLM-generated unified description with [OLD->NEW], [(removed) X], and [(added) X]
+ * markers as inline colour-coded spans.
+ */
+export function UnifiedDiffText({ text }: { text: string }) {
+	// Split on [OLD->NEW], [(removed) ...], and [(added) ...] tokens
+	const parts = text.split(/(\[\((?:removed|added)\)[^\]]*\]|\[[^\]]*?->[^\]]*?\])/gi)
+	return (
+		<p className="text-sm leading-relaxed whitespace-pre-wrap">
+			{parts.map((part, i) => {
+				const changeMatch = part.match(/^\[([^\]]*?)->([^\]]*?)\]$/)
+				if (changeMatch) {
+					const [, from, to] = changeMatch
+					return (
+						<span key={i} className="inline-flex items-baseline gap-0.5 font-medium">
+							<span className="text-red-600 dark:text-red-400 line-through">{from}</span>
+							<span className="text-muted-foreground text-[10px]">→</span>
+							<span className="text-green-600 dark:text-green-400">{to}</span>
+						</span>
+					)
+				}
+				const removedMatch = part.match(/^\[\(removed\)\s*(.*?)\]$/i)
+				if (removedMatch) {
+					return (
+						<span
+							key={i}
+							className="inline-flex items-baseline gap-1 font-medium text-red-600 dark:text-red-400"
+						>
+							<span className="line-through">{removedMatch[1]}</span>
+						</span>
+					)
+				}
+				const addedMatch = part.match(/^\[\(added\)\s*(.*?)\]$/i)
+				if (addedMatch) {
+					return (
+						<span
+							key={i}
+							className="inline-flex items-baseline gap-1 font-medium text-green-600 dark:text-green-400"
+						>
+							<span>{addedMatch[1]}</span>
+						</span>
+					)
+				}
+				return <span key={i}>{part}</span>
+			})}
+		</p>
+	)
+}
+
+export function NumericChange({ from, to }: { from: string | null | undefined; to: string | null | undefined }) {
 	return (
 		<span className="inline-flex items-baseline gap-1">
 			<span className="text-red-600 dark:text-red-400 line-through">{from ?? "—"}</span>
@@ -36,7 +86,7 @@ export function ValueRow({ label, children }: { label: string; children: ReactNo
 	)
 }
 
-export function TierChange({ from, to }: { from: string | null; to: string | null }) {
+export function TierChange({ from, to }: { from: string | null | undefined; to: string | null | undefined }) {
 	return (
 		<span className="text-xs">
 			<span className="text-red-600 dark:text-red-400 line-through">{from ?? "—"}</span>

@@ -2,13 +2,12 @@
   "heroName": "Naila",
   "versionA": "legacy",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.589Z",
+  "generatedAt": "2026-05-08T11:43:35.482Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Naila dashes toward the enemy 2 times. The first attack moves behind the target, dealing ??? P.DMG and knocking it down for 3 sec. The second attack moves behind the enemy with highest attack, dealing ??? P.DMG, knocking it down and increasing P.DMG they take by 25% for 10 sec.",
-        "to": "Charges a total of 2 time(s). On the first attack, moves behind the enemy and deals 922*(0.7+(0.3*Skill Level*Awakening Coefficient))+532.2% ATK as Physical DMG, knocking them down for 1sec. On the second attack, moves behind the enemy with the highest ATK, dealing 615*(0.7+(0.3*Skill Level*Awakening Coefficient))+344.1% ATK as Physical DMG, knocking them down for 1sec, and increasing Physical DMG taken by 20% for 4sec."
+        "unified": "Charges a total of 2 time(s). On the first attack, moves behind the enemy and deals Physical DMG, knocking them down for [3 sec->1sec]. On the second attack, moves behind the enemy with the highest ATK, dealing Physical DMG, knocking them down for [ (added) 1sec], and increasing Physical DMG taken by [25%->20%] for [10 sec->4sec]."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Dispels negative effects from self, and casts [Wind Reading] to all allies for 15 sec, increasing their ATK by ??? and P.Dodge by 250. If an ally under [Wind Reading] successfully dodges an attack, their Crit DMG increases by 5% for 20 sec. The Crit DMG Boost effect can be stacked up to max 10 times.",
-        "to": "Removes your harmful effects and puts all allies into [Reading the Wind] state for 7sec, increasing ATK by 333*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion Chance by 300.\nWhen a target in [Reading the Wind] state successfully evades, all allies’ Critical DMG is increased by 2% for 7sec. This effect stacks up to 10 times."
+        "unified": "Removes your harmful effects and puts all allies into [Reading the Wind] state for [15 sec->7sec], increasing ATK and Physical Evasion Chance by [250->300]. When a target in [Reading the Wind] state successfully evades, all allies’ Critical DMG is increased by [5%->2%][ (removed) for 20 sec] for 7sec. This effect stacks up to 10 times."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "15"
       },
       "description": {
-        "from": "Attacks nearby enemies in a circular range of self, dealing ??? P.DMG and stunning them for 3 sec. When using this Skill, 500 DEF Penetration is increased.",
-        "to": "Attacks enemies in a circular area around you, dealing 1146*(0.7+(0.3*Skill Level*Awakening Coefficient))+716.8% ATK as Physical DMG and stunning them for 1.8sec. This skill gains an additional 800 Physical Defense Penetration."
+        "unified": "Attacks enemies in a circular area around you, dealing Physical DMG and stunning them for [3 sec->1.8sec]. This skill gains an additional [500->800] Physical Defense Penetration."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases Naila's DEF Penetration by 150 and DEF by ???. Normal attacks and Skill attacks ignore target's DMG Reduction effect. Also, her normal attacks have a 15% chance to deal ??? P.DMG and stunning them for 1 sec.",
-        "to": "On Normal Attack, has a 20% chance to deal 488*(0.7+(0.3*Skill Level*Awakening Coefficient))+284.4% ATK as additional Physical DMG, stunning the target for 0.5sec, and increasing Physical DMG taken by 15% for 5sec. This skill ignores the target’s damage reduction effects."
+        "unified": "On Normal Attack, has a [15%->20%] chance to deal additional Physical DMG, stunning the target for [1 sec->0.5sec], and [(added) increasing Physical DMG taken by 15% for 5sec]. This skill ignores the target’s damage reduction effects."
       }
     }
   },
@@ -50,8 +46,7 @@
       "skillName": "Dive Bomb",
       "hasChanges": true,
       "IV": {
-        "from": "DMG is increased by 25%.",
-        "to": "Stuns damaged enemies for 1 sec."
+        "unified": "Stuns damaged enemies for 1 sec."
       }
     }
   },
@@ -59,37 +54,31 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Increases P.DMG the target takes by 25% for 10 sec.",
-        "to": "On each attack, reduces the target’s Mana by 250."
+        "unified": "On each attack, reduces the target’s Mana by 250."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 1 and dispels positive effects of all enemies upon activation.",
-        "to": "Mana cost increases by 1000, and when triggered, removes all beneficial effects from all enemies."
+        "unified": "Mana cost increases by [1->1000], and when triggered, removes all beneficial effects from all enemies."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Increases DMG by 50%."
+        "unified": "Increases DMG by [40%->50%]."
       },
       "dark": {
-        "from": "Reduces Heal Rate of the hit target by 40% for 10 sec.",
-        "to": "Reduces the target’s Healing Effectiveness by 20% for 7 sec."
+        "unified": "Reduces the target’s Healing Effectiveness by [40%->20%] for [10 sec->7 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "DMG of normal attacks increases by 25% and reduces cooldown of all skills by 2 sec.",
-        "to": "Cooldown of all skills is reduced by 2 sec."
+        "unified": "Cooldown of all skills is reduced by 2 sec."
       },
       "dark": {
-        "from": "At the beginning of each battle, own DEF Penetration increases by 400 for 20 sec. When activated in Guild Battle, upon activation during Guild War, gains immunity to CC for 10 sec. The DEF Penetration Boost effect is irremovable.",
-        "to": "At the start of battle, increases Defense Penetration by 400 for 10 sec and grants immunity to status ailments for 5 sec. The Defense Penetration increase cannot be dispelled."
+        "unified": "At the start of battle, increases Defense Penetration by 400 for [20 sec->10 sec] and grants immunity to status ailments for [10 sec->5 sec]. The Defense Penetration increase cannot be dispelled."
       }
     }
   },
@@ -98,8 +87,7 @@
       "name": "Soul of Gust",
       "hasChanges": true,
       "description": {
-        "from": "[Fierce Winds] Increases DMG by 50%, and reduces Mana by {0} upon Critical Hit.",
-        "to": "[Fierce Wind] increases DMG by 50% and P.DMG taken by the target by {0}% for 4 sec."
+        "unified": "[Fierce Wind] increases DMG by 50% and P.DMG taken by the target by {0}% for 4 sec."
       },
       "values": {
         "0": {
@@ -112,8 +100,7 @@
       "name": "Himmullis's Scarf",
       "hasChanges": true,
       "description": {
-        "from": "[Wind Reading] All effects become irremovable and upon activation, recovers own HP equal to {0}% of Max HP.",
-        "to": "[Wind Reading] All effects become irremovable and upon activation, heals own HP equal to {0}% of Max HP."
+        "unified": "[Wind Reading] All effects become irremovable and upon activation, heals own HP equal to {0}% of Max HP."
       },
       "values": {}
     },
@@ -121,8 +108,7 @@
       "name": "Tempest Pride",
       "hasChanges": true,
       "description": {
-        "from": "[Dive Bomb] Reduces Mana cost by 1 and increases DMG by {0}%.",
-        "to": "[Dive Bomb] Reduces Mana Cost by 1 and increases DMG by {0}%."
+        "unified": "[Dive Bomb] Reduces Mana Cost by 1 and increases DMG by {0}%."
       },
       "values": {
         "0": {
@@ -135,8 +121,7 @@
       "name": "Green Ribbon",
       "hasChanges": true,
       "description": {
-        "from": "[Tornado Strike] Increases chance of dealing additional DMG by 10% and upon activation during Guild War, deals additional P.DMG equal to {0}% of target's max HP.",
-        "to": "[Tornado Strike] increases the chance of dealing additional DMG by 5%, and if the target is a Hero, deals additional P.DMG equal to {0}% of the target’s Max HP."
+        "unified": "[Tornado Strike] increases the chance of dealing additional DMG by [10%->5%], and if the target is a Hero, deals additional P.DMG equal to {0}% of the target’s Max HP."
       },
       "values": {
         "0": {
@@ -149,15 +134,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Upon a Critical Hit, increases own ATK by 3% and P.Dodge by 30 for 10 sec. This effect stacks up to 10 times.",
-      "to": "On Normal Attack, increases Attack by 3% and Physical Evasion Chance by 35 for 10 sec. This effect stacks up to 10 times."
+      "unified": "On Normal Attack, increases Attack by 3% and Physical Evasion Chance by [30->35] for 10 sec. This effect stacks up to 10 times."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Upon Crittical Hit, increases P.DMG the target takes by {0}% for 10 sec and reduce CC Resist by {1}. If the target is a Boss, Naila deals {2}% increased DMG. The DMG Boost effect against Bosses can be stacked up to max 10 times.",
-      "to": "On hit, increases the target’s Physical Damage taken by {0}% and reduces Status Ailment Resistance by {1} for 10 sec.\nIf the target is a boss, damage dealt to the boss is increased by {2}%, and this boss damage increase effect stacks up to 10 times."
+      "unified": "On hit, increases the target’s Physical Damage taken by {0}% and reduces Status Ailment Resistance by {1} for 10 sec. If the target is a boss, damage dealt to the boss is increased by {2}%, and this boss damage increase effect stacks up to 10 times."
     },
     "values": {
       "1": {

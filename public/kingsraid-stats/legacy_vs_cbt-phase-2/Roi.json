@@ -2,13 +2,12 @@
   "heroName": "Roi",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.573Z",
+  "generatedAt": "2026-05-08T11:43:35.470Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks an enemy 3 times, dealing ??? P.DMG and increasing ??? P.DMG the target takes by 25% for 10 sec. Afterward, each hit inflicts 1 stack of [Mortal Wound] that deals ??? P.DMG over 16 sec. [Mortal Wound] can be stacked up to max 5 times.",
-        "to": "Deals 243*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 140% of ATK Physical DMG to a random enemy 3times, applies [Grievous Wound] 1 stack, and increases Physical DMG taken by 30% for 4sec."
+        "unified": "Deals Physical DMG to a random enemy 3times, applies [Grievous Wound] 1 stack, and increases Physical DMG taken by [25%->30%] for [10sec->4sec]."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "10"
       },
       "description": {
-        "from": "Increases all allies' ATK and P.Dodge by 250 for 10 sec. Afterward, Roi grants [Specter's Breath] upon self for 10 sec. For the duration of [Specter's Breath], increases own ATK Spd by 250, DMG dealt to enemies by 20%, and evades all P.DMG attacks",
-        "to": "For 5sec, increases all allies’ ATK by 300*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion by 150, and grants self [Breath of Death] for 7sec.\n\n[Breath of Death]: Evades all Physical Attacks.."
+        "unified": "For [10sec->5sec], increases all allies’ ATK by 300*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion by [250->150], and grants self [Breath of Death] for [10sec->7sec]. [Breath of Death]: Evades all Physical Attacks.."
       }
     },
     "3": {
@@ -29,8 +27,7 @@
         "to": "5"
       },
       "description": {
-        "from": "Moves behind an enemy and deals ??? P.DMG. Consumes stacks of [Mortal Wound] from the target adding ??? P.DMG for every 1 stack. Upon a Crit Hit recovers 2 orbs of Mana and resets Cooldown of [Hack].",
-        "to": "Moves behind the enemy and deals 799*(0.7+(0.3*Skill Level*Awakening Coefficient))+244.5% ATK Physical DMG, then consumes all [Grievous Wound] stacks on the target to deal additional Physical DMG equal to 180.7% ATK per 1 stacks consumed. On Critical Hit, applies Bleed stacks 1 and resets the cooldown of [Slaughter].\n\nBleed : Deals 5% ATK Physical Damage over Time every 1sec for 15sec, and stacks up to 20 times.."
+        "unified": "Moves behind the enemy and deals Physical DMG, then consumes all [Grievous Wound] stacks on the target to deal additional Physical DMG per 1 stacks consumed. On Critical Hit, applies Bleed stacks 1 and resets the cooldown of [Slaughter]. [(removed) recovers 2 orbs of Mana]"
       }
     },
     "4": {
@@ -40,8 +37,7 @@
         "to": "10"
       },
       "description": {
-        "from": "Increases Crit Chance by 300. If normal attack is landed as a Crit Hit attacks the target 6 times, dealing additional ??? P.DMG and inflicting a stack of [Mortal Wound] with a 50% chance.",
-        "to": "Every 10sec, when a Normal Attack lands as a Critical Hit, deals 96*(0.7+(0.3*Skill Level*Awakening Coefficient))+54.9% ATK Physical DMG 6 times. Each hit has a 65% chance to apply [Grievous Wound] stacks 1.\n\n[Grievous Wound] : Deals 15% ATK Physical Damage over Time every 1sec for 15sec, stacking up to 5 times."
+        "unified": "Every [(added) 10sec], when a Normal Attack lands as a Critical Hit, deals Physical DMG 6 times. Each hit has a [50%->65%] chance to apply [Grievous Wound] stacks 1."
       }
     }
   },
@@ -50,26 +46,22 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "The target is changed to the enemy with the highest ATK."
+        "unified": "The target is changed to the enemy with the highest ATK."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Auto attack DMG is boosted by 100% for the duration.",
-        "to": "Increases Attack Speed of all allies by 10% for the duration."
+        "unified": "Increases Attack Speed of all allies by 10% for the duration."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Each attack recovers 300 mana.",
-        "to": "The chance for [Rend] to apply [Fatal Wound] stacks is changed to 100%."
+        "unified": "The chance for [Rend] to apply [Fatal Wound] stacks is changed to 100%."
       },
       "dark": {
-        "from": "Each hit reduces the hit target's Mana by 150.",
-        "to": "Roi’s Critical Rate increases by 360."
+        "unified": "Roi’s Critical Rate increases by 360."
       }
     }
   },
@@ -78,8 +70,7 @@
       "name": "Shadow Blade",
       "hasChanges": true,
       "description": {
-        "from": "[No Mercy] Dispels all negative effects from self, and recovers Mana by {0} upon Critial hit.",
-        "to": "[Merciless] Dispels all negative effects from self, and recovers Mana by {0} upon Critical Hit."
+        "unified": "[Merciless] Dispels all negative effects from self, and recovers Mana by {0} upon Critical Hit."
       },
       "values": {}
     },
@@ -87,8 +78,7 @@
       "name": "Soma's Hood",
       "hasChanges": true,
       "description": {
-        "from": "[Curtain of Darkness] For the duration of Skill, recovers own Mana by 150 every sec and increases own DMG dealt against Bosses by {0}%.",
-        "to": "[Curtain of Darkness] increases duration by 3 sec and boosts DMG dealt to Bosses by {0}%."
+        "unified": "[Curtain of Darkness] increases duration by 3 sec and boosts DMG dealt to Bosses by {0}%."
       },
       "values": {
         "0": {
@@ -111,8 +101,7 @@
       "name": "Specter's Ring",
       "hasChanges": true,
       "description": {
-        "from": "[Hack] Increases DMG by 50%. Upon a Critical Hit, increases own ATK Spd by {0} for 5 sec.",
-        "to": "[Hack] increases DMG by {0}% and applies 1 Stack of [Bleed] to the target on Crit."
+        "unified": "[Hack] increases DMG by [50%->{0}%] and applies 1 Stack of [Bleed] to the target on Crit."
       },
       "values": {
         "0": {
@@ -125,15 +114,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Upon a Crit Hit, ATK Spd is increased by 300 and Crit DMG is increased by 60% for 5 sec. Does not activate again during activation.",
-      "to": "On critical hit, Attack Speed is increased by 24% and Critical Damage by 48% for 5 sec. This effect can only be triggered once every 5 sec."
+      "unified": "On critical hit, Attack Speed is increased by [300->24%] and Critical Damage by [60%->48%] for 5 sec. This effect can only be triggered once every 5 sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Each auto attack has a {0}% chance of inflicting 1 stack of [Mortal Wound]. Each stack of [Mortal Wound] deals additional DMG equal to {1}% of ATK.",
-      "to": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] Stack."
+      "unified": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] Stack."
     },
     "values": {
       "0": {
@@ -149,17 +136,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Specter's Breath, Redeal for 12 sec, increasing own Crit DMG by 80%. Each time Roi casts [Blade Claw], deals additional ??? DMG to the target and inflicts 1 stack of [Mortal Wound].",
-      "to": "Summons the soul of Specter’s Breath, Redeal for 12 sec, increasing own Crit DMG by 70%. Each time Roi uses [Blade Claw], deals 270% of ATK P.DMG to the target."
+      "unified": "Summons the soul of Specter’s Breath, Redeal for 12 sec, increasing own Crit DMG by [80%->70%]. Each time Roi uses [Blade Claw], deals P.DMG to the target. [(removed) inflicts 1 stack of Mortal Wound]"
     },
     "advancement": {
       "1": {
         "from": "For the duration of Skill, [Blade Claw] does not remove [Mortal Wound] stacks.",
-        "to": "During the duration, [Blade Claw] does not remove [Mortal Wound]."
+        "to": "During the duration, [Blade Claw] does not remove [Mortal Wound].",
+        "unified": "During the duration, [Blade Claw] does not remove [Mortal Wound]."
       },
       "2": {
         "from": "For the duration of Skill, fixes Cooldown of [Blade Claw] to 0 sec, and additionally recovers 1 orb of Mana upon use.",
-        "to": "During the duration, [Blade Claw] increases P.DMG taken by 50% for 7sec."
+        "to": "During the duration, [Blade Claw] increases P.DMG taken by 50% for 7sec.",
+        "unified": "During the duration, [Blade Claw] increases P.DMG taken by 50% for 7sec. [(removed) fixes Cooldown to 0 sec and recovers 1 orb of Mana]"
       }
     }
   }

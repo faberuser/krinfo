@@ -2,7 +2,7 @@
   "heroName": "Dimael",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.458Z",
+  "generatedAt": "2026-05-08T11:43:35.395Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -15,8 +15,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Deals 257*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 121.1% ATK M.DMG to 1 enemy 4 time(s), then loads a powerful arrow and deals 445*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 196.6% ATK M.DMG.",
-        "to": "Deals ??? M.DMG to an enemy."
+        "unified": "Deals ??? M.DMG to an enemy."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "15"
       },
       "description": {
-        "from": "Deals 927*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 407.4% ATK Magic Damage to enemies within range and roots them for 3.5 sec.",
-        "to": "Deals ??? M.DMG to enemies in range and shackles them for 6 sec."
+        "unified": "Deals ??? M.DMG to enemies in range and shackles them for [3.5 sec->6 sec]."
       }
     },
     "3": {
@@ -37,15 +35,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Targets 1 enemy and deals 1093*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 479.3% ATK Magic Damage to enemies in a line, blinding them for 3.5 sec.",
-        "to": "Deals ??? M.DMG to enemies in a straight line and inflicts Blind for 6 sec."
+        "unified": "Deals ??? M.DMG to enemies in a straight line and inflicts Blind for [3.5 sec->6 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On hit, deals 57*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 25% ATK additional Magic Damage to the target, and this skill gains an extra 1000 Magic Defense Penetration.",
-        "to": "Each auto attack deals extra ??? M.DMG that ignores target's M.DEF."
+        "unified": "Each auto attack deals extra ??? M.DMG that ignores target's M.DEF."
       }
     }
   },
@@ -54,8 +50,7 @@
       "skillName": "Black Shackle",
       "hasChanges": true,
       "IV": {
-        "from": "Target takes 30 % increased M.DMG.",
-        "to": "Target takes 303% increased M.DMG."
+        "unified": "Target takes [30 %->303%] increased M.DMG."
       }
     }
   },
@@ -63,29 +58,25 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "On hit, has a 25% chance to blind the target for 3 sec.",
-        "to": "Has a 25% chance of Blinding the enemy for 5 sec."
+        "unified": "Has a 25% chance of Blinding the enemy for [3 sec->5 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by [1000->1]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, and damage dealt is increased by 100%.",
-        "to": "Mana cost is increased by 1 orb but DMG is boosted by 100%."
+        "unified": "Mana cost is increased by [1000->1 orb] but DMG is boosted by 100%."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "On Normal Attack, has a 10% chance to use the [Dark Barrage] skill.",
-        "to": "There is a 10% chance that **Skill 1** is fired upon an auto-attack."
+        "unified": "There is a 10% chance that Skill 1 is fired upon an auto-attack."
       }
     }
   },
@@ -94,8 +85,7 @@
       "name": "Eye of Shadows",
       "hasChanges": true,
       "description": {
-        "from": "[Shadow Wave] Increases DMG by 50% and the duration of Blind by {0} sec.",
-        "to": "[Shadow Wave] DMG is increased by 50% and Blind duration is increased by {0} sec."
+        "unified": "[Shadow Wave] DMG is increased by 50% and Blind duration is increased by {0} sec."
       },
       "values": {}
     }
@@ -103,25 +93,25 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, has a {0}% chance to deal Magic Damage equal to {1}% of Attack Power and reduce the cooldown of all skills by 10%.",
-      "to": "Each attack has a {0}% chance of dealing {1}% of ATK as M.DMG, and all skill cooldowns are reduced by 10%."
+      "unified": "Each attack has a {0}% chance of dealing {1}% of ATK as M.DMG, and all skill cooldowns are reduced by 10%."
     },
     "values": {}
   },
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Tears of the Moon, Nerius, dealing 400% of ATK M.DMG to frontal enemies and inflicting [Curse of the Moon] for 10sec, and increases own Crit DMG by 70%.\n\n[Curse of the Moon]: Increases M.DMG taken by 12% and reduces Heal Rate by 12%.",
-      "to": "Summons the soul of Tears of the Moon, Nerius, dealing ??? M.DMG to frontal enemies and inflicting them with [Curse of the Moon] for 10 sec. Targets inflicted with [Curse of the Moon] take 25% increased M.DMG and have their Heal Rate reduced by 25%. Afterward, increases own Crit DMG by 50%."
+      "unified": "Summons the soul of Tears of the Moon, Nerius, dealing ??? M.DMG to frontal enemies and inflicting them with [Curse of the Moon] for 10 sec. Targets inflicted with [Curse of the Moon] take [12%->25%] increased M.DMG and have their Heal Rate reduced by [12%->25%]. Afterward, increases own Crit DMG by [70%->50%]."
     },
     "advancement": {
       "1": {
         "from": "Changes M.DMG taken increase to 32%.",
-        "to": "Increases DMG by 50% and changes the M.DMG Boost effect to 45%."
+        "to": "Increases DMG by 50% and changes the M.DMG Boost effect to 45%.",
+        "unified": "Increases DMG by 50% and changes the M.DMG Boost effect to [32%->45%]."
       },
       "2": {
         "from": "For the duration of Skill, increases own ATK by 40%.",
-        "to": "For the duration of Skill, Increases own ATK by 40%."
+        "to": "For the duration of Skill, Increases own ATK by 40%.",
+        "unified": "For the duration of Skill, Increases own ATK by 40%."
       }
     }
   }

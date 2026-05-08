@@ -2,7 +2,7 @@
   "heroName": "Epis",
   "versionA": "ccbt",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.527Z",
+  "generatedAt": "2026-05-08T11:43:35.440Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,29 +11,25 @@
         "to": "8"
       },
       "description": {
-        "from": "Deals 871(1+0.3Skill Level)+500.2% of Attack Power as Magic Damage to an enemy and restores HP equal to 25% of the damage dealt. For 6 sec, reduces the target's Attack by 20% and increases your Attack by 10%. The Attack increase effect stacks up to 5 times.",
-        "to": "Deals 871*(0.7+(0.3*Skill Level*Awakening Coefficient))+500.2% ATK Magic DMG to an enemy and recovers HP equal to 25% of the damage dealt. Increases own ATK by 4% for 15sec. This ATK increase effect stacks up to 6 times."
+        "unified": "Moves to the rearmost enemy and deals Magic DMG to the target and nearby enemies. Increases Magic DMG taken by [35%->20%] and reduces Status Resistance by 320 for 5sec. [(removed) additionally uses [Absorbing Strike]]"
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Moves to the farthest enemy and deals 484(1+0.3Skill Level)+278% of Attack Power as Magic Damage to the target and nearby enemies, increasing their Magic Damage taken by 35% for 5 sec.\nIf enemies remain nearby after using the skill, additionally uses [Absorbing Strike].",
-        "to": "Moves to the rearmost enemy and deals 484*(0.7+(0.3*Skill Level*Awakening Coefficient))+278% ATK Magic DMG to the target and nearby enemies. Increases Magic DMG taken by 20% and reduces Status Resistance by 320 for 5sec."
+        "unified": "Deals Magic DMG to enemies within range 4 times. While casting, the caster is immune to status effects and all damage taken is reduced by [50%->60%]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 458(1+0.3Skill Level)+263.6% of Attack Power as Magic Damage 4 times to enemies within range. You cannot be affected by status ailments while casting, and all damage taken is reduced by 50%.",
-        "to": "Deals 458*(0.7+(0.3*Skill Level*Awakening Coefficient))+263.6% ATK Magic DMG to enemies within range 4 times. While casting, the caster is immune to status effects and all damage taken is reduced by 60%."
+        "unified": "Upon killing an enemy, reduces the Cooldown of all skills by 30% and gains [Harvest] stacks 1. [Harvest]: Increases ATK, stacking up to 10 times."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "When an enemy is killed, all skill cooldowns are reduced by 30%, and [Harvest] is stacked 1 times.\n[Harvest]: For 12 sec, Attack increases by 80(1+0.3Skill Level), stacking up to 10 times.",
-        "to": "Upon killing an enemy, reduces the Cooldown of all skills by 30% and gains [Harvest] stacks 1.\n\n[Harvest]: Increases ATK by 80*(0.7+(0.3*Skill Level*Awakening Coefficient)), stacking up to 10 times."
+        "unified": "Cooldown is reduced by [3 sec->2 sec]. [(removed) Mana cost increased by 1000]"
       }
     }
   },
@@ -42,41 +38,34 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but cooldown is reduced by 3 sec.",
-        "to": "Cooldown is reduced by 2 sec."
+        "unified": "Damage increases by 50%. [(removed) Mana cost is reduced by 1000]"
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Damage increases by 50%."
+        "unified": "Mana cost increases by 2000, but after using a skill, if there are nearby enemies, additionally uses [Absorbing Blow]. [(removed) damage is increased by 80%]"
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but damage is increased by 80%.",
-        "to": "Mana cost increases by 2000, but after using a skill, if there are nearby enemies, additionally uses [Absorbing Blow]."
+        "unified": "Damage is reduced by 30%, but the number of hits is doubled. [(removed) DMG is increased by 40%]"
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Damage is reduced by 30%, but the number of hits is doubled."
+        "unified": "Mana cost increases by [2000->1000], but triggers [Harvest] once."
       },
       "dark": {
-        "from": "Mana cost is increased by 2000, but [Harvest] is triggered once.",
-        "to": "Mana cost increases by 1000, but triggers [Harvest] once."
+        "unified": "Mana recovery per second increases by [50%->10%] per stack."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Mana recovery per second is increased by 50% per stack.",
-        "to": "Mana recovery per second increases by 10% per stack."
+        "unified": "If stacks are [5->6] or more, cooldown is additionally reduced by 1 sec every second."
       },
       "dark": {
-        "from": "If stacks are 5 or more, cooldown is additionally reduced by 1 sec every second.",
-        "to": "If stacks are 6 or more, cooldown is additionally reduced by 1 sec every second."
+        "unified": "When attacking with a skill, increases Epis’s Attack by 4% and Armor Penetration by 4%. This effect stacks up to 5 times. [(removed) reduces target's Magic Defense by 6% and increases your ATK by 6% for 10 sec, stacks 6]"
       }
     }
   },
@@ -95,15 +84,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When hitting with a skill, reduces the target's Magic Defense by 6% and increases your Attack by 6% for 10 sec. This effect stacks up to 6 times.",
-      "to": "When attacking with a skill, increases Epis’s Attack by 4% and Armor Penetration by 4%. This effect stacks up to 5 times."
+      "unified": "On hit, has a 25% chance to deal additional Magic Damage equal to {0}% of Attack Power and increase your Attack by {1}%. The Attack increase stacks up to [10->5] times."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, has a 25% chance to deal additional Magic Damage equal to {0}% of Attack Power and increase your Attack by {1}%. The Attack increase stacks up to 10 times.",
-      "to": "On hit, has a 25% chance to deal additional Magic Damage equal to {0}% of Attack Power and increase your Attack by {1}%. The Attack increase stacks up to 5 times."
+      "unified": "Dispels harmful effects from the ally with the lowest current HP and restores HP 3times, and when healing the target, nearby allies are additionally healed for 40% of the healing amount."
     },
     "values": {
       "0": {

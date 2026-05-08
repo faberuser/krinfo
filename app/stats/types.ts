@@ -44,7 +44,7 @@ export interface StatsClientProps {
 	heroesMap: Record<string, Record<string, HeroData>>
 }
 
-export type TextDiff = { from: string | null; to: string | null }
+export type TextDiff = { from?: string | null; to?: string | null; unified?: string }
 
 export interface HeroComparison {
 	heroName: string

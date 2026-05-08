@@ -2,13 +2,12 @@
   "heroName": "Demia",
   "versionA": "ccbt",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.515Z",
+  "generatedAt": "2026-05-08T11:43:35.432Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Throws a spear at the farthest enemy, dealing 157*(1+0.3Skill Level)+121.2% of Attack Power as Physical Damage, pulls them in front of you, then deals 105(1+0.3Skill Level)+80.8% of Attack Power as Physical Damage to enemies within range and stuns them for 3 sec.",
-        "to": "Throws a spear at the farthest enemy, dealing 157*(0.7+(0.3*Skill Level*Awakening Coefficient))+121.2% ATK as Physical DMG, pulling them in front of you. Then deals 105*(0.7+(0.3*Skill Level*Awakening Coefficient))+80.8% ATK as Physical DMG to enemies within range and stuns them for 1sec."
+        "unified": "Throws a spear at the farthest enemy, dealing Physical DMG, pulling them in front of you. Then deals Physical DMG to enemies within range and stuns them for [3 sec->1 sec]."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "10"
       },
       "description": {
-        "from": "For 7 sec, your Physical Block Chance is increased by 200, and when you block, you deal 95(1+0.3Skill Level)+72.6% of Attack Power as Physical Damage to nearby enemies and reduce their Attack by 25%.",
-        "to": "For 5sec, increases own P.Block Chance by 400. On Block, deals 95*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 72.6% ATK P.DMG to nearby enemies and reduces their ATK by 22%."
+        "unified": "For [7 sec->5sec], increases own P.Block Chance by [200->400]. On Block, deals P.DMG to nearby enemies and reduces their ATK by [25%->22%]."
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "20"
       },
       "description": {
-        "from": "For 8 sec, all allies’ Physical Damage taken is reduced by 20%, and you prepare to leap for 5 sec.\nWhile preparing to leap, when you block, the leap attack’s damage is increased by 7%, you deal 126(1+0.3Skill Level)+96.8% of Attack Power as Physical Damage to the attacker, and stun them for 0.4 sec.\nWhen casting is complete, you leap to the enemy, dealing 465(1+0.3Skill Level)+357.5% of Attack Power as Physical Damage and stunning them for 2.5 sec.\nWhile preparing to leap, you are immune to status ailments.",
-        "to": "For 5sec, increases all allies’ P.Block Chance by 400 and prepares to leap.\nWhile preparing, becomes immune to CC. On Block, increases the leap attack’s DMG by 8% and deals 52*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 32.7% ATK P.DMG to the attacker.\nWhen preparation ends, leaps to the nearest enemy, dealing 515*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 326.2% ATK P.DMG and stuns them for 1sec."
+        "unified": "For 5sec, increases all allies’ P.Block Chance by [400 (added)] and prepares to leap. While preparing, becomes immune to CC. On Block, increases the leap attack’s DMG by [7%->8%] and deals P.DMG to the attacker. When preparation ends, leaps to the nearest enemy, dealing P.DMG and stuns them for [2.5 sec->1 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases all allies’ Physical Defense by 30(1+0.3Skill Level) and Physical Block Chance by 250.",
-        "to": "Increases all allies’ P.DEF by 84*(0.7+(0.3*Skill Level*Awakening Coefficient)) and P.Block Chance by 120."
+        "unified": "Increases all allies’ P.DEF by and P.Block Chance by [250->120]."
       }
     }
   },
@@ -46,8 +42,7 @@
       "skillName": "Penetration",
       "hasChanges": true,
       "IV": {
-        "from": "Increases the duration of stun by 1.2 sec.",
-        "to": "Increases the duration of stun by 0.5 sec."
+        "unified": "Increases the duration of stun by [1.2 sec->0.5 sec]."
       }
     }
   },
@@ -55,37 +50,31 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Reduces the Physical Defense of pulled enemies by 30% for 5 sec.",
-        "to": "Cooldown is reduced by 2 sec."
+        "unified": "Cooldown is reduced by [2 sec (added)]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, but cooldown is reduced by 4 sec.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1000 (added)]."
       },
       "dark": {
-        "from": "On cast, increases all allies’ Physical Defense by 24% for 7 sec.",
-        "to": "On cast, increases all allies’ Physical Defense by 15% for 5 sec."
+        "unified": "On cast, increases all allies’ Physical Defense by [24%->15%]."
       }
     },
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but cooldown is reduced by 6 sec.",
-        "to": "On cast, increases all allies’ Physical DMG reduction by 30% for 5 sec."
+        "unified": "On cast, increases all allies’ Physical DMG reduction by [30% (added)] for 5 sec."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Physical Defense increase is boosted by 30%, and Physical Block Chance is increased by 75.",
-        "to": "Physical Defense increase amount increases by 50%."
+        "unified": "Physical Defense increase amount increases by [30%->50%]."
       },
       "dark": {
-        "from": "Physical Critical Resistance is additionally increased by 250.",
-        "to": "Physical Block Chance increases by 120."
+        "unified": "Physical Block Chance increases by [120 (added)]."
       }
     }
   },
@@ -94,8 +83,7 @@
       "name": "Shield of Resolution",
       "hasChanges": true,
       "description": {
-        "from": "[Will to Win] increases P.Block chance by 100 and raises the target’s P.DMG taken by {0}% for 5 sec.",
-        "to": "[Will to Win] increases P.Block chance by 400 and raises the target's P.DMG taken by {0}% for 5 sec."
+        "unified": "[Will to Win] increases P.Block chance by [100->400] and raises the target's P.DMG taken by {0}% for 5 sec."
       },
       "values": {
         "0": {
@@ -108,8 +96,7 @@
       "name": "Aura of Protection",
       "hasChanges": true,
       "description": {
-        "from": "[Steel Fortress] increases DMG Boost on Block by 50% and extends the Stun duration of Leap Attack by {0} sec.",
-        "to": "[Steel Fortress] increases DMG Boost on Block by 24% and extends the Stun duration of Leap Attack by {0} sec."
+        "unified": "[Steel Fortress] increases DMG Boost on Block by [50%->24%] and extends the Stun duration of Leap Attack by {0} sec."
       },
       "values": {
         "0": {
@@ -122,8 +109,7 @@
       "name": "Ring of Ziltrion",
       "hasChanges": true,
       "description": {
-        "from": "[Spearhead] recovers 40% of P.DEF every sec when blocking, and increases P.DEF gained by {0}% for 5 sec. P.DEF Boost can stack up to 5 times.",
-        "to": "[Spearhead] recovers 40% of P.DEF every sec when blocking, and increases P.DEF gained by {0}% for 5 sec. P.DEF Boost can stack up to {4} times."
+        "unified": "[Spearhead] recovers 40% of P.DEF every sec when blocking, and increases P.DEF gained by {0}% for 5 sec. P.DEF Boost can stack up to [{4} (added)] times."
       },
       "values": {
         "0": {
@@ -136,15 +122,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "At the start of each battle, reduces all enemies’ Attack by 25% for 6 sec. This effect cannot be dispelled.",
-      "to": "At the start of each battle, reduces all enemies’ Attack by 15% for 6 sec. This effect cannot be dispelled."
+      "unified": "At the start of each battle, reduces all enemies’ Attack by [25%->15%] for 6 sec. This effect cannot be dispelled."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increases all allies’ Physical Defense by {0}%.\nOn block, has a {1}% chance to restore {2} Mana to yourself and reduce the cooldown of all skills by 1 sec.",
-      "to": "Increases all allies' P.DEF by {0}%. On Block, has a {1}% chance to recover {2} Mana and reduce the cooldown of all Skills by 1 sec."
+      "unified": "Increases all allies' P.DEF by {0}%. On Block, has a {1}% chance to recover {2} Mana and reduce the cooldown of all Skills by 1 sec."
     },
     "values": {
       "0": {

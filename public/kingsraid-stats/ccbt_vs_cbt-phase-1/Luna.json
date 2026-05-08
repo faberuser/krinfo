@@ -2,13 +2,12 @@
   "heroName": "Luna",
   "versionA": "ccbt",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.531Z",
+  "generatedAt": "2026-05-08T11:43:35.442Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Unleashes an attack that bounces 4 times starting from the nearest enemy, dealing 684*(1+0.3Skill Level)+300% of Attack Power Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is.",
-        "to": "Unleashes an attack that bounces 4 times starting from the nearest enemy, dealing 684*(1+0.3Skill Level)+300% of Attack Power Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is. This attack is treated as a Normal Attack."
+        "unified": "Unleashes an attack that bounces 4 times starting from the nearest enemy, dealing Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is. This attack is treated as a Normal Attack."
       }
     },
     "2": {
@@ -18,22 +17,19 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 792(1+0.3Skill Level)+347.5% of Attack Power Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for 1.8 sec. Damage increases by up to 200% the farther the enemy is.",
-        "to": "Deals 792*(1+0.3Skill Level)+347.5% of Attack Power Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for 1sec. Damage increases by up to 200% the farther the enemy is."
+        "unified": "Deals Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for [1.8 sec->1sec]. Damage increases by up to 200% the farther the enemy is."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 342(1+0.3Skill Level)+150% of Attack Power Magic Damage 6 time(s) to enemies within range, knocks them back for 1.8 sec, and reduces their Critical Chance by 100% for 7 sec. Damage increases by up to 150% the farther the enemy is.",
-        "to": "Deals 342*(1+0.3Skill Level)+150% of Attack Power Magic Damage 6 time(s) to enemies within range, knocks them back for 1sec, and reduces their Critical Chance by 25% for 7sec. Damage increases by up to 150% the farther the enemy is."
+        "unified": "Deals Magic Damage 6 time(s) to enemies within range, knocks them back for [1.8 sec->1sec], and reduces their Critical Chance by [100%->25%] for 7sec. Damage increases by up to 150% the farther the enemy is."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks the farthest enemy, dealing 799(1+0.3*Skill Level)+350% of Attack Power Magic Damage, knocking them back for 1.2 sec, and increasing Magic Damage taken by 20% for 6 sec. Damage increases by up to 200% the farther the enemy is.",
-        "to": "Attacks the farthest enemy, dealing 799*(1+0.3Skill Level)+350% of Attack Power Magic Damage, knocking them back for 0.5sec, and increasing Magic Damage taken by 20% for 6sec. Damage increases by up to 200% the farther the enemy is."
+        "unified": "Attacks the farthest enemy, dealing Magic Damage, knocking them back for [1.2 sec->0.5sec], and increasing Magic Damage taken by 20% for 6sec. Damage increases by up to 200% the farther the enemy is."
       }
     }
   },
@@ -42,23 +38,19 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Ignores the target’s Block effects.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by 50%."
       },
       "dark": {
-        "from": "Stuns enemies hit for 1.2 seconds.",
-        "to": "Stuns enemies hit for 1 sec."
+        "unified": "Stuns enemies hit for [1.2 seconds->1 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "For 7 seconds, reduces Accuracy of enemies hit by 200.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by 50%."
       },
       "dark": {
-        "from": "If there is only 1 enemy, damage dealt is increased by 100%.",
-        "to": "For 7 sec, reduces Accuracy of enemies hit by 150."
+        "unified": "For 7 sec, reduces Accuracy of enemies hit by 150."
       }
     }
   },
@@ -77,8 +69,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Damage dealt to non-hero enemies is increased by 30%, and damage taken is reduced by 30%.",
-      "to": "Damage dealt to non-hero enemies is increased by 10%, and damage taken is reduced by 10%."
+      "unified": "Damage dealt to non-hero enemies is increased by [30%->10%], and damage taken is reduced by [30%->10%]."
     }
   }
 }

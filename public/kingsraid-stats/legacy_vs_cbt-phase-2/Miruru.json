@@ -2,13 +2,12 @@
   "heroName": "Miruru",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.570Z",
+  "generatedAt": "2026-05-08T11:43:35.468Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals ??? P.DMG to all enemies and pushes them back.",
-        "to": "모든 적에게 830*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 300% 물리 피해를 입히고 밀어냅니다. 이 스킬은 일반 공격으로 적용됩니다."
+        "unified": "모든 적에게 물리 피해를 입히고 밀어냅니다. 이 스킬은 일반 공격으로 적용됩니다."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "14"
       },
       "description": {
-        "from": "Deals ??? P.DMG 3 times to frontal enemies, and each attack has a 100% chance of knocking them down for 2 sec.",
-        "to": "Deals 415*(0.7+(0.3*Skill Level*Awakening Coefficient))+200% of Attack Power as Physical Damage 3 time to enemies in front.\nEach hit knocks them down for 1 sec and increases Physical Damage taken by 8% for 7 sec. This effect stacks up to 3 times."
+        "unified": "Deals Physical Damage 3 time to enemies in front. Each hit knocks them down for [2 sec->1 sec] and [(added) increases Physical Damage taken by 8% for 7 sec. This effect stacks up to 3 times]."
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Attacks a random target and the enemies near it 5 times, dealing a total of ??? P.DMG and reducing their ATK Spd by 400. If the target is not a Hero, deals ??? additional P.DMG.",
-        "to": "임의의 적과 주변 범위의 적들에게 253*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 122%의 물리 피해를 5회 입히고 8초간 공격 속도를 12% 감소시킵니다. 영웅이 아닐 경우 308*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 148.2%의 추가 물리 피해를 입힙니다."
+        "unified": "임의의 적과 주변 범위의 적들에게 물리 피해를 5회 입히고 8초간 공격 속도를 [400->12%] 감소시킵니다. 영웅이 아닐 경우 추가 물리 피해를 입힙니다."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "When dealing a normal attack, shoots additional bullet with a 60% chance of dealing ??? P.DMG to all enemies.",
-        "to": "일반 공격 시, 추가 탄환을 발사하여 모든 적에게 117*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 56.1%의 추가 물리 피해를 입히고, 10초간 공격력을 0.5% 증가시킵니다. 공격력 증가 효과는 최대 100회 중첩되며, 해제할 수 없습니다."
+        "unified": "일반 공격 시, 추가 탄환을 발사하여 모든 적에게 추가 물리 피해를 입히고, [60% chance->(removed)] [(added) 10초간 공격력을 0.5% 증가시킵니다. 공격력 증가 효과는 최대 100회 중첩되며, 해제할 수 없습니다]."
       }
     }
   },
@@ -46,37 +42,31 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Increase P.DMG that the target takes by 25% for 10 sec.",
-        "to": "If there is only 1 enemy, damage dealt is increased by 100%."
+        "unified": "If there is only 1 enemy, damage dealt is increased by 100%. [(removed) Increase P.DMG target takes by 25% for 10 sec]"
       },
       "dark": {
-        "from": "Upon activation, ATK is increased by 35% for 10 sec.",
-        "to": "Attack increases by 50% for 4 sec."
+        "unified": "Attack increases by [35%->50%] for [10 sec->4 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by [40%->50%]."
       }
     },
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "Removes ATK Spd debuff effect and adds a 3 sec Stun.",
-        "to": "Damage dealt is reduced by 30%, but the number of hits is doubled."
+        "unified": "Damage dealt is reduced by 30%, but the number of hits is doubled. [(removed) Removes ATK Spd debuff and adds 3 sec Stun]"
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Increases ATK by 0.5% for 10 seconds upon a Crit Hit. This effect can be stacked up to max 100 times.",
-        "to": "Has a 15% chance to stun the target for 1 sec."
+        "unified": "Has a 15% chance to stun the target for 1 sec. [(removed) Increases ATK by 0.5% per Crit Hit up to 100 times]"
       },
       "dark": {
-        "from": "Activation chance changes to 80%.",
-        "to": "Damage dealt is reduced by 30%, but the number of hits is doubled."
+        "unified": "Damage dealt is reduced by 30%, but the number of hits is doubled. [(removed) Activation chance changes to 80%]"
       }
     }
   },
@@ -95,8 +85,7 @@
       "name": "Pirate King's Sextant",
       "hasChanges": true,
       "description": {
-        "from": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect stacks up to 10 times.",
-        "to": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect Stacks up to max 10 times."
+        "unified": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect Stacks up to max 10 times."
       },
       "values": {}
     },
@@ -104,8 +93,7 @@
       "name": "Miruru Cannonball",
       "hasChanges": true,
       "description": {
-        "from": "[Miruru Pirates!] DMG is increased by 50%, and skill cooldown is reduced by {0}%.",
-        "to": "[Miruru Pirates!] Increases DMG by 50% and reduces Cooldown by {0}%."
+        "unified": "[Miruru Pirates!] Increases DMG by 50% and reduces Cooldown by {0}%."
       },
       "values": {}
     },
@@ -113,8 +101,7 @@
       "name": "Turtle Gunpowder Keg",
       "hasChanges": true,
       "description": {
-        "from": "[Boooooom!] Increases DMG by 50%. Upon activation, increases ATK Spd by {0} for 3 sec.",
-        "to": "[Boooooom!] increases DMG by 50% and boosts ATK Spd by {0}% for 3 sec upon activation."
+        "unified": "[Boooooom!] increases DMG by 50% and boosts ATK Spd by [{0}->{0}%] for 3 sec upon activation."
       },
       "values": {
         "0": {
@@ -127,32 +114,31 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Miruru stacks Darkness depending on the number of enemies she hits. When she reaches 50 stacks, she goes berserk, boosting her Atk Spd by 800 and her ATK by 20%.",
-      "to": "On hit, gains [Darkness] stacks equal to the number of enemies struck. When [Darkness] reaches 50 stacks, all [Darkness] is removed and you enter [Rampage] for 10 sec, increasing Attack Speed by 48% and Attack by 25%."
+      "unified": "On hit, gains [Darkness] stacks equal to the number of enemies struck. When [Darkness] reaches 50 stacks, all [Darkness] is removed and you enter [Rampage] for 10 sec, increasing Attack Speed by [800->48%] and Attack by [20%->25%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals P.DMG equal to {0}% of ATK to the enemies inflicted by the Boooooom! skill at a 50% chance, and the target takes {1}% more P.DMG for 10 seconds.",
-      "to": "When using [KABOOM!] attacks, has a 30% chance to deal additional Physical Damage equal to {0}% of Attack Power and increase the target's Physical Damage taken by {1}% for 10 sec."
+      "unified": "When using [KABOOM!] attacks, has a [50%->30%] chance to deal additional Physical Damage equal to {0}% of Attack Power and increase the target's Physical Damage taken by {1}% for 10 sec."
     },
     "values": {}
   },
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the Soul of Ultimate Weapon, Leviathan, increasing own ATK by 30% and dealing ??? P.DMG to all enemies every 3 sec for 10 sec. Each hit increases P.DMG the enemies take by 20% for 5 sec.",
-      "to": "Summons the Soul of Ultimate Weapon, Leviathan for 10sec, increasing own ATK by 45%. Every 3sec, deals 250% of ATK P.DMG to all enemies and increases P.DMG taken by 15% for 5sec."
+      "unified": "Summons the Soul of Ultimate Weapon, Leviathan for 10sec, increasing own ATK by [30%->45%]. Every 3sec, deals Physical Damage to all enemies and increases P.DMG taken by [20%->15%] for 5sec."
     },
     "advancement": {
       "1": {
         "from": "Increases the increased P.DMG the enemies take by an additional 20%.",
-        "to": "Changes Physical DMG taken by enemies to 30%."
+        "to": "Changes Physical DMG taken by enemies to 30%.",
+        "unified": "Changes Physical DMG taken by enemies to 30%."
       },
       "2": {
         "from": "Reduces Cooldown by 7 sec and increase P.DMG Boost by an additional 20%.",
-        "to": "Reduces cooldown by 7 sec."
+        "to": "Reduces cooldown by 7 sec.",
+        "unified": "Reduces cooldown by 7 sec [(removed) and increase P.DMG Boost by an additional 20%]."
       }
     }
   }

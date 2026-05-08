@@ -2,13 +2,12 @@
   "heroName": "Miruru",
   "versionA": "cbt-phase-1",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.507Z",
+  "generatedAt": "2026-05-08T11:43:35.427Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 830*(0.7+(0.3*Skill Level*Awakening Coefficient))+300% of Attack Power as Physical Damage to all enemies and knocks them back. This skill is applied as a normal attack.",
-        "to": "Deals ??? P.DMG to all enemies and pushes them back."
+        "unified": "Deals ??? P.DMG to all enemies and [(removed) knocks them back] pushes them back."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "13"
       },
       "description": {
-        "from": "Deals 415*(0.7+(0.3*Skill Level*Awakening Coefficient))+200% of Attack Power as Physical Damage 3 time to enemies in front.\nEach hit knocks them down for 1 sec and increases Physical Damage taken by 8% for 7 sec. This effect stacks up to 3 times.",
-        "to": "Deals ??? P.DMG 3 times to frontal enemies, and each attack has a 100% chance of knocking them down for 2 sec."
+        "unified": "Deals ??? P.DMG 3 times to frontal enemies, and each attack has a [ (removed) 8% Physical Damage taken/stacks up to 3 times] 100% chance of knocking them down for [1 sec->2 sec]."
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "4"
       },
       "description": {
-        "from": "Deals 253*(0.7+(0.3*Skill Level*Awakening Coefficient))+122% of Attack Power as Physical Damage 5 times to a random enemy and nearby enemies, reducing their Attack Speed by 12% for 8 sec. Against non-hero enemies, deals an additional 308*(0.7+(0.3*Skill Level*Awakening Coefficient))+148.2% of Attack Power as Physical Damage.",
-        "to": "Attacks a random target and the enemies near it 5 times, dealing a total of ??? P.DMG and reducing their ATK Spd by 400. If the target is not a Hero, deals ??? additional P.DMG."
+        "unified": "Attacks a random target and the enemies near it 5 times, dealing a total of ??? P.DMG and reducing their ATK Spd by [12%->400]. If the target is not a Hero, deals ??? additional P.DMG."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On Normal Attack, fires an additional projectile that deals 117*(0.7+(0.3*Skill Level*Awakening Coefficient))+56.1% of Attack Power as extra Physical Damage to all enemies and increases your Attack by 0.5% for 10 sec. The Attack increase stacks up to 100 times and cannot be dispelled.",
-        "to": "When dealing a normal attack, shoots additional bullet with a 60% chance of dealing ??? P.DMG to all enemies."
+        "unified": "When dealing a normal attack, shoots additional bullet with a [(added) 60% chance of] dealing ??? P.DMG to all enemies [(removed) ATK increase/100 stacks]."
       }
     }
   },
@@ -46,37 +42,31 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "If there is only 1 enemy, damage dealt is increased by 100%.",
-        "to": "Increase P.DMG that the target takes by 25% for 10 sec."
+        "unified": "Increase P.DMG that the target takes by 25% for 10 sec."
       },
       "dark": {
-        "from": "Attack increases by 50% for 4 sec.",
-        "to": "Upon activation, ATK is increased by 35% for 10 sec."
+        "unified": "Upon activation, ATK is increased by [50%->35%] for [4 sec->10 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by [50%->40%]."
       }
     },
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "Damage dealt is reduced by 30%, but the number of hits is doubled.",
-        "to": "Removes ATK Spd debuff effect and adds a 3 sec Stun."
+        "unified": "Removes ATK Spd debuff effect and adds a 3 sec Stun."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Has a 15% chance to stun the target for 1 sec.",
-        "to": "Increases ATK by 0.5% for 10 seconds upon a Crit Hit. This effect can be stacked up to max 100 times."
+        "unified": "Increases ATK by 0.5% for 10 seconds upon a Crit Hit. This effect can be stacked up to max 100 times."
       },
       "dark": {
-        "from": "Damage dealt is reduced by 30%, but the number of hits is doubled.",
-        "to": "Activation chance changes to 80%."
+        "unified": "Activation chance changes to 80%."
       }
     }
   },
@@ -95,8 +85,7 @@
       "name": "Pirate King's Sextant",
       "hasChanges": true,
       "description": {
-        "from": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect stacks up to max 10 times.",
-        "to": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect stacks up to 10 times."
+        "unified": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect stacks up to 10 times."
       },
       "values": {}
     },
@@ -104,8 +93,7 @@
       "name": "Miruru Cannonball",
       "hasChanges": true,
       "description": {
-        "from": "[Miruru Pirates!] Increases DMG by 50% and reduces Cooldown by {0}%.",
-        "to": "[Miruru Pirates!] DMG is increased by 50%, and skill cooldown is reduced by {0}%."
+        "unified": "[Miruru Pirates!] DMG is increased by 50%, and skill cooldown is reduced by {0}%."
       },
       "values": {}
     },
@@ -113,8 +101,7 @@
       "name": "Turtle Gunpowder Keg",
       "hasChanges": true,
       "description": {
-        "from": "[Boooooom!] increases DMG by 50% and boosts ATK Spd by {0}% for 3 sec upon activation.",
-        "to": "[Boooooom!] Increases DMG by 50%. Upon activation, increases ATK Spd by {0} for 3 sec."
+        "unified": "[Boooooooom!] Increases DMG by 50%. Upon activation, increases ATK Spd by [{0}%->{0}] for 3 sec."
       },
       "values": {
         "0": {
@@ -127,15 +114,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, gains [Darkness] stacks equal to the number of enemies struck. When [Darkness] reaches 50 stacks, all [Darkness] is removed and you enter [Rampage] for 10 sec, increasing Attack Speed by 48% and Attack by 25%.",
-      "to": "Miruru stacks Darkness depending on the number of enemies she hits. When she reaches 50 stacks, she goes berserk, boosting her Atk Spd by 800 and her ATK by 20%."
+      "unified": "Miruru stacks Darkness depending on the number of enemies she hits. When she reaches 50 stacks, she goes berserk, boosting her Atk Spd by [48%->800] and her ATK by [25%->20%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "When using [KABOOM!] attacks, has a 30% chance to deal additional Physical Damage equal to {0}% of Attack Power and increase the target's Physical Damage taken by {1}% for 10 sec.",
-      "to": "Deals P.DMG equal to {0}% of ATK to the enemies inflicted by the Boooooom! skill at a 50% chance, and the target takes {1}% more P.DMG for 10 seconds."
+      "unified": "Deals P.DMG equal to {0}% of ATK to the enemies inflicted by the Boooooom! skill at a [30%->50%] chance, and the target takes {1}% more P.DMG for 10 seconds."
     },
     "values": {}
   }

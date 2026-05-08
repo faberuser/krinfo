@@ -2,7 +2,7 @@
   "heroName": "Cleo",
   "versionA": "cbt-phase-1",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.485Z",
+  "generatedAt": "2026-05-08T11:43:35.411Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,15 +11,13 @@
         "to": "5"
       },
       "description": {
-        "from": "Deals 305*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 81.8% of ATK Magic DMG to a random enemy 5times. Each hit stuns the target for 0.5sec, and restores Mana by 100 when landing a Critical Hit. Non-hero enemies take additional Magic DMG equal to 7% of ATK per [Ember] stack.",
-        "to": "Deals 305*(1+0.3*Skill Level)+81.8% ATK Magic DMG to a random enemy 5 times. Each hit inflicts Stun for 0.6 sec. When landing a Critical Hit, restores Mana by 100. Non-hero enemies take additional Magic DMG equal to 1.4% ATK per [Ember] stack."
+        "unified": "Deals Magic DMG to a random enemy 5 times. Each hit inflicts Stun for [0.5sec->0.6 sec]. When landing a Critical Hit, restores Mana by 100. Non-hero enemies take additional Magic DMG equal to [7%->1.4%] ATK per [Ember] stack."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 1259*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 450.2% of ATK Magic DMG to enemies in the target area and stuns them for 1sec. Non-hero enemies take 1759*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 850.2% of ATK plus additional Magic DMG equal to 40% of ATK per [Ember] stack.",
-        "to": "Deals 1259*(1+0.3*Skill Level)+450.2% ATK Magic DMG to enemies in the target area and inflicts Stun for 1.2 sec. Non-hero enemies take 1759*(1+0.3*Skill Level)+850.2% ATK plus additional Magic DMG equal to 7.8% ATK per [Ember] stack."
+        "unified": "Deals Magic DMG to enemies in the target area and inflicts Stun for [1sec->1.2 sec]. Non-hero enemies take additional Magic DMG equal to [40%->7.8%] ATK per [Ember] stack."
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "15"
       },
       "description": {
-        "from": "Deals 638*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 136.2% of ATK Magic DMG to all enemies 5times. This attack applies 160% increased Critical DMG, and non-hero enemies take additional Magic DMG equal to 10% of ATK per [Ember] stack.",
-        "to": "Deals 638*(1+0.3*Skill Level)+136.2% ATK Magic DMG to all enemies 5 times. This attack applies Critical DMG 150% higher, and non-hero enemies take additional Magic DMG equal to 2.3% ATK per [Ember] stack."
+        "unified": "Deals Magic DMG to all enemies 5 times. This attack applies Critical DMG [160% increased -> 150% higher], and non-hero enemies take additional Magic DMG equal to [10%->2.3%] ATK per [Ember] stack."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On hit, applies a stack of [Ember] to the target. When attacking a target at max stacks, restores Mana by 30.\n\n[Ember]: Deals 43*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 20% of ATK Magic Damage over Time every 1sec for 20sec, and stacks up to 10 times.",
-        "to": "On hit, applies an [Ember] stack to the target. When attacking a target at max stacks, restores Mana by 30.\n[Ember] : Deals 43*(1+0.3*Skill Level)+20% ATK Damage over Time every 1 sec for 20 sec, and stacks up to 12 times."
+        "unified": "On hit, applies an [Ember] stack to the target. When attacking a target at max stacks, restores Mana by 30. [Ember] : Deals Damage over Time every 1 sec for 20 sec, and stacks up to [10->12] times."
       }
     }
   },
@@ -46,26 +42,22 @@
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "When hitting an enemy with 10 or more [Ember] stacks, Magic DMG taken increases by 20% for 5 sec.",
-        "to": "When hitting an enemy with 10 or more [Ember] stacks, Magic DMG taken increases by 40% for 10 sec."
+        "unified": "When hitting an enemy with 10 or more [Ember] stacks, Magic DMG taken increases by [20%->40%] for [5 sec->10 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Increases DMG by 40%."
+        "unified": "Increases DMG by [50%->40%]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Each [Ember] stack increases the target’s Magic DMG taken by 1%.",
-        "to": "Each [Ember] stack reduces the target’s Magic DEF by 2.5%."
+        "unified": "Each [Ember] stack [increases the target’s Magic DMG taken by 1% -> reduces the target’s Magic DEF by 2.5%]."
       },
       "dark": {
-        "from": "Every 10 sec, stuns enemies with [Ember] for 1 sec. If the target has 10 or more [Ember] stacks, stuns for 1.5 sec instead.",
-        "to": "Every 10 sec, stuns one enemy with [Ember] for 1.2 sec. If the target has 10 or more [Ember] stacks, stuns for 1.8 sec instead."
+        "unified": "Every 10 sec, stuns [enemies->one enemy] with [Ember] for [1 sec->1.2 sec]. If the target has 10 or more [Ember] stacks, stuns for [1.5 sec->1.8 sec] instead."
       }
     }
   },
@@ -74,8 +66,7 @@
       "name": "Tome of Purgatory",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Rain] Increases DMG by 20%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%.",
-        "to": "[Fire Rain] Increases DMG by {0}%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%."
+        "unified": "[Fire Rain] Increases DMG by [{0}%->20%]. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%."
       },
       "values": {}
     }
@@ -83,15 +74,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "[Ember] becomes non-dispellable, and applies 1 [Ember] stack every second to all non-hero enemies.",
-      "to": "Targets with 10 or more [Ember] stacks take 30% increased Magic DMG and apply 2 [Ember] stacks to all non-hero enemies every second."
+      "unified": "Targets with 10 or more [Ember] stacks take 30% increased Magic DMG and apply 2 [Ember] stacks to all non-hero enemies every second. [(removed) Ember becomes non-dispellable, and applies 1 stack every second.]"
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Critical Rate increases by {0}, Critial DMG increase by {1}, and Skill Attacks deal additional Magic DMG equal to {2}% of ATK per [Ember] stack on the target.",
-      "to": "Attack Speed increases by {0}, and Skill Attacks deal additional Magic DMG equal to {1}% of ATK per [Ember] stack on the target."
+      "unified": "Attack Speed increases by [(added) {0}], and Skill Attacks deal additional Magic DMG equal to [{2}%->{1}%] of ATK per [Ember] stack on the target. [(removed) Critical Rate increases by {0}, Critical DMG increase by {1}]."
     },
     "values": {
       "1": {

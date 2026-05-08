@@ -2,7 +2,7 @@
   "heroName": "Luna",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.441Z",
+  "generatedAt": "2026-05-08T11:43:35.381Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Launches an attack that bounces 4 times starting from the nearest enemy, dealing 460*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 292% of ATK M.DMG to each enemy hit. DMG increases by up to 100% the farther the enemy is. This attack is treated as a Normal Attack.",
-        "to": "Unleashes an attack that bounces 4 times starting from the nearest enemy, dealing 684*(1+0.3Skill Level)+300% of Attack Power Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is."
+        "unified": "Unleashes an attack that bounces 4 times starting from the nearest enemy, dealing Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Deals 508*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 321.8% of ATK M.DMG 2 time(s) to a random enemy and nearby enemies, and stuns them for 1sec. DMG increases by up to 200% the farther the enemy is.",
-        "to": "Deals 792(1+0.3Skill Level)+347.5% of Attack Power Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for 1.8 sec. Damage increases by up to 200% the farther the enemy is."
+        "unified": "Deals Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for [1sec -> 1.8 sec]. Damage increases by up to 200% the farther the enemy is."
       }
     },
     "3": {
@@ -41,15 +39,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 132*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 84% of ATK M.DMG 6 time(s) to enemies within range, knocks them back for 1.5sec, and reduces Crit Chance by 60% for 4sec. DMG increases by up to 150% the farther the enemy is.",
-        "to": "Deals 342(1+0.3Skill Level)+150% of Attack Power Magic Damage 6 time(s) to enemies within range, knocks them back for 1.8 sec, and reduces their Critical Chance by 100% for 7 sec. Damage increases by up to 150% the farther the enemy is."
+        "unified": "Deals Magic Damage 6 time(s) to enemies within range, knocks them back for [1.5sec -> 1.8 sec], and reduces their Critical Chance by [60% for 4sec -> 100% for 7 sec]. Damage increases by up to 150% the farther the enemy is."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks the farthest enemy, dealing 440*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 278.6% of ATK M.DMG, knocking them back for 1sec, and increasing M.DMG taken by 20% for 6sec. DMG increases by up to 200% the farther the enemy is.",
-        "to": "Attacks the farthest enemy, dealing 799(1+0.3*Skill Level)+350% of Attack Power Magic Damage, knocking them back for 1.2 sec, and increasing Magic Damage taken by 20% for 6 sec. Damage increases by up to 200% the farther the enemy is."
+        "unified": "Attacks the farthest enemy, dealing Magic Damage, knocking them back for [1sec -> 1.2 sec], and increasing Magic Damage taken by 20% for 6 sec. Damage increases by up to 200% the farther the enemy is."
       }
     }
   },
@@ -58,23 +54,19 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Ignores the target’s Block effects."
+        "unified": "[ (removed) Damage increases by 50% -> Ignores the target’s Block effects]."
       },
       "dark": {
-        "from": "Stuns enemies hit for 1 sec.",
-        "to": "Stuns enemies hit for 1.2 seconds."
+        "unified": "Stuns enemies hit for [1 sec -> 1.2 seconds]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "For 7 seconds, reduces Accuracy of enemies hit by 200."
+        "unified": "[ (removed) Damage increases by 50% -> For 7 seconds, reduces Accuracy of enemies hit by 200]."
       },
       "dark": {
-        "from": "Reduces ACC of hit enemies by 500 for 4 sec.",
-        "to": "If there is only 1 enemy, damage dealt is increased by 100%."
+        "unified": "[ (removed) Reduces ACC of hit enemies by 500 for 4 sec -> If there is only 1 enemy, damage dealt is increased by 100%]."
       }
     }
   },
@@ -83,8 +75,7 @@
       "name": "Never-Melting Snow Flower",
       "hasChanges": true,
       "description": {
-        "from": "[Twinkle Twinkle] Reduces M.Crit Resist by {0}, and this reduction becomes irremovable.",
-        "to": "[Twinkle Twinkle] The Crit Chance Reduction effect becomes irremovable, and increases the duration by {0} sec."
+        "unified": "[Twinkle Twinkle] The [ (removed) M.Crit Resist by {0} -> Crit Chance Reduction] effect becomes irremovable, and [ (removed) this reduction becomes irremovable -> increases the duration by {0} sec]."
       },
       "values": {
         "0": {
@@ -107,8 +98,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Damage dealt to non-hero enemies is increased by 15%, and damage taken is reduced by 15%.",
-      "to": "Damage dealt to non-hero enemies is increased by 30%, and damage taken is reduced by 30%."
+      "unified": "Damage dealt to non-hero enemies is increased by [15% -> 30%], and damage taken is reduced by [15% -> 30%]."
     }
   },
   "uw": {

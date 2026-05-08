@@ -2,13 +2,12 @@
   "heroName": "Lakrak",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.463Z",
+  "generatedAt": "2026-05-08T11:43:35.396Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 739*(0.7+(0.3*Skill Level*Awakening Coefficient))+355.4% ATK Physical DMG to enemies in a frontal straight-line area and stuns them for 1sec. Non-hero enemies take additional 339*(0.7+(0.3*Skill Level*Awakening Coefficient))+185.4% ATK Physical DMG.\n\n[Experiment Success!]: This skill does not trigger a cooldown.",
-        "to": "Attacks all frontal enemies in a straight line, dealing ??? P.DMG and stunning them for 3 sec. If the target is not a Hero, deals ??? additional P.DMG. [Experiment Success!] Removes Cooldown"
+        "unified": "Attacks all frontal enemies in a straight line, dealing P.DMG and stunning them for [1 sec->3 sec]. If the target is not a Hero, deals ??? additional P.DMG. [Experiment Success!] Removes Cooldown"
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 443*(0.7+(0.3*Skill Level*Awakening Coefficient))+213.5% ATK Physical DMG to the target and nearby enemies, inflicting [Explosive Substance] for 7sec, increasing Physical DMG taken by 20% and inflicting Blind for 1sec.\n\n[Experiment Success!]: Removes beneficial effects from enemies within the area.",
-        "to": "Deals ??? P.DMG to target and nearby enemies within range and inflict them with [Explosive Meterial] for 10 sec, causing them to take 20% increased P.DMG and additional inflicting Blind for 4 sec. [Experiment Success!] Dispels positive effects from enemies within range."
+        "unified": "Deals P.DMG to target and nearby enemies within range and inflict them with [Explosive Meterial] for [7 sec->10 sec], causing them to take 20% increased P.DMG and additional inflicting Blind for [1 sec->4 sec]. [Experiment Success!] Dispels positive effects from enemies within range."
       }
     },
     "3": {
@@ -37,15 +35,13 @@
         "to": "2"
       },
       "description": {
-        "from": "Attaches a sticky bomb to a random enemy.\nAfter 3sec, the bomb explodes, dealing 1500*(0.7+(0.3*Skill Level*Awakening Coefficient))+755.2% ATK Physical DMG to the target and nearby enemies, and stunning them for 1sec. Enemies afflicted with [Explosive Substance] take additional 1001*(0.7+(0.3*Skill Level*Awakening Coefficient))+477.5% ATK Physical DMG.\n\n[Experiment Success!]: The bomb explodes immediately upon attachment.",
-        "to": "Attaches a Glue Bomb to a random enemy that explodes in 3 sec, dealing ??? P.DMG to the target and nearby enemies, inflicting Stun for 3 sec. If the target is inflicted with [Explosive Material], deals ??? additional P.DMG. [Experiment Success!] Glue Bomb explodes immediately after attachment."
+        "unified": "Attaches a Glue Bomb to a random enemy that explodes in 3 sec, dealing P.DMG to the target and nearby enemies, inflicting Stun for [1 sec->3 sec]. If the target is inflicted with [Explosive Material], deals ??? additional P.DMG. [Experiment Success!] Glue Bomb explodes immediately after attachment."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "When performing a Normal Attack, has a 15% chance to fire a shell, dealing 345*(0.7+(0.3*Skill Level*Awakening Coefficient))+166.3% ATK Physical DMG to the target and nearby enemies, and stunning them for 1sec.\nEach time a skill ends, attempts [Experiment] with a 50% chance to succeed, enhancing the next skill. Enhanced skills do not attempt [Experiment].",
-        "to": "Each auto attack has a 15% chance of firing a bomb that deals ??? P.DMG and stuns them for 2 sec. After each Skill use, Lakrak conducts an experiment. The experiment has a 50% success rate. Upon success, enhances the effects of the next Skill use. Experiment does not occur when Lakrak uses the enhanced Skill."
+        "unified": "Each auto attack has a 15% chance of firing a bomb that deals P.DMG and stuns them for [1 sec->2 sec]. After each Skill use, Lakrak conducts an experiment. The experiment has a 50% success rate. Upon success, enhances the effects of the next Skill use. Experiment does not occur when Lakrak uses the enhanced Skill."
       }
     }
   },
@@ -54,33 +50,28 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by [50%->40%]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost reduced by 1."
+        "unified": "Mana cost reduced by 1."
       },
       "dark": {
-        "from": "Increases the duration of Blind by 1 sec.",
-        "to": "Blind duration is increased by 2 sec."
+        "unified": "Blind duration is increased by [1 sec->2 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 2000, and the number of bomb placements is changed to 2.",
-        "to": "Mana cost is increased by 1, and attacks a random target 2 times."
+        "unified": "Mana cost is increased by [2000->1], and attacks a random target 2 times."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Shell activation chance increases by 25%, and stun duration increases by 0.5 sec.",
-        "to": "Activation chance is boosted by 10% and stun duration increases by 1 sec."
+        "unified": "Activation chance is boosted by [25%->10%] and stun duration increases by [0.5 sec->1 sec]."
       }
     }
   },
@@ -89,8 +80,7 @@
       "name": "Cudgel Bullet",
       "hasChanges": true,
       "description": {
-        "from": "[Rapid Fire] Increases DMG by 50%, and recovers {0} Mana upon a Critical Hit.",
-        "to": "[Rapid Fire] Increases DMG by 50% and restores {0} mana on critical hit"
+        "unified": "[Rapid Fire] Increases DMG by 50% and restores {0} mana on critical hit"
       },
       "values": {
         "0": {
@@ -103,8 +93,7 @@
       "name": "Special Gas Mask",
       "hasChanges": true,
       "description": {
-        "from": "[Smoke Bomb] Reduces Cooldown by 30% and increases the duration of Blind by {0} sec.",
-        "to": "[Smoke Bomb] Reduces Cooldown by 30% and increases blind duration by {0} sec."
+        "unified": "[Smoke Bomb] Reduces Cooldown by 30% and increases blind duration by {0} sec."
       },
       "values": {}
     },
@@ -112,8 +101,7 @@
       "name": "Goblincraft Special High-Density Gunpowder",
       "hasChanges": true,
       "description": {
-        "from": "[Glue Bomb] Increases DMG by 50% and reduces the Heal Rate of the hit target by {0}% for 7 sec.",
-        "to": "[Glue Bomb] Increases DMG by 50% and reduces Heal Rate of the hit target by {0}% for 7 sec."
+        "unified": "[Glue Bomb] Increases DMG by 50% and reduces Heal Rate of the hit target by {0}% for 7 sec."
       },
       "values": {
         "0": {
@@ -126,15 +114,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On [Experiment] success, increases Attack Speed by 12% and Status Ailment Accuracy by 150 for 10 sec.",
-      "to": "Each time Lakrak succeed an Experiment, his attack rate increase by 300 for 10 sec."
+      "unified": "Each time Lakrak succeed an Experiment, his [Attack Speed by 12% and Status Ailment Accuracy by 150->attack rate increase by 300] for 10 sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "[Experiment] success chance increases by {0}%. On [Experiment] success, Attack increases by {1}%, Attack Speed increases by {2}%, and damage dealt to non-hero enemies increases by {3}%. This effect stacks up to 3 times and cannot be dispelled.",
-      "to": "Lakrak's chances of successful Experiment are increased by {0}%, and each successful experiment increases his ATK by {1}%, ATK Spd by {2} and damage against none-Heroes by {3}%. This effect can stack up to 4 times and is irremovable."
+      "unified": "Lakrak's chances of successful Experiment are increased by {0}%, and each successful experiment increases his ATK by {1}%, ATK Spd by {2} and damage against none-Heroes by {3}%. This effect can stack up to [3->4] times and is irremovable."
     },
     "values": {
       "0": {
@@ -158,17 +144,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Lakrak MK-1 for 12sec, dealing 120% of ATK P.DMG 5times every 4sec to enemies around a random target, stunning them for 2sec and increasing P.DMG they take by 30% for 8sec.",
-      "to": "Summons the soul of Lakrak MK-1, increasing own ATK by 50% for 12 sec. Afterward, deals a total of ??? P.DMG to enemies within range of a random enemy over 5 times every 4 sec, stunning them for 2 sec and increasing P.DMG they take by 30% for 8 sec."
+      "unified": "Summons the soul of Lakrak MK-1, [(added) increasing own ATK by 50%] for 12 sec. Afterward, deals a total of ??? P.DMG to enemies within range of a random enemy over 5 times every 4 sec, stunning them for 2 sec and increasing P.DMG they take by 30% for 8 sec."
     },
     "advancement": {
       "1": {
         "from": "Becomes immune to CC for 6 sec.",
-        "to": "Reduces Skill Activation requirements by 2 sec and gains immunity to CC for 12 sec."
+        "to": "Reduces Skill Activation requirements by 2 sec and gains immunity to CC for 12 sec.",
+        "unified": "[(added) Reduces Skill Activation requirements by 2 sec and] gains immunity to CC for [6 sec->12 sec]."
       },
       "2": {
         "from": "Every 4 sec, reduces cooldown of all skills by 2 sec.",
-        "to": "Reduces Skill Activation requirements by an additional 4 sec, and immediately reduces Cooldown of all Skills by 3 sec every 4 sec."
+        "to": "Reduces Skill Activation requirements by an additional 4 sec, and immediately reduces Cooldown of all Skills by 3 sec every 4 sec.",
+        "unified": "[(added) Reduces Skill Activation requirements by an additional 4 sec, and immediately] reduces Cooldown of all Skills by [2 sec->3 sec] every 4 sec."
       }
     }
   }

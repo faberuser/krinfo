@@ -2,13 +2,12 @@
   "heroName": "Lorraine",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.463Z",
+  "generatedAt": "2026-05-08T11:43:35.397Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 333*(0.7+(0.3*Skill Level*Awakening Coefficient))+153.2% ATK Magic DMG 3 time to a random enemy and nearby enemies, and stuns them for 1.8sec.",
-        "to": "Attacks a random enemy and its nearby enemies 3 times, dealing a total of ??? M.DMG and inflicting Stun for 3 sec."
+        "unified": "Attacks a random enemy and its nearby enemies 3 times, dealing a total of ??? M.DMG and inflicting Stun for [1.8 sec->3 sec]."
       }
     },
     "2": {
@@ -18,22 +17,19 @@
         "to": "15"
       },
       "description": {
-        "from": "Creates [Belladonna Seed] in the area around the target for 7sec.\n\n[Belladonna Seed]: Deals 403*(0.7+(0.3*Skill Level*Awakening Coefficient))+146.2% ATK Magic DMG to nearby enemies every 1sec and reduces Healing Rate by 25% for 1sec.",
-        "to": "Creates a Seed of Belladonna around the target for 10 sec. The seed deals ??? M.DMG to nearby enemies every 2 sec, increasing M.DMG the target takes by 30% and reducing Heal Rate by 30% for 5 sec."
+        "unified": "Creates a Seed of Belladonna around the target for [7 sec->10 sec]. The seed deals ??? M.DMG to nearby enemies every [1 sec->2 sec], [(added) increasing M.DMG the target takes by 30%] and reducing Heal Rate by [25%->30%] for [1 sec->5 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 304*(0.7+(0.3*Skill Level*Awakening Coefficient))+112.2% ATK Magic DMG 6 time to enemies in a wide frontal area and knocks them down for 1sec.",
-        "to": "Attacks enemies within a wide frontal range of self 6 times, dealing a total of ??? M.DMG and knocking them down for 3 sec."
+        "unified": "Attacks enemies within a wide frontal range of self 6 times, dealing a total of ??? M.DMG and knocking them down for [1 sec->3 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On Normal and Skill Attacks, inflicts [Poison] on the target, dealing Magic DoT equal to 100% ATK every 1sec for 20sec and reducing Healing Rate by 1%. This effect stacks up to 25 times.",
-        "to": "Normal and Skill attacks inflicts Poison on a target, dealing a total of ??? continuous M.DMG and reducing Heal Rate by 5% over 20 sec. Poison can be stacked up to max 5 times. If Lorraine dies, Poison effect on enemies will disappear."
+        "unified": "Normal and Skill attacks inflicts Poison on a target, dealing a total of ??? continuous M.DMG and reducing Heal Rate by [1%->5%] over 20 sec. Poison can be stacked up to max [25->5] times. If Lorraine dies, Poison effect on enemies will disappear."
       }
     }
   },
@@ -42,41 +38,34 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but damage dealt is increased by 100%.",
-        "to": "Recovers own Mana by 250 upon a Critical Hit."
+        "unified": "Recovers own Mana by 250 upon a Critical Hit."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Increases DMG by 50%.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by [50%->40%]."
       },
       "dark": {
-        "from": "Enemies hit suffer increased status ailment duration by 20% for 5 sec.",
-        "to": "The duration of the CC on hit enemies increases by 30% for 5 sec."
+        "unified": "The duration of the CC on hit enemies increases by [20%->30%] for 5 sec."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 1000, but damage increases by 100%.",
-        "to": "Mana cost is increased by 1 but DMG is boosted by 100%."
+        "unified": "Mana cost is increased by [1000->1] but DMG is boosted by 100%."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but removes beneficial effects from enemies within range.",
-        "to": "Increases Mana Cost by 1 and dispels positive effects of enemies within range."
+        "unified": "Increases Mana Cost by [1000->1] and dispels positive effects of enemies within range."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "For each [Poison] stack, the target's Attack is reduced by 1%.",
-        "to": "Reduces the target's ATK by 5% per stack of Poison."
+        "unified": "Reduces the target's ATK by [1%->5%] per stack of Poison."
       },
       "dark": {
-        "from": "If the target is a boss, [Poison] damage increases by 100%.",
-        "to": "If the target is a boss, increases DMG of Poison by x3."
+        "unified": "If the target is a boss, increases DMG of Poison by [100%->x3]."
       }
     }
   },
@@ -85,8 +74,7 @@
       "name": "Book of Life",
       "hasChanges": true,
       "description": {
-        "from": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0} sec.",
-        "to": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0}."
+        "unified": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0}."
       },
       "values": {
         "0": {
@@ -99,8 +87,7 @@
       "name": "Deadly Belladonna",
       "hasChanges": true,
       "description": {
-        "from": "[Seed of Belladonna] Reduces Mana Cost by 1, Mana of hit enemies by {0}, and recovers own Mana by {2}.",
-        "to": "[Seed of Belladonna] Reduces Mana Cost by 1, Mana of hit enemies by {0}, and recovers own Mana by {1}."
+        "unified": "[Seed of Belladonna] Reduces Mana Cost by 1, Mana of hit enemies by {0}, and recovers own Mana by [{2}->{1}]."
       },
       "values": {
         "0": {
@@ -113,8 +100,7 @@
       "name": "Root of the World Tree",
       "hasChanges": true,
       "description": {
-        "from": "[Wrath of the Forest] Increases DMG by {0}%. Upon a Crit Hit on enemies with 5 or more stacks of Poison, reduces Cooldown by 4%.",
-        "to": "[Wrath of the Forest] DMG is increased by {0}%. Upon Crit Hit on enemies with over 5 stacks of Poison, skill cooldown is reduced by 4%."
+        "unified": "[Wrath of the Forest] DMG is increased by {0}%. Upon Crit Hit on enemies with [5 or more->over 5] stacks of Poison, skill cooldown is reduced by 4%."
       },
       "values": {}
     },
@@ -122,8 +108,7 @@
       "name": "Terrarium of Circulation",
       "hasChanges": true,
       "description": {
-        "from": "[Poison] makes Poison effect irremovable and increases DMG dealt to Bosses by {0}%.",
-        "to": "[Poison] Poison effect becomes irremovable and for the duration of Poison, target takes {0}% increased M.DMG"
+        "unified": "[Poison] Poison effect becomes irremovable and for the duration of Poison, target takes [DMG dealt to Bosses by {0}%->{0}% increased M.DMG]"
       },
       "values": {
         "0": {
@@ -136,15 +121,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "At the start of battle, all skill cooldowns are reduced by 30%, and damage dealt to non-hero enemies is increased by 10% for 90 sec. The damage increase stacks up to 5 times and cannot be dispelled.",
-      "to": "At the beginning of each battle, immediately reduces all Skill Cooldown of self by 30% and increases DMG dealt to Non-Hero enemies by 20% for 90 sec. DMG Boost effect stacks up to max 5 times and is irremovable."
+      "unified": "At the beginning of each battle, immediately reduces all Skill Cooldown of self by 30% and increases DMG dealt to Non-Hero enemies by [10%->20%] for 90 sec. DMG Boost effect stacks up to max 5 times and is irremovable."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 7 sec, deals Magic Damage equal to {0}% of Attack Power to poisoned enemies, reduces their Magic Defense by {1}% for 10 sec, and increases their Magic Damage taken by {2}%.",
-      "to": "Deals M.DMG equal to {0}% of ATK to enemies inflicted with Poison every 7 secm reducing M.DEF by {1}% and increasing M.DMG the target takes by {2}% for 10 sec."
+      "unified": "Deals M.DMG equal to {0}% of ATK to enemies inflicted with Poison every 7 secm reducing M.DEF by {1}% and increasing M.DMG the target takes by {2}% for 10 sec."
     },
     "values": {
       "0": {
@@ -164,17 +147,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of World Tree’s Will, Roburu for 10sec, dealing 300% of ATK M.DMG to a random enemy every 2sec, increasing M.DMG taken by 30% for 10sec, and inflicting Shackle for 2sec. Also recovers 500 Mana every 2sec.",
-      "to": "Summons the soul of World Tree's Will, Roburu for 10 sec, dealing ??? DMG on a random enemy every 2 sec, increasing M.DMG it takes by 30% for 10 sec and inflicting Shackle for 2 sec. Also recovers own Mana by 500 and reduces Cooldown of all Skills by 1 sec every 2 sec."
+      "unified": "Summons the soul of World Tree's Will, Roburu for 10 sec, dealing ??? DMG on a random enemy every 2 sec, increasing M.DMG it takes by 30% for 10 sec and inflicting Shackle for 2 sec. Also recovers own Mana by 500 [(added) and reduces Cooldown of all Skills by 1 sec] every 2 sec."
     },
     "advancement": {
       "1": {
         "from": "Increases own ATK by 45% for the duration of soul.",
-        "to": "Increases own ATK by 50% for the duration of soul."
+        "to": "Increases own ATK by 50% for the duration of soul.",
+        "unified": "Increases own ATK by [45%->50%] for the duration of soul."
       },
       "2": {
         "from": "For the duration of the soul, increases the duration of CC effects taken by all enemies by 30%.",
-        "to": "Increases the duration of CC effects applied upon enemies by 30% and reduces thier M.DEF by 25% for the duration of soul."
+        "to": "Increases the duration of CC effects applied upon enemies by 30% and reduces thier M.DEF by 25% for the duration of soul.",
+        "unified": "Increases the duration of CC effects [taken by all->applied upon] enemies by 30% [(added) and reduces thier M.DEF by 25%] for the duration of soul."
       }
     }
   }

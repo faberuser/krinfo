@@ -2,34 +2,30 @@
   "heroName": "Miruru",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.442Z",
+  "generatedAt": "2026-05-08T11:43:35.381Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "모든 적에게 830*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 300% 물리 피해를 입히고 밀어냅니다. 이 스킬은 일반 공격으로 적용됩니다.",
-        "to": "Deals 830(1+0.3Skill Level)+400% of Attack Power as Physical Damage to all enemies and knocks them back."
+        "unified": "Deals Physical Damage to all enemies and knocks them back."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 415*(0.7+(0.3*Skill Level*Awakening Coefficient))+200% of Attack Power as Physical Damage 3 time to enemies in front.\nEach hit knocks them down for 1 sec and increases Physical Damage taken by 8% for 7 sec. This effect stacks up to 3 times.",
-        "to": "Deals 415(1+0.3Skill Level)+200% of Attack Power as Physical Damage 3 times to enemies in front.\nEach hit knocks them down for 1.2 sec and increases their Physical Damage taken by 30% for 7 sec."
+        "unified": "Deals Physical Damage 3 times to enemies in front. Each hit knocks them down for [1 sec -> 1.2 sec] and increases [Physical Damage -> their Physical Damage] taken by [8% -> 30%] for 7 sec. [ (removed) This effect stacks up to 3 times]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "임의의 적과 주변 범위의 적들에게 253*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 122%의 물리 피해를 5회 입히고 8초간 공격 속도를 12% 감소시킵니다. 영웅이 아닐 경우 308*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 148.2%의 추가 물리 피해를 입힙니다.",
-        "to": "Deals 253(1+0.3Skill Level)+122% of Attack Power as Physical Damage 5 time to a random enemy and nearby enemies, reducing their Attack Speed by 40% for 10 sec. Against non-hero enemies, deals an additional 308(1+0.3Skill Level)+148.2% of Attack Power as Physical Damage."
+        "unified": "Deals Physical Damage 5 time to a random enemy and nearby enemies, reducing their Attack Speed by [12% for 8초간 -> 40% for 10 sec]. Against non-hero enemies, deals an additional Physical Damage."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "일반 공격 시, 추가 탄환을 발사하여 모든 적에게 117*(0.7+(0.3*스킬 레벨*각성 계수))+공격력 56.1%의 추가 물리 피해를 입히고, 10초간 공격력을 0.5% 증가시킵니다. 공격력 증가 효과는 최대 100회 중첩되며, 해제할 수 없습니다.",
-        "to": "On Normal Attack, fires an additional projectile that deals 117(1+0.3Skill Level)+56.1% of Attack Power as extra Physical Damage to all enemies and increases your Attack by 0.5% for 10 sec. The Attack increase stacks up to 100 times and cannot be dispelled."
+        "unified": "On Normal Attack, fires an additional projectile that deals extra Physical Damage to all enemies and increases [your -> your] Attack by 0.5% for 10 sec. The Attack increase stacks up to 100 times and cannot be dispelled."
       }
     }
   },
@@ -38,15 +34,13 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Attack increases by 50% for 4 sec.",
-        "to": "Attack is increased by 45% for 4 sec."
+        "unified": "Attack is increased by [50% -> 45%] for 4 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by [50% -> 40%]."
       }
     }
   },
@@ -55,8 +49,7 @@
       "name": "Pirate King's Sextant",
       "hasChanges": true,
       "description": {
-        "from": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect Stacks up to max 10 times.",
-        "to": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect stacks up to max 10 times."
+        "unified": "[Roll Over] increases DMG by {0}% on every use and recovers 120 MP upon a Crit Hit. This effect stacks up to max 10 times."
       },
       "values": {}
     },
@@ -74,8 +67,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, gains [Darkness] stacks equal to the number of enemies struck. When [Darkness] reaches 50 stacks, all [Darkness] is removed and you enter [Rampage] for 10 sec, increasing Attack Speed by 48% and Attack by 25%.",
-      "to": "On hit, gains [Darkness] stacks equal to the number of enemies struck. When [Darkness] reaches 50 stacks, all [Darkness] is consumed and you enter [Rampage] for 10 sec, increasing Attack Speed by 80% and Attack by 20%."
+      "unified": "On hit, gains [Darkness] stacks equal to the number of enemies struck. When [Darkness] reaches 50 stacks, all [Darkness] is [removed -> consumed] and you enter [Rampage] for 10 sec, increasing Attack Speed by [48% -> 80%] and Attack by [25% -> 20%]."
     }
   }
 }

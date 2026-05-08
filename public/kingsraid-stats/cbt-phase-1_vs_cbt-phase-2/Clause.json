@@ -2,13 +2,12 @@
   "heroName": "Clause",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.474Z",
+  "generatedAt": "2026-05-08T11:43:35.404Z",
   "skills": {
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 1405*(0.7+(0.3*Skill Level*Awakening Coefficient))+100% Physical DEF Physical DMG to enemies within range, knocking them back, and reduces their ATK by 25% and ATK Spd by 20% for 4sec.",
-        "to": "Deals 204*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 100% Physical DEF Physical DMG to enemies within range, knocking them back, and reduces their ATK by 24% and ATK Spd by 18% for 4sec."
+        "unified": "Deals 204*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 100% Physical DEF Physical DMG to enemies within range, knocking them back, and reduces their ATK by [25%->24%] and ATK Spd by [20%->18%] for 4sec."
       }
     },
     "3": {
@@ -18,15 +17,13 @@
         "to": "15"
       },
       "description": {
-        "from": "For 14sec, increases all allies' Physical DEF by 98*(0.7+(0.3*Skill Level*Awakening Coefficient)), Physical Block Chance by 150, and reduces Physical DMG taken by 10%.",
-        "to": "For 17sec, increases P.DEF of the 4allies with the lowest P.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)), increases their P.Block Chance by 140, and reduces P.DMG taken by 11%."
+        "unified": "For 17sec, increases P.DEF of the [all allies->4allies] with the lowest P.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)), increases their P.Block Chance by [150->140], and reduces P.DMG taken by [10%->11%]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On Block, deals 48*(0.7+(0.3*Skill Level*Awakening Coefficient))+36.7% ATK Physical DMG in front, reduces the target's ATK by 3.5% for 6sec, and increases your Physical DEF by 9%. These effects stack up to 4 times.",
-        "to": "On Block, deals 48*(0.7+(0.3*Skill Level*Awakening Coefficient))+36.7% ATK Physical DMG in front, reduces the target's ATK by 4% for 6sec, and increases your Physical DEF by 6%. These effects stack up to 4 times."
+        "unified": "On Block, deals 48*(0.7+(0.3*Skill Level*Awakening Coefficient))+36.7% ATK Physical DMG in front, reduces the target's ATK by [3.5%->4%] for 6sec, and increases your Physical DEF by [9%->6%]. These effects stack up to 4 times."
       }
     }
   },
@@ -35,12 +32,10 @@
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Physical Defense increase amount increases by 50%.",
-        "to": "Increases P.DEF Boost by 40%."
+        "unified": "Increases P.DEF Boost by [50%->40%]."
       },
       "dark": {
-        "from": "Physical Block Chance additionally increases by 100.",
-        "to": "Physical Block Chance additionally increases by 110."
+        "unified": "Physical Block Chance additionally increases by [100->110]."
       }
     }
   },
@@ -49,8 +44,7 @@
       "name": "Firm Determination",
       "hasChanges": true,
       "description": {
-        "from": "[Shield Strike] reduces the P.DEF of hit enemies by 25% and their P.Crit Resist by 210 for 4 sec.",
-        "to": "[Shield Strike] reduces the P.DEF of hit enemies by 25% and their P.Crit Resist by {0} for 4 sec."
+        "unified": "[Shield Strike] reduces the P.DEF of hit enemies by 25% and their P.Crit Resist by [210->{0}] for 4 sec."
       },
       "values": {
         "0": {
@@ -63,8 +57,7 @@
       "name": "Guardian Knight Insignia",
       "hasChanges": true,
       "description": {
-        "from": "[Guardian Shield] increases effect duration by 4.5 sec and boosts DEF increase by {0}%.",
-        "to": "[Guardian Shield] Removes negative effects from self and increases DEF boost by {0}%."
+        "unified": "[Guardian Shield] Removes negative effects from self and increases DEF boost by {0}%."
       },
       "values": {
         "0": {
@@ -77,15 +70,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "At the start of each battle, increases all allies' Max HP by 10%. This effect stacks up to 3 times and cannot be dispelled.",
-      "to": "At the start of each battle, increases all allies' Max HP by 4%. This effect stacks up to 3 times and cannot be dispelled."
+      "unified": "At the start of each battle, increases all allies' Max HP by [10%->4%]. This effect stacks up to 3 times and cannot be dispelled."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 3 skills used, increases all allies' Physical Defense by {0}% and Attack by {1}% for 15 sec. The Physical Defense increase is applied at 2 times its value to the 4 allies with the lowest Physical Defense.",
-      "to": "Every 3 Skill uses, increases P.DEF of the 4allies with the lowest P.DEF by {0}% and ATK by {1}% for 15 sec."
+      "unified": "Every 3 Skill uses, increases P.DEF of the 4allies with the lowest P.DEF by {0}% and ATK by {1}% for 15 sec."
     },
     "values": {
       "0": {

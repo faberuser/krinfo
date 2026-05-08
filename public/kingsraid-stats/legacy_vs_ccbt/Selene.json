@@ -2,7 +2,7 @@
   "heroName": "Selene",
   "versionA": "legacy",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.606Z",
+  "generatedAt": "2026-05-08T11:43:35.500Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,29 +11,25 @@
         "to": "2"
       },
       "description": {
-        "from": "Shoots 12 arrows to random enemies and deals a total of ??? P.DMG.",
-        "to": "Deals 161(1+0.3Skill Level)+70.7% of Attack Power as Physical Damage 12 times to a random enemy."
+        "unified": "Deals Physical Damage 12 times to a random enemy."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Upon attacking, summons 5 arrows that launch towards the enemy. Each arrow deals ??? P.DMG.",
-        "to": "Summons 5 homing arrows that track enemies. On attack, consumes 1 arrow to deal 351(1+0.3Skill Level)+154.3% of Attack Power as additional Physical Damage."
+        "unified": "Summons 5 homing arrows that track enemies. On attack, consumes 1 arrow to deal additional Physical Damage."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Fires an arrow in a straight line, dealing P.DMG to all enemies in range based on the target's remaining HP. Deals a maximum of ??? P.DMG and knocks down the target. Against Bosses, deals additional ??? P.DMG that ignores DEF.",
-        "to": "Deals up to 1530(1+0.3Skill Level)+671% of Attack Power as Physical Damage to enemies in a line based on their remaining HP and knocks them down. This skill has an additional 500 Physical Defense Penetration, and if the target is a boss, deals an additional 765(1+0.3Skill Level)+335.5% of Attack Power as Physical Damage."
+        "unified": "Deals Physical Damage to enemies in a line based on their remaining HP and knocks them down. This skill [(added) has an additional 500 Physical Defense Penetration], and if the target is a boss, deals an additional Physical Damage that ignores DEF."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Upon attacking, increases ATK by ??? and Crit Chance by 100 for 10 sec. This effect stacks up to 3 times.",
-        "to": "After using a skill or Normal Attack, increases Attack by 24(1+0.3Skill Level) and Critical Hit Chance by 100 for 5 sec. [Moonlight Arrow] stacks up to 6 times. At maximum stacks, you cannot gain additional [Moonlight Arrow] during the duration, but Normal Attacks fire 3 extra arrows that each deal 143% of Attack Power as Physical Damage."
+        "unified": "After using a skill or Normal Attack, increases Attack by [???->24(1+0.3Skill Level)] and Critical Hit Chance by 100 for [10 sec->5 sec]. [Moonlight Arrow] stacks up to [3 times->6 times]. [(added) At maximum stacks, you cannot gain additional [Moonlight Arrow] during the duration, but Normal Attacks fire 3 extra arrows that each deal 143% of Attack Power as Physical Damage.]"
       }
     }
   },
@@ -42,37 +38,31 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "There is a 50% chance to inflict Stun for 1 sec.",
-        "to": "Has a 50% chance to stun enemies hit for 0.6 sec."
+        "unified": "Has a 50% chance to stun enemies hit for [1 sec->0.6 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Ignores DEF when there is only 1 enemy.",
-        "to": "Summons 2 additional arrows."
+        "unified": "Summons 2 additional arrows, [(removed) Ignores DEF when there is only 1 enemy]."
       },
       "dark": {
-        "from": "Reduces Mana Cost by 1.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1->1000]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces Mana Cost by 1.",
-        "to": "Damage dealt is increased by 40%."
+        "unified": "Damage dealt is increased by [(added) 40%], [(removed) Reduces Mana Cost by 1]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Max stack number is changed to 5.",
-        "to": "Attack Speed is increased by 8% per stack."
+        "unified": "Attack Speed is increased by [(added) 8% per stack], [(removed) Max stack number is changed to 5]."
       },
       "dark": {
-        "from": "At the beginning of each battle, increases ATK. This effect stacks up to max 10 times, and upon reaching 10 stacks, increases DMG dealt to bosses by 20%. This effect is irremovable.",
-        "to": "At the start of battle, Attack is increased by 10%. This Attack increase stacks up to 10 times, and at 10 stacks, damage dealt to bosses is increased by 20%. This effect cannot be dispelled."
+        "unified": "At the start of battle, Attack is increased by [(added) 10%]. This Attack increase stacks up to 10 times, and at 10 stacks, damage dealt to bosses is increased by 20%. This effect cannot be dispelled."
       }
     }
   },
@@ -81,8 +71,7 @@
       "name": "Silver Arrow",
       "hasChanges": true,
       "description": {
-        "from": "[Moonlight Flash] DMG is increased by {0}% and target takes 20% additional P.DMG for 10 sec.",
-        "to": "[Moonlight Flash] Increases DMG by {0}%, and P.DMG the target takes by 20% for 10 sec."
+        "unified": "[Moonlight Flash] Increases DMG by {0}%, and P.DMG the target takes by 20% for 10 sec."
       },
       "values": {}
     },
@@ -90,8 +79,7 @@
       "name": "Circlet of Wind",
       "hasChanges": true,
       "description": {
-        "from": "[Moonlight Arrow] Increases ATK Spd by 100 and each stack increases DMG to Non-Hero enemies by {0}%.",
-        "to": "[Moonlight Arrow] increases normal attack DMG by 50% and DMG to Non-Hero enemies by {0}% per stack."
+        "unified": "[Moonlight Arrow] increases [(added) normal attack DMG by 50%] and DMG to Non-Hero enemies by {0}% per stack. [(removed) Increases ATK Spd by 100]."
       },
       "values": {}
     }
@@ -99,8 +87,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Upon a Crit Hit, ATK Spd is increased by {0} for 10 sec, and for the duration of skill, each auto attack fires an arrow that deals extra {1}% P.DMG.",
-      "to": "On critical hit, Attack Speed is increased by {0}% for 10 sec, and during the duration, Normal Attacks fire an additional arrow that deals {1}% extra Physical Damage to the target. The additional damage can only occur once every 0.5 sec."
+      "unified": "On critical hit, Attack Speed is increased by [{0}->{0}%] for 10 sec, and during the duration, Normal Attacks fire an additional arrow that deals {1}% extra Physical Damage to the target. [(added) The additional damage can only occur once every 0.5 sec.]"
     },
     "values": {
       "0": {

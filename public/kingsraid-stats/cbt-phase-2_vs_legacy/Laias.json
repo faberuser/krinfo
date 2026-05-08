@@ -2,20 +2,18 @@
   "heroName": "Laias",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.462Z",
+  "generatedAt": "2026-05-08T11:43:35.396Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Restores 621*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 100.8% of ATK HP to all allies, increases Magic Block Chance by 300 for 4sec, and additionally restores 155*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 25.2% of ATK HP every 1sec.\nIf the target’s HP is 50% or lower, healing is increased by 50%.",
-        "to": "Heals HP of all allies by ??? and increases Heal Rate by 25% for 10 sec, reduces M.DMG they take by 15% for 5 sec. If the target's HP is below 50%, Heal Rate and the amount of reduced M.DMG the target takes increases by x 1.5."
+        "unified": "Heals HP of all allies by ??? and increases Heal Rate by 25% for 10 sec, [increases Magic Block Chance by 300 for 4 sec->reduces M.DMG they take by 15% for 5 sec]. If the target's HP is below 50%, [healing->Heal Rate] and [ (added) the amount of reduced M.DMG the target takes] increases by x 1.5."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Grants a shield that absorbs 795*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 129% of ATK damage for 15sec to 4 ally with the lowest current HP. The shielded target takes 15% reduced damage from non-hero enemies.",
-        "to": "For 15 sec, casts a shield that blocks ??? DMG on the ally with the lowest HP. While the shield is in effect, it grants Immunity to CC, increases the ATK by ??? , and heals ??? HP every sec for the ally. For 15 sec, the ally takes 30% reduced DMG from Non-Hero targets and increases DMG dealt to Non-Hero enemies by 15%. The DMG Reduction effect and the DMG Boost effect to Non-Hero enemies are irremovable."
+        "unified": "For 15 sec, casts a shield that blocks ??? DMG on the ally with the lowest HP. While the shield is in effect, it grants Immunity to CC, increases the ATK by ??? , and heals ??? HP every sec for the ally. For 15 sec, the ally takes [15%->30%] reduced DMG from Non-Hero targets and increases DMG dealt to Non-Hero enemies by 15%. The DMG Reduction effect and the DMG Boost effect to Non-Hero enemies are irremovable."
       }
     },
     "3": {
@@ -25,15 +23,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 618*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 385.9% of ATK M.DMG to nearby enemies and knocks them down for 1.8sec.\nThen, for 12sec, increases Mana recovery per second of all allies except self by 30%, and every 4sec, a vortex erupts at a random enemy, dealing 412*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 257.3% of ATK M.DMG and knocking them down for 1.2sec.",
-        "to": "Deals ??? M.DMG to nearby enemies and knocks them down for 3 sec. Upon casting, heals HP of all allies by 15% of their Max HP and recovers 2 orbs of Mana excluding self. Afterwards, for 12 sec, creates a whirlpool every 4 sec that deals ??? M.DMG to random enemies and knocks them down for 2 sec."
+        "unified": "Deals M.DMG to nearby enemies and knocks them down for [1.8 sec->3 sec]. Upon casting, heals HP of all allies by 15% of their Max HP and recovers [ (added) 2 orbs of] Mana excluding self [(removed) recovery per second by 30%]. Afterwards, for 12 sec, creates a whirlpool every 4 sec that deals M.DMG to random enemies and knocks them down for [1.2 sec->2 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "All allies’ M.DEF increases by 56*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 5% of Laias’s M.DEF, and Magic Crit Resistance increases by 250.",
-        "to": "Increases Laias's CC Resist by 500, and all allies' M.DEF is increased by ??? + 5% of Laias's M.DEF, and M.Crit Resistance by 250. Whenever Laias casts an active Skill, reduces M.DMG all allies take by 25% for 5 sec."
+        "unified": "Increases Laias's CC Resist by 500, and all allies' M.DEF is increased by ??? + 5% of Laias's M.DEF, and M.Crit Resistance by 250. [(added) Whenever Laias casts an active Skill, reduces M.DMG all allies take by 25% for 5 sec.]"
       }
     }
   },
@@ -42,8 +38,7 @@
       "skillName": "Bubble Shield",
       "hasChanges": true,
       "IV": {
-        "from": "The target’s Mana recovery per second increases by 0%.",
-        "to": "Shield is increased by 25%."
+        "unified": "Shield is increased by 25%."
       }
     }
   },
@@ -51,19 +46,16 @@
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Magic Defense increase rate increases by 40%, and Magic Critical Resistance increases by 100.",
-        "to": "M.DEF increase rate increases by 20%, and M. Crit Resistance increases by 150."
+        "unified": "M.DEF increase rate increases by [40%->20%], and M. Crit Resistance increases by [100->150]."
       },
       "dark": {
-        "from": "Laias’s Status Resistance increases by 500.",
-        "to": "The DMG Reduction effect becomes irremovable."
+        "unified": "The DMG Reduction effect becomes irremovable."
       }
     }
   },
@@ -72,8 +64,7 @@
       "name": "Papyrus of the Flow",
       "hasChanges": true,
       "description": {
-        "from": "[Festival of the Flow] The Whirlpool effect targets 2 enemies and all allies recover {0} additional Mana.",
-        "to": "[Festival of the Flow] Whirlpool effect targets 2 enemies and all allies recover additional {0} mana."
+        "unified": "[Festival of the Flow] Whirlpool effect targets 2 enemies and all allies recover additional {0} mana."
       },
       "values": {}
     }
@@ -81,16 +72,14 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increases all allies' Healing by {0}% and their Magic Defense by 5% of Laias's Attack. Additionally, every 5 seconds, heals the ally in the worst HP condition by {1}% of Laias's Attack.",
-      "to": "Increases the Heal Rate of all allies by {0}% and M.DEF by 5% of Laias' ATK. Every 5 sec, heals the ally with the lowest HP by {1}% of own ATK."
+      "unified": "Increases the [Healing->Heal Rate] of all allies by {0}% and M.DEF by 5% of Laias' ATK. Every 5 sec, heals the ally with the lowest HP by {1}% of own ATK."
     },
     "values": {}
   },
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Dispels negative effects from self and allies, and summons the soul of Flowing Circle, Eltoirre for 12sec, healing all allies for 120% of ATK and recovering 40 Mana every sec.",
-      "to": "Dispels negative effects from self and allies and summons the soul of Flowing Circle, Eltoirre for 12 sec, healing all allies' HP by ??? and Mana by 400 every sec."
+      "unified": "Dispels negative effects from self and allies and summons the soul of Flowing Circle, Eltoirre for 12 sec, healing all allies' HP by [120% of ATK->] and Mana by [40->400] every sec."
     },
     "advancement": {}
   }

@@ -2,13 +2,12 @@
   "heroName": "Reina",
   "versionA": "ccbt",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.521Z",
+  "generatedAt": "2026-05-08T11:43:35.435Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Quickly stabs the enemy, dealing 277(1+0.3Skill Level)+160.5% of Attack Power as Physical Damage. On critical hit, applies [Wound] 1 stack and resets the cooldown. For each [Wound] stack, this skill's damage is increased by 20%, and you are immune to all damage while casting.",
-        "to": "Quickly stabs the enemy, dealing 240*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 152% ATK P.DMG. On Crit Hit, applies [Wound] 1 stack and resets the cooldown. This skill’s DMG is increased by 20% per stack of [Wound]."
+        "unified": "Quickly stabs the enemy, dealing ATK P.DMG. On Crit Hit, applies [Wound] 1 stack and resets the cooldown. This skill’s DMG is increased by 20% per stack of [Wound]. [(removed) immune to all damage while casting.]"
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Removes your harmful effects and increases Attack by 205(1+0.3Skill Level) and Critical Hit Chance by 600 for 10 sec.",
-        "to": "Removes harmful effects from self and increases ATK by 205*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Critical Hit Chance by 500 for 15sec."
+        "unified": "Removes harmful effects from self and increases ATK and Critical Hit Chance by [600->500] for [10 sec->15sec]."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "4"
       },
       "description": {
-        "from": "Performs a series of attacks, dealing 126(1+0.3Skill Level)+72.3% of Attack Power as Physical Damage 9 times, then finishes with a powerful thrust that deals 1132(1+0.3Skill Level)+651.5% of Attack Power as Physical Damage and knocks the enemy far away.",
-        "to": "Performs a series of attacks, dealing 320*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 202.7% ATK P.DMG 9 times, then finishes with a powerful thrust that deals 1918*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 1215.7% ATK P.DMG and knocks the enemy far away. The DMG of this skill is increased by 20% per stack of [Wound], and all stacks are consumed on the final hit."
+        "unified": "Performs a series of attacks, dealing Physical Damage 9 times, then finishes with a powerful thrust that deals Physical Damage and knocks the enemy far away. [(added) The DMG of this skill is increased by 20% per stack of [Wound], and all stacks are consumed on the final hit.]"
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On critical hit, increases Attack by 40(1+0.3*Skill Level) for 10 sec. This effect stacks up to 8 times.",
-        "to": "On a Critical Hit, increases ATK by 40*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 10sec. This effect stacks up to 8 times."
+        "unified": "On a Critical Hit, increases ATK for 10sec. This effect stacks up to 8 times."
       }
     }
   },
@@ -50,22 +46,19 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, but the maximum number of [Wound Stacks] is increased to 10.\nIf [Wound Stacks] is 10, deals additional damage equal to 150% of Attack Power.",
-        "to": "Mana cost is increased by 1000, but the maximum number of [Wound Stacks] is increased to 10."
+        "unified": "Mana cost is increased by 1000, but the maximum number of [Wound Stacks] is increased to 10. [(removed) If [Wound Stacks] is 10, deals additional damage equal to 150% of Attack Power.]"
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but the Critical Hit Chance increase effect is changed to increase Critical Damage by 120%, and damage dealt to bosses is increased by 30%.",
-        "to": "Mana cost is increased by 1000, but the Critical Hit Chance increase effect is replaced with an effect that increases Critical Damage by 65%, and damage dealt to bosses is increased by 30%."
+        "unified": "Mana cost is increased by 1000, but the Critical Hit Chance increase effect is replaced with an effect that increases Critical Damage by [120%->65%], and damage dealt to bosses is increased by 30%."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "If there are 5 or more stacks, all damage taken is reduced by 20%.",
-        "to": "Gain 45 Physical Dodge per stack."
+        "unified": "Gain 45 Physical Dodge per stack. [(removed) If there are 5 or more stacks, all damage taken is reduced by 20%.]"
       }
     }
   },
@@ -74,8 +67,7 @@
       "name": "Wing of Lightning Flash",
       "hasChanges": true,
       "description": {
-        "from": "[Float Like a Butterfly] Increases DMG by {0}%, and reduces the target's P.Block Chance by 500 for 10 sec.",
-        "to": "[Float Like a Butterfly] Increases DMG by {0}% and increases Armor Penetration by 800 while casting."
+        "unified": "[Float Like a Butterfly] Increases DMG by {0}% [(added) and increases Armor Penetration by 800 while casting] [(removed) and reduces the target's P.Block Chance by 500 for 10 sec]."
       },
       "values": {
         "0": {
@@ -88,8 +80,7 @@
       "name": "Master's Ring",
       "hasChanges": true,
       "description": {
-        "from": "[Sharp End] Increases ATK Boost by 50% and recovers additional {0} MP upon a Crit Hit for the skill's duration.",
-        "to": "[Sharp End] Increases ATK Boost by 50% and recovers additional {0} MP upon a Crit Hit for the Skill's duration."
+        "unified": "[Sharp End] Increases ATK Boost by 50% and recovers additional {0} MP upon a Crit Hit for the Skill's duration."
       },
       "values": {}
     },
@@ -97,8 +88,7 @@
       "name": "Medal of Swiftness",
       "hasChanges": true,
       "description": {
-        "from": "[Shooting Star] Increases DMG by {0}% and upon a Crit Hit, recovers Mana by 200.",
-        "to": "[Shooting Star] Increases DMG by {0}%, and adds 1 Wound per attack."
+        "unified": "[Shooting Star] Increases DMG by {0}%, [(added) and adds 1 Wound per attack] [(removed) and upon a Crit Hit, recovers Mana by 200]."
       },
       "values": {
         "0": {
@@ -111,15 +101,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When using a skill, has a 10% chance to increase your Critical Damage by 10%. This effect stacks up to 10 times.",
-      "to": "When using a skill, has a 10% chance to increase your Critical Damage by 7%. This effect stacks up to 10 times."
+      "unified": "When using a skill, has a 10% chance to increase your Critical Damage by [10%->7%]. This effect stacks up to 10 times."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Each time a critical hit occurs, for 15 sec your Attack Speed is increased by {0} and Critical Damage is increased by {1}%. This effect stacks up to 5 times.",
-      "to": "On each Crit Hit, increases own ATK Spd by {0}% and Crit DMG by {1}% for 15 sec. This effect stacks up to 8 times."
+      "unified": "On each Crit Hit, increases own ATK Spd by {0}% and Crit DMG by {1}% for 15 sec. This effect stacks up to [5->8] times."
     },
     "values": {
       "0": {

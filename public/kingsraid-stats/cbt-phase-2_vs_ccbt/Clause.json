@@ -2,7 +2,7 @@
   "heroName": "Clause",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.436Z",
+  "generatedAt": "2026-05-08T11:43:35.378Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,15 +11,13 @@
         "to": "8"
       },
       "description": {
-        "from": "Leaps and deals 258*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 198% ATK Physical DMG to enemies within range, and stuns them for 2sec.",
-        "to": "Leaps and deals 100(1+0.3Skill Level)+150% of Attack Power as Physical Damage to enemies within range, stunning them for 1 sec."
+        "unified": "Leaps and deals Physical Damage to enemies within range, stunning them for [2sec->1 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 204*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 100% Physical DEF Physical DMG to enemies within range, knocking them back, and reduces their ATK by 24% and ATK Spd by 18% for 4sec.",
-        "to": "Deals 1405(1+0.3Skill Level)+100% of Physical Defense as Physical Damage to enemies within range, knocking them back, and reduces their Physical Defense by 30% and Attack Speed by 65% for 4 sec."
+        "unified": "Deals Physical Damage to enemies within range, knocking them back, and reduces their [Physical Defense by 30%->ATK by 24%] and Attack Speed by [18%->65%] for 4 sec."
       }
     },
     "3": {
@@ -29,8 +27,7 @@
         "to": "14"
       },
       "description": {
-        "from": "For 17sec, increases P.DEF of the 4allies with the lowest P.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)), increases their P.Block Chance by 140, and reduces P.DMG taken by 11%.",
-        "to": "For 7 sec, increases all allies' Physical Defense by 98(1+0.3Skill Level), Physical Block Chance by 200, and reduces Physical Damage taken by 35%."
+        "unified": "For [17 sec->7 sec], increases all allies' Physical Defense by 98(1+0.3Skill Level), Physical Block Chance by [140->200], and reduces Physical Damage taken by [11%->35%]."
       }
     },
     "4": {
@@ -40,8 +37,7 @@
         "to": "3"
       },
       "description": {
-        "from": "On Block, deals 48*(0.7+(0.3*Skill Level*Awakening Coefficient))+36.7% ATK Physical DMG in front, reduces the target's ATK by 4% for 6sec, and increases your Physical DEF by 6%. These effects stack up to 4 times.",
-        "to": "On block, deals 48(1+0.3*Skill Level)+36.7% of Attack Power as Physical Damage in front and reduces the target's Attack by 10% for 5 sec. After using the skill, your Defense increases by 5%, stacking up to 5 times."
+        "unified": "On block, deals Physical Damage in front and reduces the target's Attack by [4%->10%] for [6sec->5 sec]. After using the skill, your Defense increases by [6%->5%], stacking up to [4->5] times."
       }
     }
   },
@@ -50,45 +46,37 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Cooldown is reduced by 2 sec.",
-        "to": "Cooldown is reduced by 1 sec."
+        "unified": "Cooldown is reduced by [2 sec->1 sec]."
       },
       "dark": {
-        "from": "Mana cost increases by 2000, but pulls nearby enemies toward the target.",
-        "to": "Mana cost is increased by 1000, but pulls nearby enemies toward the target."
+        "unified": "Mana cost is increased by [2000->1000], but pulls nearby enemies toward the target."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "On block, cooldown is reduced by 0.5 sec.",
-        "to": "Increases Physical Damage taken by the target by 30% for 4 sec."
+        "unified": "[(added) Increases Physical Damage taken by the target by 30% for 4 sec -> (removed) On block, cooldown is reduced by 0.5 sec]."
       },
       "dark": {
-        "from": "After knockback, stuns the target for 1 sec.",
-        "to": "On block, cooldown is reduced by 0.5 sec."
+        "unified": "[(added) On block, cooldown is reduced by 0.5 sec -> (removed) After knockback, stuns the target for 1 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Increases P.DEF Boost by 40%.",
-        "to": "Mana cost is increased by 1000, but cooldown is reduced by 4 sec."
+        "unified": "[(added) Mana cost is increased by 1000, but cooldown is reduced by 4 sec -> (removed) Increases P.DEF Boost by 40%]."
       },
       "dark": {
-        "from": "Physical Block Chance additionally increases by 110.",
-        "to": "Physical Critical Resistance is additionally increased by 400."
+        "unified": "[(added) Physical Critical Resistance is additionally increased by 400 -> (removed) Physical Block Chance additionally increases by 110]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "On block, the Attack reduction effect and Physical Defense increase effect are changed to stack up to 6 times.",
-        "to": "On block, the Attack reduction effect is changed to apply 2 stacks."
+        "unified": "On block, the Attack reduction effect is changed to [(added) apply 2 stacks -> (removed) stack up to 6 times, also removes Physical Defense increase stack change]."
       },
       "dark": {
-        "from": "Cooldown is reduced by 2 sec.",
-        "to": "Every 10 sec, when an ally other than yourself is hit, all allies' Physical Critical Resistance is increased by 300 for 5 sec."
+        "unified": "[(added) Every 10 sec, when an ally other than yourself is hit, all allies' Physical Critical Resistance is increased by 300 for 5 sec -> (removed) Cooldown is reduced by 2 sec]."
       }
     }
   },
@@ -97,8 +85,7 @@
       "name": "Cape of Justice",
       "hasChanges": true,
       "description": {
-        "from": "[Cut Ground] reduces Cooldown by {0}% per enemy hit and increases Stun duration by 1 sec.",
-        "to": "[Cut Ground] reduces Cooldown by {0}% per enemy hit and increases Stun duration by 2 sec."
+        "unified": "[Cut Ground] reduces Cooldown by {0}% per enemy hit and increases Stun duration by [1 sec->2 sec]."
       },
       "values": {}
     },
@@ -106,8 +93,7 @@
       "name": "Firm Determination",
       "hasChanges": true,
       "description": {
-        "from": "[Shield Strike] reduces the P.DEF of hit enemies by 25% and their P.Crit Resist by {0} for 4 sec.",
-        "to": "[Shield Strike] reduces the P.DEF of hit enemies by 30% and their P.Crit Resist by {0} for 4 sec."
+        "unified": "[Shield Strike] reduces the P.DEF of hit enemies by [25%->30%] and their P.Crit Resist by {0} for 4 sec."
       },
       "values": {
         "0": {
@@ -120,8 +106,7 @@
       "name": "Guardian Knight Insignia",
       "hasChanges": true,
       "description": {
-        "from": "[Guardian Shield] Removes negative effects from self and increases DEF boost by {0}%.",
-        "to": "[Guardian Shield] increases effect duration by 4.5 sec and boosts DEF increase by {0}%."
+        "unified": "[Guardian Shield] [(removed) Removes negative effects from self and] increases [effect duration by 4.5 sec and boosts] DEF [boost->increase] by {0}%."
       },
       "values": {
         "0": {
@@ -134,8 +119,7 @@
       "name": "Mittens",
       "hasChanges": true,
       "description": {
-        "from": "[Vow of Knights] recovers {0}% of Max HP and increases the duration of own P.DEF by 3 sec.",
-        "to": "[Vow of Knights] recovers 6% of Max HP and increases the duration of own P.DEF by {0} sec."
+        "unified": "[Vow of Knights] recovers [ {0}%->6%] of Max HP and increases the duration of own P.DEF by [3->{0}] sec."
       },
       "values": {
         "0": {
@@ -148,15 +132,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "At the start of each battle, increases all allies' Max HP by 4%. This effect stacks up to 3 times and cannot be dispelled.",
-      "to": "At the start of each battle, increases all allies' Max HP by 10%. This effect stacks up to 3 times and cannot be dispelled."
+      "unified": "At the start of each battle, increases all allies' Max HP by [4%->10%]. This effect stacks up to 3 times and cannot be dispelled."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 3 Skill uses, increases P.DEF of the 4allies with the lowest P.DEF by {0}% and ATK by {1}% for 15 sec.",
-      "to": "Every 3 skills used, increases all allies' Physical Defense by {0}% and Attack by {1}% for 15 sec. The Physical Defense increase is applied at 2 times its value to the 4 allies with the lowest Physical Defense."
+      "unified": "Every 3 skills used, increases [the 4allies with the lowest P.DEF->all allies'] Physical Defense by {0}% and [ATK->Attack] by {1}% for 15 sec. [ (added) The Physical Defense increase is applied at 2 times its value to the 4 allies with the lowest Physical Defense.]"
     },
     "values": {
       "0": {

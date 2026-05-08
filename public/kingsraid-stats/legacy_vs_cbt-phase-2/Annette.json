@@ -2,7 +2,7 @@
   "heroName": "Annette",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.562Z",
+  "generatedAt": "2026-05-08T11:43:35.465Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "7"
       },
       "description": {
-        "from": "Attacks enemies in a straight line to deal ??? M.DMG, reducing their ATK by 15% and increasing M.DMG they take by 25% for 10 sec. If the skill is used during [Overcharge] state, deals ??? additional M.DMG to the enemies, additionally reduces their ATK by 15%, and additionally increases M.DMG they take by 25%.",
-        "to": "Deals 299*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 189.1% of ATK M.DMG to enemies in a frontal line, reducing ATK by 10% for 5sec and increasing M.DMG taken by 25%.\n\n[Overcharge]: Deals an additional 299*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 189.1% of ATK M.DMG, and additionally increases the ATK reduction by 10% and the M.DMG taken increase by 25%."
+        "unified": "Deals ??? M.DMG to enemies in a frontal line, reducing ATK by [15%->10%] for [10 sec->5 sec] and increasing M.DMG taken by 25%. [Overcharge]: Deals an additional ??? M.DMG, and additionally increases the ATK reduction by [15%->10%] and the M.DMG taken increase by 25%."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Dispels negative effects of all allies and heals their HP by ??? for 10 sec, increasing CC Resist by 250. If the Skill is used during [Overcharge] state, increases all allies' Crit Chance by 250 and DMG dealt to Non-Hero enemies by 10% and grants immunity to CC.",
-        "to": "Removes all negative effects from all allies, restores 124*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 20.1% of ATK HP 10 times, and increases Status Resistance by 300.\n\n[Overcharge]: Additionally increases all allies’ Crit Chance by 250, DMG dealt to non-Hero enemies by 12%, and Status Resistance by 300."
+        "unified": "Removes all negative effects from all allies, restores ??? HP 10 times, and increases Status Resistance by [250->300]. [Overcharge]: Additionally increases all allies’ Crit Chance by 250, DMG dealt to non-Hero enemies by [10%->12%], and Status Resistance by [250->300]."
       }
     },
     "3": {
@@ -41,15 +39,13 @@
         "to": "4"
       },
       "description": {
-        "from": "Explodes an energy orb to a random target and nearby enemies in range, dealing a total of ??? M.DMG. If the Skill is used during [Overcharge] state, deals ??? M.DMG, increasing M.DMG enemies take by 25% for 10 sec, and inflicts Stun for 5 sec when the energy orb explodes.",
-        "to": "Detonates an energy orb on a random enemy and nearby enemies, dealing 139*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 87.7% of ATK M.DMG.\n\n[Overcharge]: Deals an additional 57.5% of ATK M.DMG 6 time(s), increases M.DMG taken by 10% for 10sec, and stuns for 3sec."
+        "unified": "Detonates an energy orb on a random enemy and nearby enemies, dealing ??? M.DMG. [Overcharge]: Deals an additional ??? M.DMG, increases M.DMG taken by [25%->10%] for 10sec, and stuns for [5 sec->3sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Gains 1 stack of [Charge] every 0.5 sec, and gains 10 stacks of [Charge] per 1 orb of Mana consumbed. Upon reaching 100 [Charge] stacks, enters [Overcharge] state, increasing ATK by ??? + 5% of Annette's ATK and reducing Cooldown of all Skills by 10% upon normal attack for 15 sec. All effects are irremovable, and Annette cannot gain any [Charge] stacks during [Overcharge] state.",
-        "to": "Gains 1 [Charge] every 0.5sec, and gains 10 [Charge] whenever 1000 Mana is consumed.\nWhen [Charge] reaches 100 stacks, enters [Overcharge] for 15sec, empowering Skills.\n\n[Overcharge]: Increases ATK by 210*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 5% of Annette’s ATK, and on Normal Attack, reduces cooldown of all Skills by 5%. This effect cannot be dispelled, and [Charge] cannot be gained while [Overcharge] is active."
+        "unified": "Gains 1 [Charge] every 0.5sec, and gains 10 [Charge] whenever [1 orb of Mana->1000 Mana] is consumed. When [Charge] reaches 100 stacks, enters [Overcharge] for 15sec, empowering Skills. [Overcharge]: Increases ATK by ??? + 5% of Annette’s ATK, and on Normal Attack, reduces cooldown of all Skills by [10%->5%]. This effect cannot be dispelled, and [Charge] cannot be gained while [Overcharge] is active."
       }
     }
   },
@@ -58,26 +54,22 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Target takes 25% increased M.DMG for 10 sec.",
-        "to": "When there is only 1 enemy, damage increases by 100%."
+        "unified": "When there is only 1 enemy, damage increases by 100% [(removed) Target takes 25% increased M.DMG for 10 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "DMG is increased by 50%."
+        "unified": "DMG is increased by [40%->50%]."
       },
       "dark": {
-        "from": "Target takes 25% increased M.DMG.",
-        "to": "Upon use, the amount of [Charge] gained is increased by 40%."
+        "unified": "Upon use, the amount of [Charge] gained is increased by 40% [(removed) Target takes 25% increased M.DMG]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Applies the ATK Boost effect to all allies.",
-        "to": "[Overcharge] Attack increase amount is increased by 100%."
+        "unified": "[Overcharge] Attack increase amount is increased by 100% [(removed) Applies the ATK Boost effect to all allies]."
       }
     }
   },
@@ -86,8 +78,7 @@
       "name": "Triplex Condensing Lens",
       "hasChanges": true,
       "description": {
-        "from": "[Ray of Annihilation] For 10 sec, reduces the target's Crit Chance by 250 and the target's Mana by {0}.",
-        "to": "[Ray of Annihilation] For 10 sec, reduces the target's Crit Chance by 150 and Mana by {0}."
+        "unified": "[Ray of Annihilation] For 10 sec, reduces the target's Crit Chance by [250->150] and Mana by {0}."
       },
       "values": {
         "0": {
@@ -100,8 +91,7 @@
       "name": "Script of Healing",
       "hasChanges": true,
       "description": {
-        "from": "[Emergency Treatment] Reduces Mana Cost by 1 and increases heal rate by {0}%,",
-        "to": "[Emergency Treatment] Reduces Mana Cost by 1000 and increases Heal Rate by {0}%."
+        "unified": "[Emergency Treatment] Reduces Mana Cost by [1->1000] and increases Heal Rate by {0}%."
       },
       "values": {
         "0": {
@@ -114,8 +104,7 @@
       "name": "Code of Annihilation",
       "hasChanges": true,
       "description": {
-        "from": "[Process of Elimination] DMG is increased by {0}% and upon ATK, gains 2 stack of Charge. This stack can be gained while in Overcharge state.",
-        "to": "[Process of Elimination] Increases DMG by {0}%, and on attack, gains 2 additional Charge stacks. These stacks can also be gained during Overcharge."
+        "unified": "[Process of Elimination] Increases DMG by {0}%, and on attack, gains 2 additional Charge stacks. These stacks can also be gained during Overcharge."
       },
       "values": {
         "0": {
@@ -128,8 +117,7 @@
       "name": "High Performance Battery",
       "hasChanges": true,
       "description": {
-        "from": "[Charge] Gains {0} stacks of Charge at the beginning of every battle. While in Overcharge, Normal attacks increase Cooldown Reduction by 5%.",
-        "to": "[Charge] At the start of battle, gains {0} Charge Stacks, and while in Overcharge, increases Cooldown Reduction from Normal Attacks by 10%."
+        "unified": "[Charge] At the start of battle, gains {0} Charge Stacks, and while in Overcharge, increases Cooldown Reduction from Normal Attacks by [5%->10%]."
       },
       "values": {
         "0": {
@@ -142,8 +130,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Gains 1 stack of Charge every {0} sec, and recovers Mana by 1%. Charge stacks can also be gained during [Overcharge] state. Additionally, increases all allies' DMG dealt to Bosses by {1}% and reduces DMG all allies take by {2}% for the duration of [Overcharge]. This effect is multiplied by 2 for the ally with the highest ATK.",
-      "to": "Every {0}sec, gains 1, Charge(s) and recovers 1% Mana. This Charge can be gained even while Overcharge is active. During [Overcharge], all allies' damage dealt to bosses increases by {1}%, and damage taken is reduced by {2}%."
+      "unified": "Every {0}sec, gains 1, Charge(s) and recovers 1% Mana. This Charge can be gained even while Overcharge is active. During [Overcharge], all allies' damage dealt to bosses increases by {1}%, and damage taken is reduced by {2}%."
     },
     "values": {
       "0": {
@@ -163,17 +150,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Crystallized Technomagic, Rascal, recovering Mana of all allies by 300 every sec for 15 sec. Afterward, enters [Overcharge] state, increasing M.DMG all enemies take by 30% for the duration. If the target is a Boss, changes the DMG Boost effect to 60%.",
-      "to": "Summons the soul of Crystallized Technomagic, Rascal for 15sec, recovering 225 Mana for all allies every sec, and enters the [Overcharge] state. During the duration, increases M.DMG all enemies take by 6%, and against Bosses, the effect is changed to 60%."
+      "unified": "Summons the soul of Crystallized Technomagic, Rascal for 15sec, recovering [300->225] Mana for all allies every sec, and enters the [Overcharge] state. During the duration, increases M.DMG all enemies take by [30%->6%], and against Bosses, the effect is changed to 60%."
     },
     "advancement": {
       "1": {
         "from": "Increases all allies' ATK by 30% and Crit DMG by 50% for the duration of Skill.",
-        "to": "For the duration, increases ATK of all allies by 11%."
+        "to": "For the duration, increases ATK of all allies by 11%.",
+        "unified": "For the duration, increases ATK of all allies by [30%->11%] [(removed) Crit DMG by 50%]."
       },
       "2": {
         "from": "Reduces Skill Activation Requirements by 5 sec. Additionally, reduces all allies' Cooldown of all Skills by 0.5 sec every sec.",
-        "to": "Every sec, reduces cooldown of all allies’ skills by 0.125 sec."
+        "to": "Every sec, reduces cooldown of all allies’ skills by 0.125 sec.",
+        "unified": "Every sec, reduces cooldown of all allies’ skills by [0.5 sec->0.125 sec] [(removed) Reduces Skill Activation Requirements by 5 sec]."
       }
     }
   }

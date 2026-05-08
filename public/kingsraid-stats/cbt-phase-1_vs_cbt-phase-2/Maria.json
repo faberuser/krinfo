@@ -2,7 +2,7 @@
   "heroName": "Maria",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.479Z",
+  "generatedAt": "2026-05-08T11:43:35.406Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -33,8 +33,7 @@
       "name": "Pendant of Darkness",
       "hasChanges": true,
       "description": {
-        "from": "[Area of Darkness] increases DMG by {0}%, and its last attack reduces the target’s M.DEF by 30% for 7 sec.",
-        "to": "[Area of Darkness] increases DMG by {0}%, and its last attack reduces the target's M.DEF by 30% for 7 sec."
+        "unified": "[Area of Darkness] increases DMG by {0}%, and its last attack reduces the target's M.DEF by 30% for 7 sec."
       },
       "values": {}
     }
@@ -42,8 +41,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Upon a Critical Hit, reduces target's Healing Rate by 35% for 10 sec and increases own Critical Damage by {0}%. The Critical Damage increase effect stacks up to 20 times.",
-      "to": "Upon a Critical Hit, reduces the target's Healing Rate by 35% for 10 sec and increases own Critical Damage by {0}%. The Critical Damage increase effect stacks up to 20 times."
+      "unified": "Upon a Critical Hit, reduces the target's Healing Rate by 35% for 10 sec and increases own Critical Damage by {0}%. The Critical Damage increase effect stacks up to 20 times."
     },
     "values": {}
   }

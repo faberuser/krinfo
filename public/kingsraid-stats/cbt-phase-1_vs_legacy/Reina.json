@@ -2,7 +2,7 @@
   "heroName": "Reina",
   "versionA": "cbt-phase-1",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.508Z",
+  "generatedAt": "2026-05-08T11:43:35.427Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "Float Like A Butterfly"
       },
       "description": {
-        "from": "Quickly stabs the enemy, dealing 277*(0.7+(0.3*Skill Level*Awakening Coefficient))+160.5% ATK as Physical DMG. On a Critical Hit, applies [Wound] 1 stack and resets the cooldown. This skill’s DMG is increased by 20% per stack of [Wound].",
-        "to": "Rapidly stabs the enemy, dealing ??? P.DMG. Upon a Crit Hit, stacks 1 Wound and resets cooldown. Per every stacked Wound, DMG dealt by Float Like a Butterfly is increased by 20%. Gains immunity to all DMG while the skill is in use."
+        "unified": "Rapidly stabs the enemy, dealing ??? P.DMG. Upon a Crit Hit, stacks 1 Wound and resets cooldown. Per every stacked Wound, DMG dealt by Float Like a Butterfly is increased by 20%. Gains immunity to all DMG while the skill is in use."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Removes harmful effects from self and increases ATK by 205*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Critical Hit Chance by 500 for 15sec.",
-        "to": "Dispels negative effects from self and increases ATK by ??? for 20 sec and increases Crit Chance by 500. This effect cannot be dispelled."
+        "unified": "Dispels negative effects from self and increases ATK by ??? for [15sec->20 sec] and increases Crit Chance by 500. This effect cannot be dispelled."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Performs a series of attacks, dealing 126*(0.7+(0.3*Skill Level*Awakening Coefficient))+72.3% ATK Physical Damage 9 times, then finishes with a powerful thrust that deals 1132*(0.7+(0.3*Skill Level*Awakening Coefficient))651.5% ATK Physical Damage and knocks the enemy far away. The damage of this skill is increased by 20% per [Wound] stack, and all [Wound] stacks are consumed on the final hit.",
-        "to": "Inflicts ??? P.DMG upon enemy with a continuous attack. The last hit blows the enemy away."
+        "unified": "Inflicts ??? P.DMG upon enemy with a continuous attack. The last hit blows the enemy away."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On a Critical Hit, increases ATK by 40*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 10sec. This effect stacks up to 8 times.",
-        "to": "Upon a Crit Hit, ATK is increased by ??? for 10 sec. Can be stacked up to 8 times max."
+        "unified": "Upon a Crit Hit, ATK is increased by ??? for 10 sec. Can be stacked up to 8 times max."
       }
     }
   },
@@ -50,26 +46,22 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, but the maximum number of [Wound Stacks] is increased to 10.",
-        "to": "Mana cost is increased by 1 and Wound stack max is changed to 10. Deals 150% of ATK as extra DMG to enemies with 10 Wounds."
+        "unified": "Mana cost is increased by 1 and Wound stack max is changed to 10. Deals 150% of ATK as extra DMG to enemies with 10 Wounds."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but the Critical Hit Chance increase effect is replaced with an effect that increases Critical Damage by 65%, and damage dealt to bosses is increased by 30%.",
-        "to": "In exchange for 1 additional Mana Cost, Crit Chance effect is changed to a 100% Crit DMG boost. Also gains a 25% DMG boost towards Bosses."
+        "unified": "In exchange for 1 additional Mana Cost, Crit Chance effect is changed to a [65%->100%] Crit DMG boost. Also gains a [30%->25%] DMG boost towards Bosses."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "Gain 45 Physical Dodge per stack.",
-        "to": "When holding 5 stacks, takes 20% reduced DMG."
+        "unified": "When holding 5 stacks, takes 20% reduced DMG."
       }
     }
   },
@@ -78,8 +70,7 @@
       "name": "Wing of Lightning Flash",
       "hasChanges": true,
       "description": {
-        "from": "[Float Like a Butterfly] Increases DMG by {0}%, and reduces the target's P.Block Chance by 500 for 10 sec.",
-        "to": "[Float Like a Butterfly] Increases DMG by {0}% and reduces the target's P.Block chance by 500 for 10 sec."
+        "unified": "[Float Like a Butterfly] Increases DMG by {0}% and reduces the target's P.Block chance by 500 for 10 sec."
       },
       "values": {}
     },
@@ -87,8 +78,7 @@
       "name": "Medal of Swiftness",
       "hasChanges": true,
       "description": {
-        "from": "[Shooting Star] Increases DMG by {0}%, and adds 1 Wound per attack.",
-        "to": "[Shooting Star] DMG is increased by {0}% and upon Crit Hit, mana is recovered by 200."
+        "unified": "[Shooting Star] DMG is increased by {0}% and upon Crit Hit, mana is recovered by [(added) 200]."
       },
       "values": {
         "0": {
@@ -101,15 +91,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When using a skill, has a 10% chance to increase your Critical Damage by 7%. This effect stacks up to 10 times.",
-      "to": "Upon using a Skill, increases own Crit DMG by 10% for 10 sec. This effect can be stacked up to max 10 times."
+      "unified": "Upon using a Skill, increases own Crit DMG by [7%->10%] for 10 sec. This effect can be stacked up to max 10 times."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Each time a Critical Hit occurs, for 15 sec own Attack Speed is increased by {0} and Critical Damage is increased by {1}%. This effect stacks up to 8 times.",
-      "to": "Upon a Crit Hit, ATK Spd is increased by {0} and Crit DMG is increased by {1}% for 15 sec. Can be stacked up to 5 times max."
+      "unified": "Upon a Crit Hit, ATK Spd is increased by {0} and Crit DMG is increased by {1}% for 15 sec. Can be stacked up to [8->5] times max."
     },
     "values": {
       "0": {

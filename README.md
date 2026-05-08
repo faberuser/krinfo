@@ -12,8 +12,8 @@ Data and illustrations are stored in [kingsraid-data](https://github.com/faberus
 
 ### Prerequisites
 
--   [Bun](https://bun.sh/)
--   Git
+- [Bun](https://bun.sh/)
+- Git
 
 ### Installation
 
@@ -145,15 +145,16 @@ Create a `.env` file for local usage. See `.env.example` for all available optio
 
 ### Environment Variables:
 
--   `NEXT_PUBLIC_ENABLE_MODELS_VOICES`: Set to "true" to enable Models and Voices features (optional, default: false)
--   `NEXT_PUBLIC_BASE_PATH`: Base path for the application (e.g., "/kingsraid" for GitHub Pages) (optional)
--   `NEXT_STATIC_EXPORT`: Set to "true" when building for static export (optional, default: false)
--   `NEXT_PUBLIC_SITE_URL`: Site URL for metadata (optional)
--   `DOCKER_IMAGE`: Docker Compose's image, mostly for custom registry in case you want full build (optional, default: "ghcr.io/faberuser/kingsraid:latest")
--   `CONTAINER_NAME`: Docker Compose's container name (optional, default: "kingsraid")
--   `DOCKER_PORT`: Docker Compose's container port (optional, default: 3000)
+- `NEXT_PUBLIC_ENABLE_MODELS_VOICES`: Set to "true" to enable Models and Voices features (optional, default: false)
+- `NEXT_PUBLIC_BASE_PATH`: Base path for the application (e.g., "/kingsraid" for GitHub Pages) (optional)
+- `NEXT_STATIC_EXPORT`: Set to "true" when building for static export (optional, default: false)
+- `NEXT_PUBLIC_SITE_URL`: Site URL for metadata (optional)
+- `DOCKER_IMAGE`: Docker Compose's image, mostly for custom registry in case you want full build (optional, default: "ghcr.io/faberuser/kingsraid:latest")
+- `CONTAINER_NAME`: Docker Compose's container name (optional, default: "kingsraid")
+- `DOCKER_PORT`: Docker Compose's container port (optional, default: 3000)
 
 ## Known Bugs
 
--   There are several 3D models having face detached/wrong position
-    (Exported from AssetStudio, would appriciate if anyone know how to fix)
+- 3D models doesn't have face expressions.
+- There are several 3D models having face detached/wrong position
+  (Exported from AssetStudio, would appriciate if anyone know how to fix)

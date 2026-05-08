@@ -2,7 +2,7 @@
   "heroName": "Lakrak",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.478Z",
+  "generatedAt": "2026-05-08T11:43:35.405Z",
   "skills": {},
   "books": {},
   "perks_t3": {},
@@ -21,8 +21,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "[Experiment] success chance is increased by {0}%.\nOn [Experiment] success, Attack increases by {1}%, Attack Speed by {2}%, and damage dealt to non-hero enemies by {3}%. This effect stacks up to 3 times and cannot be dispelled.",
-      "to": "[Experiment] success chance increases by {0}%. On [Experiment] success, Attack increases by {1}%, Attack Speed increases by {2}%, and damage dealt to non-hero enemies increases by {3}%. This effect stacks up to 3 times and cannot be dispelled."
+      "unified": "[Experiment] success chance increases by {0}%. On [Experiment] success, Attack increases by {1}%, Attack Speed increases by {2}%, and damage dealt to non-hero enemies increases by {3}%. This effect stacks up to 3 times and cannot be dispelled."
     },
     "values": {}
   }
