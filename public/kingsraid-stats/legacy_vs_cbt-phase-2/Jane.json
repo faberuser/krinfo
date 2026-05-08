@@ -2,7 +2,7 @@
   "heroName": "Jane",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.566Z",
+  "generatedAt": "2026-05-08T11:43:35.466Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Deals ??? M.DMG to enemies in range, stunning them for 5 sec.",
-        "to": "Deals 361*(1+0.3*Skill Level)+277.6% of Attack Power damage to enemies within range and stuns them for 2sec."
+        "unified": "Deals damage to enemies within range and stuns them for [5 sec->2sec]."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Engraves a Mark on all enemies for 30 sec and deals ??? M.DMG over time. Enemies engraved with Mark takes 25% more M.DMG. This effect increases by 20% upon every use. This effect can be stacked up to max 5 times and is irremovable.",
-        "to": "Engraves [Mark of Death] on all enemies for 15 sec, dealing 9*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 6.9% ATK M.DMG every 1 sec and reducing M.DEF by 10%. If recast within 15 sec, the M.DEF reduction increases by 50% and stacks up to 5 times. The M.DEF reduction increase effect cannot be dispelled."
+        "unified": "Engraves [Mark of Death] on all enemies for [30 sec->15 sec], dealing M.DMG every 1 sec and reducing M.DEF by [(added) 10%]. If recast within 15 sec, the [M.DEF reduction increases by 50% and stacks up to 5 times->M.DMG taken increases by 25%, increasing by 20% upon every use up to 5 stacks]. The [M.DEF reduction increase->M.DMG boost] effect cannot be dispelled."
       }
     },
     "3": {
@@ -37,8 +35,7 @@
         "to": "4"
       },
       "description": {
-        "from": "Deals M.DMG to all enemies every sec for 15 sec, heals own HP equal to 100% of DMG dealt, and inflicts Stun on the hit target for 1 sec with a 10% chance. For the duration of Skill, gains immunity to CC. Against Marked targets, deals increased ??? M.DMG.",
-        "to": "Deals 106*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 81.4% ATK M.DMG every 1 sec to all enemies for 22 sec, and recovers HP equal to 50% of damage dealt. During the duration, reduces M.DMG taken by 11% for 4 allies with the lowest M.DEF, and deals additional 81.4% ATK M.DMG to enemies inflicted with [Mark of Death]."
+        "unified": "Deals M.DMG every 1 sec to all enemies for [15 sec->22 sec], and recovers HP equal to [100%->50%] of damage dealt. During the duration, [reduces M.DMG taken by 11% for 4 allies with the lowest M.DEF->gains immunity to CC], and deals additional M.DMG to enemies inflicted with [Mark of Death] [(removed) and inflicts Stun with a 10% chance]."
       }
     },
     "4": {
@@ -48,8 +45,7 @@
         "to": "300"
       },
       "description": {
-        "from": "Increases M.DEF of all allies. Upon taking fatal DMG, enters a coffin for 5 sec and heals HP equal to proportional to ATK + 6% of Max HP. While inside the coffin, Jane is not affected by ATK Spd effects, ignores All DMG, and deals M.DMG equal to 5% of Max HP to nearby enemies every sec.",
-        "to": "Increases M.DEF of the ally with the lowest M.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)). When taking fatal damage, enters [Coffin] state for 5 sec, restoring 197*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 153.7% ATK + 10% Max HP.\n\n[Coffin]: Unaffected by ATK Spd changes, becomes immune to all damage, and deals M.DMG equal to 5% of Max HP to nearby enemies every 1 sec."
+        "unified": "Increases M.DEF of [all allies->the ally with the lowest M.DEF] by [(added) 101*(0.7+(0.3*Skill Level*Awakening Coefficient))]. When taking fatal damage, enters [Coffin] state for 5 sec, restoring [ATK + 6% Max HP->197*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 153.7% ATK + 10% Max HP]. [Coffin]: Unaffected by ATK Spd changes, becomes immune to all damage, and deals M.DMG equal to 5% of Max HP to nearby enemies every 1 sec."
       }
     }
   },
@@ -58,37 +54,31 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Target takes 25% increased M.DMG for 10 sec.",
-        "to": "Recovers HP equal to 50% of damage dealt."
+        "unified": "Recovers HP equal to 50% of damage dealt."
       },
       "dark": {
-        "from": "In exchange for 1 additional Mana Cost, the skill has a 100% chance to draw the target in.",
-        "to": "Mana cost increases by 2000, but pulls the target toward you."
+        "unified": "Mana cost increases by [1 additional Mana Cost->2000], but pulls the target toward you."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Duration is reduced to 10 sec and DMG is boosted by 250%.",
-        "to": "Debuff duration is reduced to 10 sec, but damage is increased by 500%."
+        "unified": "Debuff duration is reduced to 10 sec, but damage is increased by [250%->500%]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by [40%->50%]."
       },
       "dark": {
-        "from": "Upon use, dispels negative effects of all allies.",
-        "to": "All allies additionally take 10% less Physical DMG."
+        "unified": "All allies additionally take 10% less Physical DMG."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "Upon activation, stun all enemies for 2 sec.",
-        "to": "When the effect triggers, stuns all enemies for 1 sec."
+        "unified": "When the effect triggers, stuns all enemies for [2 sec->1 sec]."
       }
     }
   },
@@ -97,8 +87,7 @@
       "name": "Funeral Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Funeral Rites] For 10 sec, reduces the target's CC Resist by 250 and M.Block by {0}.",
-        "to": "[Funeral Rites] reduces the target's CC Resist by 320 and Magic Block chance by {0} for 4 sec."
+        "unified": "[Funeral Rites] reduces the target's CC Resist by [250->320] and [M.Block->Magic Block chance] by {0} for [10 sec->4 sec]."
       },
       "values": {
         "0": {
@@ -111,8 +100,7 @@
       "name": "Death-imbued Cushion",
       "hasChanges": true,
       "description": {
-        "from": "[Mark of Death] Increases ATK by 5% and Crit DMG by {0}% for 20 sec when the marked enemy dies. This effect stacks up to 8 times.",
-        "to": "[Mark of Death] When a marked enemy dies, increases own ATK by 5% and Crit DMG by {0}% for 20 sec. Stacks up to 16 times."
+        "unified": "[Mark of Death] When a marked enemy dies, increases own ATK by 5% and Crit DMG by {0}% for 20 sec. Stacks up to [8->16] times."
       },
       "values": {}
     },
@@ -120,8 +108,7 @@
       "name": "Flowers of a Forgotten Dukedom",
       "hasChanges": true,
       "description": {
-        "from": "[Day of Ruin] DMG is increased by {0}% and with every DMG dealt, target's M.DEF is reduced by 5% for 5 sec. This effect can stack a max 10 times.",
-        "to": "[Day of Ruin] increases DMG by {0}% and reduces the target's M.DEF by 3% for 5 sec each time damage is dealt. This effect can stack up to 10 times."
+        "unified": "[Day of Ruin] increases DMG by {0}% and reduces the target's M.DEF by [5%->3%] for 5 sec each time damage is dealt. This effect can stack up to 10 times."
       },
       "values": {}
     },
@@ -129,8 +116,7 @@
       "name": "First Friend Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Rest in Peace] Upon activation, dispels all negative effects from all allies and reduces All DMG dealt on self by {0}% for 10 sec.",
-        "to": "[Rest in Peace] Sets cooldown to 45 sec, and after activation, reduces M.DMG taken by {0}% for 10 sec."
+        "unified": "[Rest in Peace] [Sets cooldown to 45 sec, and after activation, reduces M.DMG taken by {0}% for 10 sec->dispels all negative effects from all allies and reduces All DMG dealt on self by {0}% for 10 sec]."
       },
       "values": {
         "0": {
@@ -143,15 +129,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Each hit of Jane's attacks increase her ATK and Recovery Rate by 1% each. (Maximum stack number is 50)",
-      "to": "On hit, Attack and Healing increase by 1%. This effect stacks up to 35 times."
+      "unified": "On hit, Attack and [Recovery Rate->Healing] increase by 1%. This effect stacks up to [50->35] times."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals M.DMG equal to {0}% of ATK to nearby enemies and reduces their ATK by {1}% every sec. Additionally, increases DMG dealt against Non-Hero enemies of the ally with the highest ATK excluding self by {2}%. The DMG Boost effect is irremovable. When the Passive Skill is activated, recovers 30% of Mana.",
-      "to": "Deals M.DMG equal to {0}% of ATK every sec to nearby enemies, reduces their ATK by {1}%, and recovers HP equal to 100% of damage dealt."
+      "unified": "Deals M.DMG equal to {0}% of ATK every sec to nearby enemies, reduces their ATK by {1}%, and [recovers HP equal to 100% of damage dealt->increases DMG dealt against Non-Hero enemies of the ally with the highest ATK excluding self by {2}% and recovers 30% Mana when Passive triggers]."
     },
     "values": {
       "0": {
@@ -171,17 +155,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Unchanging Mind, Erekura for 10 sec, increasing Heal Rate of self by 50%. Every 0.5 sec, increases M.DMG all enemies take by 10% for 5 sec. This effect stacks up to 5 times. After 10 sec, consumes the stacks from the target to deal M.DMG per stack (x2 than usual).",
-      "to": "Summons the soul of Unchanging Mind, Erekura for 10sec, increasing own Heal Rate by 27%. Every 0.5sec, reduces M.DEF of all enemies by 3% for 5sec. This effect stacks up to 5 times. After 10sec, consumes stacks on the target to deal 160% of ATK M.DMG per stack."
+      "unified": "Summons the soul of Unchanging Mind, Erekura for 10sec, increasing own Heal Rate by [50%->27%]. Every 0.5sec, [reduces M.DEF of all enemies by 3%->increases M.DMG all enemies take by 10%] for 5sec. This effect stacks up to 5 times. After 10sec, consumes stacks on the target to deal M.DMG per stack."
     },
     "advancement": {
       "1": {
         "from": "Reduces activation requirements to 60.",
-        "to": "Reduces Skill Activation Requirements to 60."
+        "to": "Reduces Skill Activation Requirements to 60.",
+        "unified": "Reduces Skill Activation Requirements to 60."
       },
       "2": {
         "from": "Changes M.DMG Boost per stack to 20%.",
-        "to": "Changes M.DEF reduction per stack to 20%."
+        "to": "Changes M.DEF reduction per stack to 20%.",
+        "unified": "Changes [M.DMG Boost->M.DEF reduction] per stack to 20%."
       }
     }
   }

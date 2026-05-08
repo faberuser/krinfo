@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import { BossesLayoutClient } from "@/app/bosses/layout-client"
 
 export const metadata: Metadata = {
-	title: "Bosses - King's Raid",
+	title: "Bosses",
 	description: "Study boss skills, mechanics and strategies.",
 	openGraph: {
-		title: "Bosses - King's Raid",
+		title: "Bosses",
 		description: "Study boss skills, mechanics and strategies.",
 	},
 }

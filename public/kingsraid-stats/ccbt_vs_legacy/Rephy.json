@@ -2,27 +2,24 @@
   "heroName": "Rephy",
   "versionA": "ccbt",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.552Z",
+  "generatedAt": "2026-05-08T11:43:35.454Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores 108*(1+0.3Skill Level)+67.5% of Attack Power HP every 0.5 sec for 5 sec. This effect cannot be dispelled.",
-        "to": "Heals 4 allies with lowest HP 10% of Max HP, and heals extra ??? HP over 8 sec. This effect cannot be dispelled."
+        "unified": "[Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores HP every 0.5 sec for 5 sec->Heals 4 allies with lowest HP 10% of Max HP, and heals extra ??? HP over 8 sec]. This effect cannot be dispelled."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Removes harmful effects from all allies and increases their Magic Defense by 50(1+0.3Skill Level) for 6 sec.",
-        "to": "Dispels all negative effects. M.DEF is increased by ??? for 20 sec."
+        "unified": "[Removes harmful effects from all allies and increases their Magic Defense by 50(1+0.3Skill Level) for 6 sec->Dispels all negative effects. M.DEF is increased by ??? for 20 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 88(1+0.3Skill Level)+55.8% of Attack Power as Magic Damage to enemies within range 10 time(s), and reduces their Attack Speed by 25% for 10 sec.",
-        "to": "Deals a total of ??? M.DMG over 10 attacks to enemies within range. Hit enemies' ATK Spd is reduced by 25%."
+        "unified": "Deals a total of ??? M.DMG over [10 time(s)->10 attacks] to enemies within range. [and reduces their Attack Speed by 25% for 10 sec->Hit enemies' ATK Spd is reduced by 25%]."
       }
     },
     "4": {
@@ -32,8 +29,7 @@
         "to": null
       },
       "description": {
-        "from": "Every 7 sec, restores 1000 Mana and 264(1+0.3Skill Level)+165.3% of Attack Power HP to 1 ally with the lowest HP.",
-        "to": "Every 7 sec, an ally with the lowest Hp recovers 1 orb of mana and ??? HP."
+        "unified": "Every 7 sec, [restores 1000 Mana and HP to 1 ally with the lowest HP->an ally with the lowest Hp recovers 1 orb of mana and ??? HP]."
       }
     }
   },
@@ -42,8 +38,7 @@
       "skillName": "Salvation",
       "hasChanges": true,
       "IV": {
-        "from": "Increases CC Resist by 300 for 6 sec.",
-        "to": "CC Resist is increased by 250 for 20 sec."
+        "unified": "[Increases CC Resist by 300 for 6 sec->CC Resist is increased by 250 for 20 sec]."
       }
     }
   },
@@ -51,41 +46,34 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1000, and the effect now applies to all allies.",
-        "to": "Mana Cost is increased by 1 and skill effect range changes to all allies."
+        "unified": "Mana [cost->Cost] is increased by [1000->1] and [the effect now applies to all allies->skill effect range changes to all allies]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by [1000->1]."
       },
       "dark": {
-        "from": "Magic Defense is additionally increased by 13%.",
-        "to": "Increases additional M.DEF by 10% of own M.DEF."
+        "unified": "Increases additional M.DEF by [13%->10%] of own M.DEF."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Magic Damage taken by the target is increased by 25%.",
-        "to": "Each hit removes 250 mana from the target."
+        "unified": "Each hit [removes 250 mana from the target->(added) removes 250 mana from the target] [(removed) Magic Damage taken by the target is increased by 25%]."
       },
       "dark": {
-        "from": "Physical Damage taken by the target is increased by 25%.",
-        "to": "In exchange for 1 additional Mana Cost, Silence enemies in range for 1 sec."
+        "unified": "In exchange for 1 additional Mana Cost, Silence enemies in range for 1 sec [(removed) Physical Damage taken by the target is increased by 25%]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Cooldown is reduced by 2 sec.",
-        "to": "Uses the skill every 5 sec."
+        "unified": "Uses the skill every 5 sec [(removed) Cooldown is reduced by 2 sec]."
       },
       "dark": {
-        "from": "Additionally restores 500 Mana to the 2 allies with the highest Attack.",
-        "to": "Also supplies 1 orb of mana to the ally with the highest ATK."
+        "unified": "Also supplies 1 orb of mana to the ally with the highest ATK [(removed) Additionally restores 500 Mana to the 2 allies with the highest Attack]."
       }
     }
   },
@@ -94,8 +82,7 @@
       "name": "Haven of Souls",
       "hasChanges": true,
       "description": {
-        "from": "[Soulrush] Reduces Mana Cost by 1 and heals all allies' HP by {0}% of DMG.",
-        "to": "[Soulrush] Mana cost is reduced by 1 and heals all allies' HP by {0}% of DMG."
+        "unified": "[Soulrush] Mana cost is reduced by 1 and heals all allies' HP by {0}% of DMG."
       },
       "values": {}
     }
@@ -103,8 +90,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by 50%.",
-      "to": "Every 20 sec, an ally with the lowest HP turns invisible for {0} sec. An invisible ally becomes immune to P.DMG, and HP will not drop below 1%. MP Recovery per sec is increased to {1}%."
+      "unified": "Every 20 sec, an ally with the lowest HP turns invisible for {0} sec. An invisible ally becomes immune to P.DMG, and HP will not drop below 1%. MP Recovery per sec is increased to [50%->{1}%]."
     },
     "values": {}
   }

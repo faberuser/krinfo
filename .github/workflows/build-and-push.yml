@@ -1,9 +1,9 @@
 name: Build and Push Docker Image
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -40,7 +40,9 @@ jobs:
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           tags: ghcr.io/${{ github.repository }}:latest
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
-          cache-to: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && format('type=registry,ref=ghcr.io/{0}:buildcache,mode=max', github.repository) || '' }}
+          cache-to: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main')
+            && format('type=registry,ref=ghcr.io/{0}:buildcache,mode=max',
+            github.repository) || '' }}
           load: false
           provenance: false
           sbom: false

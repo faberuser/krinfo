@@ -2,20 +2,18 @@
   "heroName": "Baudouin",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.563Z",
+  "generatedAt": "2026-05-08T11:43:35.465Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Targets the ally with the lowest HP and allies nearby to heal ??? HP. Deals ??? M.DMG to enemies near the target, and reduces enemy ATK Spd by 25% for 10 sec.",
-        "to": "Heals the ally with the lowest current HP and nearby allies for 3478*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 564.5% ATK HP, deals 328*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 205.3% ATK M.DMG to nearby enemies, and reduces their ATK Spd by 25% for 10 sec."
+        "unified": "Heals the ally with the lowest current HP and nearby allies for ??? HP, deals ??? M.DMG to nearby enemies, and reduces their ATK Spd by 25% for 10 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals ??? M.DMG, inflicts knockback, and shackles the target enemy for 6 sec. Enemies inflicted by shackle take 25% increased M.DMG while the effect lasts.",
-        "to": "Deals 713*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 453.2% ATK M.DMG to an enemy, knocks them back, roots them for 6 sec, and increases M.DMG taken by 25% for 6 sec."
+        "unified": "Deals ??? M.DMG to an enemy, knocks them back, [roots them->shackles them] for 6 sec, and increases M.DMG taken by 25% for 6 sec."
       }
     },
     "3": {
@@ -25,15 +23,13 @@
         "to": "40"
       },
       "description": {
-        "from": "Grants Invincibility to all allies for 7 sec and heals ??? HP for the duration of skill.",
-        "to": "Grants all allies Invincibility for 7 sec and restores HP by 394*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 64% ATK every 1 sec."
+        "unified": "Grants all allies Invincibility for 7 sec and restores HP by ??? every 1 sec."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Each attack has a 20% chance of dealing ??? M.DMG to target and inflicting stun for 1.5 sec.",
-        "to": "On hit, has a 20% chance to deal 368*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 231.2% ATK M.DMG to the target and stun them for 0.9 sec."
+        "unified": "On hit, has a 20% chance to deal ??? M.DMG to the target and stun them for [1.5 sec->0.9 sec]."
       }
     }
   },
@@ -42,30 +38,25 @@
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "If there is only 1 enemy, damage dealt is increased by 100%."
+        "unified": "If there is only 1 enemy, damage dealt is increased by 100% [(removed) Mana cost is reduced by 1]."
       },
       "dark": {
-        "from": "Number of targets changes to 2.",
-        "to": "Mana cost is increased by 1000, but the number of targets is increased by 3."
+        "unified": "Mana cost is increased by 1000, but the number of targets is increased by [2->3]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Invincibility duration is increased by 1.5 sec.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by 1000 [(removed) Invincibility duration is increased by 1.5 sec]."
       },
       "dark": {
-        "from": "In exchange for 2 additional Mana Cost and a 3 sec reduction of Invincibility duration, all allies gain 50% ATK.",
-        "to": "Mana cost is increased by 3000 and Invincibility duration is reduced by 3 sec, but all allies’ Attack is increased by 50% for 10 sec and cooldown is reduced by 15 sec."
+        "unified": "Mana cost is increased by [2000->3000] and Invincibility duration is reduced by 3 sec, but all allies’ Attack is increased by 50% for 10 sec and cooldown is reduced by [(added) 15 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "Attack range is boosted by 20%.",
-        "to": "Maximum Attack increase stacks are increased by 5."
+        "unified": "Maximum Attack increase stacks are increased by 5 [(removed) Attack range is boosted by 20%]."
       }
     }
   },
@@ -74,8 +65,7 @@
       "name": "Last Chapter of the Bible",
       "hasChanges": true,
       "description": {
-        "from": "[Spear of Light] Gains Immunity to CC for the skill's duration and increases M.Weakness of the target by {0}% for 10 sec.",
-        "to": "[Spear of Light] Gains Immunity to CC for the skills duration and increases M.Weakness of the target by {0}% for 10 sec."
+        "unified": "[Spear of Light] Gains Immunity to CC for the skill's duration and increases M.Weakness of the target by {0}% for 10 sec."
       },
       "values": {}
     },
@@ -83,8 +73,7 @@
       "name": "Well-Worn Rosary",
       "hasChanges": true,
       "description": {
-        "from": "[Holy Sanctuary] ATK is increased by 25% for the duration of skill, and recovers {0} Mana per sec.",
-        "to": "[Holy Sanctuary] Increases ATK by 25% and recovers {0} Mana every sec for the duration of Skill."
+        "unified": "[Holy Sanctuary] Increases ATK by 25% and recovers {0} Mana every sec for the duration of Skill."
       },
       "values": {}
     }
@@ -92,8 +81,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increasing the casting speed of all skills, and upon every skill use, increases ATK by {0}% and DEF by {1}%. This effect can stack up to 7 times.",
-      "to": "Increases own Skill activation speed, and each time a skill is used, increases all allies' ATK by {0}% and M.DEF by {1}%. This effect stacks up to 7 times."
+      "unified": "Increases own Skill activation speed, and each time a skill is used, increases all allies' ATK by {0}% and [DEF->M.DEF] by {1}%. This effect stacks up to 7 times."
     },
     "values": {
       "0": {
@@ -109,13 +97,13 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of God's Book, Genesis, increasing the number of targets of normal attacks to 2 for 10 sec, healing HP of all allies by ??? and dispelling negative effects every 2 sec.",
-      "to": "Summons the soul of God’s Book, Genesis for 10sec, increasing the number of targets of Normal Attacks to 2. Every 2sec, heals all allies for 400% of ATK and dispels negative effects."
+      "unified": "Summons the soul of God’s Book, Genesis for 10sec, increasing the number of targets of Normal Attacks to 2. Every 2sec, heals all allies for ??? and dispels negative effects."
     },
     "advancement": {
       "1": {
         "from": "Changes Skill Activation requirements of Soul Weapon to 4.",
-        "to": "Changes Skill Activation Requirements of the Soul Weapon to 4."
+        "to": "Changes Skill Activation Requirements of the Soul Weapon to 4.",
+        "unified": "Changes Skill Activation Requirements of the Soul Weapon to 4."
       }
     }
   }

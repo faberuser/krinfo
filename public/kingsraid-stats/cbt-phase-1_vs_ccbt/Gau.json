@@ -2,7 +2,7 @@
   "heroName": "Gau",
   "versionA": "cbt-phase-1",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.487Z",
+  "generatedAt": "2026-05-08T11:43:35.412Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "8"
       },
       "description": {
-        "from": "Deals 304*(0.7+(0.3*Skill Level*Awakening Coefficient))+192.2% ATK Physical DMG to enemies within range 2 times. The first hit knocks enemies down for 1.5sec. This skill applies Defense Penetration 800 higher.",
-        "to": "Deals 304*(1+0.3Skill Level)+192.2% of Attack Power as Physical Damage to enemies within range 2 times. The first hit knocks enemies down for 1.8 sec and reduces their Defense Penetration by 300 for 4 sec."
+        "unified": "Deals of Attack Power as Physical Damage to enemies within range 2 times. The first hit knocks enemies down for [1.5 sec->1.8 sec] and reduces their Defense Penetration by [(added) 300 for 4 sec]. This skill applies Defense Penetration [(removed) 800 higher]."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Removes all harmful effects from all allies and increases their Attack by 252*(0.7+(0.3*Skill Level*Awakening Coefficient)), Attack Speed by 10%, and Physical Defense by 91*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 8sec.",
-        "to": "Removes all harmful effects from all allies and increases their Attack by 252(1+0.3Skill Level), Attack Speed by 36%, and Physical Defense by 91(1+0.3Skill Level) for 6 sec."
+        "unified": "Removes all harmful effects from all allies and increases their Attack by 252(1+0.3Skill Level), Attack Speed by [10%->36%], and Physical Defense by 91(1+0.3Skill Level) for [8 sec->6 sec]."
       }
     },
     "3": {
@@ -37,15 +35,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Charges forward and deals 161*(0.7+(0.3*Skill Level*Awakening Coefficient))+80.9% ATK Physical DMG to nearby enemies 12 times. While casting, the caster is immune to status effects. The final hit freezes enemies for 2sec and increases Physical DMG taken by 16% for 10sec.",
-        "to": "Charges forward and deals 161(1+0.3Skill Level)+80.9% of Attack Power as Physical Damage 12 times to nearby enemies. Cannot be affected by status ailments while casting, and the final hit freezes enemies for 2.4 sec."
+        "unified": "Charges forward and deals of Attack Power as Physical Damage 12 times to nearby enemies. Cannot be affected by status ailments while casting, and the final hit freezes enemies for [2 sec->2.4 sec] [(removed) and increases Physical DMG taken by 16% for 10sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Every second, Attack increases by 16*(0.7+(0.3*Skill Level*Awakening Coefficient)), Status Resistance by 10, and damage dealt to non-hero enemies by 1%. This effect stacks up to 20 times.",
-        "to": "Every second, Attack increases by 16(1+0.3Skill Level), Status Resistance by 30, and damage dealt to non-hero enemies by 1.5%. This effect stacks up to 20 times. At 20 or more stacks, Normal Attack damage increases by 100%."
+        "unified": "Every second, Attack increases by 16(1+0.3Skill Level), Status Resistance by [10->30], and damage dealt to non-hero enemies by [1%->1.5%]. This effect stacks up to 20 times. At 20 or more stacks, Normal Attack damage increases by [(added) 100%]."
       }
     }
   },
@@ -54,15 +50,13 @@
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "ATK increase amount increases by 50%.",
-        "to": "During the duration, Attack Speed is additionally increased by 24%."
+        "unified": "During the duration, Attack Speed is additionally increased by [(added) 24%] [(removed) ATK increase amount increases by 50%]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Cooldown is reduced by 3 sec.",
-        "to": "Cooldown is reduced by 2 sec."
+        "unified": "Cooldown is reduced by [3 sec->2 sec]."
       }
     }
   },
@@ -81,8 +75,7 @@
       "name": "Barbarian Mug",
       "hasChanges": true,
       "description": {
-        "from": "[Vortex] increases DMG by {0}%, and its last hit increases the P.DMG the target takes by {1}% for 10 sec.",
-        "to": "[Vortex] increases DMG by 50%, and its last hit increases the P.DMG the target takes by {0}% for 10 sec."
+        "unified": "[Vortex] increases DMG by [{0}%->50%], and its last hit increases the P.DMG the target takes by [{1}%->{0}%] for 10 sec."
       },
       "values": {
         "0": {
@@ -99,8 +92,7 @@
       "name": "Snowdrop Bracelet",
       "hasChanges": true,
       "description": {
-        "from": "[Enrage] Changes the max number of stacks to 40 and upon gaining 30 stacks, increases own DEF Penetration by {0}.",
-        "to": "[Enrage] Changes the max number of stacks to 30 and upon gaining 30 stacks, increases own DEF Penetration by {0}."
+        "unified": "[Enrage] Changes the max number of stacks to [40->30] and upon gaining 30 stacks, increases own DEF Penetration by {0}."
       },
       "values": {
         "0": {
@@ -113,15 +105,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Recovers HP every second equal to 10% of ATK, and for every 1% HP lost, all damage taken is reduced by 0.5%.",
-      "to": "Recovers HP each second equal to 10% of Attack Power, and for every 1% HP lost, all damage taken is reduced by 0.6%."
+      "unified": "Recovers HP each second equal to 10% of Attack Power, and for every 1% HP lost, all damage taken is reduced by [0.5%->0.6%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Max HP increases by {0}%, and Normal Attacks have a 15% chance to deal additional Physical Damage equal to {1}% of Attack Power and freeze the target for 1 sec.",
-      "to": "Max HP increases by {0}%, and Normal Attacks have a 15% chance to deal additional Physical Damage equal to {1}% of Attack Power and freeze the target for 2 sec."
+      "unified": "Max HP increases by {0}%, and Normal Attacks have a 15% chance to deal additional Physical Damage equal to {1}% of Attack Power and freeze the target for [1 sec->2 sec]."
     },
     "values": {
       "0": {

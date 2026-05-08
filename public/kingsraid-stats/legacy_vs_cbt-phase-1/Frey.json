@@ -2,7 +2,7 @@
   "heroName": "Frey",
   "versionA": "legacy",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.584Z",
+  "generatedAt": "2026-05-08T11:43:35.480Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "12"
       },
       "description": {
-        "from": "Dispels negative effects from the ally with the lowest HP, healing HP of the target by ??? and HP of allies nearby equal to 40% of Heal Rate.",
-        "to": "Dispels harmful effects from the ally with the lowest current HP and restores HP 529*(0.7+(0.3*Skill Level*Awakening Coefficient))+330.6% ATK 3times, and when healing the target, nearby allies are additionally healed for 40% of the healing amount."
+        "unified": "Dispels harmful effects from the ally with the lowest current HP and restores HP 3times, and when healing the target, nearby allies are additionally healed for 40% of the healing amount."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Casts a shield on all allies that absorbs ??? DMG for 12 sec. While the shield is in effect, the target increases its ATK by 20%, Heal Rate by 50% and gains immunity to CC.",
-        "to": "Grants all allies a shield that absorbs 2080*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 800.6% of ATK damage for 4sec. While the shield is active, Healing Power is increased by 120% and Status Resistance is increased by 800."
+        "unified": "Grants all allies a shield that absorbs damage for [12 sec->4sec]. While the shield is active, Healing Power is increased by [50%->120%] and Status Resistance is increased by 800. [(removed) ATK by 20%, CC immunity]"
       }
     },
     "3": {
@@ -37,8 +35,7 @@
         "to": "20"
       },
       "description": {
-        "from": "Attacks the target and its nearby enemies 6 times, dealing up to ??? M.DMG. 500 additional Crit Chance applies to this Skill. Hit targets will be blinded for 6 sec, and take 25% increased All DMG for 10 sec.",
-        "to": "Deals 177*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 110.8% of ATK Magic DMG to the target and nearby enemies 6times, then inflicts Blind for 2sec. This skill is applied with an increased Critical Rate of 800."
+        "unified": "Deals Magic DMG to the target and nearby enemies 6times, then inflicts Blind for [6 sec->2sec]. This skill is applied with an increased Critical Rate of [500->800]. [(removed) 25% increased All DMG for 10 sec]"
       }
     },
     "4": {
@@ -48,8 +45,7 @@
         "to": "14"
       },
       "description": {
-        "from": "Reduces All DMG taken by 15%. At the beginning of each battle, and every 15 sec, increases M.DEF of 1 ally with the lowest HP by ??? for 10 sec and heals HP of the target by 15% for the duration of Skill.",
-        "to": "Every 20sec, restores 14% of Max HP to the 2 allies with the lowest current HP, and increases their Magic DEF by 60*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec."
+        "unified": "Every 20sec, restores [ (added) 14% of Max HP] to the 2 allies with the lowest current HP, and increases their Magic DEF by [???->60*(0.7+(0.3*Skill Level*Awakening Coefficient))] for [10 sec->15sec]. [(removed) reduces all DMG taken by 15%]"
       }
     }
   },
@@ -58,45 +54,37 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "In exchange for 1 additional Mana Cost, the skill targets 2 allies.",
-        "to": "Mana cost increases by 1000, but the target count changes to 2."
+        "unified": "Mana cost increases by [1 additional Mana Cost->1000], but the target count changes to 2."
       },
       "dark": {
-        "from": "Healed allies take 25% reduced M.DMG for 10 sec.",
-        "to": "Healed allies take 40% less Magic DMG for 10 sec."
+        "unified": "Healed allies take 40% less Magic DMG for 10 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Shield is increased by 40%.",
-        "to": "Shield amount increases by 50%."
+        "unified": "Shield amount increases by [40%->50%]."
       },
       "dark": {
-        "from": "Reduces Cooldown by 3 sec.",
-        "to": "Reduces Cooldown by 2 sec."
+        "unified": "Reduces Cooldown by [3 sec->2 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "In exchange for 1 additional Mana Cost, DMG is increased by 80%.",
-        "to": "Increases the target’s Physical DMG taken by 10% for 10 sec."
+        "unified": "Increases the target’s Physical DMG taken by 10% for 10 sec. [(removed) 1 additional Mana Cost, DMG increased by 80%]"
       },
       "dark": {
-        "from": "Changes the target to random enemies.",
-        "to": "Increases the target’s Magic DMG taken by 10% for 10 sec."
+        "unified": "Increases the target’s Magic DMG taken by 10% for 10 sec. [(removed) Changes the target to random enemies]"
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces DMG the target takes from Non-Hero enemies by 30% for the duration of Skill.",
-        "to": "Activates [Goddess Grace] additionally at the start of every battle."
+        "unified": "Activates [Goddess Grace] additionally at the start of every battle. [(removed) Reduces DMG the target takes from Non-Hero enemies by 30%]"
       },
       "dark": {
-        "from": "Number of targets changes to 2.",
-        "to": "Magic DMG taken by Frey is reduced by 20%."
+        "unified": "Magic DMG taken by Frey is reduced by 20%. [(removed) Number of targets changes to 2]"
       }
     }
   },
@@ -105,8 +93,7 @@
       "name": "Miraculous Medal",
       "hasChanges": true,
       "description": {
-        "from": "[Blessings of Light] Increases shield amount by 50% and recovers {0} Mana every second for 4 sec.",
-        "to": "[Blessings of Light] Increases the shield amount by 50% and recovers {0} Mana every sec for 4 sec."
+        "unified": "[Blessings of Light] Increases the shield amount by 50% and recovers {0} Mana every sec for 4 sec."
       },
       "values": {}
     },
@@ -114,8 +101,7 @@
       "name": "Forgotten Arbiter's Feather",
       "hasChanges": true,
       "description": {
-        "from": "[Heaven's Vengeance] Target takes 20% increased M.DMG for 10 sec, and Blind duration is increased by {0} sec.",
-        "to": "[Heaven’s Vengeance] increases the target’s M.DMG taken by 20% for 10 sec and extends Blind duration by {0} sec."
+        "unified": "[Heaven’s Vengeance] increases the target’s M.DMG taken by 20% for 10 sec and extends Blind duration by {0} sec."
       },
       "values": {
         "0": {
@@ -128,8 +114,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 8 sec, heals 4 allies with the lowest HP by {0}% of own ATK, and increases Crit Chance by 300 and Crit DMG by {1}% for the ally with the highest ATK for 8 sec.",
-      "to": "Every 8 sec, heals the 4 allies with the lowest current HP by {0}% of ATK, and increases the Critical Rate of the 4 allies with the highest ATK by 200, and Critical DMG by {1}% for 8 sec."
+      "unified": "Every 8 sec, heals the 4 allies with the lowest current HP by {0}% of ATK, and increases the Critical Rate of the 4 allies with the highest ATK by [300->200], and Critical DMG by {1}% for 8 sec."
     },
     "values": {
       "1": {

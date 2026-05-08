@@ -2,7 +2,7 @@
   "heroName": "Frey",
   "versionA": "ccbt",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.516Z",
+  "generatedAt": "2026-05-08T11:43:35.433Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "5"
       },
       "description": {
-        "from": "Dispels harmful effects from the ally with the lowest current HP and restores HP 529*(1+0.3*Skill Level)+330.6% ATK 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount.",
-        "to": "Dispels harmful effects from the ally with the lowest current HP and restores HP 1159*(0.7+(0.3*Skill Level*Awakening Coefficient))+188.1% ATK 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount."
+        "unified": "Dispels harmful effects from the ally with the lowest current HP and restores HP 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Grants all allies a shield that absorbs 1080*(1+0.3*Skill Level)+675.6% ATK damage for 7 sec. While the shield lasts, the target’s ATK increases by 25%, Healing Power by 65%, and Status Resistance by 600.",
-        "to": "Grants a shield to 4 ally with the highest damage dealt, absorbing 795*(0.7+(0.3*Skill Level*Awakening Coefficient))+129% ATK damage for 16 sec. While the shield is active, Healing Rate increases by 11% and CC Resistance increases by 100."
+        "unified": "Grants a shield to [4 (added)] ally with the highest damage dealt, absorbing ATK damage for [7 sec->16 sec]. While the shield is active, Healing Rate increases by [65%->11%] and CC Resistance increases by [600->100]."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 177*(1+0.3*Skill Level)+110.8% ATK Magic DMG to the target and nearby enemies 6 times, then inflicts Blind for 3.5 sec, and increases Magic DMG taken by 25% for 10 sec. This skill applies Critical Rate 500 higher.",
-        "to": "Deals 177*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 110.8% of ATK Magic DMG to the target and nearby enemies 6times, then inflicts Blind for 2sec. This skill is applied with an increased Critical Rate of 800."
+        "unified": "Deals Magic DMG to the target and nearby enemies 6times, then inflicts Blind for [3.5 sec->2sec]. This skill is applied with an increased Critical Rate of [500->800]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Magic DMG taken is reduced by 15%.\nAt the start of each battle or every 14 sec, restores 15% of Max HP to the 1 allies with the lowest current HP, and increases their Magic DEF by 60*(1+0.3*Skill Level) for 7 sec.",
-        "to": "For 15 sec, heals 2 allies with the lowest current HP for 1.5% of Max HP 10 times, and increases Magic DEF by 157+(0.3*Skill Level*Awakening Coefficient)."
+        "unified": "For 15 sec, heals 2 allies with the lowest current HP for 1.5% of Max HP 10 times, and increases Magic DEF."
       }
     }
   },
@@ -50,37 +46,31 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Healed allies take 25% less Magic DMG for 10 sec.",
-        "to": "Healed allies take 40% less Magic DMG for 10 sec."
+        "unified": "Healed allies take [25%->40%] less Magic DMG for 10 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Reduces Cooldown by 3 sec.",
-        "to": "Reduces Cooldown by 2 sec."
+        "unified": "Reduces Cooldown by [3 sec->2 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 1000 and damage increases by 80%.",
-        "to": "Increases the target’s Physical DMG taken by 10% for 10 sec."
+        "unified": "Increases the target’s Physical DMG taken by [10% (added)] for 10 sec."
       },
       "dark": {
-        "from": "Changes the target to random enemies.",
-        "to": "Increases the target’s Magic DMG taken by 10% for 10 sec."
+        "unified": "Increases the target’s Magic DMG taken by [10% (added)] for 10 sec."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces DMG the target takes from Non-Hero enemies by 40% for the duration of Skill.",
-        "to": "Activates [Goddess Grace] additionally at the start of every battle."
+        "unified": "Activates [Goddess Grace] additionally at the start of every battle."
       },
       "dark": {
-        "from": "Number of targets changes to 2.",
-        "to": "Magic DMG taken by Frey is reduced by 20%."
+        "unified": "Magic DMG taken by Frey is reduced by [20% (added)]."
       }
     }
   },
@@ -99,8 +89,7 @@
       "name": "Forgotten Arbiter's Feather",
       "hasChanges": true,
       "description": {
-        "from": "[Heaven’s Vengeance] increases the target’s M.DMG taken by 20% for 10 sec and extends Blind duration by {0} sec.",
-        "to": "[Heaven's Vengeance] changes the attack target to a random target and increases Blind duration by {0} sec."
+        "unified": "[Heaven's Vengeance] changes the attack target to a random target and increases Blind duration by {0} sec."
       },
       "values": {
         "0": {
@@ -113,8 +102,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 8 sec, heals the 4 allies with the lowest current HP by {0}% of ATK, and increases the Critical Rate of the 4 allies with the highest ATK by 200, and Critical DMG by {1}% for 8 sec.",
-      "to": "Every 8sec, heals 4 allies with the lowest current HP for {0}% of ATK, and increases the Critical Rate by 160 and Critical DMG by {1}% of 4 allies with the highest ATK for 8 sec."
+      "unified": "Every 8sec, heals 4 allies with the lowest current HP for {0}% of ATK, and increases the Critical Rate by [200->160] and Critical DMG by {1}% of 4 allies with the highest ATK for 8 sec."
     },
     "values": {
       "0": {

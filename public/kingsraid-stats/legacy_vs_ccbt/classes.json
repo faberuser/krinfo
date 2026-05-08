@@ -1,0 +1,15 @@
+{
+  "versionA": "legacy",
+  "versionB": "ccbt",
+  "generatedAt": "2026-05-08T12:23:51.123Z",
+  "classes": {
+    "Archer": {
+      "Mortal Wound": {
+        "hasChanges": true,
+        "description": {
+          "unified": "On Critical Hit, reduces the enemy’s Recovery by 50% [ (added) for 10 seconds] and applies Physical DoT equal to 20% of Attack every second. This effect does not stack with the same effect from other allies."
+        }
+      }
+    }
+  }
+}

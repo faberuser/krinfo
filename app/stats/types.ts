@@ -42,9 +42,22 @@ export interface StatsClientProps {
 	runesMap: Record<string, RuneEntry[]>
 	classesMap: Record<string, Record<string, ClassData>>
 	heroesMap: Record<string, Record<string, HeroData>>
+	classesPairMap: Record<string, ClassesComparison>
 }
 
-export type TextDiff = { from: string | null; to: string | null }
+export type TextDiff = { from?: string | null; to?: string | null; unified?: string }
+
+export interface ClassPerkEntry {
+	hasChanges: boolean
+	description?: TextDiff
+}
+
+export interface ClassesComparison {
+	versionA: string
+	versionB: string
+	generatedAt: string
+	classes: Record<string, Record<string, ClassPerkEntry>>
+}
 
 export interface HeroComparison {
 	heroName: string

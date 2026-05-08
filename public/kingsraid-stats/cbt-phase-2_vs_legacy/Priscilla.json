@@ -2,20 +2,18 @@
   "heroName": "Priscilla",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.466Z",
+  "generatedAt": "2026-05-08T11:43:35.398Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 625*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 306.5% of ATK P.DMG to enemies in a frontal area and stuns them for 0.6sec. This attack is guaranteed to Crit.",
-        "to": "Deals ??? P.DMG to frontal enemies in range and stuns them for 1 sec. This attack always inflicts a Crit Hit."
+        "unified": "Deals P.DMG to frontal enemies in range and stuns them for [0.6 sec->1 sec]. This attack always inflicts a Crit Hit."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Removes negative effects from self and 3allies with the highest ATK, and grants [Assault] for 10sec.\n\n[Assault]: Increases ATK by 15% of Priscilla’s ATK + 55*(0.7+(0.3*Skill Level*Awakening Coefficient)).",
-        "to": "For 20 sec, places Priscilla and an ally with the highest ATK in 'Coordination' state, and dispels Negative Effects. Priscilla and the ally in Coordination State get an ATK boost equal to 15% of Priscilla's ATK + ???."
+        "unified": "For 20 sec, places Priscilla and an ally with the highest ATK in 'Coordination' state, and dispels Negative Effects. Priscilla and the ally in Coordination State get an ATK boost equal to 15% of Priscilla's ATK + ???."
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 789*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 499.8% of ATK P.DMG to enemies in a circular area and pulls them toward self. If under [Assault], increases P.DMG taken by 40% for 10sec.",
-        "to": "Deals ??? P.DMG to nearby enemies in a circular range and draws them towards herself. If activated while in the [Coordination] state, hit enemies take 30% extra P.DMG and M. DMG for 10 sec."
+        "unified": "Deals P.DMG to nearby enemies in a circular range and draws them towards herself. If activated while in the [Coordination] state, hit enemies take [40% P.DMG->30% extra P.DMG and M. DMG] for 10 sec."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases ATK by 192*(0.7+(0.3*Skill Level*Awakening Coefficient)) and DEF Penetration by 160.",
-        "to": "Own ATK is increased by ??? , and Penetration is increased by 100."
+        "unified": "Own ATK is increased by ??? , and Penetration is increased by [160->100]."
       }
     }
   },
@@ -46,8 +42,7 @@
       "skillName": "Weapon Mastery",
       "hasChanges": true,
       "IV": {
-        "from": "Crit DMG is increased by 16 %.",
-        "to": "Crit DMG is increased by 30%."
+        "unified": "Crit DMG is increased by [16%->30%]."
       }
     }
   },
@@ -55,19 +50,16 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Changes Stun duration to 1.8 sec.",
-        "to": "Stun duration is increased by 2 sec."
+        "unified": "Stun duration is increased by [1.8 sec->2 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Increases Mana Cost by 1000, but increases duration by 5 sec.",
-        "to": "Crit DMG is increased by 80%."
+        "unified": "Crit DMG is increased by 80%."
       },
       "dark": {
-        "from": "While in [Assault], on Normal Attack, increases the target’s DMG taken by 25% for 1 sec.",
-        "to": "While in Co-Op state, auto attacks increase the target's received DMG from all sources by 30%."
+        "unified": "While in Co-Op state, auto attacks increase the target's received DMG from all sources by [25%->30%]."
       }
     }
   },
@@ -76,8 +68,7 @@
       "name": "Weight of Fierce Attack",
       "hasChanges": true,
       "description": {
-        "from": "[Vital Strike] Increases DMG by 50%, and for 10 sec, reduces the target's P.Block Chance by {0}.",
-        "to": "[Vital Strike] Increases DMG by 50%, and for 10 sec, reduces the target's P.Block chance by {0}."
+        "unified": "[Vital Strike] Increases DMG by 50%, and for 10 sec, reduces the target's P.Block chance by {0}."
       },
       "values": {
         "0": {
@@ -90,8 +81,7 @@
       "name": "Fancy Tea Set",
       "hasChanges": true,
       "description": {
-        "from": "[Coordination] Increases ATK Boost by {0}% and reduces skill cooldown of the ally with the highest ATK by 20%.",
-        "to": "[Coordination] Increases ATK Boost by {0}% and reduces Cooldown of the Hero with the highest ATK by 30%."
+        "unified": "[Coordination] Increases ATK Boost by {0}% and reduces Cooldown of the Hero with the highest ATK by [20%->30%]."
       },
       "values": {
         "0": {
@@ -104,8 +94,7 @@
       "name": "Magical Stone of Gravity",
       "hasChanges": true,
       "description": {
-        "from": "[Turbulent Dance] Increases DMG by {0}% and Stuns the target for 1.8 sec.",
-        "to": "[Turbulent Dance] DMG is increased by {0}% and target is inflicted by Stun for 3 sec."
+        "unified": "[Turbulent Dance] DMG is increased by {0}% and target is inflicted by Stun for [1.8 sec->3 sec]."
       },
       "values": {
         "0": {
@@ -118,8 +107,7 @@
       "name": "Beginning of Turbulence",
       "hasChanges": true,
       "description": {
-        "from": "[Weapon Mastery] Increases ATK Boost by 50% and increases own P.DEF by {0}%.",
-        "to": "[Weapon Mastery] Increases ATK boost by 50% and All DEF for self by {0}%."
+        "unified": "[Weapon Mastery] Increases ATK boost by 50% and All DEF for self by {0}%."
       },
       "values": {
         "0": {
@@ -132,15 +120,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Increases all allies’ Attack by 3% of your Attack, and increases all allies’ Physical Defense by 3% of your Physical Defense.",
-      "to": "Increase all allies' ATK and P.DEF by 3% of own ATK and P.DEF."
+      "unified": "Increase all allies' ATK and P.DEF by 3% of own ATK and P.DEF."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Upon hitting enemies with a Skill, reduces the Cooldown of the used Skill by {0} sec per enemy hit, and increases ATK Spd by 2% for 5 sec. ATK Spd increase stacks up to 10 times.",
-      "to": "When attacking the enemy with [Vital Strike] or [Turbulent Dance], per every hit enemy, corresponding skill's cooldown is reduced by {0} sec and ATK Spd is increased by 50 for 5 sec. ATK Spd boost can be stacked up to 10 times max."
+      "unified": "When attacking the enemy with [Vital Strike] or [Turbulent Dance], per every hit enemy, corresponding skill's cooldown is reduced by {0} sec and ATK Spd is increased by [2%->50] for 5 sec. ATK Spd boost can be stacked up to 10 times max."
     },
     "values": {
       "0": {
@@ -152,17 +138,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the Soul of Tumultuous Dance, Excilius for 12sec, increasing ATK of self and 3allies with the highest ATK by 20%, and Crit DMG by 32%. The 3allies with the highest ATK additionally gain immunity to CC for 5sec.",
-      "to": "Summons the Soul of Tumultuous Dance, Excilius for 12 sec, increasing ATK of self and the ally with the highest ATK by 40% and Crit DMG by 40%. Additionally grants immunity to CC effect to an ally with the highest ATK."
+      "unified": "Summons the Soul of Tumultuous Dance, Excilius for 12 sec, increasing ATK of self and [3 allies->the ally] with the highest ATK by [20%->40%] and Crit DMG by [32%->40%]. Additionally grants immunity to CC effect to [3 allies->an ally] with the highest ATK."
     },
     "advancement": {
       "1": {
         "from": "Reduces Skill Activation Requirements by 4 sec.",
-        "to": "Reduces Skill Activation requirements by 4 sec."
+        "to": "Reduces Skill Activation requirements by 4 sec.",
+        "unified": "Reduces Skill Activation requirements by 4 sec."
       },
       "2": {
         "from": "For the duration, increases DMG dealt by 3allies with the highest ATK by 14%.",
-        "to": "For the duration of Skill, increases DMG dealt by the ally with the highest ATK by 30%."
+        "to": "For the duration of Skill, increases DMG dealt by the ally with the highest ATK by 30%.",
+        "unified": "For the duration of Skill, increases DMG dealt by the [3 allies->ally] with the highest ATK by [14%->30%]."
       }
     }
   }

@@ -2,7 +2,7 @@
   "heroName": "Maria",
   "versionA": "legacy",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.589Z",
+  "generatedAt": "2026-05-08T11:43:35.482Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -15,29 +15,25 @@
         "to": "2"
       },
       "description": {
-        "from": "Deals ??? M.DMG to enemies in frontal range and pushes them back. Reduces hit enemies' ATK Spd by 250 and M.DEF by 30% for 15 sec. Deals additional ??? M.DMG to Non-Hero enemies.",
-        "to": "Deals 446*(0.7+(0.3*Skill Level*Awakening Coefficient))+186.1% ATK Magic DMG to enemies in a frontal area 3 times, pushing them back, and reduces their ATK Spd by 15% and Magic DEF by 10% for 4sec. Against non-hero enemies, each hit deals additional 446*(0.7+(0.3*Skill Level*Awakening Coefficient))+186.1% ATK Magic DMG."
+        "unified": "Deals Magic DMG to enemies in a frontal area 3 times, pushing them back, and reduces their ATK Spd by [250->15%] and Magic DEF by [30%->10%] for [15->4]sec. Against non-hero enemies, each hit deals additional Magic DMG."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals ??? M.DMG to 2 enemies, and shackles them for 6 sec. Hit enemies will take ??? M.DMG over 6 sec and take 30% increased M.DMG for the duration of Skill.",
-        "to": "Deals 608*(0.7+(0.3*Skill Level*Awakening Coefficient))+253.4% ATK Magic DMG to 2 enemy and inflicts Bind for 2sec. The damaged enemy takes 18% ATK Magic DoT every 0.5sec for 6sec, and Magic DMG taken is increased by 20%."
+        "unified": "Deals Magic DMG to 2 enemy and inflicts Bind for [6->2]sec. The damaged enemy takes Magic DoT every 0.5sec for 6sec, and Magic DMG taken is increased by [30%->20%]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Draws in nearby enemies towards the center 5 times and deals a total of ??? M.DMG. The last attack stuns enemies for 3 sec. Deals additional ??? M.DMG to Non-Hero enemies.",
-        "to": "Pulls enemies within range toward the center and deals 338*(0.7+(0.3*Skill Level*Awakening Coefficient))+140.8% ATK Magic DMG 5 times. The final hit stuns enemies for 1sec. Against non-hero enemies, deals additional 338*(0.7+(0.3*Skill Level*Awakening Coefficient))+140.8% ATK Magic DMG."
+        "unified": "Pulls enemies within range toward the center and deals Magic DMG 5 times. The final hit stuns enemies for [3->1]sec. Against non-hero enemies, deals additional Magic DMG."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases Crit Chance by 150 and each hit inflicts [Curse of Lea] on the target for 10 sec. Targets inflicted with [Curse of Lea] have their Crit Chance reduced by 250 and ATK by 25% for the duration of Skill.",
-        "to": "Increases Critical Hit Chance by 150. Each time damage is dealt, applies [Lea's Curse] to the target for 10sec.\n[Lea's Curse]: Critical Hit Chance is reduced by 100, and ATK is reduced by 10%."
+        "unified": "Increases Critical Hit Chance by 150. Each time damage is dealt, applies [Lea's Curse] to the target for 10sec. [Lea's Curse]: Critical Hit Chance is reduced by [250->100], and ATK is reduced by [25%->10%]."
       }
     }
   },
@@ -46,12 +42,10 @@
       "skillName": "Black Wind",
       "hasChanges": true,
       "III": {
-        "from": "Crit Chance Boost is increased by 50.",
-        "to": "Increases Crit Chance Boost by 75."
+        "unified": "Increases Crit Chance Boost by [50->75]."
       },
       "IV": {
-        "from": "Crit Chance Boost is increased by 50.",
-        "to": "Increases Crit Chance Boost by 125."
+        "unified": "Increases Crit Chance Boost by [50->125]."
       }
     }
   },
@@ -59,45 +53,37 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Mana cost increases by 1000, but damage increases by 100%."
+        "unified": "Mana cost increases by 1000, but damage increases by 100%. [DMG 40%->(removed)]"
       },
       "dark": {
-        "from": "Has a 20% chance of inflicting a 3 sec Shackle.",
-        "to": "Roots the target for 1 sec."
+        "unified": "Roots the target for [20% chance of 3 sec shackle->1] sec."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1 and the skill targets 3 enemies.",
-        "to": "Mana cost increases by 2000, but the target is changed to all enemies."
+        "unified": "Mana cost increases by [1->2000], but the target is changed to [3 enemies->all enemies]."
       },
       "dark": {
-        "from": "Shackle duration is increased by 1.5 sec.",
-        "to": "Root duration increases by 2 sec."
+        "unified": "Root duration increases by [1.5->2] sec."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Target takes 25% increased M.DMG for 10 sec.",
-        "to": "Increases the target’s Magic DMG taken by 15% for 10 sec."
+        "unified": "Increases the target’s Magic DMG taken by [25%->15%] for 10 sec."
       },
       "dark": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "Mana cost is increased by 1000, but damage dealt is increased by 100%."
+        "unified": "Mana cost is increased by 1000, but damage dealt is increased by 100%. [Mana cost reduced by 1->(removed)]"
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "For every 1 target inflicted with [Curse of Lea], Maria's ATK increases by 10%. This effect can be stacked up max 5 times and is irremovable.",
-        "to": "For each enemy affected by [Lea's Curse], your Attack increases by 10%. This effect stacks up to 5 times and cannot be dispelled."
+        "unified": "For each enemy affected by [Lea's Curse], your Attack increases by 10%. This effect stacks up to 5 times and cannot be dispelled."
       },
       "dark": {
-        "from": "Reduces enemy M. Crit Resistance by 25% for 10 sec.",
-        "to": "Reduces the target’s Magic Critical Resistance by 20% for 10 sec."
+        "unified": "Reduces the target’s Magic Critical Resistance by [25%->20%] for 10 sec."
       }
     }
   },
@@ -106,8 +92,7 @@
       "name": "Spirit's Sabaton",
       "hasChanges": true,
       "description": {
-        "from": "[Claw of Restrictions] Increases DMG by 50% and increases M.Weakness of the affected enemy by {0}% for 10 sec.",
-        "to": "[Claw of Restriction] Increases DMG by 50% and increases M.Weakness of the affected enemy by {0}% for 10 sec."
+        "unified": "[Claw of Restriction] Increases DMG by 50% and increases M.Weakness of the affected enemy by {0}% for 10 sec."
       },
       "values": {}
     },
@@ -115,8 +100,7 @@
       "name": "Pendant of Darkness",
       "hasChanges": true,
       "description": {
-        "from": "[Area of Darkness] DMG is increased by {0}% and the last attack reduces the target's P.DEF and M.DEF by 30% for 7 sec.",
-        "to": "[Area of Darkness] increases DMG by {0}%, and its last attack reduces the target’s M.DEF by 30% for 7 sec."
+        "unified": "[Area of Darkness] increases DMG by {0}%, and its last attack reduces the target’s M.DEF by [P.DEF and M.DEF by 30%->30%] for 7 sec."
       },
       "values": {}
     },
@@ -124,8 +108,7 @@
       "name": "Abyssal Letter",
       "hasChanges": true,
       "description": {
-        "from": "[Black Wind] Every 10 sec, attacks enemies affected by Black Wind, dealing M.DMG equal to 200% of ATK. Increases own ATK by {0}% for 20 sec per hit enemy. This effect can be stacked up to max 10 times.",
-        "to": "[Black Wind] Attacks enemies inflicted with Curse of Lea every 10 sec, dealing M.DMG equal to 200% of ATK, and increasing own ATK by {0}% for 20 sec per hit enemy. This effect can be stacked up to max 10 times."
+        "unified": "[Black Wind] Attacks enemies inflicted with [Curse of Lea] every 10 sec, dealing M.DMG equal to 200% of ATK, and increasing own ATK by {0}% for 20 sec per hit enemy. This effect can be stacked up to max 10 times."
       },
       "values": {}
     }
@@ -133,15 +116,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Upon a Crit Hit, target's CC resistance is reduced by 250 for 10 sec, and all Skill Cooldown, excluding the skill in use, is reduced by 2% each.",
-      "to": "On critical hit, reduces the target’s Status Resistance by 200 for 10 sec, and reduces the cooldown of all skills except the skill in use by 2%."
+      "unified": "On critical hit, reduces the target’s Status Resistance by [250->200] for 10 sec, and reduces the cooldown of all skills except the skill in use by 2%."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Upon a Crit Hit, reduces Heal Rate of the target by 50% and increases own Crit DMG by {0}% for 10 sec. Crit DMG increase effect can be stacked up to max 20 times.",
-      "to": "Upon a Critical Hit, reduces target's Healing Rate by 35% for 10 sec and increases own Critical Damage by {0}%. The Critical Damage increase effect stacks up to 20 times."
+      "unified": "Upon a Critical Hit, reduces target's Healing Rate by [50%->35%] for 10 sec and increases own Critical Damage by {0}%. The Critical Damage increase effect stacks up to 20 times."
     },
     "values": {
       "0": {

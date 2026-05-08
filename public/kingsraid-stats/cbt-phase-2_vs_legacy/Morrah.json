@@ -2,7 +2,7 @@
   "heroName": "Morrah",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.465Z",
+  "generatedAt": "2026-05-08T11:43:35.398Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "6"
       },
       "description": {
-        "from": "Deals 56*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 43.4% ATK M.DMG 3 times to enemies within range, applies [Flame] 1 stacks, and knocks them down for 3sec.\nAfterward, for 5sec, Normal Attacks deal 34*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 26.1% ATK M.DMG and apply [Flame] 1 stacks. DMG of this skill increases by 2% per [Flame] stack.",
-        "to": "Deals ??? M.DMG to enemies in range and knocks them down, inflicting 3 stacks of Flame. Then for 15 sec, each auto attack deals ??? M.DMG and inflicts 1 stack of Flame on enemy. Per each stacked Flame, DMG is increased by 2%. Each Flame stack deals separate M.DMG and reduces Heal rate by 1%."
+        "unified": "Deals M.DMG to enemies in range and knocks them down, inflicting [1->3] stacks of Flame. Then for [5 sec->15 sec], each auto attack deals M.DMG and inflicts 1 stack of Flame on enemy. Per each stacked Flame, DMG is increased by 2%. Each Flame stack deals separate M.DMG and reduces Heal rate by 1%."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "3"
       },
       "description": {
-        "from": "For 5sec, increases all allies’ M.DEF by 280*(0.7+(0.3*Skill Level*Awakening Coefficient)) and M.Block Chance by 400, and applies [Flame] 1 times to nearby enemies every 1sec.",
-        "to": "For 20 sec, all allies' M.DEF is increased by ??? and M.Block Chance is increased by 250. Additionally, every 1 sec, inflicts 1 stack of Flame on nearby enemies."
+        "unified": "For 20 sec, all allies' M.DEF is increased by ??? and M.Block Chance is increased by [400->250]. Additionally, every 1 sec, inflicts 1 stack of Flame on nearby enemies."
       }
     },
     "3": {
@@ -37,8 +35,7 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 180*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 113.7% ATK M.DMG 3 times to enemies within range and knocks them down. DMG increases by 2% per [Flame] stack.",
-        "to": "Deals ??? M.DMG to enemies in range and inflict knock down. Per every stacked Flame, DMG is increased by 2%."
+        "unified": "Deals M.DMG to enemies in range and inflict knock down. Per every stacked Flame, DMG is increased by 2%."
       }
     },
     "4": {
@@ -48,8 +45,7 @@
         "to": null
       },
       "description": {
-        "from": "On Block, deals 25*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 15.7% ATK M.DMG to nearby enemies, applies [Flame] 5 stacks, and increases own M.DEF by 6% for 6sec. This effect stacks up to 5 times.\n\n[Flame]: Deals 3% ATK M.DMG every 1sec for 20sec and reduces Heal Rate by 1%. This effect stacks up to 100 times.",
-        "to": "Upon Block, deals ??? M.DMG to enemies in range, and inflicts 3 stack of Flame."
+        "unified": "Upon Block, deals M.DMG to enemies in range, and inflicts [5->3] stack of Flame."
       }
     }
   },
@@ -58,16 +54,13 @@
       "skillName": "Hellfire",
       "hasChanges": true,
       "II": {
-        "from": "M.DEF boost is increased by 10 %.",
-        "to": "M.DEF Boost is increased by 20%."
+        "unified": "M.DEF Boost is increased by [10%->20%]."
       },
       "III": {
-        "from": "M.DEF boost is increased by 15 %.",
-        "to": "M.DEF Boost is increased by 30%."
+        "unified": "M.DEF Boost is increased by [15%->30%]."
       },
       "IV": {
-        "from": "M.Block Chance boost is increased by 25 %.",
-        "to": "M.Block Chance Boost is increased by 50%."
+        "unified": "M.Block Chance Boost is increased by [25%->50%]."
       }
     }
   },
@@ -75,30 +68,25 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Attack Speed is increased by 30% for 3 sec.",
-        "to": "ATK Spd is increased by 200 for 15 sec."
+        "unified": "ATK Spd is increased by [30%->200] for [3 sec->15 sec]."
       },
       "dark": {
-        "from": "For each enemy hit, cooldown is reduced by 10%.",
-        "to": "Reduces cooldown by 6% per each enemy hit."
+        "unified": "Reduces cooldown by [10%->6%] per each enemy hit."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Magic Block Chance is additionally increased by 25%.",
-        "to": "M.Block rate is boosted by 20%."
+        "unified": "M.Block rate is boosted by [25%->20%]."
       },
       "dark": {
-        "from": "During the duration, deals damage to nearby enemies equal to 40% of your Magic Defense.",
-        "to": "While Hellfire is active, deal DMG based on own M.DEF to nearby enemies."
+        "unified": "While Hellfire is active, deal DMG based on own M.DEF to nearby enemies."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "When you block, the maximum number of Magic Defense increase stacks is changed to 10.",
-        "to": "Increases own M.DEF by 5% per each block. Max stack is 10."
+        "unified": "Increases own M.DEF by 5% per each block. Max stack is [5->10]."
       }
     }
   },
@@ -107,8 +95,7 @@
       "name": "Hell's Eye",
       "hasChanges": true,
       "description": {
-        "from": "[Burning Power] Increases DMG by {0}%, and Flame stacked upon enemies become irremovable.",
-        "to": "[Burning Power] Increases DMG by {0}% and Flame stacked upon enemies become irremovable."
+        "unified": "[Burning Power] Increases DMG by {0}% and Flame stacked upon enemies become irremovable."
       },
       "values": {}
     },
@@ -116,8 +103,7 @@
       "name": "Hellish Sealing Stone",
       "hasChanges": true,
       "description": {
-        "from": "[Lava Eruption] Increases DMG by {0}%, and reduces the target's M.DEF by 25% for 7 sec.",
-        "to": "[Lava Eruption] DMG is increased by {0}% and target's M.DEF is decreased by 25% for 7 sec."
+        "unified": "[Lava Eruption] DMG is increased by {0}% and target's M.DEF is decreased by 25% for 7 sec."
       },
       "values": {}
     },
@@ -125,8 +111,7 @@
       "name": "Jewel of Inferno",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Smash] Increases the number of Flame Stacks by 3. Hit targets have their ATK Spd reduced by {0} for 5 sec.",
-        "to": "[Fire Smash] Increases the number of Flame stacks by 3. Hit targets have their ATK Spd reduced by {0} for 5 sec."
+        "unified": "[Fire Smash] Increases the number of Flame stacks by 3. Hit targets have their ATK Spd reduced by {0} for 5 sec."
       },
       "values": {}
     }
@@ -134,8 +119,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On Normal Attack, has a 20% chance to reduce the target's ATK by {0}% and reduce Magic DEF by {1}% for 5 sec. If [Flame] has 100 or more stacks, the Magic DEF reduction is multiplied by 2.",
-      "to": "Normal attacks have a 20% chance to reduce ATK of the target by {0}% and cause the target to take {1}% increased M.DMG for 10 sec. If the target has more than 100 stacks of Flame, M.DMG boost is doubled."
+      "unified": "Normal attacks have a 20% chance to reduce ATK of the target by {0}% and cause the target to take {1}% increased M.DMG for [5 sec->10 sec]. If the target has more than 100 stacks of Flame, M.DMG boost is doubled."
     },
     "values": {
       "0": {
@@ -151,17 +135,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals 450% of ATK M.DMG to nearby enemies within a circular area and knocks them down for 1.8sec. Afterwards, summons Flame of Victory, Carprain for 13sec, increasing own ATK by 45%.",
-      "to": "Deals ??? M.DMG to nearby enemies within a circular range of self and knocks them down for 3 sec. Afterwards, summons Flame of Victory, Carprain for 13 sec, increasing self's ATK by 60%."
+      "unified": "Deals M.DMG to nearby enemies within a circular range of self and knocks them down for [1.8 sec->3 sec]. Afterwards, summons Flame of Victory, Carprain for 13 sec, increasing self's ATK by [45%->60%]."
     },
     "advancement": {
       "1": {
         "from": "For the duration of Skill, reduces M.DMG all allies take by 14%.",
-        "to": "For the duration of Skill, reduces M.DMG all allies take by 50%."
+        "to": "For the duration of Skill, reduces M.DMG all allies take by 50%.",
+        "unified": "For the duration of Skill, reduces M.DMG all allies take by [14%->50%]."
       },
       "2": {
         "from": "For the duration of the soul, reduces M.DEF of nearby enemies by 22.5%. Against Bosses, reduces it by 45%.",
-        "to": "For the duration of Skill, Increases M.DMG all nearby enemies take by 40%. The effect is inflicted by 80% against Bosses."
+        "to": "For the duration of Skill, Increases M.DMG all nearby enemies take by 40%. The effect is inflicted by 80% against Bosses.",
+        "unified": "For the duration of Skill, Increases M.DMG all nearby enemies take by 40%. The effect is inflicted by 80% against Bosses."
       }
     }
   }

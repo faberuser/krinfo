@@ -2,27 +2,24 @@
   "heroName": "Leo",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.568Z",
+  "generatedAt": "2026-05-08T11:43:35.467Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Engraves a rune on the target, dealing up to ??? P.DMG that ignores DEF based on missing HP and reducing their P.DEF by 50% for 8 sec.",
-        "to": "Engraves a sigil on 2 enemy, dealing 864*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 547.3% of ATK P.DMG and reducing P.DEF by 20% for 5sec. This skill gains an additional 500 DEF Penetration, and DMG increases by up to 200% based on the target’s missing HP."
+        "unified": "Engraves a sigil on [the target->2 enemy], dealing P.DMG and reducing P.DEF by [50%->20%] for [8 sec->5sec]. This skill gains an additional 500 DEF Penetration, and DMG increases by up to 200% based on the target’s missing HP."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Heals ??? HP of all allies.",
-        "to": "Restores 621*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 100.8% of ATK HP to all allies, then additionally restores 124*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 20.2% of ATK HP every 0.8sec for 4sec, and reduces P.DMG taken by 30%."
+        "unified": "Restores HP to all allies, then additionally restores HP every 0.8sec for 4sec, and [(added) reduces P.DMG taken by 30%]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals ??? P.DMG to all enemies, and dispels all positive effects. Inflicts Silences on target for 3 sec.",
-        "to": "Deals 690*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 450% of ATK P.DMG to all enemies, removes positive effects, and silences them for 1.8sec."
+        "unified": "Deals P.DMG to all enemies, removes positive effects, and silences them for [3 sec->1.8sec]."
       }
     },
     "4": {
@@ -32,8 +29,7 @@
         "to": "12"
       },
       "description": {
-        "from": "Every 10 sec, engraves a rune upon the ally with the lowest HP and recovers a total of ??? HP for 10 sec.",
-        "to": "Every 12sec, negates damage 2 times for the 2 allies with the lowest current HP."
+        "unified": "Every [10 sec->12sec], [(added) negates damage 2 times for] the 2 allies with the lowest current HP. [(removed) engraves a rune and recovers HP for 10 sec]"
       }
     }
   },
@@ -44,8 +40,7 @@
       "name": "Scroll of Memories",
       "hasChanges": true,
       "description": {
-        "from": "[Rune of Silence] Target takes 15% increased DMG for 10 sec, and target's CC resistance is reduced by {0}.",
-        "to": "[Rune of Silence] Increases DMG the target takes by 15% and reduces CC Resist by {0} for 10 sec."
+        "unified": "[Rune of Silence] Increases DMG the target takes by 15% and reduces CC Resist by {0} for 10 sec."
       },
       "values": {
         "0": {
@@ -68,8 +63,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "At the beginning of each battle, increases P.DEF and M.DEF by {0}% ATK Spd by {1} for 15 sec, and adds an additional effect to the first skill used.\n[Rune of Healing] - Dispels CC inflicted on caster before the skill is cast.\n[Rune of Silence] - Increases Silence duration by 1 sec.",
-      "to": "Every 20 seconds, for 10 seconds, All Defense is increased by {0}% and Attack Speed by {1}, and the first skill used gains an additional effect. [Seal of Weakening] - Gains 500 additional Defense Penetration. [Seal of Healing] - Clears all debuffs on yourself upon use. [Seal of Silence] - Silence duration is increased"
+      "unified": "Every 20 seconds, for 10 seconds, All Defense is increased by {0}% and Attack Speed by {1}, and the first skill used gains an additional effect. [Seal of Weakening] - [(added) Gains 500 additional Defense Penetration]. [Seal of Healing] - [(added) Clears all debuffs on yourself upon use]. [Seal of Silence] - Silence duration is increased [[1 sec->(removed value)]]."
     },
     "values": {
       "0": {
@@ -85,17 +79,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Phoenix Quill, Belisa, creating a shield on an ally with the highest ATK for 10 sec that absorbs ??? DMG, grants immunity to CC, and increase DMG dealt to enemies by 20% for 10 sec. Afterward, dispels positive effects of frontal enemies in a straight line and deals ??? P.DMG",
-      "to": "Summons the soul of Phoenix Quill, Belisa, creating a shield on the 4 allies with the highest ATK for 10sec that absorbs 500% of ATK DMG and grants immunity to CC, and increases DMG dealt to enemies by 20% for 10sec. Afterwards, dispels positive effects of enemies in a frontal line and deals [DAMAGE] P.DMG."
+      "unified": "Summons the soul of Phoenix Quill, Belisa, creating a shield on [an ally->the 4 allies] with the highest ATK for 10sec that absorbs DMG and grants immunity to CC, and increases DMG dealt to enemies by 20% for 10sec. Afterwards, dispels positive effects of enemies in a frontal line and deals P.DMG."
     },
     "advancement": {
       "1": {
         "from": "Changes Skill Activation requirements to 3 times.",
-        "to": "Changes Skill Activation Requirements to 3 times."
+        "to": "Changes Skill Activation Requirements to 3 times.",
+        "unified": "Changes Skill Activation Requirements to 3 times."
       },
       "2": {
         "from": "Hit enemies cannot receive positive effects for 5 sec.",
-        "to": "Prevents hit enemies from receiving positive effects for 4 sec."
+        "to": "Prevents hit enemies from receiving positive effects for 4 sec.",
+        "unified": "Prevents hit enemies from receiving positive effects for [5 sec->4 sec]."
       }
     }
   }

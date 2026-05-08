@@ -2,7 +2,7 @@
   "heroName": "Jane",
   "versionA": "ccbt",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.528Z",
+  "generatedAt": "2026-05-08T11:43:35.441Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,29 +11,25 @@
         "to": "1"
       },
       "description": {
-        "from": "Deals 361*(1+0.3Skill Level)+277.6% of Attack Power damage to enemies within range and stuns them for 3 sec.",
-        "to": "Deals 361*(1+0.3*Skill Level)+277.6% of Attack Power damage to enemies within range and stuns them for 2sec."
+        "unified": "Deals damage to enemies within range and stuns them for [3 sec->2sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Engraves [Mark of Death] on all enemies for 15 sec, dealing 9(1+0.3Skill Level)+6.9% of Attack Power continuous Magic Damage. Enemies with [Mark of Death] take 25% increased Magic Damage, and if recast within 15 sec, the effect is increased by 20%. This effect stacks up to 5 times and cannot be dispelled.",
-        "to": "Engraves [Mark of Death] on all enemies for 15sec, dealing 9*(1+0.3*Skill Level)+6.9% of Attack Power Magic DoT every second and reducing Magic Defense by 10%. If recast within 15sec, the Magic Defense reduction is increased by 50%, stacking up to 5times.This increase effect cannot be dispelled."
+        "unified": "Engraves [Mark of Death] on all enemies for 15sec, dealing Magic DoT every second and [reducing Magic Defense by 10%->reducing Magic Defense by 10%]. Enemies with [Mark of Death] [(removed) take 25% increased Magic Damage], and if recast within 15sec, the [effect->Magic Defense reduction] is increased by [20%->50%], [stacking up to 5times->stacking up to 5times]. This [increase->increase] effect cannot be dispelled."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 127(1+0.3Skill Level)+97.6% of Attack Power Magic Damage per second to all enemies for 12 sec, recovers HP equal to 130% of damage dealt, and has a 10% chance to stun them for 0.6 sec.\nDuring the duration, all allies take 20% reduced Physical Damage, and enemies with [Mark of Death] take additional Magic Damage equal to 97.6% of Attack Power.",
-        "to": "Deals 127*(0.7+(0.3*Skill Level*Awakening Coefficient))+97.6% of Attack Power as Magic Damage every second to all enemies for 14 sec, and recovers HP equal to 75% of damage dealt. During the duration, all allies take 10% reduced Physical Damage, and enemies affected by [Mark of Death] take additional Magic Damage equal to 97.6% of Attack Power."
+        "unified": "Deals Magic Damage every second to all enemies for [12 sec->14 sec], and recovers HP equal to [130%->75%] of damage dealt. During the duration, all allies take [20%->10%] reduced Physical Damage, and enemies [with->affected by] [Mark of Death] take additional Magic Damage. [(removed) has a 10% chance to stun them for 0.6 sec.]"
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases all allies’ Physical Defense by 45(1+0.3Skill Level).\nWhen taking damage that would be fatal, enters [Coffin] state for 5 sec, restoring 197(1+0.3Skill Level)+153.7% of Attack Power + 6% of Max HP.\nWhile in [Coffin] state, Attack Speed changes do not affect you, you are immune to all damage, and deal Magic Damage equal to 5% of Max HP per second to nearby enemies.",
-        "to": "Increases all allies’ Physical Defense by 55*(1+0.3*Skill Level). When taking damage that would be fatal, enters [Coffin] state for 5sec, restoring 197*(1+0.3*Skill Level)+153.7% of Attack Power + 10% of Max HP. [Coffin]:Attack Speed changes do not affect the target. The target is immune to all damage and deals Magic Damage equal to 5% of Max HP to nearby enemies every 1sec."
+        "unified": "Increases all allies’ Physical Defense. When taking damage that would be fatal, enters [Coffin] state for 5sec, restoring Attack Power + [6%->10%] of Max HP. [Coffin]:Attack Speed changes do not affect the target. The target is immune to all damage and deals Magic Damage equal to 5% of Max HP to nearby enemies every 1sec."
       }
     }
   },
@@ -42,26 +38,22 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but pulls the target to your vicinity with a 100% success rate.",
-        "to": "Mana cost increases by 2000, but pulls the target toward you."
+        "unified": "Mana cost increases by [1000->2000], but pulls the target [to your vicinity with a 100% success rate->toward you]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by [40%->50%]."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but cooldown is reduced by 7 sec.",
-        "to": "All allies additionally take 10% less Physical DMG."
+        "unified": "All allies additionally take 10% less Physical DMG."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "When the effect triggers, stuns all enemies for 1.2 sec.",
-        "to": "When the effect triggers, stuns all enemies for 1 sec."
+        "unified": "When the effect triggers, stuns all enemies for [1.2 sec->1 sec]."
       }
     }
   },
@@ -70,8 +62,7 @@
       "name": "Funeral Doll",
       "hasChanges": true,
       "description": {
-        "from": "[Funeral Rites] reduces the target’s CC Resist by 400 and Magic Block chance by {0} for 4 sec.",
-        "to": "[Funeral Rites] reduces the target’s CC Resist by 320 and Magic Block chance by {0} for 4 sec."
+        "unified": "[Funeral Rites] reduces the target’s CC Resist by [400->320] and Magic Block chance by {0} for 4 sec."
       },
       "values": {
         "0": {
@@ -94,15 +85,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, Attack and Healing are increased by 1%. This effect stacks up to 50 times.",
-      "to": "On hit, Attack and Healing increase by 1%. This effect stacks up to 35 times."
+      "unified": "On hit, Attack and Healing increase by 1%. This effect stacks up to [50 times->35 times]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals Magic Damage equal to {0}% of Attack Power per second to nearby enemies, reduces their Attack by {1}%, and recovers HP equal to 75% of damage dealt.\nThe 4 allies with the highest Attack (excluding yourself) deal {2}% increased damage to non-hero enemies. This effect cannot be dispelled.",
-      "to": "Deals Magic Damage equal to {0}% of Attack Power per second to nearby enemies, reduces their Attack by {1}%, and recovers HP equal to 100% of damage dealt."
+      "unified": "Deals Magic Damage per second to nearby enemies, reduces their Attack by {1}%, and recovers HP equal to [75%->100%] of damage dealt. [(removed) The 4 allies with the highest Attack (excluding yourself) deal {2}% increased damage to non-hero enemies. This effect cannot be dispelled.]"
     },
     "values": {
       "0": {

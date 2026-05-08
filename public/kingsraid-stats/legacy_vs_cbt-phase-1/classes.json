@@ -1,0 +1,219 @@
+{
+  "versionA": "legacy",
+  "versionB": "cbt-phase-1",
+  "generatedAt": "2026-05-08T12:23:51.113Z",
+  "classes": {
+    "Archer": {
+      "Precision Shot": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases ATK by [20%->15%] and ACC by [400%->120]."
+        }
+      },
+      "Eagle Eye": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases all allies’ DEF Penetration by [150->60] and ACC by [75->60]. If another ally has the same perk, only an additional [50->30] DEF Penetration and [25->30] ACC apply."
+        }
+      },
+      "Mortal Wound": {
+        "hasChanges": true,
+        "description": {
+          "unified": "On Critical Hit, reduces the enemy’s Recovery by [50%->24%] for 10 sec and deals Physical DoT equal to 20% of ATK every sec. Does not stack with the same effect from other allies."
+        }
+      },
+      "Opportune Strike": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Crit Chance by [150->185] and Crit DMG by [30%->24%]."
+        }
+      },
+      "Concentration": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Every 5 sec, increases own Crit DMG by [4%->3%]. Stacks up to [25->24] times and cannot be removed."
+        }
+      }
+    },
+    "Assassin": {
+      "Target Weakness": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases ATK by [20%->15%] and DEF Penetration by [200->120]."
+        }
+      },
+      "Swift and Nimble": {
+        "hasChanges": true,
+        "description": {
+          "unified": "All Dodge +[100->50] per second, up to [5->10] stacks; resets upon a successful dodge."
+        }
+      },
+      "Tactical Foresight": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases All Dodge by [200->80] and reduces DMG taken by [10%->8%]."
+        }
+      },
+      "Opportune Strike": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Crit Chance by [150->185] and Crit DMG by [30%->24%]."
+        }
+      },
+      "Vital Detection": {
+        "hasChanges": true,
+        "description": {
+          "unified": "On attack, causes the target to take [10%->8%] increased All DMG and reduces ATK Speed by [100->8%] for 10 sec. Activates once every 3 sec."
+        }
+      }
+    },
+    "Knight": {
+      "Experienced Fighter": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Attacked targets take [20%->16%] more DMG. Does not stack with the same effect from other allies."
+        }
+      },
+      "Excellent Strategy": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases CC Accuracy of all allies by [150->100]. If another ally has the same Perk, only 50 additional CC Accuracy is applied."
+        }
+      },
+      "Battle Cry": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Max HP of all allies by [15%->10%]. If another ally has the same Perk, only 5% additional Max HP is applied."
+        }
+      },
+      "Shield of Protection": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases All Block by [200->150] and CC Resistance by [200->150]."
+        }
+      },
+      "Swift Move": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases ATK Speed by [200->12%] and ACC by [400->120]."
+        }
+      }
+    },
+    "Mechanic": {
+      "Target Weakness": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases ATK by [20%->15%] and DEF Penetration by [200->120]."
+        }
+      },
+      "Ready Cannons": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Mana Recovery per sec by [62.5%->10.8%] for each enemy."
+        }
+      },
+      "Pressure Point": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases own Crit Chance by [400->350]."
+        }
+      },
+      "Special Bullet": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Attacked targets lose [15%->10%] ATK and [150->100] Crit Chance. Does not stack with effects from other allies."
+        }
+      },
+      "Amplified Gunpowder": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases all allies’ Crit DMG by [30%->12%]. If another ally has the same perk, only an additional [10%->4%] applies."
+        }
+      }
+    },
+    "Priest": {
+      "Goddess Blessing": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases all allies’ Crit Chance by [150->90]. If another ally has the same perk, only an additional [50->45] applies."
+        }
+      },
+      "Inner Peace": {
+        "hasChanges": true,
+        "description": {
+          "unified": "All allies recover 1% HP per sec and gain [75->60] CC Resist. If another ally has the same perk, only an additional [0.3%->0.5%] HP recovery per sec and [25->30] CC Resist apply."
+        }
+      },
+      "Blessing of Mana": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Mana Recovery per sec by [250%->30%]."
+        }
+      },
+      "Swiftness": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases all allies’ ATK Speed by [150->60]. If another ally has the same perk, only an additional [50->30] applies."
+        }
+      }
+    },
+    "Warrior": {
+      "Opportune Strike": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Crit Chance by [150->185] and Crit DMG by [30%->24%]."
+        }
+      },
+      "Warlike": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases ATK by [7%->6%] and CC Resistance by 30 per enemy. Stacks up to [10->5] times."
+        }
+      },
+      "Offensive Guard": {
+        "hasChanges": true,
+        "description": {
+          "unified": "ATK increases by [half->25%] of P.DEF. P.DMG taken is reduced by 15%."
+        }
+      },
+      "Tactical Foresight": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases All Dodge by [200->80] and reduces DMG taken by [10%->8%]."
+        }
+      },
+      "Blood Wrath": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Lifesteal by [200->60] and ATK Speed by [200->12%]."
+        }
+      }
+    },
+    "Wizard": {
+      "Moral Rise": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases all allies’ ATK by [15%->7%]. If another ally has the same perk, only an additional [3%->3.5%] ATK applies."
+        }
+      },
+      "Blessing of Mana": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Mana Recovery per sec by [250%->30%]."
+        }
+      },
+      "Circuit Burst": {
+        "hasChanges": true,
+        "description": {
+          "unified": "DMG Taken is increased by 15%, but ATK is increased by [40%->35%] and ACC by [200->150]."
+        }
+      },
+      "Destruction": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Crit Chance by [200->185] and DEF Penetration by [200->120]."
+        }
+      }
+    }
+  }
+}

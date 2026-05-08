@@ -1,0 +1,31 @@
+{
+  "versionA": "cbt-phase-2",
+  "versionB": "cbt-phase-1",
+  "generatedAt": "2026-05-08T12:23:51.038Z",
+  "classes": {
+    "Mechanic": {
+      "Ready Cannons": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Mana Recovery per sec by [27%->10.8%] for each enemy."
+        }
+      }
+    },
+    "Priest": {
+      "Blessing of Mana": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Mana Recovery per sec by [60%->30%]."
+        }
+      }
+    },
+    "Wizard": {
+      "Blessing of Mana": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Increases Mana Recovery per sec by [60%->30%]."
+        }
+      }
+    }
+  }
+}

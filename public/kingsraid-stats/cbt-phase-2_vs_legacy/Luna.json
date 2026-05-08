@@ -2,13 +2,12 @@
   "heroName": "Luna",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.464Z",
+  "generatedAt": "2026-05-08T11:43:35.397Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Launches an attack that bounces 4 times starting from the nearest enemy, dealing 460*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 292% of ATK M.DMG to each enemy hit. DMG increases by up to 100% the farther the enemy is. This attack is treated as a Normal Attack.",
-        "to": "Deals ??? M.DMG by shooting a bouncing projectile which bounces 3 times starting from the nearest enemy. The further the enemy, the more DMG inflicted."
+        "unified": "Deals ??? M.DMG by shooting a bouncing projectile which bounces [4->3] times starting from the nearest enemy. The further the enemy, the more DMG inflicted."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Deals 508*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 321.8% of ATK M.DMG 2 time(s) to a random enemy and nearby enemies, and stuns them for 1sec. DMG increases by up to 200% the farther the enemy is.",
-        "to": "Deals ??? M.DMG to enemies furthest away in a small range, and stuns them for 3 sec. The further the enemy, the more DMG they will take."
+        "unified": "Deals ??? M.DMG to enemies [furthest away in a small range->a random enemy and nearby enemies], and stuns them for [1 sec->3 sec]. The further the enemy, the more DMG they will take."
       }
     },
     "3": {
@@ -41,8 +39,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Deals 132*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 84% of ATK M.DMG 6 time(s) to enemies within range, knocks them back for 1.5sec, and reduces Crit Chance by 60% for 4sec. DMG increases by up to 150% the farther the enemy is.",
-        "to": "Deals ??? M.DMG to target enemies in range, and reduces target's Crit Chance by 100% for 7 sec."
+        "unified": "Deals ??? M.DMG to target enemies in range, and reduces target's Crit Chance by [60%->100%] for [4 sec->7 sec]."
       }
     },
     "4": {
@@ -52,8 +49,7 @@
         "to": null
       },
       "description": {
-        "from": "Attacks the farthest enemy, dealing 440*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 278.6% of ATK M.DMG, knocking them back for 1sec, and increasing M.DMG taken by 20% for 6sec. DMG increases by up to 200% the farther the enemy is.",
-        "to": "When inflicted by CC, dispels negative effects from self and attacks the farthest enemy, dealing ??? M.DMG and knocking it away for 2 sec."
+        "unified": "[(added) When inflicted by CC, dispels negative effects from self and] attacks the farthest enemy, dealing ??? M.DMG and knocking it away for [1 sec->2 sec]. [(removed) increasing M.DMG taken by 20% for 6 sec]"
       }
     }
   },
@@ -62,34 +58,28 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Gains immunity to CC for the duration of Skill."
+        "unified": "Gains immunity to CC for the duration of Skill."
       },
       "dark": {
-        "from": "Stuns enemies hit for 1 sec.",
-        "to": "Enemies hit are stunned for 2 sec."
+        "unified": "Enemies hit are stunned for [1 sec->2 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 2000, but the number of hits is increased by 2.",
-        "to": "In exchange for 2 additional Mana Cost, attacks random enemies 3 times."
+        "unified": "In exchange for [2000->2] additional Mana Cost, attacks [nearest neighbors->random enemies] [4 times->3 times]."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but targets the farthest enemy.",
-        "to": "Ignores enemy Block."
+        "unified": "Ignores enemy Block."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Reduces ACC of hit enemies by 150 for 7 sec."
+        "unified": "Reduces ACC of hit enemies by [500->150] for [4 sec->7 sec]."
       },
       "dark": {
-        "from": "Reduces ACC of hit enemies by 500 for 4 sec.",
-        "to": "In exchange for 1 additional Mana Cost, knock back the enemy over a long distance."
+        "unified": "In exchange for 1 additional Mana Cost, knock back the enemy over a long distance."
       }
     }
   },
@@ -98,8 +88,7 @@
       "name": "Golden Bell of Luck",
       "hasChanges": true,
       "description": {
-        "from": "[Pew!] Increases DMG by {0}%, and upon Critical Hit, recovers Mana by 200.",
-        "to": "[Pew!] Increases DMG by 20%, and upon Critical Hit, recovers Mana by {0}."
+        "unified": "[Pew!] Increases DMG by [ {0}% -> 20% ], and upon Critical Hit, recovers Mana by [ 200 -> {0} ]."
       },
       "values": {
         "0": {
@@ -112,8 +101,7 @@
       "name": "Never-Melting Snow Flower",
       "hasChanges": true,
       "description": {
-        "from": "[Twinkle Twinkle] Reduces M.Crit Resist by {0}, and this reduction becomes irremovable.",
-        "to": "[Twinkle Twinkle] Crit Chance Reduction will not be dispelled, and the effect duration will increase by {0} sec."
+        "unified": "[Twinkle Twinkle] [M.Crit Resist reduction->Crit Chance Reduction] will not be dispelled, and the effect duration will increase by {0} sec."
       },
       "values": {
         "0": {
@@ -126,8 +114,7 @@
       "name": "Carrot Cake",
       "hasChanges": true,
       "description": {
-        "from": "[Gotcha!] reduces Cooldown by {0} sec and cleanses self when affected by a CC once every 20 sec.",
-        "to": "[Gotcha!] Greatly increases the knockback range, and Cooldown is reduced by {0} sec."
+        "unified": "[Gotcha!] [Greatly increases the knockback range->cleanses self when affected by a CC once every 20 sec], and Cooldown is reduced by {0} sec."
       },
       "values": {
         "0": {
@@ -140,15 +127,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Damage dealt to non-hero enemies is increased by 15%, and damage taken is reduced by 15%.",
-      "to": "Grants Blessing of the Carrot. Blessing of the Carrot increases DMG dealt to Non-Hero enemies by 30%, and reduces DMG received by 30%."
+      "unified": "Grants Blessing of the Carrot. Blessing of the Carrot increases DMG dealt to Non-Hero enemies by [15%->30%], and reduces DMG received by [15%->30%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Critical Damage is increased by {0}%, Normal Attack damage by {1}%, and Attack Range by {2}%.",
-      "to": "Increases Crit DMG by {0}%, DMG of normal attacks by {1}% and the Range by {2}%."
+      "unified": "Increases Crit DMG by {0}%, DMG of normal attacks by {1}% and the Range by {2}%."
     },
     "values": {
       "0": {
@@ -168,17 +153,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the Soul of Flower of Eternity, Hyacinth, dealing 100% of ATK M.DMG to nearby enemies, freezing them for 5sec and knocking them back. Afterward, deals 600% of ATK M.DMG to frozen enemies and increases own Crit DMG by 100% for 10sec.",
-      "to": "Summons the Soul of Flower of Eternity, Hyacinth, dealing ??? M.DMG to nearby enemies within a circular range of self, freezing them for 5 sec and knocking them back far away. Afterward,the Soul of Hyacinth deals ??? additional M.DMG to frozen enemies and increases own Crit DMG by 100% for 10 sec."
+      "unified": "Summons the Soul of Flower of Eternity, Hyacinth, dealing ??? M.DMG to nearby enemies within a circular range of self, freezing them for 5 sec and knocking them back [far away]. Afterward, the Soul of Hyacinth deals ??? additional M.DMG to frozen enemies and increases own Crit DMG by 100% for 10 sec."
     },
     "advancement": {
       "1": {
         "from": "For the duration, increases Normal Attack range by 20%.",
-        "to": "Hit targets take increased M.DMG by 40% for 10 sec."
+        "to": "Hit targets take increased M.DMG by 40% for 10 sec.",
+        "unified": "Hit targets take increased M.DMG by 40% for 10 sec."
       },
       "2": {
         "from": "For the duration, increases NFor the duration, Normal Attacks hit 2 targets and knock them back for 1 sec.ormal Attack range by 2%.",
-        "to": "For the duration of Skill, increases the number of targets that Normal Attacks hit by 3. The range of Normal Attacks increases by 30%, knocking back the hit target."
+        "to": "For the duration of Skill, increases the number of targets that Normal Attacks hit by 3. The range of Normal Attacks increases by 30%, knocking back the hit target.",
+        "unified": "For the duration of Skill, increases the number of targets that Normal Attacks hit by 3. The range of Normal Attacks increases by [2%->30%], knocking back the hit target."
       }
     }
   }

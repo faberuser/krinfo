@@ -2,13 +2,12 @@
   "heroName": "Lorraine",
   "versionA": "legacy",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.603Z",
+  "generatedAt": "2026-05-08T11:43:35.499Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks a random enemy and its nearby enemies 3 times, dealing a total of ??? M.DMG and inflicting Stun for 3 sec.",
-        "to": "Deals 333(1+0.3Skill Level)+153.2% of Attack Power as Magic Damage 3 times to a random enemy and nearby enemies, stunning them for 1.8 sec."
+        "unified": "Deals Magic Damage 3 times to a random enemy and nearby enemies, stunning them for [3 sec->1.8 sec]."
       }
     },
     "2": {
@@ -18,22 +17,19 @@
         "to": "14"
       },
       "description": {
-        "from": "Creates a Seed of Belladonna around the target for 10 sec. The seed deals ??? M.DMG to nearby enemies every 2 sec, increasing M.DMG the target takes by 30% and reducing Heal Rate by 30% for 5 sec.",
-        "to": "Creates [Belladonna Seed] in the area around the target for 7 sec.\n[Belladonna Seed]: Deals 403(1+0.3Skill Level)+146.2% of Attack Power as Magic Damage every 1 sec to nearby enemies and reduces their healing received by 25% for 1 sec."
+        "unified": "Creates [Belladonna Seed] in the area around the target for [10 sec->7 sec]. [Belladonna Seed]: Deals Magic Damage every [2 sec->1 sec] to nearby enemies and reduces their healing received by [30%->25%] for [5 sec->1 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks enemies within a wide frontal range of self 6 times, dealing a total of ??? M.DMG and knocking them down for 3 sec.",
-        "to": "Deals 304(1+0.3Skill Level)+112.2% of Attack Power as Magic Damage 6 time to enemies in a wide area in front and knocks them down for 1.8 sec."
+        "unified": "Deals Magic Damage 6 time to enemies in a wide area in front and knocks them down for [3 sec->1.8 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Normal and Skill attacks inflicts Poison on a target, dealing a total of ??? continuous M.DMG and reducing Heal Rate by 5% over 20 sec. Poison can be stacked up to max 5 times. If Lorraine dies, Poison effect on enemies will disappear.",
-        "to": "On Normal and skill attacks, inflicts [Poison] on the target, dealing continuous Magic Damage equal to 100% of Attack Power every 1 sec for 20 sec and reducing their healing received by 5%. This effect stacks up to 5 times."
+        "unified": "On Normal and skill attacks, inflicts [Poison] on the target, dealing continuous Magic Damage every 1 sec for 20 sec and reducing their healing received by 5%. This effect stacks up to 5 times."
       }
     }
   },
@@ -42,33 +38,28 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Recovers own Mana by 250 upon a Critical Hit.",
-        "to": "Mana cost is increased by 1000, but damage dealt is increased by 100%."
+        "unified": "Mana cost is increased by [(added) 1000], but damage dealt is increased by [(added) 100%]. [(removed) Recovers own Mana by 250 upon a Critical Hit.]"
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "The duration of the CC on hit enemies increases by 30% for 5 sec.",
-        "to": "Enemies hit suffer increased status ailment duration by 30% for {1} sec."
+        "unified": "Enemies hit suffer increased status ailment duration by 30% for [5 sec->{1} sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is increased by 1 but DMG is boosted by 100%.",
-        "to": "Mana cost is increased by 1000, but damage dealt is increased by 80%."
+        "unified": "Mana cost is increased by [1->1000], but damage dealt is increased by [100%->80%]."
       },
       "dark": {
-        "from": "Increases Mana Cost by 1 and dispels positive effects of enemies within range.",
-        "to": "Mana cost is increased by 1000, but removes beneficial effects from enemies within range."
+        "unified": "Mana cost is increased by [1->1000], but removes beneficial effects from enemies within range."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "If the target is a boss, increases DMG of Poison by x3.",
-        "to": "If the target is a boss, [Poison] damage is increased by 70%."
+        "unified": "If the target is a boss, [Poison] damage is increased by [x3->70%]."
       }
     }
   },
@@ -77,8 +68,7 @@
       "name": "Book of Life",
       "hasChanges": true,
       "description": {
-        "from": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0}.",
-        "to": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0} sec."
+        "unified": "[Thornbush Forest] Increases DMG by 50% and reduces Cooldown by {0} sec."
       },
       "values": {}
     },
@@ -86,8 +76,7 @@
       "name": "Root of the World Tree",
       "hasChanges": true,
       "description": {
-        "from": "[Wrath of the Forest] DMG is increased by {0}%. Upon Crit Hit on enemies with over 5 stacks of Poison, skill cooldown is reduced by 4%.",
-        "to": "[Wrath of the Forest] Increases DMG by {0}%. Upon a Crit Hit on enemies with 5 or more stacks of Poison, reduces Cooldown by 4%."
+        "unified": "[Wrath of the Forest] Increases DMG by {0}%. Upon a Crit Hit on enemies with 5 or more stacks of Poison, reduces Cooldown by 4%."
       },
       "values": {}
     },
@@ -95,8 +84,7 @@
       "name": "Terrarium of Circulation",
       "hasChanges": true,
       "description": {
-        "from": "[Poison] Poison effect becomes irremovable and for the duration of Poison, target takes {0}% increased M.DMG",
-        "to": "[Poison] makes Poison effect irremovable and increases DMG dealt to Bosses by {0}%."
+        "unified": "[Poison] makes Poison effect irremovable and increases DMG dealt to Bosses by [(added) {0}%]. [(removed) increased M.DMG taken.]"
       },
       "values": {
         "0": {
@@ -109,15 +97,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "At the beginning of each battle, immediately reduces all Skill Cooldown of self by 30% and increases DMG dealt to Non-Hero enemies by 20% for 90 sec. DMG Boost effect stacks up to max 5 times and is irremovable.",
-      "to": "At the start of battle, all skill cooldowns are reduced by 30%, and damage dealt to non-hero enemies is increased by 10% for 90 sec. The damage increase stacks up to 5 times and cannot be dispelled."
+      "unified": "At the start of battle, all skill cooldowns are reduced by 30%, and damage dealt to non-hero enemies is increased by [20%->10%] for 90 sec. The damage increase stacks up to 5 times and cannot be dispelled."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Deals M.DMG equal to {0}% of ATK to enemies inflicted with Poison every 7 secm reducing M.DEF by {1}% and increasing M.DMG the target takes by {2}% for 10 sec.",
-      "to": "Every 7 sec, deals Magic Damage equal to {0}% of Attack Power to poisoned enemies, reduces their Magic Defense by {1}% for 10 sec, and increases their Magic Damage taken by {2}%."
+      "unified": "Every 7 sec, deals Magic Damage to poisoned enemies, reduces their Magic Defense by {1}% for 10 sec, and increases their Magic Damage taken by {2}%."
     },
     "values": {
       "2": {

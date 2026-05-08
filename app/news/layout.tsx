@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-	title: "News - King's Raid",
+	title: "News",
 	description: "Latest news and updates from King's Raid.",
 	openGraph: {
-		title: "News - King's Raid",
+		title: "News",
 		description: "Latest news and updates from King's Raid.",
 	},
 }

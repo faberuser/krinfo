@@ -2,13 +2,12 @@
   "heroName": "Roi",
   "versionA": "legacy",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.606Z",
+  "generatedAt": "2026-05-08T11:43:35.500Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks an enemy 3 times, dealing ??? P.DMG and increasing ??? P.DMG the target takes by 25% for 10 sec. Afterward, each hit inflicts 1 stack of [Mortal Wound] that deals ??? P.DMG over 16 sec. [Mortal Wound] can be stacked up to max 5 times.",
-        "to": "Deals 243*(1+0.3*Skill Level)+140% ATK Physical DMG to a random enemy 3 times, applies [Grievous Wound] stacks 1, and increases Physical DMG taken by 30% for 4 sec."
+        "unified": "Deals Physical DMG to a random enemy 3 times, applies [[Mortal Wound]->[Grievous Wound]] stacks 1, and increases Physical DMG taken by [25%->30%] for [10 sec->4 sec]."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "14"
       },
       "description": {
-        "from": "Increases all allies' ATK and P.Dodge by 250 for 10 sec. Afterward, Roi grants [Specter's Breath] upon self for 10 sec. For the duration of [Specter's Breath], increases own ATK Spd by 250, DMG dealt to enemies by 20%, and evades all P.DMG attacks",
-        "to": "For 7 sec, increases all allies’ ATK by 393*(1+0.3*Skill Level) and Physical Evasion by 300, and grants self [Breath of Death] for 7 sec.\n[Breath of Death] : Attack Speed increases by 30%, damage dealt to enemies increases by 25%, and all Physical Attacks are evaded."
+        "unified": "For [10 sec->7 sec], increases all allies’ ATK by [250->393*(1+0.3*Skill Level)] and Physical [Dodge->Evasion] by [250->300], and grants self [[Specter's Breath]->[Breath of Death]] for [10 sec->7 sec]. [Breath of Death] : Attack Speed increases by [250->30%], damage dealt to enemies increases by [20%->25%], and all Physical Attacks are evaded."
       }
     },
     "3": {
@@ -29,8 +27,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Moves behind an enemy and deals ??? P.DMG. Consumes stacks of [Mortal Wound] from the target adding ??? P.DMG for every 1 stack. Upon a Crit Hit recovers 2 orbs of Mana and resets Cooldown of [Hack].",
-        "to": "Moves behind the enemy and deals 799*(1+0.3*Skill Level)+459.4% ATK Physical DMG, consuming all [Grievous Wound] stacks on the target and dealing additional Physical DMG equal to 137.8% ATK per 1 stack consumed. On Critical Hit, applies Bleed stacks 1 and resets the cooldown of [Slaughter].\nBleed : Deals 5% ATK Physical DoT every 1 sec for 15 sec, stacking up to 20 times."
+        "unified": "Moves behind the enemy and deals Physical DMG, consuming all [[Mortal Wound]->[Grievous Wound]] stacks on the target and dealing additional Physical DMG per 1 stack consumed. On Critical Hit, [(added) applies Bleed stacks 1] and resets the cooldown of [[Hack]->[Slaughter]]. [(added) Bleed : Deals 5% ATK Physical DoT every 1 sec for 15 sec, stacking up to 20 times.]"
       }
     },
     "4": {
@@ -40,8 +37,7 @@
         "to": "10"
       },
       "description": {
-        "from": "Increases Crit Chance by 300. If normal attack is landed as a Crit Hit attacks the target 6 times, dealing additional ??? P.DMG and inflicting a stack of [Mortal Wound] with a 50% chance.",
-        "to": "Critical Rate increases by 300.\nEvery 10 sec, when a Normal Attack lands as a Critical Hit, deals 96*(1+0.3*Skill Level)+54.9% ATK Physical DMG 6 times, with a 50% chance per hit to apply [Grievous Wound] stacks 1.\n[Grievous Wound] : Deals 15% ATK Physical DoT every 1 sec for 15 sec, stacking up to 5 times."
+        "unified": "Critical Rate increases by 300. [(added) Every 10 sec], when a Normal Attack lands as a Critical Hit, deals Physical DMG 6 times, with a 50% chance per hit to apply [[Mortal Wound]->[Grievous Wound]] stacks 1. [(added) [Grievous Wound] : Deals 15% ATK Physical DoT every 1 sec for 15 sec, stacking up to 5 times.]"
       }
     }
   },
@@ -50,29 +46,25 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "The target is changed to the enemy with the highest ATK."
+        "unified": "The target is changed to the enemy with the highest ATK, [(removed) Mana cost is reduced by 1]."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Auto attack DMG is boosted by 100% for the duration.",
-        "to": "Normal Attack damage increases by 115% for the duration."
+        "unified": "Normal Attack damage increases by [100%->115%] for the duration."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "In exchange for 1 additional Mana Cost, DMG dealt is increased by 100%.",
-        "to": "Mana cost increases by 1000 and damage increases by 100%."
+        "unified": "Mana cost increases by [1->1000] and damage increases by 100%."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Each attack recovers 300 mana.",
-        "to": "The chance for [Rend] to apply [Fatal Wound] stacks is changed to 100%."
+        "unified": "The chance for [[Rend]->[Rend]] to apply [[Mortal Wound]->[Fatal Wound]] stacks is changed to [50%->100%]. [(removed) Each attack recovers 300 mana]."
       }
     }
   },
@@ -81,8 +73,7 @@
       "name": "Shadow Blade",
       "hasChanges": true,
       "description": {
-        "from": "[No Mercy] Dispels all negative effects from self, and recovers Mana by {0} upon Critial hit.",
-        "to": "[Merciless] Dispels all negative effects from self, and recovers Mana by {0} upon Critical Hit."
+        "unified": "[[No Mercy]->[Merciless]] Dispels all negative effects from self, and recovers Mana by {0} upon Critical Hit."
       },
       "values": {}
     },
@@ -90,8 +81,7 @@
       "name": "Soma's Hood",
       "hasChanges": true,
       "description": {
-        "from": "[Curtain of Darkness] For the duration of Skill, recovers own Mana by 150 every sec and increases own DMG dealt against Bosses by {0}%.",
-        "to": "[Curtain of Darkness] increases duration by 3 sec and boosts DMG dealt to Bosses by {0}%."
+        "unified": "[Curtain of Darkness] increases duration by [(added) 3 sec] and boosts DMG dealt to Bosses by {0}%. [(removed) recovers own Mana by 150 every sec]."
       },
       "values": {}
     },
@@ -99,8 +89,7 @@
       "name": "Specter's Ring",
       "hasChanges": true,
       "description": {
-        "from": "[Hack] Increases DMG by 50%. Upon a Critical Hit, increases own ATK Spd by {0} for 5 sec.",
-        "to": "[Hack] increases DMG by {0}% and applies 1 stack of [Bleed] to the target on Crit."
+        "unified": "[Hack] increases DMG by [50%->{0}%] and [(added) applies 1 stack of [Bleed] to the target on Crit], [(removed) increases own ATK Spd by {0} for 5 sec]."
       },
       "values": {
         "0": {
@@ -113,15 +102,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Upon a Crit Hit, ATK Spd is increased by 300 and Crit DMG is increased by 60% for 5 sec. Does not activate again during activation.",
-      "to": "On critical hit, Attack Speed is increased by 300% and Critical Damage by 60% for 5 sec. This effect can only be triggered once every 5 sec."
+      "unified": "On critical hit, Attack Speed is increased by [300->300%] and Critical Damage by 60% for 5 sec. This effect [can only be triggered once every 5 sec.->can only be triggered once every 5 sec.]"
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Each auto attack has a {0}% chance of inflicting 1 stack of [Mortal Wound]. Each stack of [Mortal Wound] deals additional DMG equal to {1}% of ATK.",
-      "to": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] stack."
+      "unified": "When using Normal Attacks or [[Mortal Wound]->[Rend]], has a {0}% chance to apply 1 additional stacks of [[Mortal Wound]->[Fatal Wound]] and deal additional Physical Damage equal to {1}% of Attack Power per [[Mortal Wound]->[Fatal Wound]] stack."
     },
     "values": {}
   }

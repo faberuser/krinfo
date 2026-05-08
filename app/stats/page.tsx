@@ -3,8 +3,10 @@ import path from "path"
 import { DATA_VERSIONS } from "@/lib/constants"
 import StatsClient from "@/app/stats/client"
 import type { HeroData } from "@/model/Hero"
+import type { ClassesComparison } from "@/app/stats/types"
 
 const TABLE_DATA = path.join(process.cwd(), "public", "kingsraid-data", "table-data")
+const STATS_DIR = path.join(process.cwd(), "public", "kingsraid-stats")
 
 function readJson<T>(filePath: string): T | null {
 	try {
@@ -67,6 +69,17 @@ export default async function StatsPage() {
 		classesMap[version] = classData
 	}
 
+	// Load pre-generated class perk comparisons per version pair
+	const classesPairMap: Record<string, ClassesComparison> = {}
+	for (const va of DATA_VERSIONS) {
+		for (const vb of DATA_VERSIONS) {
+			if (va === vb) continue
+			const key = `${va}_vs_${vb}`
+			const data = readJson<ClassesComparison>(path.join(STATS_DIR, key, "classes.json"))
+			if (data) classesPairMap[key] = data
+		}
+	}
+
 	// Load heroes for each version
 	const heroesMap: Record<string, Record<string, HeroData>> = {}
 	for (const version of DATA_VERSIONS) {
@@ -90,6 +103,7 @@ export default async function StatsPage() {
 			runesMap={runesMap}
 			classesMap={classesMap}
 			heroesMap={heroesMap}
+			classesPairMap={classesPairMap}
 		/>
 	)
 }

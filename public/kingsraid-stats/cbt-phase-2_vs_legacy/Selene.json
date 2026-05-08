@@ -2,7 +2,7 @@
   "heroName": "Selene",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.468Z",
+  "generatedAt": "2026-05-08T11:43:35.399Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 128*(0.7+(0.3*Skill Level*Awakening Coefficient))+80.4% ATK Physical DMG to a random enemy 12 times.",
-        "to": "Shoots 12 arrows to random enemies and deals a total of ??? P.DMG."
+        "unified": "Shoots 12 arrows to random enemies and deals a total of ??? P.DMG."
       }
     },
     "2": {
@@ -22,22 +21,19 @@
         "to": "1"
       },
       "description": {
-        "from": "Summons 5 homing arrows that track enemies. Upon attacking, consumes 1 arrow to deal 230*(0.7+(0.3*Skill Level*Awakening Coefficient))+144.8% ATK additional Physical DMG to the enemy.",
-        "to": "Upon attacking, summons 5 arrows that launch towards the enemy. Each arrow deals ??? P.DMG."
+        "unified": "Upon attacking, summons 5 arrows that launch towards the enemy. Each arrow deals ??? P.DMG."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 1198*(0.7+(0.3*Skill Level*Awakening Coefficient))+759.8% ATK Physical DMG to enemies in a straight line and knocks them down for 3 sec. This damage increases based on the target’s lost HP, up to a maximum of 100%. Additionally, against Bosses, deals 685*(0.7+(0.3*Skill Level*Awakening Coefficient))+434.2% ATK additional Physical DMG, and this damage is applied with 500 higher Physical DEF Penetration.",
-        "to": "Fires an arrow in a straight line, dealing P.DMG to all enemies in range based on the target's remaining HP. Deals a maximum of ??? P.DMG and knocks down the target. Against Bosses, deals additional ??? P.DMG that ignores DEF."
+        "unified": "Fires an arrow in a straight line, dealing P.DMG to all enemies in range based on the target's remaining HP. Deals a maximum of ??? P.DMG and knocks down the target. Against Bosses, deals additional ??? P.DMG that ignores DEF."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "After using a Skill or Normal Attack, increases ATK by 24*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Crit Chance by 80 for 7sec. [Moonlight Arrow] stacks up to 6 times. At max stacks, [Moonlight Arrow] cannot be gained during the duration, but Normal Attacks fire 3 additional arrows, each dealing 95.3% ATK Physical DMG.",
-        "to": "Upon attacking, increases ATK by ??? and Crit Chance by 100 for 10 sec. This effect stacks up to 3 times."
+        "unified": "Upon attacking, increases ATK by ??? and Crit Chance by [80->100] for [7 sec->10 sec]. This effect stacks up to [6->3] times."
       }
     }
   },
@@ -46,37 +42,31 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by [50%->40%]."
       },
       "dark": {
-        "from": "Has a 50% chance to stun enemies hit for 0.5 sec.",
-        "to": "There is a 50% chance to inflict Stun for 1 sec."
+        "unified": "There is a 50% chance to inflict Stun for [0.5 sec->1 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Summons 2 additional arrows.",
-        "to": "Ignores DEF when there is only 1 enemy."
+        "unified": "Ignores DEF when there is only 1 enemy."
       },
       "dark": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Reduces Mana Cost by 1."
+        "unified": "Reduces Mana Cost by [1000->1]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Reduces Mana Cost by 1."
+        "unified": "Reduces Mana Cost by [1000->1]."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "Damage dealt to bosses increases by 5% per stack.",
-        "to": "At the beginning of each battle, increases ATK. This effect stacks up to max 10 times, and upon reaching 10 stacks, increases DMG dealt to bosses by 20%. This effect is irremovable."
+        "unified": "At the beginning of each battle, increases ATK. This effect stacks up to max 10 times, and upon reaching 10 stacks, increases DMG dealt to bosses by 20%. This effect is irremovable."
       }
     }
   },
@@ -85,8 +75,7 @@
       "name": "Silver Arrow",
       "hasChanges": true,
       "description": {
-        "from": "[Moonlight Flash] Increases DMG by {0}%, and P.DMG the target takes by 20% for 10 sec.",
-        "to": "[Moonlight Flash] DMG is increased by {0}% and target takes 20% additional P.DMG for 10 sec."
+        "unified": "[Moonlight Flash] DMG is increased by {0}% and target takes 20% additional P.DMG for 10 sec."
       },
       "values": {}
     },
@@ -94,8 +83,7 @@
       "name": "Circlet of Wind",
       "hasChanges": true,
       "description": {
-        "from": "[Moonlight Arrow] increases normal attack DMG by 50% and DMG to Non-Hero enemies by {0}% per stack.",
-        "to": "[Moonlight Arrow] Increases ATK Spd by 100 and each stack increases DMG to Non-Hero enemies by {0}%."
+        "unified": "[Moonlight Arrow] Increases ATK Spd by [(added) 100] and each stack increases DMG to Non-Hero enemies by {0}%."
       },
       "values": {}
     }
@@ -103,15 +91,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Your Critical Rate is reduced by 300, but Critical DMG increases by 70%.",
-      "to": "Own Crit Chance is decreased by 300 and Crit DMG is increased by 150%."
+      "unified": "Own Crit Chance is decreased by 300 and Crit DMG is increased by [70%->150%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On Crit, increases ATK Spd by {0}% for 10 sec. During the duration, Normal Attacks fire an additional arrow that deals {1}% extra Physical DMG to the target. This additional DMG can be triggered once every 0.5 sec.",
-      "to": "Upon a Crit Hit, ATK Spd is increased by {0} for 10 sec, and for the duration of skill, each auto attack fires an arrow that deals extra {1}% P.DMG."
+      "unified": "Upon a Crit Hit, ATK Spd is increased by {0} for 10 sec, and for the duration of skill, each auto attack fires an arrow that deals extra {1}% P.DMG."
     },
     "values": {
       "0": {
@@ -127,17 +113,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Green Wind, Notos for 13sec, increasing own ATK by 45%. During the duration, every 4sec, deals 250% of ATK DEF-ignoring P.DMG to an enemy, knocks them back for 1sec, and immediately reduces cooldown of all own skills by 1sec.",
-      "to": "Summons the soul of Green Winds, Notos for 13 sec, increasing own ATK by 50% and Crit DMG by 50%. For the duration of Skill, deals ??? P.DMG that ignores DEF on an enemy every 4 sec, knocking them back for 2 sec, and immediately reducing the Cooldown of own Skills by 1 sec."
+      "unified": "Summons the soul of Green Winds, Notos for 13 sec, increasing own ATK by [45%->50%] and Crit DMG by [(added) 50%]. For the duration of Skill, deals ??? P.DMG that ignores DEF on an enemy every 4 sec, knocking them back for [1 sec->2 sec], and immediately reducing the Cooldown of own Skills by 1 sec."
     },
     "advancement": {
       "1": {
         "from": "Increases DMG by 50%.",
-        "to": "Increases DMG by 50%, and every time the Soul attacks an enemy, recovers own Mana by 1000."
+        "to": "Increases DMG by 50%, and every time the Soul attacks an enemy, recovers own Mana by 1000.",
+        "unified": "Increases DMG by 50%, and every time the Soul attacks an enemy, recovers own Mana by 1000."
       },
       "2": {
         "from": "Increases DMG by 25% and reduces activation requirement to 45 times.",
-        "to": "Increases DMG by 30% and reduces Skill Activation requirements to 40 times."
+        "to": "Increases DMG by 30% and reduces Skill Activation requirements to 40 times.",
+        "unified": "Increases DMG by [25%->30%] and reduces Skill Activation requirements to [45->40] times."
       }
     }
   }

@@ -2,7 +2,7 @@
   "heroName": "Mirianne",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.464Z",
+  "generatedAt": "2026-05-08T11:43:35.397Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Attacks the enemy with the lowest M.DEF 3 times, dealing 182*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 114.8% of ATK M.DMG and stunning them for 0.6sec. If the target is under [Target Lock On], deals additional 303*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 68.9% of ATK M.DMG. The final hit inflicts [Target Lock On] on the enemy for 10sec.",
-        "to": "Attacks the enemy with the lowest M.DEF 3 times, dealing a total of ??? M.DMG and inflicting stun for 1 sec, and if the target is under 'Target Lock On', target takes additional ??? M.DMG. The last attack inflicts 'Target Lock On' on the enemy for 10 sec. Lock On cannot be dispelled, and the target's M.Block rate has decreased by 500."
+        "unified": "Attacks the enemy with the lowest M.DEF 3 times, dealing a total of ??? M.DMG and inflicting stun for [0.6 sec->1 sec], and if the target is under 'Target Lock On', target takes additional ??? M.DMG. The last attack inflicts 'Target Lock On' on the enemy for 10 sec. [(added) Lock On cannot be dispelled, and the target's M.Block rate has decreased by 500.]"
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals 569*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 357.2% of ATK M.DMG to enemies in range and stuns them for 1.2sec. Then moves to the ally with the highest DMG dealt, creating a [Shield] on the target and self that absorbs 2782*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 451.6% of ATK DMG for 6sec, and increases Status Resistance by 60%. This effect does not activate if there are no allies.",
-        "to": "Deals ??? M.DMG to target enemy and other enemies in range, and Stuns them for 2 sec. Then moves to an ally with the lowest P.DEF, excluding self, and creates Shield for two that can block ??? DMG for 10 sec. Shield will be ineffective when there is no ally. Gains immunity to CC while the Shield lasts."
+        "unified": "Deals ??? M.DMG to target enemy and other enemies in range, and Stuns them for [1.2 sec->2 sec]. Then moves to an ally with the [highest DMG dealt->lowest P.DEF], excluding self, and creates Shield for two that can block ??? DMG for [6 sec->10 sec]. [(added) Gains immunity to CC while the Shield lasts.] [(removed) increases Status Resistance by 60%]"
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "2"
       },
       "description": {
-        "from": "Moves to the enemy with the lowest current HP, dealing 909*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 570.3% of ATK M.DMG, then returns to the farthest ally. If the target is not a Hero, deals additional 1363*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 855.4% of ATK M.DMG. If the target is killed by this skill or is a Boss, uses [Check & Guard].",
-        "to": "Moves to an enemy with the lowest HP, deals ??? M.DMG then returns to the furthest ally. If the enemy is not a hero, deals ??? additional M.DMG that ignores DEF. Defeating a target with this skill instantly triggers 'Restrain and Protect'."
+        "unified": "Moves to an enemy with the lowest HP, deals ??? M.DMG then returns to the furthest ally. If the enemy is not a hero, deals ??? additional M.DMG [(added) that ignores DEF]. Defeating a target with this skill instantly triggers ['Check & Guard'->'Restrain and Protect']."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "If there is an enemy under [Target Lock On], increases ATK by 245*(0.7+(0.3*Skill Level*Awakening Coefficient)), and all skills prioritize enemies under [Target Lock On]. When a [Target Lock On] enemy dies, inflicts another enemy with the lowest M.DEF with [Target Lock On] for 10sec.\n\n[Target Lock On]: Increases M.DMG taken by 20%. This effect cannot be dispelled.",
-        "to": "If an enemy is inflicted by [Target Lock On], ATK increases by ??? and all attacks skills prioritize Locked On enemies. When the Locked On enemies dies, [Target Lock On] is inflicted on another enemy for 10 sec."
+        "unified": "If an enemy is inflicted by [Target Lock On], ATK increases by ??? and all attacks skills prioritize Locked On enemies. When the Locked On enemies dies, [Target Lock On] is inflicted on another enemy for 10 sec. [(removed) Target Lock On: Increases M.DMG taken by 20%]"
       }
     }
   },
@@ -50,19 +46,16 @@
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "DMG is increased by {1}%.",
-        "to": "DMG is increased by 40%."
+        "unified": "DMG is increased by [ {1}% -> 40% ]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "When there is an enemy affected by 'Target Lock On', Crit Chance is increased by 300.",
-        "to": "When there are enemies inflicted by **Skill 1**, Crit Chance is increased by 400."
+        "unified": "When there are enemies inflicted by **Skill 1**, Crit Chance is increased by [300->400]."
       },
       "dark": {
-        "from": "When there is an enemy affected by 'Target Lock On', DMG taken is reduced by {2}%.",
-        "to": "Receives 30% reduced DMG when enemy is inflicted by **Skill 1**."
+        "unified": "Receives [ {2}% -> 30% ] reduced DMG when enemy is inflicted by **Skill 1**."
       }
     }
   },
@@ -71,8 +64,7 @@
       "name": "Proof of Endeavor",
       "hasChanges": true,
       "description": {
-        "from": "[Target Lock On] Increases DMG by {0}% and reduces the target's M.Crit Resist by 160 for 10 sec.",
-        "to": "[Target Lock On] Increases DMG by {0}% and reduces the target's M.Crit Resistance by 500 for 10 sec."
+        "unified": "[Target Lock On] Increases DMG by {0}% and reduces the target's M.Crit Resistance by [160->500] for 10 sec."
       },
       "values": {
         "0": {
@@ -85,8 +77,7 @@
       "name": "Gemini Ring of Instant Teleportation",
       "hasChanges": true,
       "description": {
-        "from": "[Restrain and Protect] Reduces Mana Cost by 1000, and on Critical Hit, recovers {0} Mana.",
-        "to": "[Restrain and Protect] Reduces Mana Cost by 1 and upon Crit hit recovers {0} Mana."
+        "unified": "[Restrain and Protect] Reduces Mana Cost by [1000->1] and upon Crit hit recovers {0} Mana."
       },
       "values": {
         "0": {
@@ -99,8 +90,7 @@
       "name": "Magic Powder of Lightning",
       "hasChanges": true,
       "description": {
-        "from": "[Assassination] Increases DMG by 50%, and on Critical Hit, increases own ATK by {0}% for 14 sec.",
-        "to": "[Assassination] DMG is increased by 50% and upon Crit Hit increases own ATK by {0}% for 10 sec."
+        "unified": "[Assassination] DMG is increased by 50% and upon Crit Hit increases own ATK by {0}% for [14 sec->10 sec]."
       },
       "values": {
         "0": {
@@ -113,8 +103,7 @@
       "name": "Birth of Miracle",
       "hasChanges": true,
       "description": {
-        "from": "[Target Elimination] Increases ATK Boost by 50% and every 5 sec, stuns enemies under 'Target Lock On' for {0} sec.",
-        "to": "[Target Eliminated] Increases ATK boost by 50%. Every 5 sec, stuns enemies under Target Lock On for {0} sec."
+        "unified": "[Target Eliminated] Increases ATK boost by 50%. Every 5 sec, stuns enemies under Target Lock On for {0} sec."
       },
       "values": {
         "0": {
@@ -127,8 +116,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "When attacking an enemy affected by 'Target Lock On', deals additional Magic DMG equal to {0}% of ATK and increases ATK SPD by 1%. ATK SPD stacks up to {1} times, and this effect can only trigger once every 1 sec.",
-      "to": "Increases ATK Spd by {0} and attacks on Locked On enemies, dealing {1}% of ATK as extra M.DMG. Extra damage effect occurs once in 2 sec."
+      "unified": "Increases ATK Spd by [{1} stacks of 1%->{0}] and attacks on Locked On enemies, dealing [{0}%->{1}%] of ATK as extra M.DMG. Extra damage effect occurs once in [1 sec->2 sec]."
     },
     "values": {
       "0": {
@@ -144,17 +132,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Places Endless Acceleration, Riventina on the ground for 10sec, attacking the enemy with the lowest M.DEF, dealing 400% of ATK M.DMG and inflicting [Target Lock On].\n\n[Endless Acceleration]: Every 3sec, attacks an enemy, dealing 400% of ATK M.DMG and stunning for 1.2sec. Prioritizes enemies affected by [Target Lock On].",
-      "to": "Places Endless Acceleration, Riventina on the ground for 10 sec. Endless Acceleration, Riventina attacks the enemy with the lowest M.DEF, dealing ??? M.DMG and inflicting Target Lock On. Afterwards, attacks the enemy every few sec, dealing ??? M.DMG and inflicting stun for 2 sec. All effects prioritize the enemy inflicted with Target Lock On."
+      "unified": "Places Endless Acceleration, Riventina on the ground for 10 sec. Endless Acceleration, Riventina attacks the enemy with the lowest M.DEF, dealing ??? M.DMG and inflicting Target Lock On. Afterward, attacks the enemy every [3 sec->few sec], dealing ??? M.DMG and inflicting stun for [1.2 sec->2 sec]. All effects prioritize the enemy inflicted with Target Lock On."
     },
     "advancement": {
       "1": {
         "from": "For the duration, increases Mirianne’s Crit DMG by 72%.",
-        "to": "Upon activation, Increases Mirianne's Crit DMG by 100% and ACC by 300 for 10 sec."
+        "to": "Upon activation, Increases Mirianne's Crit DMG by 100% and ACC by 300 for 10 sec.",
+        "unified": "Upon activation, Increases Mirianne's Crit DMG by [72%->100%] and [(added) ACC by 300] for 10 sec."
       },
       "2": {
         "from": "For the duration, increases [Assassination] DMG by 50%.",
-        "to": "Upon activation, [Assassination] ignores the enemy's DEF, and Increases its DMG by 30% for 10 sec."
+        "to": "Upon activation, [Assassination] ignores the enemy's DEF, and Increases its DMG by 30% for 10 sec.",
+        "unified": "Upon activation, [Assassination] [(added) ignores the enemy's DEF, and] Increases its DMG by [50%->30%] for 10 sec."
       }
     }
   }

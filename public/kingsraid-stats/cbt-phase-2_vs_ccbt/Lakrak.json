@@ -2,13 +2,12 @@
   "heroName": "Lakrak",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.440Z",
+  "generatedAt": "2026-05-08T11:43:35.380Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 739*(0.7+(0.3*Skill Level*Awakening Coefficient))+355.4% ATK Physical DMG to enemies in a frontal straight-line area and stuns them for 1sec. Non-hero enemies take additional 339*(0.7+(0.3*Skill Level*Awakening Coefficient))+185.4% ATK Physical DMG.\n\n[Experiment Success!]: This skill does not trigger a cooldown.",
-        "to": "Deals 739(1+0.3Skill Level)+355.4% of Attack Power as Physical Damage to enemies in a straight line ahead, stunning them for 1.8 sec. Deals an additional 339(1+0.3Skill Level)+185.4% of Attack Power as Physical Damage to non-hero enemies.\n[Experiment Successful!]: No cooldown is incurred."
+        "unified": "Deals Physical Damage to enemies in a straight line ahead, stunning them for [1sec -> 1.8 sec]. Deals an additional Physical Damage to non-hero enemies. [Experiment Successful!]: No cooldown is incurred."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "15"
       },
       "description": {
-        "from": "Deals 443*(0.7+(0.3*Skill Level*Awakening Coefficient))+213.5% ATK Physical DMG to the target and nearby enemies, inflicting [Explosive Substance] for 7sec, increasing Physical DMG taken by 20% and inflicting Blind for 1sec.\n\n[Experiment Success!]: Removes beneficial effects from enemies within the area.",
-        "to": "Deals 443(1+0.3Skill Level)+213.5% of Attack Power as Physical Damage to the target and nearby enemies, inflicting them with [Explosive Material] for 7 sec, which increases Physical Damage taken by 25% and blinds them for 2.4 sec.\n[Experiment Successful!]: Removes beneficial effects from enemies within range."
+        "unified": "Deals Physical Damage to the target and nearby enemies, inflicting them with [Explosive Material] for 7 sec, which increases Physical Damage taken by [20% -> 25%] and blinds them for [1sec -> 2.4 sec]. [Experiment Successful!]: Removes beneficial effects from enemies within range."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "2"
       },
       "description": {
-        "from": "Attaches a sticky bomb to a random enemy.\nAfter 3sec, the bomb explodes, dealing 1500*(0.7+(0.3*Skill Level*Awakening Coefficient))+755.2% ATK Physical DMG to the target and nearby enemies, and stunning them for 1sec. Enemies afflicted with [Explosive Substance] take additional 1001*(0.7+(0.3*Skill Level*Awakening Coefficient))+477.5% ATK Physical DMG.\n\n[Experiment Success!]: The bomb explodes immediately upon attachment.",
-        "to": "Attaches a sticky bomb to a random enemy.\nAfter 3 sec, the bomb explodes, dealing 1500(1+0.3Skill Level)+755.2% of Attack Power as Physical Damage to the target and nearby enemies and stunning them for 1.8 sec. Enemies with [Explosive Material] take an additional 1001(1+0.3Skill Level)+477.5% of Attack Power as Physical Damage.\n[Experiment Successful!]: The bomb explodes immediately upon attaching, triggering its effects."
+        "unified": "Attaches a sticky bomb to a random enemy. After 3 sec, the bomb explodes, dealing Physical Damage to the target and nearby enemies and stunning them for [1sec -> 1.8 sec]. Enemies with [Explosive Material] take an additional Physical Damage. [Experiment Successful!]: The bomb explodes immediately upon attaching, triggering its effects."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "When performing a Normal Attack, has a 15% chance to fire a shell, dealing 345*(0.7+(0.3*Skill Level*Awakening Coefficient))+166.3% ATK Physical DMG to the target and nearby enemies, and stunning them for 1sec.\nEach time a skill ends, attempts [Experiment] with a 50% chance to succeed, enhancing the next skill. Enhanced skills do not attempt [Experiment].",
-        "to": "On Normal Attack, has a 15% chance to fire a shell that deals 345(1+0.3Skill Level)+166.3% of Attack Power as Physical Damage to the target and nearby enemies, stunning them for 1.2 sec.\nAt the end of each skill, attempts an [Experiment]. There is a 50% chance for success, which empowers the next skill. Empowered skills do not attempt an [Experiment]."
+        "unified": "On Normal Attack, has a 15% chance to fire a shell that deals Physical Damage to the target and nearby enemies, stunning them for [1sec -> 1.2 sec]. At the end of each skill, attempts an [Experiment]. There is a 50% chance for success, which empowers the next skill. Empowered skills do not attempt an [Experiment]."
       }
     }
   },
@@ -50,29 +46,25 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Increases DMG by 40%."
+        "unified": "Increases DMG by [50% -> 40%]."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "Increases the duration of Blind by 1 sec.",
-        "to": "Increases the duration of Blind by 1.2 sec."
+        "unified": "Increases the duration of Blind by [1 sec -> 1.2 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 2000, and the number of bomb placements is changed to 2.",
-        "to": "Mana cost is increased by 1000, and the number of bomb placements is changed to 2."
+        "unified": "Mana cost is [increased by 2000 -> increased by 1000], and the number of bomb placements is changed to 2."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Shell activation chance increases by 25%, and stun duration increases by 0.5 sec.",
-        "to": "Shell activation chance is increased by 10%, and stun duration is increased by 0.6 sec."
+        "unified": "Shell activation chance is increased by [25% -> 10%], and stun duration is increased by [0.5 sec -> 0.6 sec]."
       }
     }
   },
@@ -101,15 +93,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On [Experiment] success, increases Attack Speed by 12% and Status Ailment Accuracy by 150 for 10 sec.",
-      "to": "On [Experiment] success, increases Attack Speed by 300% and Status Ailment Accuracy by 300 for 10 sec."
+      "unified": "On [Experiment] success, increases Attack Speed by [12% -> 300%] and Status Ailment Accuracy by [150 -> 300] for 10 sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "[Experiment] success chance increases by {0}%. On [Experiment] success, Attack increases by {1}%, Attack Speed increases by {2}%, and damage dealt to non-hero enemies increases by {3}%. This effect stacks up to 3 times and cannot be dispelled.",
-      "to": "[Experiment] success chance is increased by {0}%.\nOn [Experiment] success, Attack increases by {1}%, Attack Speed by {2}%, and damage dealt to non-hero enemies by {3}%. This effect stacks up to 4 times and cannot be dispelled."
+      "unified": "[Experiment] success chance is increased by {0}%. On [Experiment] success, Attack increases by {1}%, Attack Speed by {2}%, and damage dealt to non-hero enemies by {3}%. This effect stacks up to [3 -> 4] times and cannot be dispelled."
     },
     "values": {
       "0": {

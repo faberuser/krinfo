@@ -2,7 +2,7 @@
   "heroName": "Luna",
   "versionA": "legacy",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.588Z",
+  "generatedAt": "2026-05-08T11:43:35.481Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Deals ??? M.DMG by shooting a bouncing projectile which bounces 3 times starting from the nearest enemy. The further the enemy, the more DMG inflicted.",
-        "to": "Unleashes an attack that bounces 4 times starting from the nearest enemy, dealing 684*(1+0.3Skill Level)+300% of Attack Power Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is. This attack is treated as a Normal Attack."
+        "unified": "Unleashes an attack that bounces [3->4] times starting from the nearest enemy, dealing Magic Damage to each enemy hit. Damage increases by up to 100% the farther the enemy is. This attack is treated as a Normal Attack."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals ??? M.DMG to enemies furthest away in a small range, and stuns them for 3 sec. The further the enemy, the more DMG they will take.",
-        "to": "Deals 792*(1+0.3Skill Level)+347.5% of Attack Power Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for 1sec. Damage increases by up to 200% the farther the enemy is."
+        "unified": "Deals Magic Damage 2 time(s) to a random enemy and surrounding enemies, and stuns them for [3->1]sec. Damage increases by up to 200% the farther the enemy is."
       }
     },
     "3": {
@@ -37,8 +35,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Deals ??? M.DMG to target enemies in range, and reduces target's Crit Chance by 100% for 7 sec.",
-        "to": "Deals 342*(1+0.3Skill Level)+150% of Attack Power Magic Damage 6 time(s) to enemies within range, knocks them back for 1sec, and reduces their Critical Chance by 25% for 7sec. Damage increases by up to 150% the farther the enemy is."
+        "unified": "Deals Magic Damage 6 time(s) to enemies within range, knocks them back for [(added) 1]sec, and reduces their Critical Chance by [100%->25%] for 7sec. Damage increases by up to 150% the farther the enemy is."
       }
     },
     "4": {
@@ -48,8 +45,7 @@
         "to": "12"
       },
       "description": {
-        "from": "When inflicted by CC, dispels negative effects from self and attacks the farthest enemy, dealing ??? M.DMG and knocking it away for 2 sec.",
-        "to": "Attacks the farthest enemy, dealing 799*(1+0.3Skill Level)+350% of Attack Power Magic Damage, knocking them back for 0.5sec, and increasing Magic Damage taken by 20% for 6sec. Damage increases by up to 200% the farther the enemy is."
+        "unified": "Attacks the farthest enemy, dealing Magic Damage, knocking them back for [2->0.5]sec, and increasing Magic Damage taken by [(added) 20%] for [(added) 6]sec. Damage increases by up to 200% the farther the enemy is. [Cleanse self on CC->(removed)]"
       }
     }
   },
@@ -58,34 +54,28 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Gains immunity to CC for the duration of Skill.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by 50%. [CC Immunity->(removed)]"
       },
       "dark": {
-        "from": "Enemies hit are stunned for 2 sec.",
-        "to": "Stuns enemies hit for 1 sec."
+        "unified": "Stuns enemies hit for [2->1] sec."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "In exchange for 2 additional Mana Cost, attacks random enemies 3 times.",
-        "to": "Mana cost is increased by 2000, but the number of hits is increased by 2."
+        "unified": "Mana cost is increased by [2->2000], but the number of hits is increased by [3->2]."
       },
       "dark": {
-        "from": "Ignores enemy Block.",
-        "to": "Mana cost is increased by 1000, but targets the farthest enemy."
+        "unified": "Mana cost is increased by 1000, but targets the farthest enemy. [Ignore Block->(removed)]"
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces ACC of hit enemies by 150 for 7 sec.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by 50%. [Reduces ACC by 150->(removed)]"
       },
       "dark": {
-        "from": "In exchange for 1 additional Mana Cost, knock back the enemy over a long distance.",
-        "to": "For 7 sec, reduces Accuracy of enemies hit by 150."
+        "unified": "For 7 sec, reduces Accuracy of enemies hit by 150. [Mana cost increased by 1 and long knockback->(removed)]"
       }
     }
   },
@@ -94,8 +84,7 @@
       "name": "Golden Bell of Luck",
       "hasChanges": true,
       "description": {
-        "from": "[Pew!] Increases DMG by 20%, and upon Critical Hit, recovers Mana by {0}.",
-        "to": "[Pew!] Increases DMG by {0}%, and upon Critical Hit, recovers Mana by 200."
+        "unified": "[Pew!] Increases DMG by [20%->{0}%], and upon Critical Hit, recovers Mana by [???->200]."
       },
       "values": {
         "0": {
@@ -108,8 +97,7 @@
       "name": "Never-Melting Snow Flower",
       "hasChanges": true,
       "description": {
-        "from": "[Twinkle Twinkle] Crit Chance Reduction will not be dispelled, and the effect duration will increase by {0} sec.",
-        "to": "[Twinkle Twinkle] The Crit Chance Reduction effect becomes irremovable, and increases the duration by {0} sec."
+        "unified": "[Twinkle Twinkle] The Crit Chance Reduction effect becomes irremovable, and increases the duration by {0} sec."
       },
       "values": {}
     },
@@ -117,8 +105,7 @@
       "name": "Carrot Cake",
       "hasChanges": true,
       "description": {
-        "from": "[Gotcha!] Greatly increases the knockback range, and Cooldown is reduced by {0} sec.",
-        "to": "[Gotcha!] reduces Cooldown by {0} sec and cleanses self when affected by a CC once every 20 sec."
+        "unified": "[Gotcha!] reduces Cooldown by {0} sec and cleanses self when affected by a CC once every 20 sec. [Increase knockback range->(removed)]"
       },
       "values": {
         "0": {
@@ -131,15 +118,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Grants Blessing of the Carrot. Blessing of the Carrot increases DMG dealt to Non-Hero enemies by 30%, and reduces DMG received by 30%.",
-      "to": "Damage dealt to non-hero enemies is increased by 10%, and damage taken is reduced by 10%."
+      "unified": "Damage dealt to non-hero enemies is increased by [30%->10%], and damage taken is reduced by [30%->10%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increases Crit DMG by {0}%, DMG of normal attacks by {1}% and the Range by {2}%.",
-      "to": "Critical Damage is increased by {0}%, Normal Attack damage by {1}%, and Attack Range by {2}%."
+      "unified": "Critical Damage is increased by {0}%, Normal Attack damage by {1}%, and Attack Range by {2}%."
     },
     "values": {
       "2": {

@@ -2,13 +2,12 @@
   "heroName": "Arch",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.563Z",
+  "generatedAt": "2026-05-08T11:43:35.465Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals ??? M.DMG to 3 enemies and push them back, leaving a Judgment Sigil on them for 15 sec and increases M.DMG the targets take by 25% for 10 sec.",
-        "to": "Deals 310*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 196.3% of ATK M.DMG to 2 enemy, knocks them back, and engraves [Judgment Mark] for 15sec.\n\n[Judgment Mark]: M.DMG taken is increased by 15%."
+        "unified": "Deals ??? M.DMG to [3->2] enemy, knocks them back, and engraves [Judgment Mark] for 15sec. [Judgment Mark]: M.DMG taken is increased by [25%->15%]."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "4"
       },
       "description": {
-        "from": "Deals ??? M.DMG to frontal enemies in a straight line. Deals additional ??? M.DMG that ignores DEF to targets with Judgment Sigil, and reduces their Heal Rate by 50% for 10 sec.",
-        "to": "Deals 146*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 92.6% of ATK M.DMG 3 times to enemies in a frontal line.\n\n[Judgment Mark]: Deals 219*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 138.8% of ATK additional M.DMG 3 times, reduces Healing by 30% for 7sec. This additional damage gains 500 extra DEF Penetration."
+        "unified": "Deals ??? M.DMG 3 times to enemies in a frontal line. [Judgment Mark]: Deals ??? additional M.DMG 3 times, reduces Healing by [50%->30%] for [10 sec->7sec]. This additional damage gains 500 extra DEF Penetration."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals ??? M.DMG to the target and enemies in a nearby range, inflicting Silence for 5 sec. Enemies with Judgment Sigil take 50% increased M.DMG. Afterward, grants immunity to M.DMG to all allies for 5 sec.",
-        "to": "Deals 1235*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 782.7% of ATK M.DMG to enemies in range and silences them for 2sec. Then, for 5sec, all allies gain Magic Damage Immunity.\n\n[Judgment Mark]: M.DMG taken is increased by 40% for 5sec."
+        "unified": "Deals ??? M.DMG to enemies in range and silences them for [5 sec->2sec]. Then, for 5sec, all allies gain Magic Damage Immunity. [Judgment Mark]: M.DMG taken is increased by [50%->40%] for 5sec."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Every 15 sec, deals ??? M.DMG ignoring DEF to enemies inflicted by Judgement Sigil. Once during every battle, upon reaching near death HP, deals ??? M.DMG to enemies inflicted by Judgement Sigils and stuns them for 3 sec, while casting a shield that blocks ??? DMG to all allies for 5 sec. Gains immunity to CC while the shield is in effect. When the shield effect takes place, consumes all mana, and all skill cooldown is increased by 50%.",
-        "to": "When using a skill, triggers an additional effect on enemies with [Judgment Mark]. Also, once per battle, when taking fatal damage, gains [Death Resistance], deals 642*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 407.1% of ATK M.DMG to enemies with [Judgment Mark], and stuns them for 1.2sec. Then, for 5sec, grants all allies a shield that absorbs 1566*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 687.3% of ATK damage and increases Status Resistance by 600.\n\n[Death Resistance]: Ignores fatal damage, but consumes all Mana and increases the remaining cooldown of all skills by 50%.\n[Judgment Mark]: Every 15sec, deals 214*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 135.7% of ATK M.DMG. This damage gains 500 extra DEF Penetration."
+        "unified": "When using a skill, triggers an additional effect on enemies with [Judgment Mark]. Also, once per battle, when taking fatal damage, gains [Death Resistance], deals ??? M.DMG to enemies with [Judgment Mark], and stuns them for [3 sec->1.2sec]. Then, for 5sec, grants all allies a shield that absorbs ??? damage and increases Status Resistance by [(added) 600]. [Death Resistance]: Ignores fatal damage, but consumes all Mana and increases the remaining cooldown of all skills by 50%. [Judgment Mark]: Every 15sec, deals ??? M.DMG. This damage gains 500 extra DEF Penetration."
       }
     }
   },
@@ -50,15 +46,13 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Recovers 500 Mana upon a Critical Hit.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by 1000 [(removed) Recovers 500 Mana upon a Critical Hit]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces Mana Cost by 1.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1->1000]."
       }
     }
   },
@@ -67,8 +61,7 @@
       "name": "Holy Golden Arrow",
       "hasChanges": true,
       "description": {
-        "from": "[Celestial Arrow] Increases DMG by {0}% and the number of targets by 1.",
-        "to": "[Celestial Arrow] Increases DMG by {0}% and the number of targets by 2."
+        "unified": "[Celestial Arrow] Increases DMG by {0}% and the number of targets by [1->2]."
       },
       "values": {
         "0": {
@@ -81,8 +74,7 @@
       "name": "Magic Square of Pursuit",
       "hasChanges": true,
       "description": {
-        "from": "[Purifying Blaze] Reduces Mana Cost by 1 and increases DMG by {0}%.",
-        "to": "[Purifying Light] Reduces Mana Cost by 1000 and increases DMG by {0}%."
+        "unified": "[Purifying Light] Reduces Mana Cost by [1->1000] and increases DMG by {0}%."
       },
       "values": {
         "0": {
@@ -95,8 +87,7 @@
       "name": "Eye of Heaven",
       "hasChanges": true,
       "description": {
-        "from": "[Arbiter] DMG is increased by {0}% and all allies' ATK is increased by 30% for the duration of M.Shield.",
-        "to": "[Arbiter] Increases DMG by {0}% and increases all allies' ATK by 25% for the duration of M.Shield."
+        "unified": "[Arbiter] Increases DMG by {0}% and increases all allies' ATK by [30%->25%] for the duration of M.Shield."
       },
       "values": {
         "0": {
@@ -109,8 +100,7 @@
       "name": "Bell of Punishment",
       "hasChanges": true,
       "description": {
-        "from": "[The Last Judgment] Upon receiving fatal DMG, heals HP of all allies by 15% of Max HP, and silences entire enemies for {0} sec.",
-        "to": "[The Last Judgment] Upon taking fatal DMG, heals all allies for 15% of Max HP and silences all enemies for {0} sec."
+        "unified": "[The Last Judgment] Upon taking fatal DMG, heals all allies for 15% of Max HP and silences all enemies for {0} sec."
       },
       "values": {
         "0": {
@@ -123,8 +113,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 10 sec, inflicts a Judgement Sigil on 1 random enemy for 15 sec, then deals M.DMG equal to {0}% of ATK, Ignores DEF if the target is not a Hero.",
-      "to": "Every 10 sec, applies [Judgment Mark] to a random enemy for {0} sec and deals M.DMG equal to {1}% of ATK. If the target is not a Hero, DEF Penetration is increased by 500."
+      "unified": "Every 10 sec, applies [Judgment Mark] to a random enemy for [15 sec->{0} sec] and deals M.DMG equal to [???->{1}%] of ATK. If the target is not a Hero, DEF Penetration is increased by 500."
     },
     "values": {
       "0": {
@@ -136,17 +125,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the Soul of Clear Blue Sky, Sherrkyle, dealing ??? M.DMG to all enemies and marking Judgment Sigil for 15 sec. Afterward, increases own Crit DMG by 100% for 11 sec.",
-      "to": "Summons the Soul of Clear Blue Sky, Sherrkyle, dealing 400% of ATK M.DMG to all enemies and applying [Judgment Sigil] for 15sec. Afterwards, increases own Crit DMG by 72% for 11sec."
+      "unified": "Summons the Soul of Clear Blue Sky, Sherrkyle, dealing ??? M.DMG to all enemies and applying [Judgment Sigil] for 15sec. Afterwards, increases own Crit DMG by [100%->72%] for 11sec."
     },
     "advancement": {
       "1": {
         "from": "For the duration of Skill, reduces Cooldown of self's all Skills by 1 sec every sec.",
-        "to": "For the duration, reduces cooldown of all own skills by 1 sec every 2 sec."
+        "to": "For the duration, reduces cooldown of all own skills by 1 sec every 2 sec.",
+        "unified": "For the duration, reduces cooldown of all own skills by 1 sec every [1 sec->2 sec]."
       },
       "2": {
         "from": "For the duration of Skill, attacks a random enemy, dealing ??? M.DMG every 1 sec and marking Judgment Sigil for 15 sec. If the target is already marked, deals additional ??? M.DMG that ignores DEF.",
-        "to": "For the duration, every 2 sec, attacks a random enemy, dealing 150% of ATK as M.DMG and applying [Judgment Sigil] for 15 sec. If the target already has [Judgment Sigil], removes it and deals an additional 300% of ATK as M.DMG. This additional DMG gains 500 increased DEF Penetration."
+        "to": "For the duration, every 2 sec, attacks a random enemy, dealing 150% of ATK as M.DMG and applying [Judgment Sigil] for 15 sec. If the target already has [Judgment Sigil], removes it and deals an additional 300% of ATK as M.DMG. This additional DMG gains 500 increased DEF Penetration.",
+        "unified": "For the duration, every [1 sec->2 sec], attacks a random enemy, dealing ??? M.DMG and applying [Judgment Sigil] for 15 sec. If the target already has [Judgment Sigil], [removes it and deals additional ??? M.DMG that ignores DEF->removes it and deals an additional ??? as M.DMG. This additional DMG gains 500 increased DEF Penetration]."
       }
     }
   }

@@ -2,13 +2,12 @@
   "heroName": "Kaulah",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.461Z",
+  "generatedAt": "2026-05-08T11:43:35.396Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 148*(0.7+(0.3*Skill Level*Awakening Coefficient))+93.4% ATK Magic DMG to a random enemy 5 times and inflicts Electrocute. Enemies afflicted with Electrocute are stunned for 2sec.",
-        "to": "Drops 5 lightning bolts upon a random enemy, dealing ??? M.DMG and inflicting Electrify. Electrified enemy is stunned for 3 sec."
+        "unified": "Drops 5 lightning bolts upon a random enemy, dealing M.DMG and inflicting Electrify. Electrified enemy is stunned for [2 sec->3 sec]."
       }
     },
     "2": {
@@ -18,8 +17,7 @@
         "to": "11"
       },
       "description": {
-        "from": "For 6 sec, restores HP by 552*(0.7+(0.3*Skill Level*Awakening Coefficient))+89.6% ATK every 6sec. The caster cannot perform other actions while the skill is active, but all allies take 60% reduced Magic DMG.",
-        "to": "HP of all allies is healed by ??? for 5 sec. For the duration of SKill, Kaulah gains immunity to CC and takes 50% reducesd All DMG."
+        "unified": "HP of all allies is healed by ??? for [6 sec->5 sec]. For the duration of Skill, Kaulah [ (added) gains immunity to CC] and takes [60% reduced Magic DMG -> 50% reducesd All DMG]."
       }
     },
     "3": {
@@ -29,8 +27,7 @@
         "to": "15"
       },
       "description": {
-        "from": "For 7sec, increases the ATK of all allies by 206*(0.7+(0.3*Skill Level*Awakening Coefficient)), Attack Speed by 42%, and Critical Rate by 150.",
-        "to": "For 15 sec, increases all allies' ATK by ???, ATK Spd by 350, and Crit Chance by 350."
+        "unified": "For 15 sec, increases all allies' ATK by ???, ATK Spd by [42%->350], and Crit Chance by [150->350]."
       }
     },
     "4": {
@@ -40,8 +37,7 @@
         "to": null
       },
       "description": {
-        "from": "Every 15sec, deals 174*(0.7+(0.3*Skill Level*Awakening Coefficient))+109.2% ATK Magic DMG to 4 enemy, inflicts Electrocute for 20sec, and stuns the target for 0.6sec on a Critical Hit.\nDamage taken is reduced by 15% per enemy afflicted with Electrocute, stacking up to 3 times.\n\nElectrocute: Deals DoT equal to 25% ATK every 1sec for 20sec.",
-        "to": "Deals ??? M.DMG to 4 enemies every 15 sec, inflicting them with Electric shock for 20 sec, and inflicting stun for 1 sec upon a Critical Hit. Enemies inflicted with Electric Shock take a total of ??? M.DMG over 20 sec. For every enemy under Electric, Kaulah takes 15% reduced DMG. This effect can be stacked up to max 3 times and is irremovable."
+        "unified": "Deals M.DMG to 4 enemies every 15 sec, inflicting them with Electric shock for 20 sec, and inflicting stun for [0.6 sec->1 sec] upon a Critical Hit. Enemies inflicted with Electric Shock take a total of M.DMG over 20 sec. For every enemy under Electric, Kaulah takes 15% reduced DMG. This effect can be stacked up to max 3 times and is irremovable."
       }
     }
   },
@@ -50,30 +46,25 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       },
       "dark": {
-        "from": "Increases the target’s Magic DMG taken by 10% for 10 sec.",
-        "to": "Target takes 25% increased M.DMG for 10 sec."
+        "unified": "Target takes 25% increased M.DMG for 10 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "You are immune to status ailments while casting.",
-        "to": "Allies take 25% less DMG while skill is in effect."
+        "unified": "Allies take 25% less DMG while skill is in effect."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, and each heal additionally restores 5% of the target's Max HP.",
-        "to": "In exchange for 1 additional Mana Cost, additionally heal allies by 5% of their Max HP."
+        "unified": "In exchange for [1000->1] additional Mana Cost, additionally heal allies by 5% of their Max HP."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Restores 1000 Mana to all allies.",
-        "to": "Recovers 1 orb of Mana for all allies."
+        "unified": "Recovers 1 orb of Mana for all allies."
       }
     }
   },
@@ -82,8 +73,7 @@
       "name": "Skywind Feather Decoration",
       "hasChanges": true,
       "description": {
-        "from": "[Swift Wind] Reduces Mana Cost by 1, and additionally increases Crit DMG by {0}%.",
-        "to": "[Swift Wind] Mana cost is reduced by 1, and Crit DMG {0}% boost effect is added."
+        "unified": "[Swift Wind] Mana cost is reduced by 1, and Crit DMG {0}% boost effect is added."
       },
       "values": {}
     }
@@ -91,15 +81,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When hit, reduces the attacker's Attack Speed by 200% and their Mana by 100 per sec for 5 sec. This effect can only trigger once every 5 sec.",
-      "to": "When taking DMG, decreases ATK Spd of the attacking enemy by 300 for 5 sec and its Mana by 200 every sec. This effect is activated only once every 5 sec."
+      "unified": "When taking DMG, decreases ATK Spd of the attacking enemy by [200%->300] for 5 sec and its Mana by [100->200] every sec. This effect is activated only once every 5 sec."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On Normal Attack, has a 30% chance to deal Magic Damage equal to {0}% of Attack Power to 2 random enemies and reduce their Attack by {1}% for 10 sec. If they are shocked, they are stunned for 0.5 sec.",
-      "to": "Normal attacks have a {0}% chance to deal M.DMG equal to {1}% of ATK and inflicts against 2 random enemies and reduce their ATK by {2}%. If the target is already inflicted with Electric Shock, stuns the target for 2 sec."
+      "unified": "Normal attacks have a [{0}%->{0}%] chance to deal M.DMG equal to [{0}%->{1}%] of ATK and inflicts against 2 random enemies and reduce their ATK by [{1}%->{2}%]. If the target is already inflicted with Electric Shock, stuns the target for [0.5 sec->2 sec]."
     },
     "values": {
       "0": {
@@ -115,17 +103,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Blue Wind, Coventina, recovering {1} Mana for all allies, reducing Heal Rate of all enemies by 30% for 10sec, and every 3sec, strikes a random enemy with lightning, dealing 200% of ATK M.DMG. After 10sec, deals 400% of ATK M.DMG to all enemies and dispels positive effects.",
-      "to": "Summons the soul of The Bluewind, Coventina, recovering Mana of all allies by 2000. Afterward, reduces Heal Rate of all enemies by 30%, increase M.DMG the enemies take by 30% for 10 sec, and attacks a random enemy with lightning every 3 sec, dispelling positive effects, dealing ??? M.DMG, and reducing the enemy's Mana by 500. After 10 sec, deals ??? M.DMG to all enemies and inflicts Stun for 5 sec."
+      "unified": "Summons the soul of The Bluewind, Coventina, recovering Mana of all allies by [ (removed) {1} -> 2000]. Afterward, reduces Heal Rate of all enemies by 30%, [(added) increase M.DMG the enemies take by 30% for 10 sec], and attacks a random enemy with lightning every 3 sec, [(added) dispelling positive effects], dealing M.DMG, [(added) and reducing the enemy's Mana by 500]. After 10 sec, deals M.DMG to all enemies and [dispels positive effects->inflicts Stun for 5 sec]."
     },
     "advancement": {
       "1": {
         "from": "Changes Heal Rate Reduction to 50%.",
-        "to": "Changes Heal Rate Reduction effect to 50% and M.DMG Boost effect to 50%."
+        "to": "Changes Heal Rate Reduction effect to 50% and M.DMG Boost effect to 50%.",
+        "unified": "Changes Heal Rate Reduction effect to 50% and M.DMG Boost effect to 50%."
       },
       "2": {
         "from": "Increases DEF Penetration of all allies by {1} for the duration of Skill.",
-        "to": "Increases DEF Penetration of all allies by 500 for the duration of Skill."
+        "to": "Increases DEF Penetration of all allies by 500 for the duration of Skill.",
+        "unified": "Increases DEF Penetration of all allies by [ (removed) {1} -> 500] for the duration of Skill."
       }
     }
   }

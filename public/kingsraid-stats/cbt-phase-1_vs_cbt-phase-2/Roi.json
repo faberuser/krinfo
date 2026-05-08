@@ -2,7 +2,7 @@
   "heroName": "Roi",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.480Z",
+  "generatedAt": "2026-05-08T11:43:35.407Z",
   "skills": {},
   "books": {},
   "perks_t3": {},
@@ -11,8 +11,7 @@
       "name": "Specter's Ring",
       "hasChanges": true,
       "description": {
-        "from": "[Hack] increases DMG by {0}% and applies 1 stack of [Bleed] to the target on Crit.",
-        "to": "[Hack] increases DMG by {0}% and applies 1 Stack of [Bleed] to the target on Crit."
+        "unified": "[Hack] increases DMG by {0}% and applies 1 Stack of [Bleed] to the target on Crit."
       },
       "values": {}
     }
@@ -20,8 +19,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] stack.",
-      "to": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] Stack."
+      "unified": "When using Normal Attacks or [Rend], has a {0}% chance to apply 1 additional stacks of [Fatal Wound] and deal additional Physical Damage equal to {1}% of Attack Power per [Fatal Wound] Stack."
     },
     "values": {}
   }

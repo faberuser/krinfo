@@ -2,7 +2,7 @@
   "heroName": "Kirze",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.426Z",
+  "generatedAt": "2026-05-08T11:43:35.371Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "9"
       },
       "description": {
-        "from": "Deals 46*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 26.2% of ATK M.DMG 7times to nearby enemies within a circular area, then deals 384*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 263.1% of ATK M.DMG to enemies in a frontal area and inflicts Down for 1.5sec.",
-        "to": "Deals 52*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 26.2% of ATK M.DMG 7 times to nearby enemies within a circular area. Then deals 548*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 263.1% of ATK M.DMG to enemies in a frontal area and inflicts Down for 1.5sec."
+        "unified": "Deals Magic DMG 7 times to nearby enemies within a circular area. Then deals Magic DMG to enemies in a frontal area and inflicts Down for 1.5sec."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 255*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 145% of ATK M.DMG to all enemies and inflicts Stun for 0.5sec. Upon casting, enters [Arcane Crystal Awakening] for 10sec, increasing ATK SPD by 35%. While active, releases a shockwave every 1.3sec, dealing 44*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 27.8% of ATK M.DMG to nearby enemies.",
-        "to": "Deals 255*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 145% of ATK M.DMG to all enemies and inflicts Stun for 0.5sec. Upon casting, enters [Arcane Crystal Awakening] for 10sec, increasing the ATK Spd of all allies by 15%. While active, releases a shockwave every 1.3sec, dealing 280*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 159% of ATK M.DMG to nearby enemies."
+        "unified": "Deals Magic DMG to all enemies and inflicts Stun for 0.5sec. Upon casting, enters [Arcane Crystal Awakening] for 10sec, increasing the ATK Spd of all allies by [15%->35% Kirze only]. While active, releases a shockwave every 1.3sec, dealing Magic DMG to nearby enemies."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Summons an Arcane Crystal, dealing 518*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 221.3% of ATK M.DMG to enemies in a frontal line, then causes an explosion that deals 828*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 354% of ATK additional M.DMG. Enemies hit are inflicted with [Arcane Crystal Curse] for 5sec, and when Kirze attacks enemies under [Arcane Crystal Curse], applies stacks of [Arcane Crystal Energy].\n\n[Arcane Crystal Curse]: Reduces ATK SPD by 10%, and after 5sec, deals 290*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 200% of ATK M.DMG + 43% of ATK M.DMG per stack of [Arcane Crystal Energy], then resets all stacks.",
-        "to": "Summons an Arcane Crystal to deal 518*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 221.3% of ATK M.DMG to enemies in a frontal straight-line area, then causes an explosion shortly afterward that deals 828*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 354% of ATK additional M.DMG. Enemies hit are inflicted with [Arcane Crystal Curse] for 5 sec, reducing their ATK Spd by 10%. When Kirze attacks enemies affected by [Arcane Crystal Curse], applies a stack of [Arcane Crystal Energy]. After 5 sec, [Arcane Crystal Curse] explodes, dealing 290*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 200% of ATK M.DMG, plus an additional 43% of ATK M.DMG per stack of [Arcane Crystal Energy], and resets all [Arcane Crystal Energy] stacks."
+        "unified": "Summons an Arcane Crystal to deal Magic DMG to enemies in a frontal straight-line area, then causes an explosion shortly afterward that deals additional Magic DMG. Enemies hit are inflicted with [Arcane Crystal Curse] for 5 sec, reducing their ATK Spd by 10%. When Kirze attacks enemies affected by [Arcane Crystal Curse], applies a stack of [Arcane Crystal Energy]. After 5 sec, [Arcane Crystal Curse] explodes, dealing Magic DMG plus an additional 43% of ATK M.DMG per stack of [Arcane Crystal Energy], and resets all [Arcane Crystal Energy] stacks."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Changes base Mana Recovery per sec to 150, increases Crit Chance by 250, and increases the duration of CCs that all allies inflict on Bosses by 15%.",
-        "to": "Changes base Mana Recovery per sec to 150, increases Crit Chance by 150, and increases the duration of CCs that all allies inflict on Bosses by 20%."
+        "unified": "Changes base Mana Recovery per sec to 150, increases Crit Chance by [250->150], and increases the duration of CCs that all allies inflict on Bosses by [15%->20%]."
       }
     }
   },
@@ -50,12 +46,10 @@
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Increases Mana Cost by 1000 but increases duration by 4 sec.",
-        "to": "[Arcane Crystal Awakening] Increases duration by 4 sec."
+        "unified": "[Arcane Crystal Awakening] [(removed) Increases Mana Cost by 1000 but] Increases duration by 4 sec."
       },
       "dark": {
-        "from": "Increases ATK SPD by an additional 35%.",
-        "to": "[Arcane Crystal Awakening] While active, increases Kirze’s ATK Spd by 40%."
+        "unified": "[Arcane Crystal Awakening] While active, increases Kirze’s ATK Spd by [35%->40%]."
       }
     }
   },
@@ -64,8 +58,7 @@
       "name": "Lotus of Crimson Crystal",
       "hasChanges": true,
       "description": {
-        "from": "[Slash, Blade of Judgment! ] Increases DMG by {0}% and reduces Mana Cost by 1000.",
-        "to": "[Slash, Blade of Judgment!] Increases DMG by {0}% and reduces Mana Cost by 1."
+        "unified": "[Slash, Blade of Judgment!] Increases DMG by {0}% and reduces Mana Cost by [1000->1]."
       },
       "values": {
         "0": {
@@ -78,8 +71,7 @@
       "name": "Remnant of Hobby",
       "hasChanges": true,
       "description": {
-        "from": "[Disperse, Crystal Haze!] Increases ATK SPD of all allies by 10% and increases DEF Penetration of all allies by {0}.",
-        "to": "[Disperse, Crystal Haze!] Increases ATK Spd by an additional {0} and increases DEF Penetration of all allies by 100."
+        "unified": "[Disperse, Crystal Haze!] increases ATK Spd by an additional [(added) {0} -> (removed) 10% all allies] and increases DEF Penetration of all allies by [???->100]."
       },
       "values": {}
     },
@@ -87,8 +79,7 @@
       "name": "Moment of Peace",
       "hasChanges": true,
       "description": {
-        "from": "[End to Evil Deeds!] Increases Crit DMG by 32%, and changes the CC duration increase effect to {0}%.",
-        "to": "[End to Evil Deeds!] Increases Crit Chance by 250 and additionally increases CC duration increase effect by {0}%."
+        "unified": "[End to Evil Deeds!] Increases [(added) Crit Chance by 250 -> (removed) Crit DMG by 32%] and [(added) additionally] increases CC duration increase effect by {0}%."
       },
       "values": {
         "0": {

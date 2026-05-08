@@ -2,7 +2,7 @@
   "heroName": "Gau",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.566Z",
+  "generatedAt": "2026-05-08T11:43:35.466Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "10"
       },
       "description": {
-        "from": "Deals ??? P.DMG to enemies within range, and the first attack knocks them down for 3 sec and reduces their DEF Penetration by 250 for 10 sec.",
-        "to": "Deals 304*(0.7+(0.3*Skill Level*Awakening Coefficient))+192.2% ATK Physical DMG to enemies within range 2 times. The first hit knocks enemies down for 1.5sec. This skill applies Defense Penetration 800 higher."
+        "unified": "Deals ??? Physical DMG to enemies within range 2 times. The first hit knocks enemies down for [3 sec->1.5sec]. This skill applies Defense Penetration [(added) 800 higher]. [(removed) reduces DEF Penetration by 250 for 10 sec]"
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "3"
       },
       "description": {
-        "from": "All allies' ATK is increased by ???, ATK Spd by 300 and P.DEF by ??? for 15 sec. Upon activation, dispels all negative effects from allies.",
-        "to": "For 8 sec, increases the ATK of all allies by 302*(0.7+(0.3*Skill Level*Awakening Coefficient)), Attack Speed by 10%, and Physical DEF by 91*(0.7+(0.3*Skill Level*Awakening Coefficient))."
+        "unified": "For [15 sec->8 sec], increases the ATK of all allies by ???, Attack Speed by [300->10%], and Physical DEF by ???. [(removed) dispels negative effects]"
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "4"
       },
       "description": {
-        "from": "Deals ??? P.DMG over 12 times to nearby enemies within a circular range of self and draws them in while use. While using the Skill, gains immunity to CC. The last attack freezes the enemy for 4 sec.",
-        "to": "Charges forward and deals 161*(0.7+(0.3*Skill Level*Awakening Coefficient))+80.9% ATK Physical DMG to nearby enemies 12 times. While casting, the caster is immune to status effects. The final hit freezes enemies for 2sec and increases Physical DMG taken by 16% for 10sec."
+        "unified": "Charges forward and deals ??? Physical DMG to nearby enemies 12 times. While casting, the caster is immune to status effects. The final hit freezes enemies for [4 sec->2sec] and increases Physical DMG taken by [(added) 16%] for 10sec. [(removed) draws enemies in]"
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases own ATK by ???, CC resist by 30, and DMG to Non-Hero enemies by 1.5% every sec. This effect can be stacked up to max 20 times. At 20 stacks or more, increases DMG of normal attacks by 100%.",
-        "to": "Every 1 sec, increases ATK by 10*(0.7+(0.3*Skill Level*Awakening Coefficient)), Status Resistance by 10, and damage dealt to non-hero enemies by 1%. This effect stacks up to 30 times."
+        "unified": "Every 1 sec, increases ATK by ???, Status Resistance by [30->10], and damage dealt to non-hero enemies by [1.5%->1%]. This effect stacks up to [20->30] times. At [20->(removed)] stacks, increases DMG of normal attacks by 100%."
       }
     }
   },
@@ -50,16 +46,14 @@
       "skillName": "Vortex",
       "hasChanges": true,
       "IV": {
-        "from": "DMG is increased by 25%.",
-        "to": "Draws in nearby enemies while casting."
+        "unified": "Draws in nearby enemies while casting. [(removed) DMG increased by 25%]"
       }
     },
     "4": {
       "skillName": "Enrage",
       "hasChanges": true,
       "IV": {
-        "from": "ATK Boost is increased by 25%.",
-        "to": "Status Resistance increases by 10 for each stack."
+        "unified": "Status Resistance increases by [(added) 10] for each stack. [(removed) ATK Boost increased by 25%]"
       }
     }
   },
@@ -67,15 +61,13 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1->1000]."
       }
     },
     "2": {
       "hasChanges": true,
       "dark": {
-        "from": "ATK Spd boost of 200 is added to the effect.",
-        "to": "ATK increase amount increases by 50%."
+        "unified": "ATK increase amount increases by [?->50%]. [(removed) ATK Spd boost of 200]"
       }
     }
   },
@@ -84,8 +76,7 @@
       "name": "King of Frost Helmet",
       "hasChanges": true,
       "description": {
-        "from": "[Smash] Reduces the target's ATK by 20% and increases P.DMG target receives by {0}% for 10 sec.",
-        "to": "[Smash] reduces the target's ATK by 25% and increases the P.DMG they take by {0}% for 10 sec."
+        "unified": "[Smash] reduces the target's ATK by [20%->25%] and increases the P.DMG they take by {0}% for 10 sec."
       },
       "values": {
         "0": {
@@ -98,8 +89,7 @@
       "name": "Fighter's Horn",
       "hasChanges": true,
       "description": {
-        "from": "[Battle Roar] Reduces Mana Cost by 1 and increases target's Crit DMG by {0}% for the duration of Skill.",
-        "to": "[Battle Roar] Reduces Mana Cost by 1 and increases targets Crit DMG by {0}% for the duration of Skill."
+        "unified": "[Battle Roar] Reduces Mana Cost by 1 and increases targets Crit DMG by {0}% for the duration of Skill."
       },
       "values": {
         "0": {
@@ -112,8 +102,7 @@
       "name": "Barbarian Mug",
       "hasChanges": true,
       "description": {
-        "from": "[Vortex] DMG is increased by 50%, and the last hit increases All DMG the target takes by {0}% for 10 sec.",
-        "to": "[Vortex] increases DMG by {0}%, and its last hit increases the P.DMG the target takes by {1}% for 10 Sec."
+        "unified": "[Vortex] increases DMG by [50%->{0}%], and its last hit increases the [All->Physical] DMG the target takes by {1}% for 10 Sec."
       },
       "values": {
         "0": {
@@ -126,8 +115,7 @@
       "name": "Snowdrop Bracelet",
       "hasChanges": true,
       "description": {
-        "from": "[Enrage] Changes the max number of stacks to 30 and upon gaining 30 stacks, increases own DEF Penetration by {0}.",
-        "to": "[Enrage] Changes the max number of stacks to 40 and upon gaining 30 stacks, increases own DEF Penetration by {0}."
+        "unified": "[Enrage] Changes the max number of stacks to [30->40] and upon gaining 30 stacks, increases own DEF Penetration by {0}."
       },
       "values": {
         "0": {
@@ -140,15 +128,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Heals HP worth 10% of ATK every second, and every 1% of HP lost reduces received DMG by 0.6%.",
-      "to": "Recovers HP every second equal to 10% of ATK, and for every 1% HP lost, all damage taken is reduced by 0.5%."
+      "unified": "Recovers HP every second equal to 10% of ATK, and for every 1% HP lost, all damage taken is reduced by [0.6%->0.5%]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increases own Max HP by {0}%. Normal attacks have a 15% chance of dealing additional P.DMG equal to {1}% of ATK and freezing them for 2 sec.",
-      "to": "Max HP increases by {0}%, and Normal Attacks have a 15% chance to deal additional Physical Damage equal to {1}% of Attack Power and freeze the target for 1 sec."
+      "unified": "Max HP increases by {0}%, and Normal Attacks have a 15% chance to deal additional Physical Damage equal to {1}% of Attack Power and freeze the target for [2 sec->1 sec]."
     },
     "values": {
       "0": {
@@ -160,13 +146,13 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the sould of Holy Bird, Numinu, increasing own ATK by 60% for 8 sec. Upon activation, summons the Storm of Numinu for 8 sec in the front, dealing ??? P.DMG every 0.5 sec on the enemies within range and reducing the target's ATK Spd by 100 for 5 sec. The ATK Spd Reduction effect can be stacked up to max 10 times, and enemies with 10 stacks are inflicted with Freeze and take 30% increased P.DMG for 5 sec.",
-      "to": "Summons the soul of Holy Bird, Numinu, triggering [Numinu’s Storm]. Enemies within range take 70% of ATK P.DMG every 0.5sec and have their ATK SPD reduced by 30% for 5 sec. The ATK SPD reduction stacks up to 10 times. At max stacks, enemies are Frozen and take 40% increased P.DMG for 5sec."
+      "unified": "Summons the soul of Holy Bird, Numinu, triggering [Numinu’s Storm]. Enemies within range take ??? P.DMG every 0.5sec and have their ATK SPD reduced by [100->30%] for 5 sec. The ATK SPD reduction stacks up to 10 times. At max stacks, enemies are Frozen and take [30%->40%] increased P.DMG for 5sec. [(removed) own ATK increased by 60% for 8 sec]"
     },
     "advancement": {
       "2": {
         "from": "Changes the P.DMG Boost effect to 50%, and every hit dispels positive effects from the enemy.",
-        "to": "Changes the increased P.DMG the enemies take to 50%, and every hit dispels positive effects from the enemy."
+        "to": "Changes the increased P.DMG the enemies take to 50%, and every hit dispels positive effects from the enemy.",
+        "unified": "Changes the increased P.DMG the enemies take to 50%, and every hit dispels positive effects from the enemy."
       }
     }
   }

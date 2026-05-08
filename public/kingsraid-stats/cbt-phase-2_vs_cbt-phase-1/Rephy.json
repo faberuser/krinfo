@@ -2,20 +2,18 @@
   "heroName": "Rephy",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.430Z",
+  "generatedAt": "2026-05-08T11:43:35.372Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Restores HP of the 4 allies with the lowest HP by 10% of Max HP, and additionally restores 100*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 16.1% ATK HP every 1sec for 10sec. This effect cannot be dispelled.",
-        "to": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores 88*(0.7+(0.3*Skill Level*Awakening Coefficient))+40.5% ATK HP every 1sec for 10sec. This effect cannot be dispelled."
+        "unified": "Restores HP equal to 10% of Max HP to the 4 allies with the lowest HP, and additionally restores HP every 1sec for 10sec. This effect cannot be dispelled."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Removes all negative effects from all allies and increases their M.DEF by 101*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec.",
-        "to": "Removes all harmful effects from all allies and increases their Magic DEF by 50*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec."
+        "unified": "Removes all harmful effects from all allies and increases their Magic DEF by 50*(0.7+(0.3*Skill Level*Awakening Coefficient)) for 15sec."
       }
     }
   },
@@ -25,8 +23,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second increases by 35%.",
-      "to": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by 35%."
+      "unified": "Every 20 sec, puts the 2 allies with the lowest HP into Spirit Form for {0} sec. Allies in Spirit Form are immune to physical attacks, their HP cannot be reduced below 1%, and their Mana recovery per second is increased by 35%."
     },
     "values": {}
   }

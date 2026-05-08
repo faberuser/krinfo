@@ -2,34 +2,30 @@
   "heroName": "Lorraine",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.440Z",
+  "generatedAt": "2026-05-08T11:43:35.380Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 333*(0.7+(0.3*Skill Level*Awakening Coefficient))+153.2% ATK Magic DMG 3 time to a random enemy and nearby enemies, and stuns them for 1.8sec.",
-        "to": "Deals 333(1+0.3Skill Level)+153.2% of Attack Power as Magic Damage 3 times to a random enemy and nearby enemies, stunning them for 1.8 sec."
+        "unified": "Deals Magic Damage 3 times to a random enemy and nearby enemies, stunning them for 1.8 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Creates [Belladonna Seed] in the area around the target for 7sec.\n\n[Belladonna Seed]: Deals 403*(0.7+(0.3*Skill Level*Awakening Coefficient))+146.2% ATK Magic DMG to nearby enemies every 1sec and reduces Healing Rate by 25% for 1sec.",
-        "to": "Creates [Belladonna Seed] in the area around the target for 7 sec.\n[Belladonna Seed]: Deals 403(1+0.3Skill Level)+146.2% of Attack Power as Magic Damage every 1 sec to nearby enemies and reduces their healing received by 25% for 1 sec."
+        "unified": "Creates [Belladonna Seed] in the area around the target for 7 sec. [Belladonna Seed]: Deals Magic Damage every 1 sec to nearby enemies and reduces their [Healing Rate -> healing received] by 25% for 1 sec."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 304*(0.7+(0.3*Skill Level*Awakening Coefficient))+112.2% ATK Magic DMG 6 time to enemies in a wide frontal area and knocks them down for 1sec.",
-        "to": "Deals 304(1+0.3Skill Level)+112.2% of Attack Power as Magic Damage 6 time to enemies in a wide area in front and knocks them down for 1.8 sec."
+        "unified": "Deals Magic Damage 6 time to enemies in a wide area in front and knocks them down for [1sec -> 1.8 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On Normal and Skill Attacks, inflicts [Poison] on the target, dealing Magic DoT equal to 100% ATK every 1sec for 20sec and reducing Healing Rate by 1%. This effect stacks up to 25 times.",
-        "to": "On Normal and skill attacks, inflicts [Poison] on the target, dealing continuous Magic Damage equal to 100% of Attack Power every 1 sec for 20 sec and reducing their healing received by 5%. This effect stacks up to 5 times."
+        "unified": "On Normal and skill attacks, inflicts [Poison] on the target, dealing continuous Magic Damage every 1 sec for 20 sec and reducing their [Healing Rate by 1% -> healing received by 5%]. This effect stacks up to [25 -> 5] times."
       }
     }
   },
@@ -38,30 +34,25 @@
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Increases DMG by 50%.",
-        "to": "Increases DMG by 40%."
+        "unified": "Increases DMG by [50% -> 40%]."
       },
       "dark": {
-        "from": "Enemies hit suffer increased status ailment duration by 20% for 5 sec.",
-        "to": "Enemies hit suffer increased status ailment duration by 30% for {1} sec."
+        "unified": "Enemies hit suffer increased status ailment duration by [20% for 5 sec -> 30% for {1} sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost increases by 1000, but damage increases by 100%.",
-        "to": "Mana cost is increased by 1000, but damage dealt is increased by 80%."
+        "unified": "Mana cost is increased by 1000, but damage [ (removed) increases by 100% -> dealt is increased by 80%]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "For each [Poison] stack, the target's Attack is reduced by 1%.",
-        "to": "For each [Poison] stack, the target's Attack is reduced by 5%."
+        "unified": "For each [Poison] stack, the target's Attack is reduced by [1% -> 5%]."
       },
       "dark": {
-        "from": "If the target is a boss, [Poison] damage increases by 100%.",
-        "to": "If the target is a boss, [Poison] damage is increased by 70%."
+        "unified": "If the target is a boss, [Poison] damage is increased by [100% -> 70%]."
       }
     }
   },
@@ -80,8 +71,7 @@
       "name": "Deadly Belladonna",
       "hasChanges": true,
       "description": {
-        "from": "[Seed of Belladonna] Reduces Mana Cost by 1, Mana of hit enemies by {0}, and recovers own Mana by {2}.",
-        "to": "[Seed of Belladonna] Reduces Mana Cost by 1, Mana of hit enemies by {0}, and recovers own Mana by {1}."
+        "unified": "[Seed of Belladonna] Reduces Mana Cost by 1, Mana of hit enemies by {0}, and recovers own Mana by [{2} -> {1}]."
       },
       "values": {
         "0": {

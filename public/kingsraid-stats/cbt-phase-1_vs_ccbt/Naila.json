@@ -2,13 +2,12 @@
   "heroName": "Naila",
   "versionA": "cbt-phase-1",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.491Z",
+  "generatedAt": "2026-05-08T11:43:35.414Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Charges a total of 2 time(s). On the first attack, moves behind the enemy and deals 922*(0.7+(0.3*Skill Level*Awakening Coefficient))+532.2% ATK as Physical DMG, knocking them down for 1sec. On the second attack, moves behind the enemy with the highest ATK, dealing 615*(0.7+(0.3*Skill Level*Awakening Coefficient))+344.1% ATK as Physical DMG, knocking them down for 1sec, and increasing Physical DMG taken by 20% for 4sec.",
-        "to": "Charges a total of 2 time(s). On the first attack, moves behind the enemy and deals 922(1+0.3Skill Level)+532.2% of Attack Power as Physical Damage, knocking them down for 1.8 sec. On the second attack, moves behind the enemy with the highest Attack, dealing 615(1+0.3Skill Level)+344.1% of Attack Power as Physical Damage, knocking them down for 1.8 sec, and increasing their Physical Damage taken by 30% for 4 sec."
+        "unified": "Charges a total of 2 time(s). On the first attack, moves behind the enemy and deals Physical Damage, knocking them down for [1sec->1.8 sec]. On the second attack, moves behind the enemy with the highest Attack, dealing Physical Damage, knocking them down for [1sec->1.8 sec], and increasing their Physical Damage taken by [20%->30%] for 4 sec."
       }
     },
     "2": {
@@ -22,8 +21,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Removes your harmful effects and puts all allies into [Reading the Wind] state for 7sec, increasing ATK by 333*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Evasion Chance by 300.\nWhen a target in [Reading the Wind] state successfully evades, all allies’ Critical DMG is increased by 2% for 7sec. This effect stacks up to 10 times.",
-        "to": "Removes your harmful effects and puts all allies into [Reading the Wind] state for 10 sec, increasing Attack by 333(1+0.3Skill Level) and Physical Evasion Chance by 350.\nWhen a target in [Reading the Wind] state successfully evades, all allies’ Critical Damage is increased by 3% for 10 sec. This effect stacks up to 10 times."
+        "unified": "Removes your harmful effects and puts all allies into [Reading the Wind] state for [7sec->10 sec], increasing Attack by 333(1+0.3Skill Level) and Physical Evasion Chance by [300->350]. When a target in [Reading the Wind] state successfully evades, all allies’ Critical Damage is increased by [2%->3%] for [7sec->10 sec]. This effect stacks up to 10 times."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "12"
       },
       "description": {
-        "from": "Attacks enemies in a circular area around you, dealing 1146*(0.7+(0.3*Skill Level*Awakening Coefficient))+716.8% ATK as Physical DMG and stunning them for 1.8sec. This skill gains an additional 800 Physical Defense Penetration.",
-        "to": "Attacks enemies in a circular area around you, dealing 1146(1+0.3Skill Level)+716.8% of Attack Power as Physical Damage and stunning them for 1.8 sec. This skill gains an additional 500 Physical Defense Penetration."
+        "unified": "Attacks enemies in a circular area around you, dealing Physical Damage and stunning them for 1.8 sec. This skill gains an additional [800->500] Physical Defense Penetration."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On Normal Attack, has a 20% chance to deal 488*(0.7+(0.3*Skill Level*Awakening Coefficient))+284.4% ATK as additional Physical DMG, stunning the target for 0.5sec, and increasing Physical DMG taken by 15% for 5sec. This skill ignores the target’s damage reduction effects.",
-        "to": "Increases Critical Hit Chance by 150, and Normal Attacks ignore the target’s damage reduction effects.\nOn Normal Attack, has a 15% chance to deal 488(1+0.3*Skill Level)+284.4% of Attack Power as additional Physical Damage, stunning the target for 0.6 sec and reducing their Physical Defense by 25% for 5 sec."
+        "unified": "Increases Critical Hit Chance by [(added) 150], and Normal Attacks ignore the target’s damage reduction effects. On Normal Attack, has a [20%->15%] chance to deal additional Physical Damage, stunning the target for [0.5sec->0.6 sec] and [increasing Physical DMG taken by 15%->reducing their Physical Defense by 25%] for 5 sec."
       }
     }
   },
@@ -50,8 +46,7 @@
       "skillName": "Dive Bomb",
       "hasChanges": true,
       "IV": {
-        "from": "Stuns damaged enemies for 1 sec.",
-        "to": "Stuns hit enemies for 3 sec."
+        "unified": "Stuns hit enemies for [1 sec->3 sec]."
       }
     }
   },
@@ -59,30 +54,25 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "On each attack, reduces the target’s Mana by 250.",
-        "to": "On each attack, reduces the target’s Mana by 400."
+        "unified": "On each attack, reduces the target’s Mana by [250->400]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Increases DMG by 50%.",
-        "to": "Increases DMG by 40%."
+        "unified": "Increases DMG by [50%->40%]."
       },
       "dark": {
-        "from": "Reduces the target’s Healing Effectiveness by 20% for 7 sec.",
-        "to": "Reduces the target’s Healing Effectiveness by 40% for 6 sec."
+        "unified": "Reduces the target’s Healing Effectiveness by [20%->40%] for [7 sec->6 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Cooldown of all skills is reduced by 2 sec.",
-        "to": "Normal Attack damage is increased by 25%, and the cooldown of all skills is reduced by 2 sec."
+        "unified": "Normal Attack damage is increased by [(added) 25%], and the cooldown of all skills is reduced by 2 sec."
       },
       "dark": {
-        "from": "At the start of battle, increases Defense Penetration by 400 for 10 sec and grants immunity to status ailments for 5 sec. The Defense Penetration increase cannot be dispelled.",
-        "to": "At the start of battle, increases Defense Penetration by 400 for 2 sec and grants immunity to status ailments for 5 sec. The Defense Penetration increase cannot be dispelled."
+        "unified": "At the start of battle, increases Defense Penetration by 400 for [10 sec->2 sec] and grants immunity to status ailments for 5 sec. The Defense Penetration increase cannot be dispelled."
       }
     }
   },
@@ -111,8 +101,7 @@
       "name": "Green Ribbon",
       "hasChanges": true,
       "description": {
-        "from": "[Tornado Strike] increases the chance of dealing additional DMG by 5%, and if the target is a Hero, deals additional P.DMG equal to {0}% of the target’s Max HP.",
-        "to": "[Tornado Strike] increases the chance of dealing additional DMG by 10%, and if the target is a Hero, deals additional P.DMG equal to {0}% of the target’s Max HP."
+        "unified": "[Tornado Strike] increases the chance of dealing additional DMG by [5%->10%], and if the target is a Hero, deals additional P.DMG equal to {0}% of the target’s Max HP."
       },
       "values": {
         "0": {
@@ -125,8 +114,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On Normal Attack, increases Attack by 3% and Physical Evasion Chance by 35 for 10 sec. This effect stacks up to 10 times.",
-      "to": "On Normal Attack, increases Attack by 3% and Physical Evasion Chance by 30 for 10 sec. This effect stacks up to 10 times."
+      "unified": "On Normal Attack, increases Attack by 3% and Physical Evasion Chance by [35->30] for 10 sec. This effect stacks up to 10 times."
     }
   }
 }

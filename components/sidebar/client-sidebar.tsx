@@ -60,8 +60,6 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 		return () => clearTimeout(timer)
 	}, [])
 
-	const logoSrc =
-		mounted && resolvedTheme === "dark" ? `${basePath}/images/logo-white.svg` : `${basePath}/images/logo-black.svg`
 	const githubSrc =
 		mounted && resolvedTheme === "dark"
 			? `${basePath}/images/GitHub_Invertocat_White.svg`
@@ -73,10 +71,9 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 				<div className="flex items-center justify-between gap-2">
 					{state === "collapsed" ? null : (
 						<Link href="/" className="flex items-center space-x-2 group-data-[collapsible=icon]:hidden">
-							{mounted && (
-								// eslint-disable-next-line @next/next/no-img-element
-								<img src={logoSrc} alt="King's Raid Logo" style={{ width: "100%", height: "auto" }} />
-							)}
+							<span style={{ fontFamily: "var(--font-comfortaa)", fontWeight: 700 }} className="text-2xl">
+								krinfo
+							</span>
 						</Link>
 					)}
 					<SidebarTrigger className="ml-auto" />
@@ -141,7 +138,7 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 				}
 			>
 				<ModeToggle />
-				<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/kingsraid">
+				<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/krinfo">
 					<Button variant="outline" size="icon" className="bg-background">
 						{mounted && (
 							// eslint-disable-next-line @next/next/no-img-element

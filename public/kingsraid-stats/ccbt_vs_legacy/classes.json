@@ -1,0 +1,15 @@
+{
+  "versionA": "ccbt",
+  "versionB": "legacy",
+  "generatedAt": "2026-05-08T12:23:51.093Z",
+  "classes": {
+    "Archer": {
+      "Mortal Wound": {
+        "hasChanges": true,
+        "description": {
+          "unified": "Successful Crit Attack reduces enemy recovery rate by 50% [ (added) for 10 seconds] and deal Physical continuous DMG every second equal to 20% ATK. Does not stack."
+        }
+      }
+    }
+  }
+}

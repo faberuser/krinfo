@@ -2,7 +2,7 @@
   "heroName": "Epis",
   "versionA": "ccbt",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.546Z",
+  "generatedAt": "2026-05-08T11:43:35.452Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -15,8 +15,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Deals 871(1+0.3Skill Level)+500.2% of Attack Power as Magic Damage to an enemy and restores HP equal to 25% of the damage dealt. For 6 sec, reduces the target's Attack by 20% and increases your Attack by 10%. The Attack increase effect stacks up to 5 times.",
-        "to": "Deals ??? M.DMG that ignores enemy DEF, and heals 25% of DMG as HP."
+        "unified": "Deals ??? M.DMG that ignores enemy DEF, and heals 25% of DMG as HP."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "8"
       },
       "description": {
-        "from": "Moves to the farthest enemy and deals 484(1+0.3Skill Level)+278% of Attack Power as Magic Damage to the target and nearby enemies, increasing their Magic Damage taken by 35% for 5 sec.\nIf enemies remain nearby after using the skill, additionally uses [Absorbing Strike].",
-        "to": "Moves behind the furthest enemy and deals ??? M.DMG. Hit enemies take 30% increased M.DMG for 10 sec."
+        "unified": "Moves behind the furthest enemy and deals ??? M.DMG. Hit enemies take [35%->30%] increased M.DMG for [5 sec->10 sec]."
       }
     },
     "3": {
@@ -37,15 +35,13 @@
         "to": "4"
       },
       "description": {
-        "from": "Deals 458(1+0.3Skill Level)+263.6% of Attack Power as Magic Damage 4 times to enemies within range. You cannot be affected by status ailments while casting, and all damage taken is reduced by 50%.",
-        "to": "Deals ??? M.DMG to all enemies in range. Gains CC immunity while using this skill."
+        "unified": "Deals ??? M.DMG to all enemies in range. Gains CC immunity while using this skill."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "When an enemy is killed, all skill cooldowns are reduced by 30%, and [Harvest] is stacked 1 times.\n[Harvest]: For 12 sec, Attack increases by 80(1+0.3Skill Level), stacking up to 10 times.",
-        "to": "When an enemy is killed by this hero, ATK is increased by ??? for 12 sec, and all skill cooldown is reduced by 30%."
+        "unified": "When an enemy is killed by this hero, ATK is increased by ??? for 12 sec, and all skill cooldown is reduced by 30%."
       }
     }
   },
@@ -54,8 +50,7 @@
       "skillName": "Harvest",
       "hasChanges": true,
       "IV": {
-        "from": "When an enemy is killed, restores 1000 of your Mana.",
-        "to": "Per each kill, recovers 1 orb of mana."
+        "unified": "Per each kill, recovers 1 orb of mana."
       }
     }
   },
@@ -63,33 +58,28 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 1000, but cooldown is reduced by 3 sec.",
-        "to": "Ignores enemy Block."
+        "unified": "Ignores enemy Block."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       },
       "dark": {
-        "from": "Mana cost is increased by 1000, but damage is increased by 80%.",
-        "to": "Mana consumption is increased by 1, and upon using the skill, [Absorbing Blow] is activated. Cannot use when there are no enemies in range."
+        "unified": "Mana consumption is increased by 1, and upon using the skill, [Absorbing Blow] is activated. Cannot use when there are no enemies in range."
       }
     },
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost is increased by 2000, but [Harvest] is triggered once.",
-        "to": "DMG taken is reduced by 50% while skill is in use."
+        "unified": "DMG taken is reduced by 50% while skill is in use."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "If stacks are 5 or more, cooldown is additionally reduced by 1 sec every second.",
-        "to": "While stack number is higher than 5, Mana is always at 100% and cooldowns are decreased by an additional 1 sec per each sec."
+        "unified": "While stack number is higher than 5, [(added) Mana is always at 100% and] cooldowns are decreased by an additional 1 sec per each sec."
       }
     }
   },
@@ -98,8 +88,7 @@
       "name": "Green Fairy",
       "hasChanges": true,
       "description": {
-        "from": "[Absorbing Blow] increases DMG by {0}% and resets its Cooldown upon killing an enemy.",
-        "to": "[Absorbing Blow] Increases DMG by {0}% and upon killing an enemy, ATK is increased by 20% for 10 sec. ATK increase effect can be stacked up to max 3 times."
+        "unified": "[Absorbing Blow] Increases DMG by {0}% and upon killing an enemy, ATK is increased by 20% for 10 sec. ATK increase effect can be stacked up to max 3 times."
       },
       "values": {}
     },
@@ -117,8 +106,7 @@
       "name": "Seductress Shoes",
       "hasChanges": true,
       "description": {
-        "from": "[Devil's Prom] Reduces Mana Cost by 1 and increases DMG by {0}%.",
-        "to": "[Devil's Prom] Mana cost is reduced by 1, and Crit DMG is increased by {0}%."
+        "unified": "[Devil's Prom] Mana cost is reduced by 1, and Crit DMG is increased by {0}%."
       },
       "values": {}
     }
@@ -126,15 +114,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "When hitting with a skill, reduces the target's Magic Defense by 6% and increases your Attack by 6% for 10 sec. This effect stacks up to 6 times.",
-      "to": "All of Epis's attacks decrease the M.DEF of hit enemies by 20% for 10 sec. ATK rises by 2% per each enemy hit. Maximum stack number is 10."
+      "unified": "All of Epis's attacks decrease the M.DEF of hit enemies by [6%->20%] for 10 sec. ATK rises by [6%->2%] per each enemy hit. Maximum stack number is [6->10]."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, has a 25% chance to deal additional Magic Damage equal to {0}% of Attack Power and increase your Attack by {1}%. The Attack increase stacks up to 10 times.",
-      "to": "Upon attacking, there is a 25% chance of dealing {0}% of ATK as extra M.DMG, and ATK being increased by {1}% ATK boost can be stacked up to 10 times max."
+      "unified": "Upon attacking, there is a 25% chance of dealing {0}% of ATK as extra M.DMG, and ATK being increased by {1}% ATK boost can be stacked up to 10 times max."
     },
     "values": {
       "0": {

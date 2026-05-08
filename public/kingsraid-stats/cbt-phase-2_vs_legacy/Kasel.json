@@ -2,7 +2,7 @@
   "heroName": "Kasel",
   "versionA": "cbt-phase-2",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.460Z",
+  "generatedAt": "2026-05-08T11:43:35.395Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -15,15 +15,13 @@
         "to": "12"
       },
       "description": {
-        "from": "Deals 267*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK 168.3% Physical DMG to enemies in the frontal area 2 times, and inflicts Down for 1.5 sec.\n\n[God's Proxy]: Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec.",
-        "to": "Attack frontal enemies in a circular range of self 2 times, dealing ??? P.DMG and knocking them down for 2.5 sec. [Proxy of God] Attacks enemeis in a wider range to deal ??? P.DMG and knock them down for 3.5 sec."
+        "unified": "Attack frontal enemies in a circular range of self 2 times, dealing P.DMG and knocking them down for [1.5 sec->2.5 sec]. [Proxy of God] Attacks enemeis in a wider range to deal P.DMG and knock them down for [2 sec->3.5 sec]."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Dashes behind the enemy and deals 233*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK 146.9% Physical DMG to enemies in range 3 times, increasing Physical DMG taken by 24% for 5 sec.\n\n[God's Proxy]: Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied 600 higher.",
-        "to": "Attacks the target 3 times, and then charges behind it to deal ??? P.DMG and increase P.DMG it takes by 25% for 10 sec. [Proxy of God] Attacks the target 3 times, charging behind it to deal ??? P.DMG and increase P.DMG it takes by 25% for 10 sec. 500 additional Crit Chance applies to this Skill."
+        "unified": "Attacks the target 3 times, and then charges behind it to deal P.DMG and increase P.DMG it takes by [24%->25%] for [5 sec->10 sec]. [Proxy of God] Attacks the target 3 times, charging behind it to deal P.DMG and increase P.DMG it takes by 25% for 10 sec. [600->500] additional Crit Chance applies to this Skill."
       }
     },
     "3": {
@@ -33,15 +31,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 200*(0.7+(0.3*Skill Level*Awakening Coefficient))+126% ATK Physical DMG to nearby enemies and inflicts Stun for 1 sec, then enters [God's Proxy] state for 10 sec, enhancing skills.\n\n[God's Proxy]: ATK increases by 314*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Normal Attack DMG increases by 100%. This effect cannot be dispelled.",
-        "to": "Deals ??? P.DMG to nearby enemies and inflicts Stun for 3 sec. Additionally, for 20 sec, increases self's ATK by ???, ATK Spd by 250, All Dodge Chance by 250, and DMG of normal attacks by 125% while gaining immunity to CC. This effect is irremovable."
+        "unified": "Deals P.DMG to nearby enemies and inflicts Stun for [1 sec->3 sec]. Additionally, for [10 sec->20 sec], increases self's ATK by ???, [(added) ATK Spd by 250, All Dodge Chance by 250], and DMG of normal attacks by [100%->125%] while gaining immunity to CC. This effect is irremovable."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "ATK increases by 192*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Magic Evasion increases by 240.\n\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 20%, and damage taken from non-hero enemies is reduced by 20%.",
-        "to": "Increases own All DEF by ??? and All Dodge Chance by 200. When equipped with The Holly Sword, Aea, receives the blessing of the goddess that increases DMG dealt to Non-Hero enemies by 30% and reduces DMG taken from Non-Hero enemies by 30%."
+        "unified": "Increases own All DEF by ??? and [Magic Evasion->All Dodge Chance] by [240->200]. When equipped with The Holly Sword, Aea, receives the blessing of the goddess that increases DMG dealt to Non-Hero enemies by [20%->30%] and reduces DMG taken from Non-Hero enemies by [20%->30%]."
       }
     }
   },
@@ -50,45 +46,37 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Increases DMG by 40%."
+        "unified": "Increases DMG by [50%->40%]."
       },
       "dark": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "Ignores DEF when there is only 1 enemy."
+        "unified": "Ignores DEF when there is only 1 enemy."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Mana cost is reduced by 1."
+        "unified": "Mana cost is reduced by 1."
       },
       "dark": {
-        "from": "On hit, increases the target’s Physical DMG taken by 24% for 5 sec.",
-        "to": "Reduces the target's P.DEF by 30% for 10 sec."
+        "unified": "Reduces the target's P.DEF by 30% for 10 sec."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Physical Evasion increases by 140 for the duration.",
-        "to": "Reduces DMG taken by 20% while in [Proxy of God]."
+        "unified": "Reduces DMG taken by 20% while in [Proxy of God]."
       },
       "dark": {
-        "from": "Damage dealt to non-hero enemies increases by 34% for the duration.",
-        "to": "Increases Mana Cost by 1 and DMG dealt to Non-Hero enemies by 100% for the duration of Skill."
+        "unified": "Increases Mana Cost by 1 and DMG dealt to Non-Hero enemies by [34%->100%] for the duration of Skill."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "ATK increase amount increases by 50%.",
-        "to": "Increases Dodge Chance by an additional 150 and recovers 5% of Max HP upon dodging. This effect only activates once every 3 sec."
+        "unified": "Increases Dodge Chance by an additional 150 and recovers 5% of Max HP upon dodging. This effect only activates once every 3 sec."
       },
       "dark": {
-        "from": "On evasion, restores 6% of Max HP every 3 sec.",
-        "to": "Reduces DMG received from Heroes by 15%."
+        "unified": "Reduces DMG received from Heroes by 15%."
       }
     }
   },
@@ -97,8 +85,7 @@
       "name": "Crown of Light",
       "hasChanges": true,
       "description": {
-        "from": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max 5 times and is irremovable.",
-        "to": "[Judgement Blade] Reduces Cooldown by 30% and increases DMG by {0}% upon every use. This effect can be stacked up to max 10 times and is irremovable."
+        "unified": "[Judgement Blade] Reduces Cooldown by 30% and increases DMG by {0}% upon every use. This effect can be stacked up to max [5->10] times and is irremovable."
       },
       "values": {
         "0": {
@@ -111,8 +98,7 @@
       "name": "Emperor's Gauntlet",
       "hasChanges": true,
       "description": {
-        "from": "[Valiant Dash] Stuns the target for 1.5 sec, and reduces Cooldown by {0}% upon a Critical Hit.",
-        "to": "[Valiant Dash] Increases DMG by {0}% and reduces Cooldown by 10% upon a Crit Hit."
+        "unified": "[Valiant Dash] Increases DMG by {0}% and reduces Cooldown by [ (removed) Critical Hit -> 10% upon a Crit Hit]."
       },
       "values": {
         "0": {
@@ -125,8 +111,7 @@
       "name": "Proxy's Insignia",
       "hasChanges": true,
       "description": {
-        "from": "[Proxy of God] increases Dodge Chance by an additional 400 and ATK Spd by an additional {0} for the duration of the Skill.",
-        "to": "[Proxy of God] Additionally, Dodge Rate is increased by 250, and ATK Spd is increased by {0} for the duration of skill."
+        "unified": "[Proxy of God] Additionally, Dodge Rate is increased by [400->250], and ATK Spd is increased by {0} for the duration of skill."
       },
       "values": {
         "0": {
@@ -139,8 +124,7 @@
       "name": "Lua's Tear",
       "hasChanges": true,
       "description": {
-        "from": "[Goddess Strike] Increases Magic Evasion by 360 and increases DMG dealt to heroes by {0}%.",
-        "to": "[Goddess Strike] Increases DEF Boost by 50%, and DMG dealt to bosses by {0}%."
+        "unified": "[Goddess Strike] Increases [Magic Evasion by 360->DEF Boost by 50%], and DMG dealt to [heroes->bosses] by {0}%."
       },
       "values": {
         "0": {
@@ -153,15 +137,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, deals additional Physical DMG equal to 60% of ATK. Applied at 120% against non-hero enemies and can only trigger once every 0.5 sec.",
-      "to": "Upon attacking, deals 80% additional P.DMG of ATK. This effect is applied as 160% to Non-Hero enemies and has 0.5 sec Cooldown."
+      "unified": "Upon attacking, deals [60%->80%] additional P.DMG of ATK. This effect is applied as [120%->160%] to Non-Hero enemies and has 0.5 sec Cooldown."
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "On hit, has a 35% chance to deal additional Physical DMG equal to {0}% of ATK. This effect can only trigger once every 0.5 sec.",
-      "to": "Each attack has a 35% chance to dealing {0}% of ATK as P.DMG. Has 0.5 sec Cooldown."
+      "unified": "Each attack has a 35% chance to dealing {0}% of ATK as P.DMG. Has 0.5 sec Cooldown."
     },
     "values": {
       "0": {
@@ -173,17 +155,18 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of the Holy Sword, Aea for 10 sec, increasing own ATK by 40% and P.DEF by 50%. The soul follows Kasel, recovering HP of nearby allies equal to 5% of their Max HP for 1 sec and dealing 150% of ATK P.DMG to nearby enemies for 1 sec.",
-      "to": "Summons the soul of The Holy Sword Aea for 10 sec, increasing own ATK and All DEF by 30%. The soul of The Holy Sword, Aea follows Kasel around, healing HP of allies within range equal to 5% of their Max HP every sec, dispeling all negative effects, and dealing P.DMG to nearby enemies every sec."
+      "unified": "Summons the soul of The Holy Sword Aea for 10 sec, increasing own ATK and [P.DEF by 50%->All DEF by 30%]. The soul of The Holy Sword, Aea follows Kasel around, healing HP of allies within range equal to 5% of their Max HP every sec, [(added) dispeling all negative effects], and dealing P.DMG to nearby enemies every sec."
     },
     "advancement": {
       "1": {
         "from": "Increases duration by 15 sec.",
-        "to": "Changes ATK and DEF Boost to 50% and increases the duration by 5 sec."
+        "to": "Changes ATK and DEF Boost to 50% and increases the duration by 5 sec.",
+        "unified": "Changes ATK and DEF Boost to 50% and increases the duration by [15 sec->5 sec]."
       },
       "2": {
         "from": "Increases DMG dealt to nearby enemies by 100%.",
-        "to": "Increases DMG dealt to nearby enemies by 100% and dispels positive effects from hit enemies."
+        "to": "Increases DMG dealt to nearby enemies by 100% and dispels positive effects from hit enemies.",
+        "unified": "Increases DMG dealt to nearby enemies by 100% and dispels positive effects from hit enemies."
       }
     }
   }

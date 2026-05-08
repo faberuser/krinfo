@@ -2,34 +2,30 @@
   "heroName": "Cleo",
   "versionA": "ccbt",
   "versionB": "legacy",
-  "generatedAt": "2026-04-24T01:24:08.544Z",
+  "generatedAt": "2026-05-08T11:43:35.452Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 305*(1+0.3*Skill Level)+81.8% ATK Magic DMG to a random enemy 5 times. Each hit inflicts Stun for 0.6 sec. When landing a Critical Hit, restores Mana by 100. Non-hero enemies take additional Magic DMG equal to 1.4% ATK per [Ember] stack.",
-        "to": "Attacks a random enemy 5 times to deal a total of ??? M.DMG and stunning the target for 1 sec each hit. Deals ??? additional M.DMG per Ember stack to Non-Hero enemies. Upon a Crit Hit, recovers own Mana by 100."
+        "unified": "Attacks a random enemy 5 times to deal Magic DMG and stunning the target for [0.6 sec->1 sec] each hit. Deals additional Magic DMG per Ember stack to Non-Hero enemies. Upon a Crit Hit, recovers own Mana by 100."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 1259*(1+0.3*Skill Level)+450.2% ATK Magic DMG to enemies in the target area and inflicts Stun for 1.2 sec. Non-hero enemies take 1759*(1+0.3*Skill Level)+850.2% ATK plus additional Magic DMG equal to 7.8% ATK per [Ember] stack.",
-        "to": "Attacks the target and the enemies in nearby range, dealing ??? M.DMG and stunning them for 2 sec. Deals ??? + ??? additional M.DMG per Ember stack to Non-Hero enemies. Inflicts 12 Ember stacks on hit targets."
+        "unified": "Attacks the target and the enemies in nearby range, dealing Magic DMG and stunning them for [1.2 sec.->2 sec.] Deals additional Magic DMG per Ember stack to Non-Hero enemies. Inflicts [(added) 12] Ember stacks on hit targets."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Deals 638*(1+0.3*Skill Level)+136.2% ATK Magic DMG to all enemies 5 times. This attack applies Critical DMG 150% higher, and non-hero enemies take additional Magic DMG equal to 2.3% ATK per [Ember] stack.",
-        "to": "Attacks all enemies 5 times, dealing a total of ??? M.DMG. This attack deals 150% increased Crit DMG. Deals ??? additional M.DMG per Ember stack to Non-Hero enemies."
+        "unified": "Attacks all enemies 5 times, dealing Magic DMG. This attack deals 150% increased Crit DMG. Deals additional Magic DMG per Ember stack to Non-Hero enemies."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "On hit, applies an [Ember] stack to the target. When attacking a target at max stacks, restores Mana by 30.\n[Ember] : Deals 43*(1+0.3*Skill Level)+20% ATK Damage over Time every 1 sec for 20 sec, and stacks up to 12 times.",
-        "to": "Inflicts a stack of Ember upon hitting an enemy. Enemies affected by Ember take ??? M.DMG over 20 sec. Ember can be stacked up to max 12 times and upon hitting an enemy with max number of stacks, recovers Mana by 30."
+        "unified": "Inflicts a stack of Ember upon hitting an enemy. Enemies affected by Ember take Magic DMG over 20 sec. Ember can be stacked up to max 12 times and upon hitting an enemy with max number of stacks, recovers Mana by 30."
       }
     }
   },
@@ -38,22 +34,19 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Mana cost increases by 1000, but damage increases by 100%.",
-        "to": "Changes target to the enemy with the highest ATK."
+        "unified": "Changes target to the enemy with the highest ATK. [(removed) Mana cost increases by 1000, but damage increases by 100%]"
       }
     },
     "3": {
       "hasChanges": true,
       "dark": {
-        "from": "When there are 5 or more enemies, Mana cost is reduced by 2000 for 10 sec. This effect can only trigger once every 10 sec.",
-        "to": "Reduces Mana Cost by 2 for 10 sec when attacking more than 5 enemies. 10 sec Cooldown is applied."
+        "unified": "Reduces Mana Cost by [2000->2] for 10 sec when attacking more than 5 enemies. 10 sec Cooldown is applied."
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "Every 10 sec, stuns one enemy with [Ember] for 1.2 sec. If the target has 10 or more [Ember] stacks, stuns for 1.8 sec instead.",
-        "to": "Every 10 sec, enemies affected by Ember are stunned for 2 sec. Enemies with more than 10 stacks of Ember are stunned for 3 sec."
+        "unified": "Every 10 sec, enemies affected by Ember are stunned for [1.2 sec.->2 sec.] Enemies with more than 10 stacks of Ember are stunned for [1.8 sec.->3 sec.]"
       }
     }
   },
@@ -62,8 +55,7 @@
       "name": "Flamel's Elixir",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by {0}%.",
-        "to": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by."
+        "unified": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by {0}%."
       },
       "values": {}
     }
@@ -71,8 +63,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Attack Speed increases by {0}, and Skill Attacks deal additional Magic DMG equal to {1}% of ATK per [Ember] stack on the target.",
-      "to": "Increases ATK Spd by {0}. Skill hits deal additional M.DMG equal to {1}% of ATK per stack of Ember inflicted on enemies."
+      "unified": "Increases ATK Spd by {0}. Skill hits deal additional Magic DMG per stack of Ember inflicted on enemies."
     },
     "values": {}
   }

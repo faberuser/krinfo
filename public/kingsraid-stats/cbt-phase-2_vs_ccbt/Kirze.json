@@ -2,7 +2,7 @@
   "heroName": "Kirze",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.440Z",
+  "generatedAt": "2026-05-08T11:43:35.380Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,8 +11,7 @@
         "to": "9"
       },
       "description": {
-        "from": "Deals 46*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 26.2% of ATK M.DMG 7times to nearby enemies within a circular area, then deals 384*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 263.1% of ATK M.DMG to enemies in a frontal area and inflicts Down for 1.5sec.",
-        "to": "Deals 52(1+0.3*Skill Level) + 26.2% of ATK M.DMG per hit, attacking 7 times, to nearby enemies in a circular area around the user. Then deals 548*(1+0.3*Skill Level) + 263.1% of ATK M.DMG to enemies in a frontal area and knocks them down for 1.8 sec."
+        "unified": "Deals Magic Damage 7 times to nearby enemies in a circular area around the user. Then deals Magic Damage to enemies in a frontal area and [inflicts Down for 1.5sec -> knocks them down for 1.8 sec]."
       }
     },
     "2": {
@@ -26,8 +25,7 @@
         "to": "2"
       },
       "description": {
-        "from": "Deals 255*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 145% of ATK M.DMG to all enemies and inflicts Stun for 0.5sec. Upon casting, enters [Arcane Crystal Awakening] for 10sec, increasing ATK SPD by 35%. While active, releases a shockwave every 1.3sec, dealing 44*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 27.8% of ATK M.DMG to nearby enemies.",
-        "to": "Deals 255(1+0.3*Skill Level) + 145% of ATK M.DMG to all enemies and stuns them for 1.2 sec. Upon casting, enters [Arcane Crystal Awakening] for 10 sec, increasing the ATK Spd of all allies by 300. While active, releases a shockwave every 1.4 sec, dealing 280*(1+0.3*Skill Level) + 159% of ATK M.DMG to nearby enemies and stunning them for 0.6 sec."
+        "unified": "Deals Magic Damage to all enemies and stuns them for [0.5sec -> 1.2 sec]. Upon casting, enters [Arcane Crystal Awakening] for 10 sec, increasing the ATK Spd of all allies by [35% -> 300]. While active, releases a shockwave every [1.3sec -> 1.4 sec], dealing Magic Damage to nearby enemies [ (added) and stunning them for 0.6 sec]."
       }
     },
     "3": {
@@ -37,15 +35,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Summons an Arcane Crystal, dealing 518*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 221.3% of ATK M.DMG to enemies in a frontal line, then causes an explosion that deals 828*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 354% of ATK additional M.DMG. Enemies hit are inflicted with [Arcane Crystal Curse] for 5sec, and when Kirze attacks enemies under [Arcane Crystal Curse], applies stacks of [Arcane Crystal Energy].\n\n[Arcane Crystal Curse]: Reduces ATK SPD by 10%, and after 5sec, deals 290*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 200% of ATK M.DMG + 43% of ATK M.DMG per stack of [Arcane Crystal Energy], then resets all stacks.",
-        "to": "Summons an Arcane Crystal to deal 518(1 + 0.3*Skill Level) + 221.3% of ATK M.DMG to enemies in a frontal straight-line area, then causes an explosion shortly afterward that deals 828*(1 + 0.3*Skill Level) + 354% of ATKadditional M.DMG. Inflicts [Arcane Crystal Curse] on enemies for 5 sec, reducing their ATK Spd by 200.\nWhen attacking enemies under [Arcane Crystal Curse], applies 1 stack of [Arcane Crystal Energy]. [Arcane Crystal Curse] explodes after 5 sec, dealing 290*(1 + 0.3*Skill Level) + 200% of ATK M.DMG plus an additional 43% of ATK per stack of [Arcane Crystal Energy]."
+        "unified": "Summons an Arcane Crystal to deal Magic Damage to enemies in a frontal straight-line area, then causes an explosion shortly afterward that deals additional Magic Damage. Inflicts [Arcane Crystal Curse] on enemies for 5 sec, reducing their ATK Spd by [10% -> 200]. When attacking enemies under [Arcane Crystal Curse], applies 1 stack of [Arcane Crystal Energy]. [Arcane Crystal Curse] explodes after 5 sec, dealing Magic Damage plus an additional 43% of ATK per stack of [Arcane Crystal Energy]."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Changes base Mana Recovery per sec to 150, increases Crit Chance by 250, and increases the duration of CCs that all allies inflict on Bosses by 15%.",
-        "to": "Changes base Mana Recovery per sec to 150, increases Crit Chance by 200, and increases the duration of CCs that all allies inflict on Bosses by 30%."
+        "unified": "Changes base Mana Recovery per sec to 150, increases Crit Chance by [250 -> 200], and increases the duration of CCs that all allies inflict on Bosses by [15% -> 30%]."
       }
     }
   },
@@ -54,16 +50,13 @@
       "skillName": "End to Evil Deeds!",
       "hasChanges": true,
       "II": {
-        "from": "Increases Crit Chance by 50.",
-        "to": "Increases ATK Boost by 10%."
+        "unified": "Increases [Crit Chance by 50 -> ATK Boost by 10%]."
       },
       "III": {
-        "from": "Increases Crit Chance by 75.",
-        "to": "Increases ATK Boost by 15%."
+        "unified": "Increases [Crit Chance by 75 -> ATK Boost by 15%]."
       },
       "IV": {
-        "from": "Increases Crit Chance by 125.",
-        "to": "Increases ATK Boost by 25%."
+        "unified": "Increases [Crit Chance by 125 -> ATK Boost by 25%]."
       }
     }
   },
@@ -71,37 +64,31 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Each use increases DMG by 15%. This effect can stack up to 10 times.",
-        "to": "If there is only 1 enemy, DMG is increased by 100%."
+        "unified": "If there is only 1 enemy, DMG is increased by [ (removed) 15% (up to 10 stacks) -> 100%]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Increases Mana Cost by 1000 but increases duration by 4 sec.",
-        "to": "Increases Mana Cost by 1000 and reduces Cooldown by 6 sec."
+        "unified": "Increases Mana Cost by 1000 and [increases duration by 4 sec -> reduces Cooldown by 6 sec]."
       },
       "dark": {
-        "from": "Increases ATK SPD by an additional 35%.",
-        "to": "While under [Arcane Crystal Awakening], damage dealt to non-hero enemies is increased by 20%."
+        "unified": "While under [Arcane Crystal Awakening], [increases ATK SPD by an additional 35% -> damage dealt to non-hero enemies is increased by 20%]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "[Arcane Crystal Curse] additionally reduces ATK SPD by 10%.",
-        "to": "Increases Mana Cost by 1000 and reduces Cooldown by 6 sec."
+        "unified": "[ (removed) [Arcane Crystal Curse] additionally reduces ATK SPD by 10% -> Increases Mana Cost by 1000 and reduces Cooldown by 6 sec]."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "At the start of battle, increases damage dealt to non-hero enemies by 65% for 10 sec.",
-        "to": "At the start of battle, increases damage dealt to non-hero enemies by 25% for 20 sec."
+        "unified": "At the start of battle, increases damage dealt to non-hero enemies by [65% for 10 sec -> 25% for 20 sec]."
       },
       "dark": {
-        "from": "Deals 20% increased DMG to Bosses.",
-        "to": "Deals 15% increased DMG to Bosses."
+        "unified": "Deals [20% -> 15%] increased DMG to Bosses."
       }
     }
   },
@@ -110,8 +97,7 @@
       "name": "Lotus of Crimson Crystal",
       "hasChanges": true,
       "description": {
-        "from": "[Slash, Blade of Judgment! ] Increases DMG by {0}% and reduces Mana Cost by 1000.",
-        "to": "[Slash, Blade of Judgment!] Increases DMG by {0}% and reduces Mana Cost by 1."
+        "unified": "[Slash, Blade of Judgment!] Increases DMG by {0}% and reduces Mana Cost by [1000 -> 1]."
       },
       "values": {
         "0": {
@@ -124,8 +110,7 @@
       "name": "Remnant of Hobby",
       "hasChanges": true,
       "description": {
-        "from": "[Disperse, Crystal Haze!] Increases ATK SPD of all allies by 10% and increases DEF Penetration of all allies by {0}.",
-        "to": "[Disperse, Crystal Haze!] Increases ATK Spd by an additional {0} and increases DEF Penetration of all allies by 250 for the duration of Skill."
+        "unified": "[Disperse, Crystal Haze!] Increases [ (removed) ATK SPD of all allies by 10% and increases] ATK Spd by an additional {0} and increases DEF Penetration of all allies by [ (removed) {0} -> 250 for the duration of Skill]."
       },
       "values": {
         "0": {
@@ -138,8 +123,7 @@
       "name": "Reminiscence of Escape",
       "hasChanges": true,
       "description": {
-        "from": "[Bloom, Crimson Flower!] Increases DMG by {0}%, and gains 1 additional stack when [Arcane Crystal Energy] is stacked.",
-        "to": "Increases DMG of [Bloom, Crimson Flower!] by 40%, and upon gaining a stack of [Arcane Crystal Energy], there is a {0}% chance to gain 3 additional stacks."
+        "unified": "Increases DMG of [Bloom, Crimson Flower!] by [ (removed) {0}% -> 40%], and upon gaining a stack of [Arcane Crystal Energy], there is a [ (removed) 1 additional stack -> {0}% chance to gain 3 additional stacks]."
       },
       "values": {
         "0": {
@@ -152,8 +136,7 @@
       "name": "Moment of Peace",
       "hasChanges": true,
       "description": {
-        "from": "[End to Evil Deeds!] Increases Crit DMG by 32%, and changes the CC duration increase effect to {0}%.",
-        "to": "[End to Evil Deeds!] Increases Crit Chance by an additional 250 and the duration of CC increase effect by an additional {0}%."
+        "unified": "[End to Evil Deeds!] Increases [Crit DMG by 32% -> Crit Chance by an additional 250] and the duration of CC increase effect by [ (removed) {0}% -> an additional {0}%]."
       },
       "values": {
         "0": {
@@ -166,8 +149,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "Increases Crit DMG by 30% and DEF Penetration by 150. This effect increases by 2 times after Kirze attacks the enemy 100 times.",
-      "to": "Increases Crit DMG by 40% and DEF Penetration by 150. This effect increases by 2 times after Kirze attacks the enemy 100 times."
+      "unified": "Increases Crit DMG by [30% -> 40%] and DEF Penetration by 150. This effect increases by 2 times after Kirze attacks the enemy 100 times."
     }
   }
 }

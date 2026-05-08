@@ -2,27 +2,24 @@
   "heroName": "Demia",
   "versionA": "cbt-phase-2",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T04:28:20.237Z",
+  "generatedAt": "2026-05-08T11:43:35.369Z",
   "skills": {
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "For 5sec, increases own P.Block Chance by 400. On Block, deals 95*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 72.6% ATK P.DMG to nearby enemies and reduces their ATK by 22%.",
-        "to": "For 5sec, your Physical Block Chance is increased by 800. When you block, deals 95*(0.7+(0.3*Skill Level*Awakening Coefficient))+72.6% ATK as Physical DMG to nearby enemies and reduces their ATK by 25%."
+        "unified": "For 5sec, your Physical Block Chance is increased by [400->800]. When you block, deals Physical DMG to nearby enemies and reduces their ATK by [22%->25%]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "For 5sec, increases all allies’ P.Block Chance by 400 and prepares to leap.\nWhile preparing, becomes immune to CC. On Block, increases the leap attack’s DMG by 8% and deals 52*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 32.7% ATK P.DMG to the attacker.\nWhen preparation ends, leaps to the nearest enemy, dealing 515*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 326.2% ATK P.DMG and stuns them for 1sec.",
-        "to": "For 5sec, increases all allies’ Physical Block Chance by 400 and prepares to leap.\nWhile preparing, becomes immune to status ailments. When you block, increases the leap attack’s DMG by 8% and deals 126*(0.7+(0.3*Skill Level*Awakening Coefficient))+96.8% ATK as Physical DMG to the attacker.\nWhen preparation ends, leaps to the nearest enemy, dealing 465*(0.7+(0.3*Skill Level*Awakening Coefficient))+357.5% ATK as Physical DMG and stuns them for 1sec."
+        "unified": "For 5sec, increases all allies’ Physical Block Chance by 400 and prepares to leap. While preparing, becomes immune to status ailments. When you block, increases the leap attack’s DMG by 8% and deals Physical DMG to the attacker. When preparation ends, leaps to the nearest enemy, dealing Physical DMG and stuns them for 1sec."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Increases all allies’ P.DEF by 84*(0.7+(0.3*Skill Level*Awakening Coefficient)) and P.Block Chance by 120.",
-        "to": "Increases all allies’ Physical Defense by 60*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Block Chance by 120."
+        "unified": "Increases all allies’ Physical Defense by 60*(0.7+(0.3*Skill Level*Awakening Coefficient)) and Physical Block Chance by 120."
       }
     }
   },
@@ -33,8 +30,7 @@
       "name": "Shield of Resolution",
       "hasChanges": true,
       "description": {
-        "from": "[Will to Win] increases P.Block chance by 400 and raises the target's P.DMG taken by {0}% for 5 sec.",
-        "to": "[Will to Win] increases P.Block chance by 400 and raises the target’s P.DMG taken by {0}% for 5 sec."
+        "unified": "[Will to Win] increases P.Block chance by 400 and raises the target’s P.DMG taken by {0}% for 5 sec."
       },
       "values": {}
     },
@@ -42,8 +38,7 @@
       "name": "Ring of Ziltrion",
       "hasChanges": true,
       "description": {
-        "from": "[Spearhead] recovers 40% of P.DEF every sec when blocking, and increases P.DEF gained by {0}% for 5 sec. P.DEF Boost can stack up to {4} times.",
-        "to": "[Spearhead] recovers 40% of P.DEF every sec when blocking, and increases P.DEF gained by {0}% for 5 sec. P.DEF Boost can stack up to 5 times."
+        "unified": "[Spearhead] recovers 40% of P.DEF every sec when blocking, and increases P.DEF gained by {0}% for 5 sec. P.DEF Boost can stack up to [4->5] times."
       },
       "values": {}
     }
@@ -51,8 +46,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increases all allies' P.DEF by {0}%. On Block, has a {1}% chance to recover {2} Mana and reduce the cooldown of all Skills by 1 sec.",
-      "to": "Increases all allies’ Physical Defense by {0}%.\nOn block, has a {1}% chance to restore {2} Mana to yourself and reduce the cooldown of all skills by 1 sec."
+      "unified": "Increases all allies’ Physical Defense by {0}%. On block, has a {1}% chance to restore {2} Mana to yourself and reduce the cooldown of all skills by 1 sec."
     },
     "values": {
       "0": {

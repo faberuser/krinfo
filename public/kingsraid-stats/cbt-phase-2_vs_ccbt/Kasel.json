@@ -2,7 +2,7 @@
   "heroName": "Kasel",
   "versionA": "cbt-phase-2",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.439Z",
+  "generatedAt": "2026-05-08T11:43:35.379Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,15 +11,13 @@
         "to": "12"
       },
       "description": {
-        "from": "Deals 267*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK 168.3% Physical DMG to enemies in the frontal area 2 times, and inflicts Down for 1.5 sec.\n\n[God's Proxy]: Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec.",
-        "to": "Deals 267*(1+0.3*Skill Level)+168.3% ATK Physical DMG to enemies in the frontal area 2 times and inflicts Down for 1.5 sec.\n[God's Proxy] : Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec."
+        "unified": "Deals Physical DMG to enemies in the frontal area 2 times, and inflicts Down for 1.5 sec. [God's Proxy]: Damage increases by 25%, attack range increases by 50%, and Down duration increases by 0.5 sec."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Dashes behind the enemy and deals 233*(0.7+(0.3*Skill Level*Awakening Coefficient))+ATK 146.9% Physical DMG to enemies in range 3 times, increasing Physical DMG taken by 24% for 5 sec.\n\n[God's Proxy]: Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied 600 higher.",
-        "to": "Dashes behind the enemy and deals 233*(1+0.3*Skill Level)+146.9% ATK Physical DMG to enemies in range 3 times, increasing Physical DMG taken by 30% for 4 sec.\n[God's Proxy] : Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied 500 higher."
+        "unified": "Dashes behind the enemy and deals Physical DMG to enemies in range 3 times, increasing Physical DMG taken by [24%->30%] for [5 sec->4 sec]. [God's Proxy] : Damage increases by 25%, skill cast time is reduced by 1 sec, and Critical Rate is applied [600->500] higher."
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Deals 200*(0.7+(0.3*Skill Level*Awakening Coefficient))+126% ATK Physical DMG to nearby enemies and inflicts Stun for 1 sec, then enters [God's Proxy] state for 10 sec, enhancing skills.\n\n[God's Proxy]: ATK increases by 314*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Normal Attack DMG increases by 100%. This effect cannot be dispelled.",
-        "to": "Deals 200*(1+0.3*Skill Level)+126% ATK Physical DMG to nearby enemies and inflicts Stun for 2 sec. Then enters [God's Proxy] state for 10 sec, empowering skills.\n[God's Proxy] : ATK increases by 264*(1+0.3*Skill Level), Attack Speed by 30%, Physical Evasion by 300, Normal Attack DMG by 150%, and Status Resistance by 600. This effect cannot be dispelled."
+        "unified": "Deals Physical DMG to nearby enemies and inflicts Stun for [1 sec->2 sec]. Then enters [God's Proxy] state for 10 sec, empowering skills. [God's Proxy] : ATK increases by [314*(0.7+(0.3*Skill Level*Awakening Coefficient))->264*(1+0.3*Skill Level)], [ (added) Attack Speed by 30%, Physical Evasion by 300,] [ (added) Normal Attack DMG by 150%, and Status Resistance by 600.] [ (removed) Normal Attack DMG increases by 100%.] This effect cannot be dispelled."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "ATK increases by 192*(0.7+(0.3*Skill Level*Awakening Coefficient)), and Magic Evasion increases by 240.\n\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 20%, and damage taken from non-hero enemies is reduced by 20%.",
-        "to": "Magic DEF increases by 85*(1+0.3*Skill Level), and Magic Evasion increases by 250.\nWhen [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by 30%, and damage taken is reduced by 30%."
+        "unified": "[Magic DEF increases by 85*(1+0.3*Skill Level)->ATK increases by 192*(0.7+(0.3*Skill Level*Awakening Coefficient))], and Magic Evasion increases by [240->250]. When [Holy Sword Ea] is equipped, damage dealt to non-hero enemies increases by [20%->30%], and damage taken [from non-hero enemies is reduced by 20%->is reduced by 30%]."
       }
     }
   },
@@ -46,45 +42,37 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Increases DMG by 40%."
+        "unified": "Increases DMG by [50%->40%]."
       },
       "dark": {
-        "from": "Mana cost is reduced by 1000.",
-        "to": "When there is only 1 enemy, damage increases by 100%."
+        "unified": "[When there is only 1 enemy, damage increases by 100%->Mana cost is reduced by 1000]."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Damage increases by 50%.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "[Mana cost is reduced by 1000->Damage increases by 50%]."
       },
       "dark": {
-        "from": "On hit, increases the target’s Physical DMG taken by 24% for 5 sec.",
-        "to": "On hit, reduces the target’s Physical DEF by 35% for 10 sec."
+        "unified": "On hit, [reduces the target’s Physical DEF by 35% for 10 sec->increases the target’s Physical DMG taken by 24% for 5 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Physical Evasion increases by 140 for the duration.",
-        "to": "Reduces Physical DMG taken by 25% during the duration."
+        "unified": "[Reduces Physical DMG taken by 25% during the duration->Physical Evasion increases by 140 for the duration]."
       },
       "dark": {
-        "from": "Damage dealt to non-hero enemies increases by 34% for the duration.",
-        "to": "Mana cost increases by 1000, but damage dealt to non-hero enemies increases by 100% during the duration."
+        "unified": "Mana cost increases by 1000, but damage dealt to non-hero enemies increases by [34%->100%] during the duration."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "ATK increase amount increases by 50%.",
-        "to": "Physical Evasion increases by 150.\nOn evasion, restores 5% of Max HP. This effect can only trigger once every 3 sec."
+        "unified": "[Physical Evasion increases by 150. On evasion, restores 5% of Max HP. This effect can only trigger once every 3 sec.->ATK increase amount increases by 50%]."
       },
       "dark": {
-        "from": "On evasion, restores 6% of Max HP every 3 sec.",
-        "to": "Damage taken from Heroes is reduced by 15%."
+        "unified": "[Damage taken from Heroes is reduced by 15%->On evasion, restores 6% of Max HP every 3 sec]."
       }
     }
   },
@@ -93,8 +81,7 @@
       "name": "Crown of Light",
       "hasChanges": true,
       "description": {
-        "from": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max 5 times and is irremovable.",
-        "to": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max 10 times and is irremovable."
+        "unified": "[Judgment Blade] Reduces Cooldown by 30%, and increases DMG by {0}% upon every use. This effect can be stacked up to max [5->10] times and is irremovable."
       },
       "values": {
         "0": {
@@ -107,8 +94,7 @@
       "name": "Emperor's Gauntlet",
       "hasChanges": true,
       "description": {
-        "from": "[Valiant Dash] Stuns the target for 1.5 sec, and reduces Cooldown by {0}% upon a Critical Hit.",
-        "to": "[Valiant Dash] Increases DMG by {0}% and reduces Cooldown by 10% upon a Crit Hit."
+        "unified": "[Valiant Dash] Increases DMG by {0}% and reduces Cooldown by [ (removed) upon a Critical Hit -> 10% upon a Crit Hit]."
       },
       "values": {
         "0": {
@@ -121,8 +107,7 @@
       "name": "Proxy's Insignia",
       "hasChanges": true,
       "description": {
-        "from": "[Proxy of God] increases Dodge Chance by an additional 400 and ATK Spd by an additional {0} for the duration of the Skill.",
-        "to": "[Proxy of God] increases Dodge Chance by an additional 250 and ATK Spd by an additional {0} for the duration of the Skill."
+        "unified": "[Proxy of God] increases Dodge Chance by an additional [400->250] and ATK Spd by an additional {0} for the duration of the Skill."
       },
       "values": {
         "0": {
@@ -135,8 +120,7 @@
       "name": "Lua's Tear",
       "hasChanges": true,
       "description": {
-        "from": "[Goddess Strike] Increases Magic Evasion by 360 and increases DMG dealt to heroes by {0}%.",
-        "to": "[Goddess Strike] Increases DEF Boost by 50%, and own DMG dealt to bosses by {0}%."
+        "unified": "[Goddess Strike] Increases [Magic Evasion by 360 -> DEF Boost by 50%], and own DMG dealt to [heroes -> bosses] by {0}%."
       },
       "values": {
         "0": {
@@ -149,8 +133,7 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "On hit, deals additional Physical DMG equal to 60% of ATK. Applied at 120% against non-hero enemies and can only trigger once every 0.5 sec.",
-      "to": "On hit, deals additional Physical DMG equal to 80% of ATK. Applied at 160% against non-hero enemies and can only trigger once every 0.5 sec."
+      "unified": "On hit, deals additional Physical DMG equal to [60%->80%] of ATK. Applied at [120%->160%] against non-hero enemies and can only trigger once every 0.5 sec."
     }
   }
 }

@@ -2,7 +2,7 @@
   "heroName": "Cleo",
   "versionA": "legacy",
   "versionB": "cbt-phase-1",
-  "generatedAt": "2026-04-24T01:24:08.583Z",
+  "generatedAt": "2026-05-08T11:43:35.480Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -11,15 +11,13 @@
         "to": "7"
       },
       "description": {
-        "from": "Attacks a random enemy 5 times to deal a total of ??? M.DMG and stunning the target for 1 sec each hit. Deals ??? additional M.DMG per Ember stack to Non-Hero enemies. Upon a Crit Hit, recovers own Mana by 100.",
-        "to": "Deals 305*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 81.8% of ATK Magic DMG to a random enemy 5times. Each hit stuns the target for 0.5sec, and restores Mana by 100 when landing a Critical Hit. Non-hero enemies take additional Magic DMG equal to 7% of ATK per [Ember] stack."
+        "unified": "Deals Magic DMG to a random enemy 5times. Each hit stuns the target for [1sec->0.5sec], and restores Mana by 100 when landing a Critical Hit. Non-hero enemies take additional Magic DMG equal to 7% of ATK per [Ember] stack."
       }
     },
     "2": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks the target and the enemies in nearby range, dealing ??? M.DMG and stunning them for 2 sec. Deals ??? + ??? additional M.DMG per Ember stack to Non-Hero enemies. Inflicts 12 Ember stacks on hit targets.",
-        "to": "Deals 1259*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 450.2% of ATK Magic DMG to enemies in the target area and stuns them for 1sec. Non-hero enemies take 1759*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 850.2% of ATK plus additional Magic DMG equal to 40% of ATK per [Ember] stack."
+        "unified": "Deals Magic DMG to enemies in the target area and stuns them for [2sec->1sec]. Non-hero enemies take additional Magic DMG equal to 40% of ATK per [Ember] stack. [(removed) Inflicts 12 Ember stacks]"
       }
     },
     "3": {
@@ -29,15 +27,13 @@
         "to": "20"
       },
       "description": {
-        "from": "Attacks all enemies 5 times, dealing a total of ??? M.DMG. This attack deals 150% increased Crit DMG. Deals ??? additional M.DMG per Ember stack to Non-Hero enemies.",
-        "to": "Deals 638*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 136.2% of ATK Magic DMG to all enemies 5times. This attack applies 160% increased Critical DMG, and non-hero enemies take additional Magic DMG equal to 10% of ATK per [Ember] stack."
+        "unified": "Deals Magic DMG to all enemies 5times. This attack applies [150%->160%] increased Critical DMG, and non-hero enemies take additional Magic DMG equal to 10% of ATK per [Ember] stack."
       }
     },
     "4": {
       "hasChanges": true,
       "description": {
-        "from": "Inflicts a stack of Ember upon hitting an enemy. Enemies affected by Ember take ??? M.DMG over 20 sec. Ember can be stacked up to max 12 times and upon hitting an enemy with max number of stacks, recovers Mana by 30.",
-        "to": "On hit, applies a stack of [Ember] to the target. When attacking a target at max stacks, restores Mana by 30.\n\n[Ember]: Deals 43*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 20% of ATK Magic Damage over Time every 1sec for 20sec, and stacks up to 10 times."
+        "unified": "On hit, applies a stack of [Ember] to the target. When attacking a target at max stacks, restores Mana by 30. [Ember]: Deals Magic Damage over Time every 1sec for 20sec, and stacks up to [12->10] times."
       }
     }
   },
@@ -46,37 +42,31 @@
     "1": {
       "hasChanges": true,
       "dark": {
-        "from": "Changes target to the enemy with the highest ATK.",
-        "to": "Mana cost increases by 1000, but damage increases by 100%."
+        "unified": "Mana cost increases by 1000, but damage increases by 100%."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Upon hitting an enemy with 10 or more stacks of Ember, increases M.DMG it takes by 40% for 10 seconds.",
-        "to": "When hitting an enemy with 10 or more [Ember] stacks, Magic DMG taken increases by 20% for 5 sec."
+        "unified": "When hitting an enemy with 10 or more [Ember] stacks, Magic DMG taken increases by [40%->20%] for [10 sec->5 sec]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Increases DMG by 40%.",
-        "to": "Damage increases by 50%."
+        "unified": "Damage increases by [40%->50%]."
       },
       "dark": {
-        "from": "Reduces Mana Cost by 2 for 10 sec when attacking more than 5 enemies. 10 sec Cooldown is applied.",
-        "to": "When there are 5 or more enemies, Mana cost is reduced by 2000 for 10 sec. This effect can only trigger once every 10 sec."
+        "unified": "When there are 5 or more enemies, Mana cost is reduced by 2000 for 10 sec. This effect can only trigger once every 10 sec."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces the target's M.DEF by 2.5% per [Ember] stack.",
-        "to": "Each [Ember] stack increases the target’s Magic DMG taken by 1%."
+        "unified": "Each [Ember] stack increases the target’s Magic DMG taken by 1%."
       },
       "dark": {
-        "from": "Every 10 sec, enemies affected by Ember are stunned for 2 sec. Enemies with more than 10 stacks of Ember are stunned for 3 sec.",
-        "to": "Every 10 sec, stuns enemies with [Ember] for 1 sec. If the target has 10 or more [Ember] stacks, stuns for 1.5 sec instead."
+        "unified": "Every 10 sec, stuns enemies with [Ember] for [2 sec->1 sec]. If the target has 10 or more [Ember] stacks, stuns for [3 sec->1.5 sec] instead."
       }
     }
   },
@@ -85,8 +75,7 @@
       "name": "Flamel's Elixir",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by.",
-        "to": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by {0}%."
+        "unified": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by {0}%."
       },
       "values": {}
     },
@@ -94,8 +83,7 @@
       "name": "Tome of Purgatory",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Rain] Increases DMG by {0}%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%.",
-        "to": "[Fire Rain] Increases DMG by 20%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%."
+        "unified": "[Fire Rain] Increases DMG by 20%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%."
       },
       "values": {}
     }
@@ -103,15 +91,13 @@
   "perks_t5": {
     "hasChanges": true,
     "dark": {
-      "from": "If a target has 10 stacks of Ember, increases the M.DMG the target takes by 30%, and adds 2 stacks of Ember per second to all non-hero enemies.",
-      "to": "[Ember] becomes non-dispellable, and applies 1 [Ember] stack every second to all non-hero enemies."
+      "unified": "[Ember] becomes non-dispellable, and applies [2 stacks->1 stack] every second to all non-hero enemies. [(removed) increases M.DMG target takes if they have 10 stacks]"
     }
   },
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Increases ATK Spd by {0}. Skill hits deal additional M.DMG equal to {1}% of ATK per stack of Ember inflicted on enemies.",
-      "to": "Critical Rate increases by {0}, Critial DMG increase by {1}, and Skill Attacks deal additional Magic DMG equal to {2}% of ATK per [Ember] stack on the target."
+      "unified": "Critical Rate increases by {0}, Critial DMG increase by {1}, and Skill Attacks deal additional Magic DMG equal to [{1}->{2}]% of ATK per [Ember] stack on the target. [(removed) Increases ATK Spd by {0}]"
     },
     "values": {
       "1": {

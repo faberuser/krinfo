@@ -2,7 +2,7 @@
   "heroName": "Cleo",
   "versionA": "cbt-phase-1",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.474Z",
+  "generatedAt": "2026-05-08T11:43:35.404Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -19,8 +19,7 @@
       "name": "Flamel's Elixir",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Ball] Reduces Mana Cost by 1 and increases DMG by {0}%.",
-        "to": "[Fireball] Reduces Mana Cost by 1000 and increases DMG by {0}%."
+        "unified": "[Fireball] Reduces Mana Cost by [1->1000] and increases DMG by {0}%."
       },
       "values": {
         "0": {
@@ -33,8 +32,7 @@
       "name": "Tome of Purgatory",
       "hasChanges": true,
       "description": {
-        "from": "[Fire Rain] Increases DMG by 20%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by 5%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 20%.",
-        "to": "[Fire Rain] Increases DMG by 20%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by {0}%. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional 5%."
+        "unified": "[Fire Rain] Increases DMG by 20%. Upon Critical Hit on an enemy with 5 or more stacks of Ember, Cooldown will be reduced by [5%->{0}%]. Upon killing an enemy with this Skill, Cooldown will be reduced by an additional [20%->5%]."
       },
       "values": {
         "0": {
@@ -47,8 +45,7 @@
       "name": "Introduction to Red Witch Spells",
       "hasChanges": true,
       "description": {
-        "from": "[Flame Diffusion] Ember becomes irremovable and causes the target to take {0}% increased M.DMG per stack.",
-        "to": "[Flame Diffusion] Changes Ember max stacks to 14 and increases Ember DMG by {0}%."
+        "unified": "[Flame Diffusion] Changes Ember max stacks to [(added) 14] and increases Ember DMG by {0}%."
       },
       "values": {
         "0": {
@@ -61,8 +58,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Critical Rate increases by {0}, Critial DMG increase by {1}, and Skill Attacks deal additional Magic DMG equal to {2}% of ATK per [Ember] stack on the target.",
-      "to": "Critical Rate increases by {0}, Critical DMG increases by {1}, and Skill Attacks deal additional DMG equal to {2}% per [Ember] stack on the target."
+      "unified": "Critical Rate increases by {0}, Critical DMG increases by {1}, and Skill Attacks deal additional DMG equal to {2}% per [Ember] stack on the target."
     },
     "values": {
       "1": {

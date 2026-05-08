@@ -79,7 +79,7 @@ export default function MobileMenu() {
 						<ModeToggle />
 					</DropdownMenuItem>
 					<DropdownMenuItem asChild>
-						<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/kingsraid">
+						<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/krinfo">
 							<Button variant="outline" size="icon" className="bg-background">
 								{mounted && (
 									<Image

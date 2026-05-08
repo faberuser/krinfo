@@ -2,13 +2,12 @@
   "heroName": "Frey",
   "versionA": "legacy",
   "versionB": "ccbt",
-  "generatedAt": "2026-04-24T01:24:08.600Z",
+  "generatedAt": "2026-05-08T11:43:35.497Z",
   "skills": {
     "1": {
       "hasChanges": true,
       "description": {
-        "from": "Dispels negative effects from the ally with the lowest HP, healing HP of the target by ??? and HP of allies nearby equal to 40% of Heal Rate.",
-        "to": "Dispels harmful effects from the ally with the lowest current HP and restores HP 529*(1+0.3*Skill Level)+330.6% ATK 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount."
+        "unified": "Dispels harmful effects from the ally with the lowest current HP and restores HP 3 times. When healing the target, nearby allies are additionally healed for 40% of the healing amount."
       }
     },
     "2": {
@@ -18,15 +17,13 @@
         "to": "14"
       },
       "description": {
-        "from": "Casts a shield on all allies that absorbs ??? DMG for 12 sec. While the shield is in effect, the target increases its ATK by 20%, Heal Rate by 50% and gains immunity to CC.",
-        "to": "Grants all allies a shield that absorbs 1080*(1+0.3*Skill Level)+675.6% ATK damage for 7 sec. While the shield lasts, the target’s ATK increases by 25%, Healing Power by 65%, and Status Resistance by 600."
+        "unified": "Grants all allies a shield that absorbs damage for [12 sec->7 sec]. While the shield lasts, the target’s ATK increases by [20%->25%], Healing Power by [50%->65%], and Status Resistance by [immunity to CC->600]."
       }
     },
     "3": {
       "hasChanges": true,
       "description": {
-        "from": "Attacks the target and its nearby enemies 6 times, dealing up to ??? M.DMG. 500 additional Crit Chance applies to this Skill. Hit targets will be blinded for 6 sec, and take 25% increased All DMG for 10 sec.",
-        "to": "Deals 177*(1+0.3*Skill Level)+110.8% ATK Magic DMG to the target and nearby enemies 6 times, then inflicts Blind for 3.5 sec, and increases Magic DMG taken by 25% for 10 sec. This skill applies Critical Rate 500 higher."
+        "unified": "Deals Magic DMG to the target and nearby enemies 6 times, then inflicts Blind for [6 sec->3.5 sec], and increases Magic DMG taken by 25% for 10 sec. This skill applies Critical Rate 500 higher."
       }
     },
     "4": {
@@ -36,8 +33,7 @@
         "to": "14"
       },
       "description": {
-        "from": "Reduces All DMG taken by 15%. At the beginning of each battle, and every 15 sec, increases M.DEF of 1 ally with the lowest HP by ??? for 10 sec and heals HP of the target by 15% for the duration of Skill.",
-        "to": "Magic DMG taken is reduced by 15%.\nAt the start of each battle or every 14 sec, restores 15% of Max HP to the 1 allies with the lowest current HP, and increases their Magic DEF by 60*(1+0.3*Skill Level) for 7 sec."
+        "unified": "Magic DMG taken is reduced by 15%. At the start of each battle or every [15 sec->14 sec], restores 15% of Max HP to the 1 allies with the lowest current HP, and increases their Magic DEF for [10 sec->7 sec]."
       }
     }
   },
@@ -46,29 +42,25 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "In exchange for 1 additional Mana Cost, the skill targets 2 allies.",
-        "to": "Mana cost increases by 1000, but the target count changes to 2."
+        "unified": "Mana cost increases by [1->1000], but the target count changes to 2."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "Shield is increased by 40%.",
-        "to": "Shield amount increases by 50%."
+        "unified": "Shield amount increases by [40%->50%]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "In exchange for 1 additional Mana Cost, DMG is increased by 80%.",
-        "to": "Mana cost increases by 1000 and damage increases by 80%."
+        "unified": "Mana cost increases by [1->1000] and damage increases by 80%."
       }
     },
     "4": {
       "hasChanges": true,
       "light": {
-        "from": "Reduces DMG the target takes from Non-Hero enemies by 30% for the duration of Skill.",
-        "to": "Reduces DMG the target takes from Non-Hero enemies by 40% for the duration of Skill."
+        "unified": "Reduces DMG the target takes from Non-Hero enemies by [30%->40%] for the duration of Skill."
       }
     }
   },
@@ -77,8 +69,7 @@
       "name": "Miraculous Medal",
       "hasChanges": true,
       "description": {
-        "from": "[Blessings of Light] Increases shield amount by 50% and recovers {0} Mana every second for 4 sec.",
-        "to": "[Blessings of Light] Increases the shield amount by 50% and recovers {0} Mana every sec for 4 sec."
+        "unified": "[Blessings of Light] Increases the shield amount by 50% and recovers {0} Mana every sec for 4 sec."
       },
       "values": {}
     },
@@ -86,8 +77,7 @@
       "name": "Forgotten Arbiter's Feather",
       "hasChanges": true,
       "description": {
-        "from": "[Heaven's Vengeance] Target takes 20% increased M.DMG for 10 sec, and Blind duration is increased by {0} sec.",
-        "to": "[Heaven’s Vengeance] increases the target’s M.DMG taken by 20% for 10 sec and extends Blind duration by {0} sec."
+        "unified": "[Heaven’s Vengeance] increases the target’s M.DMG taken by 20% for 10 sec and extends Blind duration by {0} sec."
       },
       "values": {
         "0": {
@@ -100,8 +90,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Every 8 sec, heals 4 allies with the lowest HP by {0}% of own ATK, and increases Crit Chance by 300 and Crit DMG by {1}% for the ally with the highest ATK for 8 sec.",
-      "to": "Every 8 sec, heals the 4 allies with the lowest current HP by {0}% of ATK, and increases the Critical Rate of the 4 allies with the highest ATK by 200, and Critical DMG by {1}% for 8 sec."
+      "unified": "Every 8 sec, heals the 4 allies with the lowest current HP by {0}% of ATK, and increases the Critical Rate of the 4 allies with the highest ATK by [300->200], and Critical DMG by {1}% for 8 sec."
     },
     "values": {
       "1": {

@@ -2,7 +2,7 @@
   "heroName": "Rodina",
   "versionA": "legacy",
   "versionB": "cbt-phase-2",
-  "generatedAt": "2026-04-24T01:24:08.573Z",
+  "generatedAt": "2026-05-08T11:43:35.469Z",
   "skills": {
     "1": {
       "hasChanges": true,
@@ -15,8 +15,7 @@
         "to": "3"
       },
       "description": {
-        "from": "Upon activation, takes up a stance and starts casting. After casting ends, deals ??? P.DMG upon enemies in a straight line. DMG is increased by 150% in proportion to the total casting time. If casting progresses beyond the 3rd stage, knock over enemies.",
-        "to": "Takes aim and prepares to fire. When reused or when preparation is complete, deals 1120*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 710.2% ATK P.DMG to enemies in a straight line. DMG increases based on cast time up to 150%, and at max charge, knocks enemies down."
+        "unified": "Takes aim and prepares to fire. When reused or when preparation is complete, deals Physical DMG to enemies in a straight line. DMG increases based on cast time up to 150%, and at [3rd stage charge->max charge], knocks enemies down."
       }
     },
     "2": {
@@ -30,8 +29,7 @@
         "to": "1"
       },
       "description": {
-        "from": "Target receives 50% increased damage from this hero. In addition, own ATK is increased by ???.",
-        "to": "For 15sec, Increases ATK by 135*(0.7+(0.3*Skill Level*Awakening Coefficient)) and applies [Perfect Aim] to the target.\n\n[Perfect Aim]: DMG dealt by Rodina is increased by 50%.all skills prioritize enemies under [Perfect Aim]"
+        "unified": "For 15sec, Increases ATK by {0} and applies [Perfect Aim] to the target. [Perfect Aim]: DMG dealt by Rodina is increased by 50%.all skills prioritize enemies under [Perfect Aim]"
       }
     },
     "3": {
@@ -41,8 +39,7 @@
         "to": "4"
       },
       "description": {
-        "from": "Fires 10 shots at random. Deals ??? DMG upon attack, and per each attack, DMG is increased by 10%.",
-        "to": "Fires at random enemies, dealing 245*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 155% ATK P.DMG 10 times. Each shot increases DMG by 10% and ATK Spd by 10%."
+        "unified": "Fires at random enemies, dealing Physical DMG 10 times. Each shot increases DMG by 10% and [(added) ATK Spd by 10%]."
       }
     },
     "4": {
@@ -52,8 +49,7 @@
         "to": "10"
       },
       "description": {
-        "from": "Every 10 sec, attacks the target 2 times, dealing a total of ??? P.DMG.",
-        "to": "Deals 354*(0.7+(0.3*Skill Level*Awakening Coefficient)) + 224.4% ATK P.DMG 2 times every 10sec."
+        "unified": "Deals Physical DMG 2 times every 10sec."
       }
     }
   },
@@ -62,32 +58,28 @@
       "skillName": "Penetration Shot",
       "hasChanges": true,
       "IV": {
-        "from": "Crit DMG is increased by 50%.",
-        "to": "Critical Damage of this skill is increased by 80%."
+        "unified": "Critical Damage of this skill is increased by [50%->80%]."
       }
     },
     "2": {
       "skillName": "Target Aim",
       "hasChanges": true,
       "IV": {
-        "from": "Crit DMG is increased by 50% for the duration of skill.",
-        "to": "Increases Crit DMG by 60% for the duration of Skill."
+        "unified": "Increases Crit DMG by [50%->60%] for the duration of Skill."
       }
     },
     "3": {
       "skillName": "Focused Fire",
       "hasChanges": true,
       "IV": {
-        "from": "Crit DMG is increased by 50%.",
-        "to": "Increases Crit DMG by 80%."
+        "unified": "Increases Crit DMG by [50%->80%]."
       }
     },
     "4": {
       "skillName": "Rapid Shot",
       "hasChanges": true,
       "IV": {
-        "from": "Crit DMG is increased by 50%.",
-        "to": "Critical Damage of this skill is increased by 80%."
+        "unified": "Critical Damage of this skill is increased by [50%->80%]."
       }
     }
   },
@@ -95,37 +87,31 @@
     "1": {
       "hasChanges": true,
       "light": {
-        "from": "DMG is increased by 40%.",
-        "to": "Mana cost increases by 1000, but damage scaling with cast time increases up to 450%."
+        "unified": "Mana cost increases by 1000, but damage scaling with cast time increases up to 450%."
       }
     },
     "2": {
       "hasChanges": true,
       "light": {
-        "from": "ATK Spd is boosted by 250 for the duration.",
-        "to": "During the duration, ATK Spd is increased by 15%."
+        "unified": "During the duration, ATK Spd is increased by [250->15%]."
       },
       "dark": {
-        "from": "Mana cost is reduced by 1.",
-        "to": "Mana cost is reduced by 1000."
+        "unified": "Mana cost is reduced by [1->1000]."
       }
     },
     "3": {
       "hasChanges": true,
       "light": {
-        "from": "Increases Mana Cost by 1 and the number of targets by 1.",
-        "to": "Mana cost is increased by 1000, and the number of targets is increased by 1."
+        "unified": "Mana cost is increased by [1->1000], and the number of targets is increased by 1."
       },
       "dark": {
-        "from": "Ignores enemy Block.",
-        "to": "Mana cost is increased by 1000, and effect increase on attack is increased by 100%."
+        "unified": "Mana cost is increased by [(added) 1000], and effect increase on attack is increased by [(added) 100%]. [(removed) Ignores enemy Block.]"
       }
     },
     "4": {
       "hasChanges": true,
       "dark": {
-        "from": "Enemies hit are stunned for 2 sec.",
-        "to": "Stuns damaged enemies for 1.2 sec."
+        "unified": "Stuns damaged enemies for [2 sec->1.2 sec]."
       }
     }
   },
@@ -134,8 +120,7 @@
       "name": "Shock-absorbing Special Guard",
       "hasChanges": true,
       "description": {
-        "from": "[Penetration Shot] Takes 40% reduced P.DMG and M.DMG for the skill's duration, and upon Critical Hit, increases own ATK by {0}% for 10 sec. ATK increase can be stacked up to max 4 times.",
-        "to": "[Penetration Shot] While casting, increases ATK SPD by 80%, and on Critical Hit, increases own ATK by {0}% for 10 sec. This ATK increase stacks up to 2 times."
+        "unified": "[Penetration Shot] While casting, increases ATK SPD by [(added) 80%], and on Critical Hit, increases own ATK by {0}% for 10 sec. This ATK increase stacks up to [4 times->2 times]. [(removed) Takes 40% reduced P.DMG and M.DMG for the skill's duration]"
       },
       "values": {
         "0": {
@@ -148,8 +133,7 @@
       "name": "Crystal Support",
       "hasChanges": true,
       "description": {
-        "from": "[Target Aim] Changes the target to a random enemy when Rodina's target dies, increasing ATK by {0}% for 10 sec.",
-        "to": "[Target Aim] When Rodina's target dies, switches to a random enemy and increases own ATK by {0}% for 10 sec."
+        "unified": "[Target Aim] When Rodina's target dies, switches to a random enemy and increases own ATK by {0}% for 10 sec."
       },
       "values": {
         "0": {
@@ -162,8 +146,7 @@
       "name": "Custom Bullet VII",
       "hasChanges": true,
       "description": {
-        "from": "[Focus Fire] Increased DMG by {0}% and inflicts damage ingnoring the target's DEF with the last 2 shots.",
-        "to": "[Focused Fire] Increases DMG by {0}%, and the last 2 shots deal DEF-ignoring DMG."
+        "unified": "[Focused Fire] Increases DMG by {0}%, and the last 2 shots deal DEF-ignoring DMG."
       },
       "values": {
         "0": {
@@ -176,8 +159,7 @@
       "name": "Gun Encyclopedia",
       "hasChanges": true,
       "description": {
-        "from": "[Consecutive Shot] Changes the number of targets to 2. Hit enemies have their P.Crit Resistance reduced by {0} for 10 sec.",
-        "to": "[Consecutive Shot] Changes the number of targets to 2, and reduces the target's P.Crit Resist by {0} for 10 sec."
+        "unified": "[Consecutive Shot] Changes the number of targets to 2, and reduces the target's P.Crit Resist by {0} for 10 sec."
       },
       "values": {
         "0": {
@@ -190,8 +172,7 @@
   "uw": {
     "hasChanges": true,
     "description": {
-      "from": "Each attack has a 20% chance of dealing {0}% of ATK as extra P.DMG and knocking back the enemy. Afterwards, ACC is increased by 100 for 10 sec. This effect can be stacked up to 3 times max.",
-      "to": "On hit, deals additional P.DMG equal to {0}% of ATK, knocks the enemy back, and increases ACC by {1} for 10 sec. This ACC increase stacks up to 3 times and can be triggered once every 4 sec."
+      "unified": "On hit, deals additional P.DMG equal to {0}% of ATK, knocks the enemy back, and increases ACC by [{0}->{1}] for 10 sec. This ACC increase stacks up to 3 times and can be triggered once every [(added) 4 sec]."
     },
     "values": {
       "0": {
@@ -203,13 +184,13 @@
   "sw": {
     "hasChanges": true,
     "description": {
-      "from": "Summons the soul of Rodina Custom Rifle Mod.0, increasing own Crit DMG by 100% for 10 sec. For the duration of Skill, deals ??? P.DMG that ignores DEF every 2 sec and inflicts Stun on the hit target for 2 sec. If the target is a Boss, the DMG and duration of Stun increases by 2 times.",
-      "to": "Summons the soul of Rodina Custom Rifle Mod.0 for 10sec, increasing own Crit DMG by 70%. During the duration, every 2sec, deals [DAMAGE] P.DMG to an enemy and stuns the target for 1sec. If the target is a Boss, the DMG and Stun duration are increased by 2%."
+      "unified": "Summons the soul of Rodina Custom Rifle Mod.0 for 10sec, increasing own Crit DMG by [100%->70%]. During the duration, every 2sec, deals P.DMG to an enemy and stuns the target for [2 sec->1sec]. If the target is a Boss, the DMG and Stun duration are increased by [2 times->2%]."
     },
     "advancement": {
       "2": {
         "from": "Increases DMG by 50% and gains immunity to CC for the duration of Skill.",
-        "to": "Becomes immune to CC for 5 sec."
+        "to": "Becomes immune to CC for 5 sec.",
+        "unified": "Becomes immune to CC for [(removed) duration of Skill -> 5 sec]. [(removed) Increases DMG by 50%]"
       }
     }
   }
