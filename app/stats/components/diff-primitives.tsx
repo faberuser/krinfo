@@ -24,7 +24,7 @@ export function DiffText({ diff }: { diff: TextDiff }) {
  */
 export function UnifiedDiffText({ text }: { text: string }) {
 	// Split on [OLD->NEW], [(removed) ...], and [(added) ...] tokens
-	const parts = text.split(/(\[\((?:removed|added)\)[^\]]*\]|\[[^\]]*?->[^\]]*?\])/gi)
+	const parts = text.split(/(\[\s*\((?:removed|added)\)[^\]]*\]|\[[^\]]*?->[^\]]*?\])/gi)
 	return (
 		<p className="text-sm leading-relaxed whitespace-pre-wrap">
 			{parts.map((part, i) => {
@@ -39,7 +39,7 @@ export function UnifiedDiffText({ text }: { text: string }) {
 						</span>
 					)
 				}
-				const removedMatch = part.match(/^\[\(removed\)\s*(.*?)\]$/i)
+				const removedMatch = part.match(/^\[\s*\(removed\)\s*(.*?)\]$/i)
 				if (removedMatch) {
 					return (
 						<span
@@ -50,7 +50,7 @@ export function UnifiedDiffText({ text }: { text: string }) {
 						</span>
 					)
 				}
-				const addedMatch = part.match(/^\[\(added\)\s*(.*?)\]$/i)
+				const addedMatch = part.match(/^\[\s*\(added\)\s*(.*?)\]$/i)
 				if (addedMatch) {
 					return (
 						<span
