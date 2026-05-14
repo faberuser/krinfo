@@ -67,16 +67,16 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 
 	return (
 		<Sidebar collapsible="icon">
-			<SidebarHeader className={"px-5 py-2 border-b mt-1 " + (state === "collapsed" ? "p-2" : "")}>
+			<SidebarHeader className={"px-4 py-2 border-b mt-1 " + (state === "collapsed" ? "p-2" : "")}>
 				<div className="flex items-center justify-between gap-2">
 					{state === "collapsed" ? null : (
 						<Link href="/" className="flex items-center space-x-2 group-data-[collapsible=icon]:hidden">
-							<span style={{ fontFamily: "var(--font-comfortaa)", fontWeight: 700 }} className="text-2xl">
+							<span style={{ fontFamily: "var(--font-comfortaa)", fontWeight: 700 }} className="text-xl">
 								krinfo
 							</span>
 						</Link>
 					)}
-					<SidebarTrigger className="ml-auto" />
+					<SidebarTrigger />
 				</div>
 			</SidebarHeader>
 
@@ -91,7 +91,7 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 				</SidebarGroup>
 
 				{/* Navigation Menu */}
-				<SidebarGroup>
+				<SidebarGroup className="py-0">
 					<SidebarGroupContent>
 						<SidebarMenu>
 							{items.map((item) => {
