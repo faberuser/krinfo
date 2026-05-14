@@ -1,13 +1,12 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useCallback } from "react"
 import Image from "@/components/next-image"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { cn } from "@/lib/utils"
-import { ComparisonContent } from "./comparison-content"
-import { FallbackDiff } from "./fallback-diff"
+import { ComparisonContent } from "@/app/stats/components/comparison-content"
 import type { HeroComparison, HeroSegment } from "@/app/stats/types"
 
 export function HeroSection({
@@ -16,37 +15,18 @@ export function HeroSection({
 	heroThumbnail,
 	overallStatus,
 	segments,
+	heroPairMap,
 }: {
 	heroName: string
 	heroClass: string
 	heroThumbnail: string
 	overallStatus: "changed" | "added" | "removed"
 	segments: HeroSegment[]
+	heroPairMap: Record<string, Record<string, HeroComparison>>
 }) {
 	const [open, setOpen] = useState(false)
-	const [comparisons, setComparisons] = useState<Record<string, HeroComparison | "loading" | "unavailable">>({})
-	const fetchInitiated = useRef(new Set<string>())
 
 	const segmentKey = useCallback((seg: HeroSegment) => `${seg.versionA}_vs_${seg.versionB}`, [])
-
-	useEffect(() => {
-		if (!open) return
-		for (const seg of segments) {
-			const key = segmentKey(seg)
-			if (fetchInitiated.current.has(key) || seg.diff?.status !== "changed") continue
-			fetchInitiated.current.add(key)
-			queueMicrotask(() => {
-				setComparisons((prev) => (prev[key] ? prev : { ...prev, [key]: "loading" }))
-			})
-			fetch(`/kingsraid-stats/${seg.versionA}_vs_${seg.versionB}/${encodeURIComponent(heroName)}.json`)
-				.then((res) => {
-					if (!res.ok) throw new Error("not found")
-					return res.json() as Promise<HeroComparison>
-				})
-				.then((data) => setComparisons((prev) => ({ ...prev, [key]: data })))
-				.catch(() => setComparisons((prev) => ({ ...prev, [key]: "unavailable" })))
-		}
-	}, [open, segments, heroName, segmentKey])
 
 	const totalChanges = segments.reduce((acc, seg) => {
 		const d = seg.diff
@@ -94,7 +74,7 @@ export function HeroSection({
 					{segments.map((seg) => {
 						const key = segmentKey(seg)
 						const diff = seg.diff
-						const comparison = comparisons[key]
+						const comparison = heroPairMap[key]?.[heroName]
 						return (
 							<div key={key} className="px-4 py-3">
 								{segments.length > 1 && (
@@ -114,14 +94,10 @@ export function HeroSection({
 									</p>
 								) : diff.changes.length === 0 ? (
 									<p className="text-sm text-muted-foreground">No changes in this segment.</p>
-								) : comparison === "loading" ? (
-									<div className="py-4 text-center text-sm text-muted-foreground animate-pulse">
-										Loading comparison…
-									</div>
-								) : comparison && comparison !== "unavailable" ? (
-									<ComparisonContent comparison={comparison} heroChanges={diff.changes} />
+								) : comparison ? (
+									<ComparisonContent comparison={comparison} />
 								) : (
-									<FallbackDiff heroChanges={diff.changes} />
+									<p className="text-sm text-muted-foreground">Comparison data unavailable.</p>
 								)}
 							</div>
 						)

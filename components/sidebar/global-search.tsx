@@ -144,13 +144,16 @@ export default function GlobalSearch({ searchData, state }: GlobalSearchProps) {
 	}
 
 	// Group items by type
-	const groupedItems = searchItems.reduce((acc, item) => {
-		if (!acc[item.type]) {
-			acc[item.type] = []
-		}
-		acc[item.type].push(item)
-		return acc
-	}, {} as Record<string, SearchItem[]>)
+	const groupedItems = searchItems.reduce(
+		(acc, item) => {
+			if (!acc[item.type]) {
+				acc[item.type] = []
+			}
+			acc[item.type].push(item)
+			return acc
+		},
+		{} as Record<string, SearchItem[]>,
+	)
 
 	// Handle dialog open/close
 	const handleOpenChange = (newOpen: boolean) => {
@@ -163,14 +166,14 @@ export default function GlobalSearch({ searchData, state }: GlobalSearchProps) {
 	return (
 		<>
 			<Button
-				variant="outline"
+				variant={state === "collapsed" ? null : "outline"}
 				className={
 					"w-full justify-start text-sm text-muted-foreground " +
 					(state === "collapsed" ? "p-1.75 has-[>svg]:px-1.75" : "")
 				}
 				onClick={() => setOpen(true)}
 			>
-				<Search className="mr-1 h-4 w-4" />
+				<Search className={`mr-1 h-4 w-4 ${state === "collapsed" ? "text-white" : "text-muted-foreground"}`} />
 				{state === "collapsed" ? null : (
 					<>
 						Search...

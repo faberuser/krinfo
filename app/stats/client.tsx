@@ -25,6 +25,7 @@ export default function StatsClient({
 	classesMap,
 	heroesMap,
 	classesPairMap,
+	heroPairMap,
 }: StatsClientProps) {
 	const [versions, setVersions] = useState<string[]>([
 		availableVersions[availableVersions.length - 1] ?? availableVersions[0],
@@ -450,6 +451,7 @@ export default function StatsClient({
 												heroThumbnail={hero.heroThumbnail}
 												overallStatus={hero.overallStatus}
 												segments={relevantSegments}
+												heroPairMap={heroPairMap}
 											/>
 										),
 								)}
@@ -482,6 +484,7 @@ export default function StatsClient({
 													heroThumbnail={hero.heroThumbnail}
 													overallStatus={hero.overallStatus}
 													segments={relevantSegments}
+													heroPairMap={heroPairMap}
 												/>
 											),
 									)}
@@ -515,6 +518,7 @@ export default function StatsClient({
 													heroThumbnail={hero.heroThumbnail}
 													overallStatus={hero.overallStatus}
 													segments={relevantSegments}
+													heroPairMap={heroPairMap}
 												/>
 											),
 									)}
