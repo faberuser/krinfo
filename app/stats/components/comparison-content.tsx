@@ -1,7 +1,6 @@
 import Image from "@/components/next-image"
 import { DiffText, NumericChange, ValueRow, TierChange } from "./diff-primitives"
-import { FallbackDiff } from "./fallback-diff"
-import type { HeroComparison, HeroChangeSection } from "@/app/stats/types"
+import type { HeroComparison } from "@/app/stats/types"
 
 function HeroIcon({ src, alt, size = 24 }: { src: string; alt: string; size?: number }) {
 	return (
@@ -18,13 +17,7 @@ function HeroIcon({ src, alt, size = 24 }: { src: string; alt: string; size?: nu
 	)
 }
 
-export function ComparisonContent({
-	comparison,
-	heroChanges,
-}: {
-	comparison: HeroComparison
-	heroChanges: HeroChangeSection[]
-}) {
+export function ComparisonContent({ comparison }: { comparison: HeroComparison }) {
 	const sections: React.ReactNode[] = []
 	const heroAssetBase = `/kingsraid-data/assets/heroes/${comparison.heroName}`
 
@@ -228,6 +221,7 @@ export function ComparisonContent({
 		)
 	}
 
-	if (sections.length === 0) return <FallbackDiff heroChanges={heroChanges} />
+	if (sections.length === 0)
+		return <div className="text-sm text-muted-foreground">No detailed changes available.</div>
 	return <div className="space-y-3">{sections}</div>
 }

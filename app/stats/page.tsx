@@ -80,6 +80,25 @@ export default async function StatsPage() {
 		}
 	}
 
+	// Load pre-generated hero comparisons per version pair
+	const heroPairMap: Record<string, Record<string, import("@/app/stats/types").HeroComparison>> = {}
+	for (const va of DATA_VERSIONS) {
+		for (const vb of DATA_VERSIONS) {
+			if (va === vb) continue
+			const key = `${va}_vs_${vb}`
+			heroPairMap[key] = {}
+			const pairDir = path.join(STATS_DIR, key)
+			if (fs.existsSync(pairDir)) {
+				const files = fs.readdirSync(pairDir).filter((f) => f.endsWith(".json") && f !== "classes.json")
+				for (const file of files) {
+					const heroName = file.replace(".json", "")
+					const data = readJson<import("@/app/stats/types").HeroComparison>(path.join(pairDir, file))
+					if (data) heroPairMap[key][heroName] = data
+				}
+			}
+		}
+	}
+
 	// Load heroes for each version
 	const heroesMap: Record<string, Record<string, HeroData>> = {}
 	for (const version of DATA_VERSIONS) {
@@ -104,6 +123,7 @@ export default async function StatsPage() {
 			classesMap={classesMap}
 			heroesMap={heroesMap}
 			classesPairMap={classesPairMap}
+			heroPairMap={heroPairMap}
 		/>
 	)
 }
