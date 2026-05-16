@@ -44,10 +44,10 @@ export default function HomeClient({ steamNews }: HomeClientProps) {
 						className="text-3xl leading-[normal]"
 						style={{ fontFamily: "var(--font-comfortaa)", fontWeight: 700 }}
 					>
-						krinfo
+						King&apos;s Raid Info
 					</div>
 					<div className="text-lg text-muted-foreground max-w-2xl mx-auto">
-						King&apos;s Raid was originally released in 2016 by Vespa Inc (changed to Anic Inc). Then End of
+						King&apos;s Raid was originally released in 2016 by Vespa Inc (changed to Anic Inc), then End of
 						Service in 2025 and is undergoing a relaunch by Masangsoft in 2026.
 						<br />
 						This site aims to provide the latest resources for the game and its community.
