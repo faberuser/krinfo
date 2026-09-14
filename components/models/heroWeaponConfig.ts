@@ -9,7 +9,7 @@ interface HeroWeaponConfig {
 	hand?: "left" | "right"
 	socket?: string
 	attachment?: "scene"
-	animationNaming?: "body" | "facialWeapon" | "weaponPen"
+	animationNaming?: "body" | "facialWeapon" | "weaponPen" | "weaponRight"
 }
 
 interface WeaponRule {

@@ -12,7 +12,7 @@ import { findNextInSequence, findSequenceStart } from "@/components/models/utils
 import { bindHeroSkeletons } from "@/components/models/bindHeroSkeletons"
 import { getHeroWeaponConfig, createWeaponVisibilitySync } from "@/components/models/heroWeaponConfig"
 import { loadFacialAnimation } from "@/components/models/facialAnimation"
-import { modelTextureOverrides } from "@/components/models/modelConfig"
+import { modelTextureOverrides, modelTransformOverrides } from "@/components/models/modelConfig"
 import { repairEyebrowTextures } from "./repairEyebrowTextures"
 import { advanceAnimationFrame, type SequencePlayback } from "@/components/models/advanceAnimationFrame"
 
@@ -208,6 +208,19 @@ export function Model({
 							}
 						}
 					})
+				}
+
+				// Correct export axes after binding in the original coordinate system.
+				const transformOverride = modelType === "heroes" ? modelTransformOverrides[modelFile.path] : undefined
+				if (transformOverride?.rotationDegrees) {
+					const { x, y, z } = transformOverride.rotationDegrees
+					fbx.rotation.set(THREE.MathUtils.degToRad(x), THREE.MathUtils.degToRad(y), THREE.MathUtils.degToRad(z))
+					fbx.updateMatrixWorld(true)
+				}
+				// Some body exports duplicate a separately toggleable hair/accessory mesh.
+				for (const name of transformOverride?.hiddenMeshes ?? []) {
+					const mesh = fbx.getObjectByName(name)
+					if (mesh instanceof THREE.Mesh) mesh.visible = false
 				}
 
 				// Repair missing material maps using model-specific exported textures.
@@ -596,10 +609,11 @@ export function Model({
 						// 1. Regular: "Hero_Aisha@Astand_Astand" -> "Hero_Aisha_Weapon@Astand_Astand"
 						// 2. Facial: "Hero_Isaiah_Facial@Aimsword_Aimsword" -> "Hero_Isaiah_Weapon_Facial@Aimsword_Aimsword"
 						let weaponAnimName: string
+						const naming = modelType === "heroes" ? getHeroWeaponConfig(modelFile)?.animationNaming : undefined
 						if (
-							modelType === "heroes" && getHeroWeaponConfig(modelFile)?.animationNaming === "weaponPen"
+							naming === "weaponPen" || naming === "weaponRight"
 						) {
-							weaponAnimName = animationName.replace(/(?:_Facial)?@/, "_WeaponPen@")
+							weaponAnimName = animationName.replace(/(?:_Facial)?@/, naming === "weaponPen" ? "_WeaponPen@" : "_WeaponR@")
 						} else if (
 							animationName.includes("_Facial@") &&
 							!(modelType === "heroes" && getHeroWeaponConfig(modelFile)?.animationNaming === "facialWeapon")
