@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useMemo, useRef } from "react"
 import Fuse from "fuse.js"
 import { SearchableFilter } from "@/components/searchable-filter"
 import { Input } from "@/components/ui/input"
 import { HeroData } from "@/model/Hero"
 import { Button } from "@/components/ui/button"
-import { Search, ChevronDown, ChevronUp, Image as ImageIcon, Grid2x2 } from "lucide-react"
+import { Search, X, ChevronDown, ChevronUp, Image as ImageIcon, Grid2x2 } from "lucide-react"
 import HeroCard, { ViewMode } from "@/app/heroes/components/card"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -40,6 +40,7 @@ export default function HeroesClient({
 	// blurDataURLMap,
 }: HeroesClientProps) {
 	const [searchQuery, setSearchQuery] = useState("")
+	const searchInputRef = useRef<HTMLInputElement>(null)
 	const [selectedClass, setSelectedClass] = useState("all")
 	const [selectedDamageType, setSelectedDamageType] = useState("all")
 	// Lazy state initializers: read from localStorage only once
@@ -196,19 +197,35 @@ export default function HeroesClient({
 				</div>
 
 				<div className="flex flex-col items-center justify-between xl:flex-row">
-					<div className="flex flex-wrap items-center gap-4 w-full">
+					<div className="flex flex-wrap items-center gap-2 w-full">
 						{/* Search Input */}
 						<div className="w-full sm:max-w-sm relative">
 							<span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
 								<Search className="h-4 w-4" />
 							</span>
 							<Input
+								ref={searchInputRef}
 								type="text"
 								placeholder="Search for heroes..."
 								value={searchQuery}
 								onChange={(e) => setSearchQuery(e.target.value)}
-								className="w-full pl-10"
+								className="w-full pl-10 pr-10"
 							/>
+							{searchQuery.length > 0 ? (
+								<Button
+									type="button"
+									variant="ghost"
+									size="icon-sm"
+									className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground"
+									aria-label="Clear search"
+									onClick={() => {
+										setSearchQuery("")
+										searchInputRef.current?.focus()
+									}}
+								>
+									<X className="h-4 w-4" aria-hidden="true" />
+								</Button>
+							) : null}
 						</div>
 
 						<div className="flex w-full sm:w-auto items-center gap-2">
@@ -226,7 +243,7 @@ export default function HeroesClient({
 									}))}
 								/>
 							</div>
-	
+
 							<div className="contents sm:flex sm:items-center sm:gap-2">
 								{/* Damage Type Filter */}
 								<div className="min-w-0 flex-1 sm:flex-none">
@@ -235,16 +252,21 @@ export default function HeroesClient({
 										searchPlaceholder="Search damage types..."
 										value={selectedDamageType}
 										onValueChange={setSelectedDamageType}
-										options={damageTypes.map((type) => ({ value: type.value, label: type.value === "all" ? "All damage types" : type.name }))}
+										options={damageTypes.map((type) => ({
+											value: type.value,
+											label: type.value === "all" ? "All damage types" : type.name,
+										}))}
 									/>
 								</div>
-	
+
 								{/* View Mode Toggle (mobile) */}
 								<Button
 									variant="ghost"
 									size="icon"
 									onClick={() => setViewMode(viewMode === "splashart" ? "icon" : "splashart")}
-									title={viewMode === "splashart" ? "Switch to icon view" : "Switch to splashart view"}
+									title={
+										viewMode === "splashart" ? "Switch to icon view" : "Switch to splashart view"
+									}
 									className="inline-flex shrink-0 xl:hidden"
 								>
 									{viewMode === "splashart" ? (

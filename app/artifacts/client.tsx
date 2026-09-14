@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo, startTransition } from "react"
+import { useState, useEffect, useMemo, useRef, startTransition } from "react"
 import Fuse from "fuse.js"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import Image from "@/components/next-image"
 import { ArtifactData } from "@/model/Artifact"
 import { Button } from "@/components/ui/button"
-import { Search, ChevronDown, ChevronUp, Check } from "lucide-react"
+import { Search, X, ChevronDown, ChevronUp, Check } from "lucide-react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command"
 import { Spinner } from "@/components/ui/spinner"
@@ -23,6 +23,7 @@ interface ArtifactsClientProps {
 
 export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsClientProps) {
 	const [searchQuery, setSearchQuery] = useState("")
+	const searchInputRef = useRef<HTMLInputElement>(null)
 	const [effectFilterOpen, setEffectFilterOpen] = useState(false)
 	const [selectedEffect, setSelectedEffect] = useState<ArtifactEffectTag | "all">("all")
 	const taggedArtifacts = useMemo(
@@ -175,20 +176,36 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 					</div>
 				</div>
 
-				<div className="flex flex-col items-start sm:flex-row sm:items-center gap-4">
+				<div className="flex flex-col items-start sm:flex-row sm:items-center gap-2">
 					{/* Search Input */}
 					<div className="w-full sm:max-w-sm relative">
 						<span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
 							<Search className="h-4 w-4" />
 						</span>
 						<Input
+							ref={searchInputRef}
 							type="text"
 							placeholder="Search names, aliases, or effects..."
 							aria-label="Search artifacts"
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							className="w-full pl-10"
+							className="w-full pl-10 pr-10"
 						/>
+						{searchQuery.length > 0 ? (
+							<Button
+								type="button"
+								variant="ghost"
+								size="icon-sm"
+								className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground"
+								aria-label="Clear search"
+								onClick={() => {
+									setSearchQuery("")
+									searchInputRef.current?.focus()
+								}}
+							>
+								<X className="h-4 w-4" aria-hidden="true" />
+							</Button>
+						) : null}
 					</div>
 					<div className="flex w-full sm:w-auto flex-wrap items-center gap-2">
 						<Popover open={effectFilterOpen} onOpenChange={setEffectFilterOpen}>
@@ -201,7 +218,9 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 									className="w-full sm:w-64 min-w-0 justify-between font-normal"
 								>
 									<span className="truncate">
-										{selectedEffect === "all" ? "All effects" : `${selectedEffect} (${effectCounts.get(selectedEffect) ?? 0})`}
+										{selectedEffect === "all"
+											? "All effects"
+											: `${selectedEffect} (${effectCounts.get(selectedEffect) ?? 0})`}
 									</span>
 									<ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
 								</Button>
@@ -212,13 +231,32 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 									<CommandList>
 										<CommandEmpty>No effects found.</CommandEmpty>
 										<CommandGroup>
-											<CommandItem value="All effects" onSelect={() => { setSelectedEffect("all"); setEffectFilterOpen(false) }}>
-												<Check className={selectedEffect === "all" ? "opacity-100" : "opacity-0"} />
+											<CommandItem
+												value="All effects"
+												onSelect={() => {
+													setSelectedEffect("all")
+													setEffectFilterOpen(false)
+												}}
+											>
+												<Check
+													className={selectedEffect === "all" ? "opacity-100" : "opacity-0"}
+												/>
 												All effects
 											</CommandItem>
-											{ARTIFACT_EFFECT_TAGS.filter((tag) => effectCounts.has(tag) || tag === selectedEffect).map((tag) => (
-												<CommandItem key={tag} value={tag} onSelect={() => { setSelectedEffect(tag); setEffectFilterOpen(false) }}>
-													<Check className={selectedEffect === tag ? "opacity-100" : "opacity-0"} />
+											{ARTIFACT_EFFECT_TAGS.filter(
+												(tag) => effectCounts.has(tag) || tag === selectedEffect,
+											).map((tag) => (
+												<CommandItem
+													key={tag}
+													value={tag}
+													onSelect={() => {
+														setSelectedEffect(tag)
+														setEffectFilterOpen(false)
+													}}
+												>
+													<Check
+														className={selectedEffect === tag ? "opacity-100" : "opacity-0"}
+													/>
 													{tag} ({effectCounts.get(tag) ?? 0})
 												</CommandItem>
 											))}

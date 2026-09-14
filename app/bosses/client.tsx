@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo, startTransition } from "react"
+import { useState, useEffect, useMemo, useRef, startTransition } from "react"
 import Fuse from "fuse.js"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import Image from "@/components/next-image"
 import { BossData } from "@/model/Boss"
 import { Button } from "@/components/ui/button"
-import { Search, ChevronDown, ChevronUp } from "lucide-react"
+import { Search, X, ChevronDown, ChevronUp } from "lucide-react"
 import { SearchableFilter } from "@/components/searchable-filter"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -22,6 +22,7 @@ interface BossesClientProps {
 
 export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: BossesClientProps) {
 	const [searchQuery, setSearchQuery] = useState("")
+	const searchInputRef = useRef<HTMLInputElement>(null)
 	const [selectedType, setSelectedType] = useState("all")
 	const [loadingSlug, setLoadingSlug] = useState<string | null>(null)
 	const pathname = usePathname()
@@ -201,19 +202,35 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 					</div>
 				</div>
 
-				<div className="flex flex-col items-start sm:flex-row sm:items-center gap-4">
+				<div className="flex flex-col items-start sm:flex-row sm:items-center gap-2">
 					{/* Search Input */}
 					<div className="w-full sm:max-w-sm relative">
 						<span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
 							<Search className="h-4 w-4" />
 						</span>
 						<Input
+							ref={searchInputRef}
 							type="text"
 							placeholder="Search for bosses..."
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							className="w-full pl-10"
+							className="w-full pl-10 pr-10"
 						/>
+						{searchQuery.length > 0 ? (
+							<Button
+								type="button"
+								variant="ghost"
+								size="icon-sm"
+								className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground"
+								aria-label="Clear search"
+								onClick={() => {
+									setSearchQuery("")
+									searchInputRef.current?.focus()
+								}}
+							>
+								<X className="h-4 w-4" aria-hidden="true" />
+							</Button>
+						) : null}
 					</div>
 
 					{/* Boss Type Filter */}

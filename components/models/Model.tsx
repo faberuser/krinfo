@@ -10,9 +10,17 @@ import { weaponTypes } from "@/components/models/types"
 import { loadBossOffsetConfig } from "@/components/models/bossOffsetConfig"
 import { findNextInSequence, findSequenceStart } from "@/components/models/utils"
 import { bindHeroSkeletons } from "@/components/models/bindHeroSkeletons"
-import { loadFacialAnimation } from "@/components/models/loadFacialAnimation"
+import { getHeroWeaponConfig, createWeaponVisibilitySync } from "@/components/models/heroWeaponConfig"
+import { loadFacialAnimation } from "@/components/models/facialAnimation"
+import { modelTextureOverrides, modelTransformOverrides, loadModelConfig } from "@/components/models/modelConfig"
+import { repairEyebrowTextures } from "./repairEyebrowTextures"
+import { advanceAnimationFrame, type SequencePlayback } from "@/components/models/advanceAnimationFrame"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
+
+function hasSceneAttachment(modelFile: ModelFile, modelType: ModelProps["modelType"]) {
+	return modelType === "heroes" && getHeroWeaponConfig(modelFile)?.attachment === "scene"
+}
 
 type HeroModel = THREE.Group & {
 	mixer?: THREE.AnimationMixer
@@ -53,10 +61,24 @@ export function Model({
 }: ModelProps) {
 	const groupRef = useRef<THREE.Group>(null)
 	const [loadedModels, setLoadedModels] = useState<Map<string, HeroModel>>(new Map())
+	useEffect(() => {
+		if (modelType !== "heroes") return
+		const bodies: THREE.Object3D[] = []
+		const hairs: THREE.Object3D[] = []
+		for (const file of modelFiles) {
+			const model = loadedModels.get(file.name)
+			if (!model) continue
+			if (file.type === "body") bodies.push(model)
+			if (file.type === "hair") hairs.push(model)
+		}
+		repairEyebrowTextures(bodies, hairs)
+	}, [loadedModels, modelFiles, modelType])
 	const mixersRef = useRef<Map<string, THREE.AnimationMixer>>(new Map())
 	const activeActionsRef = useRef<Map<string, THREE.AnimationAction>>(new Map())
 	const sharedAnimationsRef = useRef<THREE.AnimationClip[]>([])
-	const sequenceCallbackRef = useRef<(() => void) | null>(null)
+	const sequencePlaybackRef = useRef<SequencePlayback | null>(null)
+	const playingAnimationRef = useRef<string | null>(null)
+	const weaponVisibilitySyncRef = useRef<ReturnType<typeof createWeaponVisibilitySync>>(null)
 	const currentProgressRef = useRef<number>(0)
 	const isLoadingRef = useRef<boolean>(false)
 	const previousModelFilesRef = useRef<ModelFile[]>([])
@@ -64,6 +86,13 @@ export function Model({
 	const [bossConfig, setBossConfig] = useState<Awaited<ReturnType<typeof loadBossOffsetConfig>>>(null)
 	const attachedWeaponsRef = useRef<Set<string>>(new Set()) // Track which weapons have been attached
 	const frameCountRef = useRef<number>(0) // Count frames to wait for skeleton stability
+
+	useEffect(() => {
+		weaponVisibilitySyncRef.current = modelType === "heroes"
+			? createWeaponVisibilitySync(modelFiles, loadedModels)
+			: null
+		return () => { weaponVisibilitySyncRef.current = null }
+	}, [modelFiles, loadedModels, modelType])
 
 	// Load boss offset config for boss models
 	useEffect(() => {
@@ -88,6 +117,8 @@ export function Model({
 			setLoadedModels(new Map())
 			mixersRef.current.clear()
 			activeActionsRef.current.clear()
+			sequencePlaybackRef.current = null
+			playingAnimationRef.current = null
 			sharedAnimationsRef.current = []
 			attachedWeaponsRef.current.clear() // Reset attached weapons tracking
 			frameCountRef.current = 0 // Reset frame counter for weapon attachment
@@ -100,6 +131,8 @@ export function Model({
 			const modelDir = `${basePath}/kingsraid-models/models/${modelType}`
 
 			try {
+				if (modelType === "heroes") await loadModelConfig()
+				if (loadGeneration !== loadGenerationRef.current) return
 				const fbxLoader = new FBXLoader()
 
 				// Load FBX model with progress tracking
@@ -167,7 +200,7 @@ export function Model({
 
 				// Bind skeleton for skinned meshes (crucial for AssetStudio FBX files)
 				if (modelType === "heroes") {
-					bindHeroSkeletons(fbx)
+					bindHeroSkeletons(fbx, getHeroWeaponConfig(modelFile)?.recalculateBoneInverses)
 				} else {
 					fbx.traverse((child) => {
 						if ((child as THREE.SkinnedMesh).isSkinnedMesh) {
@@ -175,6 +208,35 @@ export function Model({
 							if (skinnedMesh.skeleton) {
 								skinnedMesh.bind(skinnedMesh.skeleton)
 							}
+						}
+					})
+				}
+
+				// Correct export axes after binding in the original coordinate system.
+				const transformOverride = modelType === "heroes" ? modelTransformOverrides[modelFile.path] : undefined
+				if (transformOverride?.rotationDegrees) {
+					const { x, y, z } = transformOverride.rotationDegrees
+					fbx.rotation.set(THREE.MathUtils.degToRad(x), THREE.MathUtils.degToRad(y), THREE.MathUtils.degToRad(z))
+					fbx.updateMatrixWorld(true)
+				}
+				// Some body exports duplicate a separately toggleable hair/accessory mesh.
+				for (const name of transformOverride?.hiddenMeshes ?? []) {
+					const mesh = fbx.getObjectByName(name)
+					if (mesh instanceof THREE.Mesh) mesh.visible = false
+				}
+
+				// Repair missing material maps using model-specific exported textures.
+				const textureOverrides = modelType === "heroes" ? modelTextureOverrides[modelFile.path] : undefined
+				if (textureOverrides) {
+					const textures = new Map(await Promise.all(Object.entries(textureOverrides).map(async ([name, texturePath]) => {
+						const texture = await new THREE.TextureLoader().loadAsync(`${modelDir}/${texturePath}`)
+						return [name, texture] as const
+					})))
+					fbx.traverse((child) => {
+						if (!(child instanceof THREE.Mesh)) return
+						for (const material of Array.isArray(child.material) ? child.material : [child.material]) {
+							const texture = textures.get(material.name)
+							if (texture && "map" in material) material.map = texture
 						}
 					})
 				}
@@ -341,9 +403,8 @@ export function Model({
 							fbx.visible = false
 						}
 
-						// Weapons will be attached to hand points later
-						// Keep at origin for now
-						fbx.position.set(0, 0, 0)
+						// Keep independently animated weapons in their exported scene position.
+						if (!hasSceneAttachment(modelFile, modelType)) fbx.position.set(0, 0, 0)
 					}
 				} else {
 					// Default positioning for unknown types
@@ -404,7 +465,8 @@ export function Model({
 			})
 
 			// Load visible models AND all weapon models (even if hidden, we need them to check for animations)
-			const modelsToLoad = sortedModels.filter((m) => visibleModels.has(m.name) || weaponTypes.includes(m.type))
+			const modelsToLoad = sortedModels.filter((m) => visibleModels.has(m.name) || weaponTypes.includes(m.type) ||
+				(modelType === "heroes" && m.type === "hair"))
 			const totalModels = modelsToLoad.length
 
 			for (let i = 0; i < modelsToLoad.length; i++) {
@@ -498,7 +560,7 @@ export function Model({
 				const shouldBeVisible = visibleModels.has(modelName)
 
 				// Don't make weapon visible if it hasn't been attached yet
-				if (shouldBeVisible && !attachedWeaponsRef.current.has(modelName)) {
+				if (shouldBeVisible && !hasSceneAttachment(modelFile, modelType) && !attachedWeaponsRef.current.has(modelName)) {
 					return
 				}
 
@@ -507,55 +569,60 @@ export function Model({
 				}
 			}
 		})
-	}, [visibleModels, loadedModels, modelFiles])
+	}, [visibleModels, loadedModels, modelFiles, modelType])
 
 	// Handle animation switching - preserve weapon visibility state (user controls it manually)
 	useEffect(() => {
-		// Clean up previous sequence callback
-		if (sequenceCallbackRef.current) {
-			sequenceCallbackRef.current = null
-		}
-
-		// Wait a bit to ensure all models have loaded and shared animations are available
-		const timeoutId = setTimeout(() => {
+		function playAnimation(animationName: string | null, continuous = false) {
+			const alreadyPlaying = playingAnimationRef.current === animationName && !continuous
+			sequencePlaybackRef.current = null
 			// Check if current animation has a next in sequence
-			const nextAnimation = selectedAnimation ? findNextInSequence(selectedAnimation, availableAnimations) : null
+			const nextAnimation = animationName ? findNextInSequence(animationName, availableAnimations) : null
 			// Check if current animation is part of a sequence (has a -N suffix)
-			const sequenceStart = selectedAnimation ? findSequenceStart(selectedAnimation, availableAnimations) : null
+			const sequenceStart = animationName ? findSequenceStart(animationName, availableAnimations) : null
 			const isPartOfSequence = nextAnimation !== null || sequenceStart !== null
 
 			loadedModels.forEach((model, modelName) => {
 				const mixer = mixersRef.current.get(modelName)
 				if (!mixer) return
 
-				// Remove previous event listeners
-				mixer.removeEventListener("finished", handleAnimationFinished)
-
-				// Stop all current actions
 				const currentAction = activeActionsRef.current.get(modelName)
-				if (currentAction) {
+				if (continuous) {
+					mixer.stopAllAction()
+					activeActionsRef.current.delete(modelName)
+				} else if (currentAction && !alreadyPlaying) {
 					currentAction.fadeOut(0.3)
 				}
 
 				// Play selected animation
-				if (selectedAnimation) {
+				if (animationName) {
 					const modelFile = modelFiles.find((m) => m.name === modelName)
 					const isWeapon = modelFile && weaponTypes.includes(modelFile.type)
 
 					// For weapons, try to find matching weapon animation
-					let animationToPlay = selectedAnimation
+					let animationToPlay = animationName
 
-					// Skip weapon animation logic for weapons with defaultPosition (they're part of the body)
-					if (isWeapon && !modelFile.defaultPosition) {
+					// Some independent weapon rigs use body clip names instead of _Weapon names.
+					const usesBodyClipNames =
+						modelFile && modelType === "heroes" && getHeroWeaponConfig(modelFile)?.animationNaming === "body"
+					if (isWeapon && !modelFile.defaultPosition && !usesBodyClipNames) {
 						// Convert body animation to weapon animation
 						// Handle two cases:
 						// 1. Regular: "Hero_Aisha@Astand_Astand" -> "Hero_Aisha_Weapon@Astand_Astand"
 						// 2. Facial: "Hero_Isaiah_Facial@Aimsword_Aimsword" -> "Hero_Isaiah_Weapon_Facial@Aimsword_Aimsword"
 						let weaponAnimName: string
-						if (selectedAnimation.includes("_Facial@")) {
-							weaponAnimName = selectedAnimation.replace(/_Facial@/, "_Weapon_Facial@")
+						const naming = modelType === "heroes" ? getHeroWeaponConfig(modelFile)?.animationNaming : undefined
+						if (
+							naming === "weaponPen" || naming === "weaponRight"
+						) {
+							weaponAnimName = animationName.replace(/(?:_Facial)?@/, naming === "weaponPen" ? "_WeaponPen@" : "_WeaponR@")
+						} else if (
+							animationName.includes("_Facial@") &&
+							!(modelType === "heroes" && getHeroWeaponConfig(modelFile)?.animationNaming === "facialWeapon")
+						) {
+							weaponAnimName = animationName.replace(/_Facial@/, "_Weapon_Facial@")
 						} else {
-							weaponAnimName = selectedAnimation.replace(/@/, "_Weapon@")
+							weaponAnimName = animationName.replace(/@/, "_Weapon@")
 						}
 
 						// Check if weapon animation exists in model's animations or shared animations
@@ -581,16 +648,24 @@ export function Model({
 					const clip = animations.find((c) => c.name === animationToPlay)
 					if (clip) {
 						const action = mixer.clipAction(clip)
-						action.reset().fadeIn(0.3)
+						// React echoes automatic selection changes back through this effect.
+						// Keep already-started actions at their current time on that render.
+						if (!alreadyPlaying || currentAction !== action) {
+							action.reset()
+							if (continuous) action.setEffectiveWeight(1)
+							else action.fadeIn(0.3)
+							action.play()
+							model.facial?.play(action)
+						}
 
 						// If part of a sequence, play once without looping
 						if (isPartOfSequence) {
 							action.setLoop(THREE.LoopOnce, 1)
 							action.clampWhenFinished = true
+						} else {
+							action.setLoop(THREE.LoopRepeat, Infinity)
+							action.clampWhenFinished = false
 						}
-
-						action.play()
-						model.facial?.play(action)
 						activeActionsRef.current.set(modelName, action)
 
 						// Report animation duration (only from body/non-weapon models)
@@ -598,62 +673,36 @@ export function Model({
 							onAnimationDurationChange(clip.duration)
 						}
 
-						// Add finished event listener for sequence handling (only for body model)
-						if (isPartOfSequence && !isWeapon && onAnimationChange) {
-							mixer.addEventListener("finished", handleAnimationFinished)
+						// Only the body controls sequence timing; hair/weapon clips can differ.
+						const followingAnimation = nextAnimation || sequenceStart
+						if (modelFile?.type === "body" && followingAnimation && clip.duration > 0 && onAnimationChange) {
+							sequencePlaybackRef.current = {
+								action,
+								advance: () => {
+									playAnimation(followingAnimation, true)
+									onAnimationChange(followingAnimation)
+								},
+							}
 						}
 					}
 				}
 			})
 
-			// Store the callback for playing next animation
-			// If there's a next animation in sequence, play it; otherwise loop back to sequence start
-			if (isPartOfSequence && onAnimationChange) {
-				if (nextAnimation) {
-					// Continue to next animation in sequence
-					sequenceCallbackRef.current = () => {
-						onAnimationChange(nextAnimation)
-					}
-				} else if (sequenceStart) {
-					// Loop back to the start of the sequence
-					sequenceCallbackRef.current = () => {
-						onAnimationChange(sequenceStart)
-					}
-				}
-			}
-		}, 100)
-
-		// Handler for animation finished event
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		function handleAnimationFinished(_event: THREE.Event<"finished", THREE.AnimationMixer>) {
-			// Only trigger once (from the first mixer that finishes)
-			if (sequenceCallbackRef.current) {
-				const callback = sequenceCallbackRef.current
-				sequenceCallbackRef.current = null
-				// Use requestAnimationFrame to avoid state update during render
-				requestAnimationFrame(() => {
-					callback()
-				})
-			}
+			playingAnimationRef.current = animationName
 		}
 
-		// Capture current mixers for cleanup
-		const currentMixers = mixersRef.current
-
+		// Loading state already triggers this effect as each model becomes available.
+		playAnimation(selectedAnimation)
 		return () => {
-			clearTimeout(timeoutId)
-			// Clean up event listeners on unmount
-			currentMixers.forEach((mixer) => {
-				mixer.removeEventListener("finished", handleAnimationFinished)
-			})
+			sequencePlaybackRef.current = null
 		}
-	}, [selectedAnimation, loadedModels, onAnimationDurationChange, modelFiles, availableAnimations, onAnimationChange])
+	}, [selectedAnimation, loadedModels, onAnimationDurationChange, modelFiles, availableAnimations, onAnimationChange, modelType])
 
 	useFrame((state, delta) => {
 		// UPDATE ANIMATION MIXERS FIRST before weapon attachment
 		// This ensures hand bones are in animated pose, not bind pose
 		if (!isPaused) {
-			mixersRef.current.forEach((mixer) => mixer.update(delta))
+			advanceAnimationFrame(mixersRef.current.values(), delta, () => sequencePlaybackRef.current)
 			loadedModels.forEach((model) => model.facial?.update())
 		}
 
@@ -678,10 +727,14 @@ export function Model({
 				return
 			}
 
-			// Check if hand points exist and weapons are loaded
-			if (bodyModel.handPointR || bodyModel.handPointL) {
+			// Some heroes use a dedicated weapon socket instead of hand points.
+			const hasConfiguredSocket = modelType === "heroes" && modelFiles.some((file) => {
+				const socket = getHeroWeaponConfig(file)?.socket
+				return socket && bodyModel.getObjectByName(socket)
+			})
+			if (bodyModel.handPointR || bodyModel.handPointL || hasConfiguredSocket) {
 				const weaponsNeedingAttachment = modelFiles.filter(
-					(mf) => weaponTypes.includes(mf.type) && !mf.defaultPosition,
+					(mf) => weaponTypes.includes(mf.type) && !mf.defaultPosition && !hasSceneAttachment(mf, modelType),
 				)
 				const allWeaponsLoaded = weaponsNeedingAttachment.every((mf) => loadedModels.has(mf.name))
 
@@ -691,16 +744,25 @@ export function Model({
 					// Reattach weapons every frame for first FRAMES_TO_REATTACH frames
 					loadedModels.forEach((weaponModel, weaponName) => {
 						const modelFile = modelFiles.find((m) => m.name === weaponName)
-						if (!modelFile || !weaponTypes.includes(modelFile.type) || modelFile.defaultPosition) return
+						if (
+							!modelFile ||
+							!weaponTypes.includes(modelFile.type) ||
+							modelFile.defaultPosition ||
+							hasSceneAttachment(modelFile, modelType)
+						) return
 
-						const isLeftHand =
-							modelFile.type === "shield" ||
-							modelFile.type === "weapon_l" ||
-							modelFile.type === "weaponl" ||
-							modelFile.type === "weapon02"
+						const heroWeaponConfig = modelType === "heroes" ? getHeroWeaponConfig(modelFile) : undefined
+						const isLeftHand = heroWeaponConfig?.hand
+							? heroWeaponConfig.hand === "left"
+							: modelFile.type === "shield" ||
+								modelFile.type === "weapon_l" ||
+								modelFile.type === "weaponl" ||
+								modelFile.type === "weapon02"
 
-						let handPoint = isLeftHand ? bodyModel.handPointL : bodyModel.handPointR
-						if (!handPoint) {
+						let handPoint = heroWeaponConfig?.socket
+							? bodyModel.getObjectByName(heroWeaponConfig.socket)
+							: isLeftHand ? bodyModel.handPointL : bodyModel.handPointR
+						if (!handPoint && !heroWeaponConfig?.socket) {
 							handPoint = isLeftHand ? bodyModel.handPointR : bodyModel.handPointL
 						}
 
@@ -710,8 +772,10 @@ export function Model({
 								weaponModel.parent.remove(weaponModel)
 							}
 
-							// Use weapon rotation from config if available, otherwise default to 90 degrees
-							const weaponRotation = bossConfig?.weapon?.rotation || { x: Math.PI / 2, y: 0, z: 0 }
+							// Use the hero or boss weapon correction, otherwise default to 90 degrees.
+							const weaponRotation =
+								(modelType === "heroes" ? heroWeaponConfig?.rotation : bossConfig?.weapon?.rotation) ||
+								{ x: Math.PI / 2, y: 0, z: 0 }
 
 							weaponModel.position.set(0, 0, 0)
 							weaponModel.scale.set(1, 1, 1)
@@ -731,6 +795,9 @@ export function Model({
 				}
 			}
 		}
+		// Resolve sword/sheath handoffs after animation sampling and attachment,
+		// including paused frames where the user changes a Parts toggle.
+		weaponVisibilitySyncRef.current?.(visibleModels, attachedWeaponsRef.current)
 	})
 
 	useEffect(() => {
