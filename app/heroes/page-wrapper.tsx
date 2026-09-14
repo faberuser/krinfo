@@ -1,6 +1,6 @@
 "use client"
 
-import { HeroData } from "@/model/Hero"
+import type { HeroListItem } from "@/lib/list-data"
 import HeroesClient from "@/app/heroes/client"
 import { useDataVersion } from "@/hooks/use-data-version"
 import { DataVersion } from "@/lib/constants"
@@ -8,7 +8,7 @@ import { useEnableVersionToggle } from "@/contexts/version-toggle-context"
 import { Spinner } from "@/components/ui/spinner"
 
 interface HeroesPageWrapperProps {
-	heroesMap: Record<DataVersion, HeroData[]>
+	heroesMap: Record<DataVersion, HeroListItem[]>
 	heroClasses: readonly {
 		readonly value: string
 		readonly name: string

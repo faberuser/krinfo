@@ -20,9 +20,7 @@ import { ModeToggle } from "@/components/theme-toggle"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import GlobalSearch from "@/components/sidebar/global-search"
-import { ArtifactData } from "@/model/Artifact"
-import { HeroData } from "@/model/Hero"
-import { BossData } from "@/model/Boss"
+import type { SearchData } from "@/lib/list-data"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
@@ -39,11 +37,7 @@ export const items = [
 ]
 
 interface ClientSidebarProps {
-	searchData: {
-		heroes: HeroData[]
-		artifacts: ArtifactData[]
-		bosses: BossData[]
-	}
+	searchData: SearchData
 }
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
