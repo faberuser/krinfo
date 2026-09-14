@@ -2,7 +2,7 @@ import fs from "fs"
 import path from "path"
 import { ModelFile } from "@/model/Hero_Model"
 import { expandDualWeapons, usesDefaultWeaponPosition, getWeaponFallbackFolders } from "@/components/models/heroWeaponConfig"
-import { nameDiff, hairFallback } from "@/components/models/modelConfig"
+import { nameDiff, hairFallback, loadModelConfig } from "@/components/models/modelConfig"
 
 // Define type mappings (most specific patterns first)
 const TYPE_PATTERNS: Array<{ pattern: string; type: ModelFile["type"] }> = [
@@ -61,6 +61,10 @@ function getModelType(folderName: string): ModelFile["type"] | null {
 }
 
 export async function getHeroModels(heroName: string): Promise<{ [costume: string]: ModelFile[] }> {
+	if (process.env.NEXT_PUBLIC_ENABLE_MODELS_VOICES !== "true") return {}
+	await loadModelConfig(async (file) => JSON.parse(await fs.promises.readFile(
+		path.join(process.cwd(), "public", "kingsraid-models", file), "utf8",
+	)))
 	const modelsDir = path.join(process.cwd(), "public", "kingsraid-models", "models", "heroes")
 	const heroModels: { [costume: string]: ModelFile[] } = {}
 

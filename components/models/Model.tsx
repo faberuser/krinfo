@@ -12,7 +12,7 @@ import { findNextInSequence, findSequenceStart } from "@/components/models/utils
 import { bindHeroSkeletons } from "@/components/models/bindHeroSkeletons"
 import { getHeroWeaponConfig, createWeaponVisibilitySync } from "@/components/models/heroWeaponConfig"
 import { loadFacialAnimation } from "@/components/models/facialAnimation"
-import { modelTextureOverrides, modelTransformOverrides } from "@/components/models/modelConfig"
+import { modelTextureOverrides, modelTransformOverrides, loadModelConfig } from "@/components/models/modelConfig"
 import { repairEyebrowTextures } from "./repairEyebrowTextures"
 import { advanceAnimationFrame, type SequencePlayback } from "@/components/models/advanceAnimationFrame"
 
@@ -131,6 +131,8 @@ export function Model({
 			const modelDir = `${basePath}/kingsraid-models/models/${modelType}`
 
 			try {
+				if (modelType === "heroes") await loadModelConfig()
+				if (loadGeneration !== loadGenerationRef.current) return
 				const fbxLoader = new FBXLoader()
 
 				// Load FBX model with progress tracking

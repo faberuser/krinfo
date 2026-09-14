@@ -26,7 +26,7 @@ interface HeroWeaponRules {
 }
 
 // Compile once: the viewer reads these rules during animation and attachment.
-const heroRules = Object.fromEntries(
+function compileHeroRules() { return Object.fromEntries(
 	Object.entries(weaponConfigData as Record<string, HeroWeaponRules>).map(([hero, entry]) => [
 		hero,
 		{
@@ -44,26 +44,31 @@ const heroRules = Object.fromEntries(
 	]),
 )
 
+}
+let cachedSource: typeof weaponConfigData | undefined
+let cachedRules: ReturnType<typeof compileHeroRules>
+function getHeroRules() {
+	if (cachedSource !== weaponConfigData) {
+		cachedRules = compileHeroRules()
+		cachedSource = weaponConfigData
+	}
+	return cachedRules
+}
+
 export function getHeroWeaponConfig(modelFile: ModelFile): HeroWeaponConfig | undefined {
 	if (!weaponTypes.includes(modelFile.type)) return undefined
 	const [hero, folder] = modelFile.path.split("/")
 	// Specific costume rules precede general rules in the JSON.
-	return heroRules[hero]?.rules.find(
+	return getHeroRules()[hero]?.rules.find(
 		(rule) =>
 			(!rule.types || rule.types.includes(modelFile.type)) && (!rule.folders || rule.folders.includes(folder)),
 	)?.config
 }
 
-const sheathedWeaponBones = Object.fromEntries(
-	Object.entries(heroRules).flatMap(([hero, entry]) =>
-		entry.sheathedWeaponBone ? [[hero, entry.sheathedWeaponBone]] : [],
-	),
-)
-
 export function createWeaponVisibilitySync(modelFiles: ModelFile[], loadedModels: ReadonlyMap<string, Object3D>) {
 	const swordFile = modelFiles.find(
 		(file) =>
-			Object.hasOwn(sheathedWeaponBones, file.path.split("/")[0]) &&
+			getHeroRules()[file.path.split("/")[0]]?.sheathedWeaponBone &&
 			(file.type === "weapona" || file.type === "weapon_a"),
 	)
 	if (!swordFile) return null
@@ -74,7 +79,8 @@ export function createWeaponVisibilitySync(modelFiles: ModelFile[], loadedModels
 	if (!sheathFile) return null
 	const sword = loadedModels.get(swordFile.name)
 	const sheath = loadedModels.get(sheathFile.name)
-	const embeddedSword = sheath?.getObjectByName(sheathedWeaponBones[hero])
+	const bone = getHeroRules()[hero]?.sheathedWeaponBone
+	const embeddedSword = bone ? sheath?.getObjectByName(bone) : undefined
 	if (!sword || !sheath || !embeddedSword) return null
 
 	return (visibleModels: ReadonlySet<string>, attachedWeapons: ReadonlySet<string>) => {
@@ -93,11 +99,9 @@ export function createWeaponVisibilitySync(modelFiles: ModelFile[], loadedModels
 	}
 }
 
-const dualWeaponHeroes = new Set(dualWeaponHeroNames)
-const defaultPositionHeroes = new Set(defaultPosHeroes)
 
 export function usesDefaultWeaponPosition(mappedHeroName: string): boolean {
-	return defaultPositionHeroes.has(mappedHeroName)
+	return defaultPosHeroes.includes(mappedHeroName)
 }
 
 export function getWeaponFallbackFolders(
@@ -113,7 +117,7 @@ export function getWeaponFallbackFolders(
 }
 
 export function expandDualWeapons(heroName: string, models: ModelFile[]): ModelFile[] {
-	if (!dualWeaponHeroes.has(heroName)) return models
+	if (!dualWeaponHeroNames.includes(heroName)) return models
 	// Most Fluss costumes already export distinct left/right swords.
 	if (models.some((model) => model.type === "weapon_l" || model.type === "weapon_r")) return models
 	const weapon = models.find((model) => model.type === "weapon")
