@@ -31,7 +31,7 @@ export function HeroSection({
 	const totalChanges = segments.reduce((acc, seg) => {
 		const d = seg.diff
 		if (!d || d.status !== "changed") return acc
-		return acc + d.changes.reduce((a, c) => a + c.items.length, 0)
+		return acc + d.changeCount
 	}, 0)
 
 	const lastSeg = segments[segments.length - 1]
@@ -92,7 +92,7 @@ export function HeroSection({
 									<p className="text-sm text-muted-foreground">
 										{heroName} was removed in {seg.versionBLabel}.
 									</p>
-								) : diff.changes.length === 0 ? (
+								) : diff.changeCount === 0 ? (
 									<p className="text-sm text-muted-foreground">No changes in this segment.</p>
 								) : comparison ? (
 									<ComparisonContent comparison={comparison} />

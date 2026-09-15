@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+import { cache } from "react"
 import { ModelFile } from "@/model/Hero_Model"
 import { expandDualWeapons, usesDefaultWeaponPosition, getWeaponFallbackFolders } from "@/components/models/heroWeaponConfig"
 import { nameDiff, hairFallback, loadModelConfig } from "@/components/models/modelConfig"
@@ -60,7 +61,7 @@ function getModelType(folderName: string): ModelFile["type"] | null {
 	return null
 }
 
-export async function getHeroModels(heroName: string): Promise<{ [costume: string]: ModelFile[] }> {
+export const getHeroModels = cache(async (heroName: string): Promise<{ [costume: string]: ModelFile[] }> => {
 	if (process.env.NEXT_PUBLIC_ENABLE_MODELS_VOICES !== "true") return {}
 	await loadModelConfig(async (file) => JSON.parse(await fs.promises.readFile(
 		path.join(process.cwd(), "public", "kingsraid-models", file), "utf8",
@@ -246,4 +247,4 @@ export async function getHeroModels(heroName: string): Promise<{ [costume: strin
 		console.error(error)
 		return {}
 	}
-}
+})

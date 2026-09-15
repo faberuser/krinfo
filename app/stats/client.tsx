@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react"
 import { DiffRow, DiffText, ValueRow, NumericChange } from "@/app/stats/components/diff-primitives"
 import { HeroSection } from "@/app/stats/components/hero-section"
 import Image from "@/components/next-image"
-import { computeRunesDiff, computeClassesDiff, computeHeroesDiff, STAT_NAMES } from "@/app/stats/diff-utils"
+import { computeRunesDiff, computeClassesDiff, STAT_NAMES } from "@/app/stats/diff-utils"
 import type { StatsClientProps, HeroSegment } from "./types"
 
 function runeImageSrc(runeName: string): string {
@@ -23,7 +23,7 @@ export default function StatsClient({
 	availableVersions,
 	runesMap,
 	classesMap,
-	heroesMap,
+	heroSummaries,
 	classesPairMap,
 	heroPairMap,
 }: StatsClientProps) {
@@ -49,9 +49,9 @@ export default function StatsClient({
 				...seg,
 				runesDiff: computeRunesDiff(runesMap[seg.versionA] ?? [], runesMap[seg.versionB] ?? []),
 				classesDiff: computeClassesDiff(classesMap[seg.versionA] ?? {}, classesMap[seg.versionB] ?? {}),
-				heroesDiff: computeHeroesDiff(heroesMap[seg.versionA] ?? {}, heroesMap[seg.versionB] ?? {}),
+				heroesDiff: heroSummaries[`${seg.versionA}_vs_${seg.versionB}`] ?? [],
 			})),
-		[segments, runesMap, classesMap, heroesMap],
+		[segments, runesMap, classesMap, heroSummaries],
 	)
 
 	const allHeroEntries = useMemo(() => {
@@ -102,7 +102,7 @@ export default function StatsClient({
 						diff: seg.heroesDiff.find((h) => h.heroName === hero.heroName) ?? null,
 					}))
 					const relevantSegments = heroSegments.filter(
-						(s) => s.diff && (s.diff.status !== "changed" || s.diff.changes.length > 0),
+						(s) => s.diff && (s.diff.status !== "changed" || s.diff.changeCount > 0),
 					)
 					return { hero, relevantSegments }
 				})

@@ -2,6 +2,10 @@
 out
 node_modules
 .git
-# .git/modules/public/kingsraid-data
-# .git/modules/public/kingsraid-models
-# .git/modules/public/kingsraid-audio
+# Dockerfile clones these in dedicated stages; do not upload local copies.
+public/kingsraid-data
+public/kingsraid-models
+public/kingsraid-audio
+.venv
+.agents
+*.tsbuildinfo

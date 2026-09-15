@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import fs from "fs"
+import { readdir } from "fs/promises"
 import path from "path"
 
 // This route is only available in non-static builds (requires file system access)
@@ -19,13 +19,8 @@ export async function GET(request: NextRequest) {
 		const folderPath = modelPath.substring(0, modelPath.lastIndexOf("/"))
 		const fullPath = path.join(process.cwd(), "public", "kingsraid-models", "models", modelType, folderPath)
 
-		// Check if directory exists
-		if (!fs.existsSync(fullPath)) {
-			return NextResponse.json({ error: "Directory not found" }, { status: 404 })
-		}
-
-		// Read all files in the directory
-		const files = fs.readdirSync(fullPath)
+		// Read without blocking the event loop or making a separate existence check.
+		const files = await readdir(fullPath)
 
 		// Filter for model and texture files
 		const modelFiles = files.filter((file) => {
@@ -35,6 +30,9 @@ export async function GET(request: NextRequest) {
 
 		return NextResponse.json({ files: modelFiles })
 	} catch (error) {
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+			return NextResponse.json({ error: "Directory not found" }, { status: 404 })
+		}
 		console.error("Error listing model files:", error)
 		return NextResponse.json({ error: "Failed to list files" }, { status: 500 })
 	}

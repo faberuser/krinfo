@@ -1,10 +1,11 @@
 import fs from "fs"
 import path from "path"
+import { cache } from "react"
 import { VoiceFiles } from "@/app/heroes/components/voices"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
-export async function getVoiceFiles(heroName: string): Promise<VoiceFiles> {
+export const getVoiceFiles = cache(async (heroName: string): Promise<VoiceFiles> => {
 	const voicesDir = path.join(process.cwd(), "public", "kingsraid-audio", "voices", "heroes")
 	const voiceFiles: VoiceFiles = {
 		en: [],
@@ -48,4 +49,4 @@ export async function getVoiceFiles(heroName: string): Promise<VoiceFiles> {
 	}
 
 	return voiceFiles
-}
+})

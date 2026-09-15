@@ -1,20 +1,34 @@
-import fs from "fs"
+import { readFile, readdir } from "fs/promises"
 import path from "path"
 import { DATA_VERSIONS } from "@/lib/constants"
 import StatsClient from "@/app/stats/client"
 import type { HeroData } from "@/model/Hero"
-import type { ClassesComparison } from "@/app/stats/types"
+import type { ClassesComparison, HeroComparison, HeroDiffSummary } from "@/app/stats/types"
+import { computeHeroesDiff } from "@/app/stats/diff-utils"
 
 const TABLE_DATA = path.join(process.cwd(), "public", "kingsraid-data", "table-data")
 const STATS_DIR = path.join(process.cwd(), "public", "kingsraid-stats")
 
-function readJson<T>(filePath: string): T | null {
+async function readJson<T>(filePath: string): Promise<T | null> {
 	try {
-		if (!fs.existsSync(filePath)) return null
-		return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T
+		return JSON.parse(await readFile(filePath, "utf-8")) as T
 	} catch {
 		return null
 	}
+}
+
+async function readDirectory<T>(directory: string, exclude?: string): Promise<Record<string, T>> {
+	let files: string[]
+	try {
+		files = await readdir(directory)
+	} catch {
+		return {}
+	}
+	const entries = await Promise.all(files.filter((file) => file.endsWith(".json") && file !== exclude).map(async (file) => {
+		const data = await readJson<T>(path.join(directory, file))
+		return data === null ? [] : [[file.slice(0, -5), data] as const]
+	}))
+	return Object.fromEntries(entries.flat())
 }
 
 export interface RuneEntry {
@@ -38,81 +52,44 @@ export interface StatsData {
 }
 
 export default async function StatsPage() {
-	const descData = readJson<{ data_versions: Record<string, { label: string }> }>(
-		path.join(TABLE_DATA, "description.json"),
-	)
+	const pairs = DATA_VERSIONS.flatMap((va) => DATA_VERSIONS.filter((vb) => va !== vb).map((vb) => `${va}_vs_${vb}`))
+	const [descData, versions, comparisons] = await Promise.all([
+		readJson<{ data_versions: Record<string, { label: string }> }>(path.join(TABLE_DATA, "description.json")),
+		Promise.all(DATA_VERSIONS.map(async (version) => {
+			const [runes, classes, heroes] = await Promise.all([
+				readJson<RuneEntry[]>(path.join(TABLE_DATA, version, "runes.json")),
+				readDirectory<ClassData>(path.join(TABLE_DATA, version, "classes")),
+				readDirectory<HeroData>(path.join(TABLE_DATA, version, "heroes")),
+			])
+			return { version, runes: runes ?? [], classes, heroes }
+		})),
+		Promise.all(pairs.map(async (key) => {
+			const [classes, heroes] = await Promise.all([
+				readJson<ClassesComparison>(path.join(STATS_DIR, key, "classes.json")),
+				readDirectory<HeroComparison>(path.join(STATS_DIR, key), "classes.json"),
+			])
+			return { key, classes, heroes }
+		})),
+	])
 
 	const versionLabels: Record<string, string> = {}
 	for (const version of DATA_VERSIONS) {
 		versionLabels[version] = descData?.data_versions[version]?.label ?? version
 	}
 
-	// Load runes for each version
-	const runesMap: Record<string, RuneEntry[]> = {}
-	for (const version of DATA_VERSIONS) {
-		runesMap[version] = readJson<RuneEntry[]>(path.join(TABLE_DATA, version, "runes.json")) ?? []
-	}
-
-	// Load class perks for each version
-	const classesMap: Record<string, Record<string, ClassData>> = {}
-	for (const version of DATA_VERSIONS) {
-		const classesDir = path.join(TABLE_DATA, version, "classes")
-		const classData: Record<string, ClassData> = {}
-		if (fs.existsSync(classesDir)) {
-			const files = fs.readdirSync(classesDir).filter((f) => f.endsWith(".json"))
-			for (const file of files) {
-				const className = file.replace(".json", "")
-				const data = readJson<ClassData>(path.join(classesDir, file))
-				if (data) classData[className] = data
-			}
+	const runesMap = Object.fromEntries(versions.map((data) => [data.version, data.runes]))
+	const classesMap = Object.fromEntries(versions.map((data) => [data.version, data.classes]))
+	const classesPairMap = Object.fromEntries(comparisons.flatMap((data) => data.classes ? [[data.key, data.classes]] : []))
+	const heroPairMap = Object.fromEntries(comparisons.map((data) => [data.key, data.heroes]))
+	const heroSummaries: Record<string, HeroDiffSummary[]> = {}
+	for (const from of versions) {
+		for (const to of versions) {
+			if (from.version === to.version) continue
+			heroSummaries[`${from.version}_vs_${to.version}`] = computeHeroesDiff(from.heroes, to.heroes).map(({ changes, ...hero }) => ({
+				...hero,
+				changeCount: changes.reduce((count, section) => count + section.items.length, 0),
+			}))
 		}
-		classesMap[version] = classData
-	}
-
-	// Load pre-generated class perk comparisons per version pair
-	const classesPairMap: Record<string, ClassesComparison> = {}
-	for (const va of DATA_VERSIONS) {
-		for (const vb of DATA_VERSIONS) {
-			if (va === vb) continue
-			const key = `${va}_vs_${vb}`
-			const data = readJson<ClassesComparison>(path.join(STATS_DIR, key, "classes.json"))
-			if (data) classesPairMap[key] = data
-		}
-	}
-
-	// Load pre-generated hero comparisons per version pair
-	const heroPairMap: Record<string, Record<string, import("@/app/stats/types").HeroComparison>> = {}
-	for (const va of DATA_VERSIONS) {
-		for (const vb of DATA_VERSIONS) {
-			if (va === vb) continue
-			const key = `${va}_vs_${vb}`
-			heroPairMap[key] = {}
-			const pairDir = path.join(STATS_DIR, key)
-			if (fs.existsSync(pairDir)) {
-				const files = fs.readdirSync(pairDir).filter((f) => f.endsWith(".json") && f !== "classes.json")
-				for (const file of files) {
-					const heroName = file.replace(".json", "")
-					const data = readJson<import("@/app/stats/types").HeroComparison>(path.join(pairDir, file))
-					if (data) heroPairMap[key][heroName] = data
-				}
-			}
-		}
-	}
-
-	// Load heroes for each version
-	const heroesMap: Record<string, Record<string, HeroData>> = {}
-	for (const version of DATA_VERSIONS) {
-		const heroesDir = path.join(TABLE_DATA, version, "heroes")
-		const heroData: Record<string, HeroData> = {}
-		if (fs.existsSync(heroesDir)) {
-			const files = fs.readdirSync(heroesDir).filter((f) => f.endsWith(".json"))
-			for (const file of files) {
-				const heroName = file.replace(".json", "")
-				const data = readJson<HeroData>(path.join(heroesDir, file))
-				if (data) heroData[heroName] = data
-			}
-		}
-		heroesMap[version] = heroData
 	}
 
 	return (
@@ -121,7 +98,7 @@ export default async function StatsPage() {
 			availableVersions={[...DATA_VERSIONS]}
 			runesMap={runesMap}
 			classesMap={classesMap}
-			heroesMap={heroesMap}
+			heroSummaries={heroSummaries}
 			classesPairMap={classesPairMap}
 			heroPairMap={heroPairMap}
 		/>
