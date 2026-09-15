@@ -10,7 +10,7 @@ import { DataVersion } from "@/lib/constants"
 import { useHeroToggle } from "@/contexts/version-toggle-context"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { MobileTooltip } from "@/components/mobile-tooltip"
-import { CompareToggle } from "@/components/compare"
+import CompareToggle from "@/components/compare/compare-toggle"
 import { useCompareMode } from "@/hooks/use-compare-mode"
 import Notification from "@/components/notification"
 

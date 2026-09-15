@@ -1,19 +1,16 @@
-import fs from "fs"
+import { readdir } from "fs/promises"
+import { cache } from "react"
 import path from "path"
 import { capitalize } from "@/lib/utils"
 import { Costume } from "@/model/Hero_Model"
 
-export async function getCostumeData(costumePath: string): Promise<Costume[]> {
+export const getCostumeData = cache(async (costumePath: string): Promise<Costume[]> => {
 	if (!costumePath) return []
 
 	try {
 		const fullPath = path.join(process.cwd(), "public", "kingsraid-data", "assets", costumePath)
 
-		if (!fs.existsSync(fullPath)) {
-			return []
-		}
-
-		const files = fs.readdirSync(fullPath)
+		const files = await readdir(fullPath)
 		const imageFiles = files.filter((file) => file.toLowerCase().match(/\.(png|gif)$/))
 
 		const costumes: Costume[] = imageFiles.map((filename) => {
@@ -63,7 +60,8 @@ export async function getCostumeData(costumePath: string): Promise<Costume[]> {
 
 		return costumes
 	} catch (error) {
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") return []
 		console.error(error)
 		return []
 	}
-}
+})

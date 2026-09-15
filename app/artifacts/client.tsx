@@ -295,9 +295,9 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 														.map(encodeURIComponent)
 														.join("/")}`}
 													alt={artifact.name}
-													width="0"
-													height="0"
-													sizes="30vw md:10vw"
+													width={64}
+													height={64}
+													sizes="64px"
 													className="w-full h-auto rounded"
 												/>
 											</div>

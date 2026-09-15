@@ -1,5 +1,7 @@
 import fs from "fs"
+import { readFile, readdir, stat } from "fs/promises"
 import path from "path"
+import { cache } from "react"
 import { capitalize } from "@/lib/utils"
 import { HeroData } from "@/model/Hero"
 import { BossData } from "@/model/Boss"
@@ -21,18 +23,29 @@ function getSourcePathForVersion(version: DataVersion, source: string): string {
 }
 
 // Read and parse JSON files
-async function readJsonFile<T>(filePath: string): Promise<T | null> {
+const readJsonFile = cache(async <T,>(filePath: string): Promise<T | null> => {
 	try {
-		if (!fs.existsSync(filePath)) {
-			return null
-		}
-		const fileContent = fs.readFileSync(filePath, "utf-8")
+		const fileContent = await readFile(filePath, "utf-8")
 		return JSON.parse(fileContent)
 	} catch (error) {
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") return null
 		console.error(`Error reading JSON file ${filePath}:`, error)
 		return null
 	}
-}
+})
+
+const isDirectory = cache(async (filePath: string): Promise<boolean> => {
+	try {
+		return (await stat(filePath)).isDirectory()
+	} catch (error) {
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") return false
+		throw error
+	}
+})
+
+const getJsonFiles = cache(async (directory: string): Promise<string[]> => {
+	return (await readdir(directory)).filter((file) => file.endsWith(".json"))
+})
 
 // Build file path helper
 function buildPath(...segments: string[]): string {
@@ -49,7 +62,7 @@ function getName(item: DataItem): string {
 
 // Helper function to sort data by name
 function sortByName(data: DataItem[]): DataItem[] {
-	return data.sort((a, b) => getName(a).localeCompare(getName(b)))
+	return [...data].sort((a, b) => getName(a).localeCompare(getName(b)))
 }
 
 // ---------------------------------------------------------------------------
@@ -140,9 +153,9 @@ export async function getData(
 	const fullPath = buildPath("table-data", actualSource)
 
 	// Check if source is a directory
-	if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
+	if (await isDirectory(fullPath)) {
 		try {
-			const files = fs.readdirSync(fullPath).filter((file) => file.endsWith(".json"))
+			const files = await getJsonFiles(fullPath)
 
 			const dataPromises = files.map((file) => readJsonFile<DataItem>(path.join(fullPath, file)))
 
@@ -194,7 +207,7 @@ export async function findData(
 	const fullPath = buildPath("table-data", actualSource)
 
 	// Check if source is a directory (for heroes/bosses)
-	if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
+	if (await isDirectory(fullPath)) {
 		const capitalizedSlug = capitalize(normalizedSlug)
 		const filePath = path.join(fullPath, `${capitalizedSlug}.json`)
 		return await readJsonFile<DataItem>(filePath)

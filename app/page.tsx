@@ -1,4 +1,4 @@
-import HomeClient from "@/app/client"
+import HomeContent from "@/app/home"
 import { getSteamNews } from "@/lib/steam-rss"
 
 export interface FeaturedHero {
@@ -11,5 +11,5 @@ export interface FeaturedHero {
 export default async function Home() {
 	const steamNews = await getSteamNews(6) // Limit to 6 news items
 
-	return <HomeClient steamNews={steamNews} />
+	return <HomeContent steamNews={steamNews} />
 }

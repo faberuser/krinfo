@@ -12,12 +12,12 @@ function getInitialState(): boolean {
 }
 
 export default function SidebarProviderWithStorage({ children }: { children: React.ReactNode }) {
-	const [open, setOpen] = useState(getInitialState)
-	const [isLoaded, setIsLoaded] = useState(false)
+	// Render the shell on the server and use the same state during hydration.
+	const [open, setOpen] = useState(true)
 
-	// Mark as loaded after mount
+	// Restore the browser preference without withholding the entire page from SSR.
 	useEffect(() => {
-		const timer = setTimeout(() => setIsLoaded(true), 0)
+		const timer = setTimeout(() => setOpen(getInitialState()), 0)
 		return () => clearTimeout(timer)
 	}, [])
 
@@ -25,11 +25,6 @@ export default function SidebarProviderWithStorage({ children }: { children: Rea
 	const handleOpenChange = (newOpen: boolean) => {
 		setOpen(newOpen)
 		localStorage.setItem(SIDEBAR_STORAGE_KEY, String(newOpen))
-	}
-
-	// Prevent hydration mismatch by not rendering until mounted
-	if (!isLoaded) {
-		return null
 	}
 
 	return (

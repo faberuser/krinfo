@@ -262,17 +262,16 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 							<Card className="hover:shadow-lg transition-shadow cursor-pointer h-full gap-2 relative">
 								<CardHeader>
 									<div className="flex items-center gap-4">
-										<div className="w-16 h-16 flex items-center justify-center">
+										<div className="relative w-16 h-16 shrink-0">
 											<Image
 												src={`/kingsraid-data/assets/${boss.profile.thumbnail}`}
 												alt={boss.profile.name}
-												width="0"
-												height="0"
-												sizes="30vw md:10vw"
-												className="w-full h-auto rounded"
+												fill
+												sizes="64px"
+												className="object-contain rounded"
 											/>
 										</div>
-										<div className="flex-1">
+										<div className="min-w-0 flex-1">
 											<CardTitle className="text-lg">{boss.profile.name}</CardTitle>
 											<CardDescription className="text-sm">{boss.profile.title}</CardDescription>
 										</div>

@@ -17,12 +17,10 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { Home, Newspaper, UserRound, Amphora, ShieldHalf, Calculator, Users, BarChart2 } from "lucide-react"
 import Link from "next/link"
 import { ModeToggle } from "@/components/theme-toggle"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import GlobalSearch from "@/components/sidebar/global-search"
-import { ArtifactData } from "@/model/Artifact"
-import { HeroData } from "@/model/Hero"
-import { BossData } from "@/model/Boss"
+import type { SearchData } from "@/lib/list-data"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
@@ -39,17 +37,14 @@ export const items = [
 ]
 
 interface ClientSidebarProps {
-	searchData: {
-		heroes: HeroData[]
-		artifacts: ArtifactData[]
-		bosses: BossData[]
-	}
+	searchData: SearchData
 }
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
 export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 	const pathname = usePathname()
+	const router = useRouter()
 	const { resolvedTheme } = useTheme()
 	const [mounted, setMounted] = useState(false)
 	const { state } = useSidebar()
@@ -95,6 +90,8 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 					<SidebarGroupContent>
 						<SidebarMenu>
 							{items.map((item) => {
+								// These pages carry large data sets. Prefetch only after navigation intent.
+								const prefetchOnIntent = item.url === "/stats" || item.url === "/team-builder"
 								const isActive =
 									item.url === "/"
 										? pathname === "/" // Home should only match exact "/"
@@ -107,6 +104,9 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 												<SidebarMenuButton asChild>
 													<Link
 														href={item.url}
+														prefetch={prefetchOnIntent ? false : undefined}
+														onMouseEnter={() => { if (prefetchOnIntent) router.prefetch(item.url) }}
+														onFocus={() => { if (prefetchOnIntent) router.prefetch(item.url) }}
 														className={`flex items-center space-x-2 pl-5 py-6 rounded-md transition-colors ${
 															isActive
 																? "bg-gray-200 dark:bg-gray-800"

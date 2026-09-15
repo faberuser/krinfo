@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useRef } from "react"
 import Fuse from "fuse.js"
 import { SearchableFilter } from "@/components/searchable-filter"
 import { Input } from "@/components/ui/input"
-import { HeroData } from "@/model/Hero"
+import type { HeroListItem } from "@/lib/list-data"
 import { Button } from "@/components/ui/button"
 import { Search, X, ChevronDown, ChevronUp, Image as ImageIcon, Grid2x2 } from "lucide-react"
 import HeroCard, { ViewMode } from "@/app/heroes/components/card"
@@ -21,7 +21,7 @@ const damageTypes = [
 const SLUG_REGEXP = /\s+/g
 
 interface HeroesClientProps {
-	heroes: HeroData[]
+	heroes: HeroListItem[]
 	heroClasses: readonly {
 		readonly value: string
 		readonly name: string
@@ -129,14 +129,14 @@ export default function HeroesClient({
 			result = result.reverse()
 		}
 
-		// Save the sorted/filtered list of hero slugs to sessionStorage for next/prev navigation
-		if (typeof window !== "undefined") {
-			const slugs = result.map((h) => h.profile.name.toLowerCase().replace(SLUG_REGEXP, "-"))
-			sessionStorage.setItem("currentHeroList", JSON.stringify(slugs))
-		}
-
 		return result
 	}, [heroes, searchQuery, fuse, selectedClass, selectedDamageType, sortType, reverseSort, releaseOrder])
+
+	// Persist only committed results for next/previous navigation.
+	useEffect(() => {
+		const slugs = filteredHeroes.map((hero) => hero.profile.name.toLowerCase().replace(SLUG_REGEXP, "-"))
+		sessionStorage.setItem("currentHeroList", JSON.stringify(slugs))
+	}, [filteredHeroes])
 
 	// Show loading spinner until hydrated
 	if (!mounted) {

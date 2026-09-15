@@ -5,7 +5,6 @@ import { Canvas } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import * as THREE from "three"
 import { OrbitControls as OrbitControlsImpl } from "three-stdlib"
-import JSZip from "jszip"
 import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
@@ -18,7 +17,6 @@ import { ScreenshotDialog } from "@/components/models/ScreenshotDialog"
 import { RecordingDialog } from "@/components/models/RecordingDialog"
 import { ControlsPanel } from "@/components/models/ControlsPanel"
 import { ActionControls } from "@/components/models/ActionControls"
-import { convertToGif } from "@/components/models/gifConverter"
 import {
 	ModelViewerProps,
 	INITIAL_CAMERA_POSITION,
@@ -261,6 +259,7 @@ export function ModelViewer({
 				extension = "mp4"
 			} else if (downloadFormat === "gif") {
 				// Convert to GIF using canvas and gif.js approach
+				const { convertToGif } = await import("@/components/models/gifConverter")
 				downloadBlob = await convertToGif(recordingUrl!)
 				extension = "gif"
 			}
@@ -320,6 +319,7 @@ export function ModelViewer({
 		const modelDir = `${basePath}/kingsraid-models/models/${modelType}`
 
 		try {
+			const { default: JSZip } = await import("jszip")
 			const zip = new JSZip()
 			const modelsFolder = zip.folder("models")
 

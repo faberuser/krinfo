@@ -174,9 +174,9 @@ export default function HeroClient({
 						<Image
 							src={`/kingsraid-data/assets/${heroData.profile.thumbnail}`}
 							alt={heroData.profile.name}
-							width="0"
-							height="0"
-							sizes="20vw md:5vw"
+							width={80}
+							height={80}
+							sizes="(min-width: 768px) 80px, 64px"
 							className="w-full h-auto rounded"
 						/>
 					</div>

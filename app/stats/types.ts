@@ -1,4 +1,3 @@
-import type { HeroData } from "@/model/Hero"
 import type { RuneEntry, ClassData } from "@/app/stats/page"
 
 export interface FieldChange {
@@ -36,12 +35,15 @@ export interface HeroDiff {
 	changes: HeroChangeSection[]
 }
 
+// The browser only needs counts and identity to render the comparison index.
+export type HeroDiffSummary = Omit<HeroDiff, "changes"> & { changeCount: number }
+
 export interface StatsClientProps {
 	versionLabels: Record<string, string>
 	availableVersions: string[]
 	runesMap: Record<string, RuneEntry[]>
 	classesMap: Record<string, Record<string, ClassData>>
-	heroesMap: Record<string, Record<string, HeroData>>
+	heroSummaries: Record<string, HeroDiffSummary[]>
 	classesPairMap: Record<string, ClassesComparison>
 	heroPairMap: Record<string, Record<string, HeroComparison>>
 }
@@ -126,5 +128,5 @@ export interface HeroSegment {
 	versionB: string
 	versionALabel: string
 	versionBLabel: string
-	diff: HeroDiff | null
+	diff: HeroDiffSummary | null
 }

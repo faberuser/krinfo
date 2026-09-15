@@ -1,78 +1,17 @@
-import fs from "fs"
-import path from "path"
 import ClientSidebar from "@/components/sidebar/client-sidebar"
-import { ArtifactData } from "@/model/Artifact"
-import { HeroData } from "@/model/Hero"
-import { BossData } from "@/model/Boss"
-
-async function getSearchData() {
-	const searchData: {
-		heroes: HeroData[]
-		artifacts: ArtifactData[]
-		bosses: BossData[]
-	} = {
-		heroes: [],
-		artifacts: [],
-		bosses: [],
-	}
-
-	try {
-		// Load Heroes (use legacy as the base for search - includes all heroes)
-		const heroesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", "legacy", "heroes")
-		if (fs.existsSync(heroesDir)) {
-			const heroFiles = fs.readdirSync(heroesDir).filter((file) => file.endsWith(".json"))
-
-			for (const file of heroFiles) {
-				try {
-					const filePath = path.join(heroesDir, file)
-					const fileContent = fs.readFileSync(filePath, "utf-8")
-					const heroData: HeroData = JSON.parse(fileContent)
-					searchData.heroes.push(heroData)
-				} catch (error) {
-					console.error(error)
-				}
-			}
-		}
-
-		// Load Artifacts (use legacy as the base for search - includes all artifacts)
-		const artifactsFile = path.join(
-			process.cwd(),
-			"public",
-			"kingsraid-data",
-			"table-data",
-			"legacy",
-			"artifacts.json",
-		)
-		if (fs.existsSync(artifactsFile)) {
-			const fileContent = fs.readFileSync(artifactsFile, "utf-8")
-			const artifactsData: ArtifactData[] = JSON.parse(fileContent)
-			searchData.artifacts = artifactsData
-		}
-
-		// Load Bosses
-		const bossesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", "legacy", "bosses")
-		if (fs.existsSync(bossesDir)) {
-			const bossFiles = fs.readdirSync(bossesDir).filter((file) => file.endsWith(".json"))
-
-			for (const file of bossFiles) {
-				try {
-					const filePath = path.join(bossesDir, file)
-					const fileContent = fs.readFileSync(filePath, "utf-8")
-					const bossData: BossData = JSON.parse(fileContent)
-					searchData.bosses.push(bossData)
-				} catch (error) {
-					console.error(error)
-				}
-			}
-		}
-	} catch (error) {
-		console.error(error)
-	}
-
-	return searchData
-}
+import type { ArtifactData } from "@/model/Artifact"
+import type { HeroData } from "@/model/Hero"
+import type { BossData } from "@/model/Boss"
+import { getData } from "@/lib/get-data"
+import { toSearchData } from "@/lib/list-data"
 
 export default async function SidebarWrapper() {
-	const searchData = await getSearchData()
-	return <ClientSidebar searchData={searchData} />
+	// Legacy includes every searchable entry. Load the collections concurrently,
+	// then send only the fields used by search across the client boundary.
+	const [heroes, artifacts, bosses] = await Promise.all([
+		getData("heroes", { dataVersion: "legacy" }) as Promise<HeroData[]>,
+		getData("artifacts", { dataVersion: "legacy" }) as Promise<ArtifactData[]>,
+		getData("bosses", { dataVersion: "legacy" }) as Promise<BossData[]>,
+	])
+	return <ClientSidebar searchData={toSearchData(heroes, artifacts, bosses)} />
 }

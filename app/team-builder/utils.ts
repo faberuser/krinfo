@@ -192,7 +192,7 @@ export interface DecodeResult {
 export function extractVersionFromEncoded(encoded: string): string | null {
 	try {
 		const reader = new BitReader(encoded)
-		const versionNum = reader.read(2)
+		const versionNum = reader.read(3)
 		return VERSION_REVERSE[versionNum] ?? "legacy"
 	} catch {
 		return null
