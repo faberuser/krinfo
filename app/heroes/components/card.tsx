@@ -36,6 +36,9 @@ export default function HeroCard({
 	// const blurDataURL = blurDataURLMap[imageKey]
 
 	const isIconView = viewMode === "icon"
+	// Splash art is roughly 4:3. object-cover scales it to the card's height,
+	// so budget for the full artwork width plus the 10% hover zoom, not the crop.
+	const imageSizes = isIconView ? "(min-width: 640px) 112px, 96px" : "(min-width: 640px) 384px, 336px"
 
 	return (
 		<Link
@@ -50,7 +53,7 @@ export default function HeroCard({
 				src={"/kingsraid-data/assets/" + imagePath}
 				alt={name}
 				fill
-				sizes={isIconView ? "(min-width: 640px) 112px, 96px" : "(min-width: 640px) 192px, 160px"}
+				sizes={imageSizes}
 				className={`w-full flex-1 object-cover ${
 					isIconView ? "object-center" : reverseSA ? "object-left" : "object-right"
 				} hover:scale-110 transition-all duration-500`}
