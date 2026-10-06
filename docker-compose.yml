@@ -4,6 +4,7 @@ services:
         container_name: ${CONTAINER_NAME:-krinfo}
         environment:
             - NEXT_PUBLIC_ENABLE_MODELS_VOICES=${NEXT_PUBLIC_ENABLE_MODELS_VOICES:-false}
+            - STEAM_NEWS_PROXY=${STEAM_NEWS_PROXY:-}
         ports:
             - ${DOCKER_PORT:-3000}:3000
         restart: unless-stopped

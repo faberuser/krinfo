@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, LocalizedDate } from "@/components/i18n/language-provider"
 import type { NewsItem } from "@/lib/steam-rss"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
@@ -50,8 +51,13 @@ export default function NewsClient({ steamNews }: { steamNews: NewsItem[] }) {
 			<div className="space-y-4 mb-4">
 				{/* Header */}
 				<div className="flex flex-row gap-2 items-baseline">
-					<div className="text-xl font-bold">News Hub</div>
-					<div className="text-muted-foreground text-sm">Showing {steamNews.length} news</div>
+					<div className="text-xl font-bold">
+						<Text messageKey="uiNewsHub" />
+					</div>
+					<div className="text-muted-foreground text-sm">
+						<Text messageKey="uiShowing" suffix=" " />
+						{steamNews.length} <Text messageKey="uiNews_19fba0e9" />
+					</div>
 				</div>
 
 				{/* News Grid */}
@@ -83,20 +89,28 @@ export default function NewsClient({ steamNews }: { steamNews: NewsItem[] }) {
 									<div className="flex min-h-0 flex-col gap-4 overflow-hidden">
 										<CardHeader>
 											<CardTitle className="line-clamp-2 flex justify-between items-center gap-2">
-												<div className="text-xl font-semibold">{news.title}</div>
-												{news.isNew ? <Badge className="text-xs">New</Badge> : null}
+												<div className="text-xl font-semibold">
+													<Text>{news.title}</Text>
+												</div>
+												{news.isNew ? (
+													<Badge className="text-xs">
+														<Text messageKey="uiNew" />
+													</Badge>
+												) : null}
 											</CardTitle>
 											<CardDescription className="text-sm whitespace-nowrap">
-												{news.formattedDate}
+												<LocalizedDate date={news.date} />
 											</CardDescription>
 										</CardHeader>
 										<CardContent className="min-h-0 overflow-hidden">
-											<div className="text-muted-foreground line-clamp-5">{previewText}</div>
+											<div className="text-muted-foreground line-clamp-5">
+												<Text>{previewText}</Text>
+											</div>
 										</CardContent>
 									</div>
 									<CardFooter className="flex shrink-0 items-center gap-2 text-sm text-muted-foreground">
 										<Eye className="w-4 h-4" />
-										View More
+										<Text messageKey="uiViewMore" />
 									</CardFooter>
 								</div>
 							</Card>
@@ -107,7 +121,9 @@ export default function NewsClient({ steamNews }: { steamNews: NewsItem[] }) {
 				{/* No News Message */}
 				{steamNews.length === 0 && (
 					<div className="text-center py-16">
-						<div className="text-muted-foreground text-lg">No news available at the moment.</div>
+						<div className="text-muted-foreground text-lg">
+							<Text messageKey="uiNoNewsAvailableAtTheMoment" />
+						</div>
 					</div>
 				)}
 
@@ -143,8 +159,12 @@ export function NewsDetailDialog({
 		<Dialog open={isOpen} onOpenChange={onOpenChange}>
 			<DialogContent className="max-w-[90vw] min-w-0 md:min-w-[60vw] lg:min-w-[50vw] xl:min-w-[40vw] max-h-[90vh] overflow-x-hidden overflow-y-auto custom-scrollbar">
 				<DialogHeader>
-					<DialogTitle className="wrap-break-word pr-8 text-2xl font-bold">{news.title}</DialogTitle>
-					<DialogDescription className="text-sm">{news.formattedDate}</DialogDescription>
+					<DialogTitle className="wrap-break-word pr-8 text-2xl font-bold">
+						<Text>{news.title}</Text>
+					</DialogTitle>
+					<DialogDescription className="text-sm">
+						<LocalizedDate date={news.date} />
+					</DialogDescription>
 				</DialogHeader>
 
 				{imgSrc && (
@@ -166,7 +186,7 @@ export function NewsDetailDialog({
 				<Button asChild>
 					<Link href={news.url} target="_blank" rel="noopener noreferrer">
 						<ExternalLink className="w-4 h-4 mr-1" />
-						View on Steam
+						<Text messageKey="uiViewOnSteam" />
 					</Link>
 				</Button>
 			</DialogContent>

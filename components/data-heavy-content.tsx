@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { useState, ReactNode } from "react"
 import { useNetworkInfo } from "@/hooks/use-network-info"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -36,33 +37,43 @@ export default function DataHeavyContent({
 						) : (
 							<Wifi className="h-5 w-5 text-amber-500" />
 						)}
-						<div>Mobile Data Warning</div>
+						<div>
+							<Text messageKey="uiMobileDataWarning" />
+						</div>
 					</CardTitle>
-					<CardDescription className="mt-2">{description}</CardDescription>
+					<CardDescription className="mt-2">
+						<Text>{description}</Text>
+					</CardDescription>
 				</div>
 			</CardHeader>
 			<CardContent className="space-y-4">
 				<div className="text-sm text-muted-foreground space-y-2">
 					{estimatedSize && (
 						<p className="text-xs">
-							Estimated size: <span className="text-foreground">{estimatedSize}</span>
+							<Text messageKey="uiEstimatedSize_c1be5e26" suffix=" " />
+							<span className="text-foreground">
+								<Text>{estimatedSize}</Text>
+							</span>
 						</p>
 					)}
 					{effectiveType && (
 						<p className="text-xs">
-							Current connection: <span className="text-foreground capitalize">{effectiveType}</span>
+							<Text messageKey="uiCurrentConnection_f5d5a0de" suffix=" " />
+							<span className="text-foreground capitalize">
+								<Text>{effectiveType}</Text>
+							</span>
 						</p>
 					)}
 				</div>
 
 				<div className="flex gap-3">
 					<Button onClick={() => setHasConfirmed(true)} variant="default" className="flex-1">
-						Load Content
+						<Text messageKey="uiLoadContent" />
 					</Button>
 				</div>
 
 				<p className="text-xs text-muted-foreground">
-					💡 Tip: Connect to Wi-Fi for a better experience with large files.
+					<Text messageKey="uiTipConnectToWiFiForABetterExperienceWithLargeFiles" />
 				</p>
 			</CardContent>
 		</Card>

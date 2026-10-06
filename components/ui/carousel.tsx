@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -196,7 +198,7 @@ function CarouselPrevious({
       {...props}
     >
       <ArrowLeft />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only"><Text messageKey="uiPreviousSlide" /></span>
     </Button>
   )
 }
@@ -226,7 +228,7 @@ function CarouselNext({
       {...props}
     >
       <ArrowRight />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only"><Text messageKey="uiNextSlide" /></span>
     </Button>
   )
 }

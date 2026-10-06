@@ -11,11 +11,14 @@ export function Scene({ sceneName }: { sceneName: string | null }) {
 	const [sceneModel, setSceneModel] = useState<THREE.Group | null>(null)
 
 	useEffect(() => {
+		let active = true
 		// Handle the case where there's no scene or it's grid
 		if (!sceneName || sceneName === "grid") {
 			// Use a microtask to avoid synchronous state update
-			Promise.resolve().then(() => setSceneModel(null))
-			return
+			Promise.resolve().then(() => {
+				if (active) setSceneModel(null)
+			})
+			return () => { active = false }
 		}
 
 		const loadScene = async () => {
@@ -46,11 +49,16 @@ export function Scene({ sceneName }: { sceneName: string | null }) {
 				const fbx = await new Promise<THREE.Group>((resolve, reject) => {
 					fbxLoader.load(scenePath, resolve, undefined, reject)
 				})
+				if (!active) return
 
 				// Load boss offset configuration if this is a boss scene
 				if (bossName && sceneName.startsWith("bosses/")) {
 					const config = await loadBossOffsetConfig(bossName)
-					const sceneOffset = config?.scene
+					if (!active) return
+					const sceneOffset = {
+						...config?.scene,
+						...config?.scenes?.[sceneName.split("/").pop() || sceneName],
+					}
 
 					// Apply scale (default 0.1 for boss scenes, or from config)
 					const scaleValue = sceneOffset?.scale || { x: 0.1, y: 0.1, z: 0.1 }
@@ -129,12 +137,14 @@ export function Scene({ sceneName }: { sceneName: string | null }) {
 
 				setSceneModel(fbx)
 			} catch (error) {
+				if (!active) return
 				console.error(`Failed to load scene ${sceneName}:`, error)
 				setSceneModel(null)
 			}
 		}
 
 		loadScene()
+		return () => { active = false }
 	}, [sceneName])
 
 	if (!sceneModel) return null

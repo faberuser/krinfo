@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, GameLanguageScope } from "@/components/i18n/language-provider"
 import Image from "@/components/next-image"
 import { cn } from "@/lib/utils"
 import { TeamMember } from "@/model/Team_Builder"
@@ -27,17 +28,26 @@ export function EquipmentSection({
 	selectArtifact,
 }: EquipmentSectionProps) {
 	if (!member.hero) return null
+	const heroName = member.hero.id
 
 	return (
 		<div>
-			<div className="text-xs font-medium mb-2 text-muted-foreground">Equipment</div>
+			<div className="text-xs font-medium mb-2 text-muted-foreground">
+				<Text messageKey="uiEquipment" />
+			</div>
 			<div className="flex gap-2 flex-wrap">
 				{/* UW */}
 				<MobileTooltip
 					content={
 						<>
-							<div className="font-bold">{member.hero.uw?.name}</div>
-							<div className="text-xs mt-1">{member.hero.uw?.description}</div>
+							<div className="font-bold">
+								<Text fieldKey={`heroes/${heroName}/uw/name`}>{member.hero.uw?.name}</Text>
+							</div>
+							<div className="text-xs mt-1">
+								<Text fieldKey={`heroes/${heroName}/uw/description`}>
+									{member.hero.uw?.descriptionByStar?.["0"] ?? member.hero.uw?.description}
+								</Text>
+							</div>
 						</>
 					}
 				>
@@ -69,9 +79,15 @@ export function EquipmentSection({
 						content={
 							<>
 								<div className="font-bold">
-									Skill {utKey}: {ut.name}
+									<Text messageKey="uiSkill" suffix=" " />
+									<Text>{utKey}</Text>:{" "}
+									<Text fieldKey={`heroes/${heroName}/uts/${utKey}/name`}>{ut.name}</Text>
 								</div>
-								<div className="text-xs mt-1">{ut.description}</div>
+								<div className="text-xs mt-1">
+									<Text fieldKey={`heroes/${heroName}/uts/${utKey}/description`}>
+										{ut.descriptionByStar?.["0"] ?? ut.description}
+									</Text>
+								</div>
 							</>
 						}
 					>
@@ -99,12 +115,14 @@ export function EquipmentSection({
 				))}
 
 				{/* Artifact */}
-				<ArtifactSelectDialog
-					artifacts={artifacts}
-					artifactReleaseOrder={artifactReleaseOrder}
-					selectedArtifact={member.artifact}
-					onSelect={(artifact) => selectArtifact(index, artifact)}
-				/>
+				<GameLanguageScope version="legacy">
+					<ArtifactSelectDialog
+						artifacts={artifacts}
+						artifactReleaseOrder={artifactReleaseOrder}
+						selectedArtifact={member.artifact}
+						onSelect={(artifact) => selectArtifact(index, artifact)}
+					/>
+				</GameLanguageScope>
 			</div>
 		</div>
 	)

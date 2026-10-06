@@ -1,47 +1,72 @@
 "use client"
 
+import { Text, useTranslation } from "@/components/i18n/language-provider"
 import { Children, cloneElement, isValidElement, useId, useState, type ReactNode } from "react"
-import { parseColoredText } from "@/lib/utils"
+import { renderColoredText } from "@/lib/i18n/colored-text"
+import { getEnhancementDescription } from "@/lib/gear-enhancement"
 
 interface GearEnhancementProps {
 	name: string
 	description: string
+	descriptionByStar?: Record<string, string>
 	values?: Record<string, Record<string, string>>
+	fieldKey?: string
 }
 
-export default function GearEnhancement({ name, description, values }: GearEnhancementProps) {
+export default function GearEnhancement({
+	name,
+	description,
+	descriptionByStar,
+	values,
+	fieldKey,
+}: GearEnhancementProps) {
+	const { t, field } = useTranslation()
 	const [level, setLevel] = useState("0")
 	const groupName = useId()
-	const hasValues = values && Object.keys(values).length > 0
-	// Resolve placeholders after parsing colors so highlights also work inside colored text.
-	const highlightValues = (nodes: ReactNode): ReactNode => Children.map(nodes, (node) => {
-		if (typeof node === "string") {
-			return node.split(/(\{\d+\})/g).map((part, index) => {
-				const statKey = /^\{(\d+)\}$/.exec(part)?.[1]
-				const value = statKey === undefined ? undefined : values?.[statKey]?.[level]
-				if (value === undefined) return part
-				return (
-					<mark
-						key={index}
-						className="rounded bg-amber-100 px-1 font-bold tabular-nums text-amber-950 dark:bg-amber-400/20 dark:text-amber-200"
-					>
-						{value}
-					</mark>
-				)
-			})
-		}
-		if (isValidElement<{ children?: ReactNode }>(node) && node.props.children !== undefined) {
-			return cloneElement(node, undefined, highlightValues(node.props.children))
-		}
-		return node
-	})
+	const hasValues =
+		(values && Object.keys(values).length > 0) ||
+		(descriptionByStar && new Set(Object.values(descriptionByStar)).size > 1)
+	const { text: currentDescription, highlights } = getEnhancementDescription(
+		description,
+		descriptionByStar,
+		values,
+		level,
+	)
+	// Parse colors first so enhancement highlights also work inside colored text.
+	const highlightValues = (nodes: ReactNode): ReactNode =>
+		Children.map(nodes, (node) => {
+			if (typeof node === "string") {
+				return node.split(/(\{enhancement:\d+\})/g).map((part, index) => {
+					const highlightIndex = /^\{enhancement:(\d+)\}$/.exec(part)?.[1]
+					const value = highlightIndex === undefined ? undefined : highlights[Number(highlightIndex)]
+					if (value === undefined) return part
+					return (
+						<mark
+							key={index}
+							className="rounded bg-amber-100 px-1 font-bold tabular-nums text-amber-950 dark:bg-amber-400/20 dark:text-amber-200"
+						>
+							<Text>{value}</Text>
+						</mark>
+					)
+				})
+			}
+			if (isValidElement<{ children?: ReactNode }>(node) && node.props.children !== undefined) {
+				return cloneElement(node, undefined, highlightValues(node.props.children))
+			}
+			return node
+		})
 
 	return (
 		<div className="mb-3 space-y-3">
 			{hasValues && (
 				<fieldset>
 					<legend className="mb-2 text-sm font-medium text-muted-foreground">
-						Enhancement<span className="sr-only"> for {name}</span>
+						<Text messageKey="uiEnhancement" />
+						<span className="sr-only">
+							{" "}
+							<Text messageKey="uiFor_10c22bcf" suffix=" " />
+							<Text>{name}</Text>
+						</span>
 					</legend>
 					<div className="flex flex-wrap gap-1">
 						{[0, 1, 2, 3, 4, 5].map((star) => (
@@ -63,7 +88,11 @@ export default function GearEnhancement({ name, description, values }: GearEnhan
 					</div>
 				</fieldset>
 			)}
-			<div aria-live="polite" aria-atomic="true">{highlightValues(parseColoredText(description))}</div>
+			<div aria-live="polite" aria-atomic="true">
+				{highlightValues(
+					renderColoredText(fieldKey ? field(currentDescription, fieldKey) : t(currentDescription)),
+				)}
+			</div>
 		</div>
 	)
 }

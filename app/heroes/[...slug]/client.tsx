@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, HeroLanguageScope } from "@/components/i18n/language-provider"
 import { useEffect, useState, Suspense, useCallback, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -14,7 +15,7 @@ import Gear from "@/app/heroes/components/gear"
 import Costumes from "@/app/heroes/components/costumes"
 import dynamic from "next/dynamic"
 import Voices, { VoiceFiles } from "@/app/heroes/components/voices"
-import { capitalize, classColorMapBadge } from "@/lib/utils"
+import { classColorMapBadge } from "@/lib/utils"
 import Image from "@/components/next-image"
 import { Costume, ModelFile } from "@/model/Hero_Model"
 import DataHeavyContent from "@/components/data-heavy-content"
@@ -42,7 +43,15 @@ interface HeroClientProps {
 	sortedHeroSlugs: string[]
 }
 
-export default function HeroClient({
+export default function HeroClient(props: HeroClientProps) {
+	return (
+		<HeroLanguageScope hero={props.heroData}>
+			{(heroData) => <HeroContent {...props} heroData={heroData} />}
+		</HeroLanguageScope>
+	)
+}
+
+function HeroContent({
 	heroData,
 	costumes,
 	heroModels,
@@ -103,7 +112,7 @@ export default function HeroClient({
 			}
 
 			if (!slugs || slugs.length === 0) return
-			const currentSlug = heroData.profile.name.toLowerCase().replace(/\s+/g, "-")
+			const currentSlug = heroData.id.toLowerCase().replace(/\s+/g, "-")
 			const currentIndex = slugs.indexOf(currentSlug)
 			if (currentIndex === -1) return
 
@@ -116,7 +125,7 @@ export default function HeroClient({
 				router.replace(`/heroes/${targetSlug}${window.location.hash}`)
 			})
 		},
-		[sortedHeroSlugs, heroData.profile.name, router],
+		[sortedHeroSlugs, heroData.id, router],
 	)
 
 	useEffect(() => {
@@ -195,19 +204,25 @@ export default function HeroClient({
 				{/* Hero Name & Key Stats */}
 				<div className="grow min-w-0">
 					<div className="flex flex-col">
-						<h1 className="text-2xl md:text-3xl font-bold truncate">{capitalize(heroData.profile.name)}</h1>
-						<span className="text-sm md:text-base text-muted-foreground">{heroData.profile.title}</span>
+						<h1 className="text-2xl md:text-3xl font-bold truncate">
+							<Text>{heroData.profile.name}</Text>
+						</h1>
+						<span className="text-sm md:text-base text-muted-foreground">
+							<Text fieldKey={`heroes/${heroData.id}/profile/title`}>{heroData.profile.title}</Text>
+						</span>
 					</div>
 					<div className="flex flex-wrap gap-2 mt-2">
 						<Badge variant="default" className={classColorMapBadge(heroData.profile.class)}>
-							{heroData.profile.class}
+							<Text>{heroData.profile.class}</Text>
 						</Badge>
-						<Badge variant="secondary">{heroData.profile.position}</Badge>
+						<Badge variant="secondary">
+							<Text>{heroData.profile.position}</Text>
+						</Badge>
 						<Badge
 							variant="default"
 							className={heroData.profile.damage_type === "Physical" ? "bg-red-300" : "bg-blue-300"}
 						>
-							{heroData.profile.damage_type}
+							<Text>{heroData.profile.damage_type}</Text>
 						</Badge>
 					</div>
 				</div>
@@ -215,15 +230,29 @@ export default function HeroClient({
 
 			<Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mt-2">
 				<TabsList className="w-full overflow-x-auto overflow-y-hidden flex-nowrap justify-start">
-					<TabsTrigger value="skills">Skills</TabsTrigger>
-					<TabsTrigger value="perks">Perks</TabsTrigger>
-					<TabsTrigger value="gear">Gear</TabsTrigger>
-					<TabsTrigger value="profile">Profile</TabsTrigger>
-					<TabsTrigger value="costumes">Costumes</TabsTrigger>
+					<TabsTrigger value="skills">
+						<Text messageKey="uiSkills" />
+					</TabsTrigger>
+					<TabsTrigger value="perks">
+						<Text messageKey="uiPerks" />
+					</TabsTrigger>
+					<TabsTrigger value="gear">
+						<Text messageKey="uiGear" />
+					</TabsTrigger>
+					<TabsTrigger value="profile">
+						<Text messageKey="uiProfile" />
+					</TabsTrigger>
+					<TabsTrigger value="costumes">
+						<Text messageKey="uiCostumes" />
+					</TabsTrigger>
 					{enableModelsVoices && (
 						<>
-							<TabsTrigger value="models">Models</TabsTrigger>
-							<TabsTrigger value="voices">Voices</TabsTrigger>
+							<TabsTrigger value="models">
+								<Text messageKey="uiModels" />
+							</TabsTrigger>
+							<TabsTrigger value="voices">
+								<Text messageKey="uiVoices" />
+							</TabsTrigger>
 						</>
 					)}
 				</TabsList>
@@ -235,7 +264,13 @@ export default function HeroClient({
 					<Skills heroData={heroData} />
 				</TabsContent>
 				<TabsContent value="perks" className="mt-4">
-					<Suspense fallback={<div>Loading Perks...</div>}>
+					<Suspense
+						fallback={
+							<div>
+								<Text messageKey="uiLoadingPerks" />
+							</div>
+						}
+					>
 						<Perks heroData={heroData} classPerks={classPerks} />
 					</Suspense>
 				</TabsContent>

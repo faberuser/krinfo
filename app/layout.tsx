@@ -1,4 +1,11 @@
 import "@/app/globals.css"
+import { getLocale, getMessages } from "next-intl/server"
+import { cookies } from "next/headers"
+import { isLocale } from "@/lib/i18n/locales"
+import { LOCALE_COOKIE } from "@/lib/i18n/locale-preference"
+import type { Messages } from "@/lib/i18n/messages"
+import { LanguageProvider } from "@/components/i18n/language-provider"
+import { CurrentGameLanguage } from "@/components/i18n/current-game-language"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Comfortaa } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -37,27 +44,34 @@ export const metadata: Metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://kingsraid.k-clowd.top"),
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	const [locale, messages] = await Promise.all([getLocale(), getMessages()])
+	const staticExport = process.env.NEXT_STATIC_EXPORT === "true"
+	const hasLocaleCookie = !staticExport && isLocale((await cookies()).get(LOCALE_COOKIE)?.value)
 	return (
 		<>
-			<html lang="en" suppressHydrationWarning>
+			<html lang={locale} suppressHydrationWarning>
 				<head />
 				<body className={`${geistSans.variable} ${geistMono.variable} ${comfortaa.variable} antialiased`}>
 					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-						<DataVersionProvider>
-							<CompareModeProvider>
-								<HeroToggleProvider>
-									<SidebarProviderWithStorage>
-										<SidebarWrapper />
-										<SidebarInsetClient>{children}</SidebarInsetClient>
-									</SidebarProviderWithStorage>
-								</HeroToggleProvider>
-							</CompareModeProvider>
-						</DataVersionProvider>
+						<LanguageProvider initialLocale={isLocale(locale) ? locale : "en"} initialMessages={messages as Messages} restorePreference={!hasLocaleCookie} staticExport={staticExport}>
+							<DataVersionProvider>
+								<CurrentGameLanguage>
+									<CompareModeProvider>
+										<HeroToggleProvider>
+											<SidebarProviderWithStorage>
+												<SidebarWrapper />
+												<SidebarInsetClient>{children}</SidebarInsetClient>
+											</SidebarProviderWithStorage>
+										</HeroToggleProvider>
+									</CompareModeProvider>
+								</CurrentGameLanguage>
+							</DataVersionProvider>
+						</LanguageProvider>
 					</ThemeProvider>
 				</body>
 			</html>

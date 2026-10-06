@@ -19,6 +19,9 @@ type DataItem = HeroData | BossData | ArtifactData
 // Map version to specific files/folders
 function getSourcePathForVersion(version: DataVersion, source: string): string {
 	const currentVersion = version || "legacy"
+	if (source === "boss_type.json") return source
+	const shared = source.endsWith("_release_order.json") || source === "softcap.json"
+	if (!shared) return `${currentVersion}/en/${source}`
 	return `${currentVersion}/${source}`
 }
 
@@ -54,10 +57,7 @@ function buildPath(...segments: string[]): string {
 
 // Helper function to get name from data item
 function getName(item: DataItem): string {
-	if ("name" in item) {
-		return item.name
-	}
-	return item.profile.name
+	return item.id
 }
 
 // Helper function to sort data by name
@@ -268,7 +268,7 @@ export async function artifactExistsInVersion(artifactName: string, version: Dat
 	if (!data) return false
 
 	return data.some((artifact) => {
-		const nameMatch = normalizeName(artifact.name) === normalizedName
+		const nameMatch = normalizeName(artifact.id) === normalizedName
 		const aliasMatch = artifact.aliases?.some((alias) => normalizeName(alias) === normalizedName) ?? false
 		return nameMatch || aliasMatch
 	})
@@ -291,7 +291,7 @@ export async function getArtifactNamesForVersion(version: DataVersion): Promise<
 	const data = await readJsonFile<ArtifactData[]>(filePath)
 	if (!data) return []
 
-	return data.map((artifact) => artifact.name)
+	return data.map((artifact) => artifact.id)
 }
 
 // Get list of boss names that exist in a specific version's data folder

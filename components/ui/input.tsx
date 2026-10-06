@@ -1,9 +1,14 @@
+"use client"
+
+
+import { useTranslation } from "@/components/i18n/language-provider"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
-  return (
+const { t } = useTranslation()
+	  return (
     <input
       type={type}
       data-slot="input"
@@ -13,7 +18,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
         className
       )}
-      {...props}
+      {...props} placeholder={props.placeholder ? t(props.placeholder) : undefined} aria-label={props["aria-label"] ? t(props["aria-label"]) : undefined}
     />
   )
 }

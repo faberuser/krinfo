@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { PanelLeftIcon } from "lucide-react"
@@ -179,8 +181,8 @@ function Sidebar({
 					side={side}
 				>
 					<SheetHeader className="sr-only">
-						<SheetTitle>Sidebar</SheetTitle>
-						<SheetDescription>Displays the mobile sidebar.</SheetDescription>
+						<SheetTitle><Text messageKey="uiSidebar" /></SheetTitle>
+						<SheetDescription><Text messageKey="uiDisplaysTheMobileSidebar" /></SheetDescription>
 					</SheetHeader>
 					<div className="flex h-full w-full flex-col">{children}</div>
 				</SheetContent>
@@ -253,7 +255,7 @@ function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<t
 			{...props}
 		>
 			<PanelLeftIcon />
-			<span className="sr-only">Toggle Sidebar</span>
+			<span className="sr-only"><Text messageKey="uiToggleSidebar" /></span>
 		</Button>
 	)
 }

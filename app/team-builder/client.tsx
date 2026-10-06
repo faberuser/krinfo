@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, useTranslation, useLocalizedHeroes } from "@/components/i18n/language-provider"
 import { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import { HeroData } from "@/model/Hero"
 import { Button } from "@/components/ui/button"
@@ -7,7 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Share2, Check, Trash2 } from "lucide-react"
 import { useDataVersion } from "@/hooks/use-data-version"
-import { DataVersion, DATA_VERSIONS } from "@/lib/constants"
+import { DataVersion } from "@/lib/constants"
 import { useEnableVersionToggle } from "@/contexts/version-toggle-context"
 import Fuse from "fuse.js"
 import { useSearchParams, useRouter } from "next/navigation"
@@ -28,11 +29,12 @@ function TeamBuilderContent({
 	heroesMap,
 	artifacts,
 	artifactReleaseOrder,
-	classPerks,
+	classPerksMap,
 	heroClasses,
 	releaseOrderMap,
 }: Omit<TeamBuilderClientProps, "saReverse">) {
-	const { version: dataVersion, setVersionDirect } = useDataVersion()
+	const { version: dataVersion, setVersionDirect, isHydrated: versionHydrated } = useDataVersion()
+	const classPerks = classPerksMap[dataVersion]
 	const searchParams = useSearchParams()
 	const router = useRouter()
 
@@ -48,13 +50,15 @@ function TeamBuilderContent({
 	)
 
 	// Get heroes and release order based on data version
-	const heroes = useMemo(() => getHeroesByVersion(dataVersion), [dataVersion, getHeroesByVersion])
+	const sourceHeroes = useMemo(() => getHeroesByVersion(dataVersion), [dataVersion, getHeroesByVersion])
+	const heroes = useLocalizedHeroes(sourceHeroes)
 
 	const releaseOrder = useMemo(() => {
 		return releaseOrderMap[dataVersion] || releaseOrderMap.legacy
 	}, [dataVersion, releaseOrderMap])
 
 	// Initialize teamSize from state (default 8)
+	const { locale } = useTranslation()
 	const [teamSize, setTeamSizeState] = useState<number>(() => {
 		const encoded = searchParams.get("t")
 		if (encoded) {
@@ -175,7 +179,7 @@ function TeamBuilderContent({
 	}, []) // Only run on mount
 
 	useEffect(() => {
-		if (initialLoadDone) return
+		if (initialLoadDone || !versionHydrated) return
 
 		const encoded = searchParams.get("t")
 		if (encoded) {
@@ -203,18 +207,17 @@ function TeamBuilderContent({
 			try {
 				const parsed = JSON.parse(saved)
 				// Rehydrate hero and artifact references from their names
-				// Try all hero lists to find matches
-				const allHeroes = DATA_VERSIONS.flatMap((v) => heroesMap[v] || [])
+				// Restore from the selected version after its saved preference is available.
 				const rehydrated = parsed.map((member: TeamMember & { heroName?: string; artifactName?: string }) => {
 					let hero = null
 					let artifact = null
 
 					if (member.heroName) {
-						hero = allHeroes.find((h) => h.profile.name === member.heroName) || null
+						hero = heroes.find((h) => h.id === member.heroName) || null
 					}
 
 					if (member.artifactName) {
-						artifact = artifacts.find((a) => a.name === member.artifactName) || null
+						artifact = artifacts.find((a) => a.id === member.artifactName) || null
 					}
 
 					return {
@@ -239,8 +242,7 @@ function TeamBuilderContent({
 		setTeam(newTeam)
 
 		setInitialLoadDone(true)
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	}, [initialLoadDone, versionHydrated, searchParams, heroes, artifacts])
 
 	const [selectedSlot, setSelectedSlot] = useState<number | null>(null)
 	const [heroSearchQuery, setHeroSearchQuery] = useState("")
@@ -294,9 +296,9 @@ function TeamBuilderContent({
 				const toSave = team.map((member) => ({
 					...member,
 					hero: null,
-					heroName: member.hero?.profile.name || null,
+					heroName: member.hero?.id || null,
 					artifact: null,
-					artifactName: member.artifact?.name || null,
+					artifactName: member.artifact?.id || null,
 				}))
 				localStorage.setItem("team-builder-team", JSON.stringify(toSave))
 				setUserCleared(false)
@@ -332,7 +334,7 @@ function TeamBuilderContent({
 		return new Fuse(
 			heroes.filter((hero) => hero.profile?.thumbnail),
 			{
-				keys: ["profile.name", "profile.title", "aliases"],
+				keys: ["profile.name", "id", "profile.title", "aliases"],
 				threshold: 0.3,
 			},
 		)
@@ -365,12 +367,12 @@ function TeamBuilderContent({
 		// Sort by selected sort type
 		if (sortType === "release") {
 			result = [...result].sort((a, b) => {
-				const aOrder = parseInt(releaseOrder[a.profile.name] ?? "9999", 10)
-				const bOrder = parseInt(releaseOrder[b.profile.name] ?? "9999", 10)
+				const aOrder = parseInt(releaseOrder[a.id] ?? "9999", 10)
+				const bOrder = parseInt(releaseOrder[b.id] ?? "9999", 10)
 				return aOrder - bOrder
 			})
 		} else {
-			result = [...result].sort((a, b) => a.profile.name.localeCompare(b.profile.name))
+			result = [...result].sort((a, b) => a.profile.name.localeCompare(b.profile.name, locale))
 		}
 
 		// Reverse if needed
@@ -379,7 +381,7 @@ function TeamBuilderContent({
 		}
 
 		return result
-	}, [heroes, heroSearchQuery, fuse, selectedClass, selectedDamageType, sortType, reverseSort, releaseOrder])
+	}, [heroes, heroSearchQuery, fuse, selectedClass, selectedDamageType, sortType, reverseSort, releaseOrder, locale])
 
 	// Update URL when team changes
 	const updateURL = useCallback(
@@ -400,7 +402,7 @@ function TeamBuilderContent({
 		const newTeam = [...team]
 
 		// Check if hero is already in team
-		const existingSlotIndex = newTeam.findIndex((m) => m.hero?.profile.name === hero.profile.name)
+		const existingSlotIndex = newTeam.findIndex((m) => m.hero?.id === hero.id)
 		if (existingSlotIndex !== -1) {
 			// Hero already in team, remove it (unselect)
 			newTeam[existingSlotIndex] = createEmptyMember()
@@ -627,7 +629,9 @@ function TeamBuilderContent({
 				<div className="space-y-4 mb-6">
 					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
 						<div className="flex flex-row gap-4 items-center">
-							<div className="text-xl font-bold">Team Builder</div>
+							<div className="text-xl font-bold">
+								<Text messageKey="uiTeamBuilder" />
+							</div>
 							<div className="flex items-center gap-2">
 								<span className="text-muted-foreground text-sm">{activeCount} /</span>
 								<Select
@@ -640,7 +644,7 @@ function TeamBuilderContent({
 									<SelectContent>
 										{[...Array(8)].map((_, i) => (
 											<SelectItem key={i + 1} value={(i + 1).toString()}>
-												{i + 1} heroes
+												{i + 1} <Text messageKey="uiHeroes_8172f9d4" />
 											</SelectItem>
 										))}
 									</SelectContent>
@@ -655,7 +659,7 @@ function TeamBuilderContent({
 								disabled={activeCount === 0}
 							>
 								{copied ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4" />}
-								{copied ? "Copied!" : "Share"}
+								<Text>{copied ? "Copied!" : "Share"}</Text>
 							</Button>
 							<Button
 								variant="destructive"
@@ -664,7 +668,7 @@ function TeamBuilderContent({
 								disabled={activeCount === 0}
 							>
 								<Trash2 className="h-4 w-4" />
-								Clear
+								<Text messageKey="uiClear" />
 							</Button>
 						</div>
 					</div>
@@ -753,7 +757,7 @@ export default function TeamBuilderClient({
 	heroesMap,
 	artifacts,
 	artifactReleaseOrder,
-	classPerks,
+	classPerksMap,
 	heroClasses,
 	releaseOrderMap,
 }: TeamBuilderClientProps) {
@@ -763,7 +767,7 @@ export default function TeamBuilderClient({
 				heroesMap={heroesMap}
 				artifacts={artifacts}
 				artifactReleaseOrder={artifactReleaseOrder}
-				classPerks={classPerks}
+				classPerksMap={classPerksMap}
 				heroClasses={heroClasses}
 				releaseOrderMap={releaseOrderMap}
 			/>

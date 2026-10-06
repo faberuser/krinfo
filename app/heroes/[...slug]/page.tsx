@@ -14,7 +14,7 @@ const isStaticExport = process.env.NEXT_STATIC_EXPORT === "true"
 const enableModelsVoices = process.env.NEXT_PUBLIC_ENABLE_MODELS_VOICES === "true"
 
 async function getClassPerks(dataVersion: string = "legacy"): Promise<ClassPerksData> {
-	const classesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", dataVersion, "classes")
+	const classesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", `${dataVersion}/en`, "classes")
 	const result: ClassPerksData = {
 		t1Perks: {},
 		t2Perks: {},
@@ -46,27 +46,14 @@ async function getClassPerks(dataVersion: string = "legacy"): Promise<ClassPerks
 	return result
 }
 
-export async function generateStaticParams() {
+async function staticParams() {
 	// Only generate static params when building for static export (GitHub Pages)
 	if (!isStaticExport) {
 		return []
 	}
 
-	const heroesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", "legacy", "heroes")
-	const slugs: string[] = []
-
-	if (fs.existsSync(heroesDir)) {
-		const files = fs.readdirSync(heroesDir).filter((file) => file.endsWith(".json"))
-		for (const file of files) {
-			// Remove .json extension
-			const name = file.replace(".json", "")
-			// Convert to slug format (lowercase with hyphens)
-			const slug = name.toLowerCase().replace(/\s+/g, "-")
-			slugs.push(slug)
-		}
-	}
-
-	return slugs.map((slug) => ({ slug: [slug] }))
+	const names = await fetchAllVersions(getHeroNamesForVersion)
+	return [...new Set(Object.values(names).flat())].map(name => ({ slug: [name.toLowerCase().replace(/\s+/g, "-")] }))
 }
 
 export default async function SlugPage({ params }: SlugPageProps) {
@@ -77,18 +64,15 @@ export default async function SlugPage({ params }: SlugPageProps) {
 		notFound()
 	}
 
-	// Fetch legacy data (always exists as base)
+	// Later-only heroes remain accessible without appearing in Legacy.
 	const heroDataLegacy = (await findData(heroName, "heroes", { dataVersion: "legacy" })) as HeroData | null
-
-	if (!heroDataLegacy) {
-		notFound()
-	}
 
 	// Fetch data for all versions
 	const heroDataMap = await fetchAllVersions<HeroData | null>(async (version) => {
 		if (version === "legacy") return heroDataLegacy
 		return (await findData(heroName, "heroes", { dataVersion: version })) as HeroData | null
 	})
+	if (!Object.values(heroDataMap).some(Boolean)) notFound()
 
 	// Kick off independent data fetches in parallel
 	const costumesMapPromise = fetchAllVersions(async (version) => {
@@ -98,12 +82,12 @@ export default async function SlugPage({ params }: SlugPageProps) {
 
 	const heroModelsMapPromise = fetchAllVersions(async (version) => {
 		const data = heroDataMap[version]
-		return enableModelsVoices && data ? await getHeroModels(data.profile.name) : {}
+		return enableModelsVoices && data ? await getHeroModels(data.id) : {}
 	})
 
 	const voiceFilesMapPromise = fetchAllVersions(async (version) => {
 		const data = heroDataMap[version]
-		return enableModelsVoices && data ? await getVoiceFiles(data.profile.name) : { en: [], jp: [], kr: [] }
+		return enableModelsVoices && data ? await getVoiceFiles(data.id) : { en: [], jp: [], kr: [] }
 	})
 
 	const classPerksLegacy = await getClassPerks("legacy")
@@ -144,3 +128,6 @@ export default async function SlugPage({ params }: SlugPageProps) {
 		/>
 	)
 }
+
+// Cookie-based locales require request-time rendering on server deployments.
+export const generateStaticParams = isStaticExport ? staticParams : undefined

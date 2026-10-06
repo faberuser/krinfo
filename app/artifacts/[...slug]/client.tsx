@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, useSharedRecords } from "@/components/i18n/language-provider"
 import { useCallback, useEffect, useState, useTransition } from "react"
 import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
@@ -33,8 +34,14 @@ interface ArtifactClientProps {
 	artifactModels: ModelFile[]
 }
 
-export default function ArtifactClient({ artifactData, sortedArtifactSlugs, artifactModels }: ArtifactClientProps) {
+export default function ArtifactClient({
+	artifactData: sourceArtifact,
+	sortedArtifactSlugs,
+	artifactModels,
+}: ArtifactClientProps) {
 	const router = useRouter()
+	const shared = useSharedRecords()
+	const artifactData = shared.artifacts?.find((record) => record.id === sourceArtifact.id) ?? sourceArtifact
 	const [isNavigating, startTransition] = useTransition()
 	const [activeTab, setActiveTab] = useState(getTabFromHash)
 	const hasModels = artifactModels.length > 0
@@ -72,7 +79,7 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 			}
 
 			if (!slugs || slugs.length === 0) return
-			const currentSlug = artifactData.name.toLowerCase().replace(/\s+/g, "-")
+			const currentSlug = artifactData.id.toLowerCase().replace(/\s+/g, "-")
 			const currentIndex = slugs.indexOf(currentSlug)
 			if (currentIndex === -1) return
 
@@ -84,7 +91,7 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 				router.replace(`/artifacts/${slugs[targetIndex]}${window.location.hash}`)
 			})
 		},
-		[sortedArtifactSlugs, artifactData.name, router],
+		[sortedArtifactSlugs, artifactData.id, router, startTransition],
 	)
 
 	useEffect(() => {
@@ -141,7 +148,7 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 								.split("/")
 								.map(encodeURIComponent)
 								.join("/")}`}
-							alt={artifactData.name}
+							alt={artifactData.id}
 							width="0"
 							height="0"
 							sizes="20vw md:5vw"
@@ -151,7 +158,9 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 				</div>
 				<div className="grow min-w-0 self-start pr-18">
 					<div className="flex flex-col">
-						<h1 className="text-2xl md:text-3xl font-bold">{artifactData.name}</h1>
+						<h1 className="text-2xl md:text-3xl font-bold">
+							<Text>{artifactData.name}</Text>
+						</h1>
 					</div>
 					<div className="mt-2">
 						<ArtifactEffectBadges artifact={artifactData} />
@@ -161,22 +170,31 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 
 			<Tabs value={hasModels ? activeTab : "effects"} onValueChange={handleTabChange} className="w-full mt-2">
 				<TabsList className="w-full overflow-x-auto overflow-y-hidden flex-nowrap justify-start">
-					<TabsTrigger value="effects">Effects</TabsTrigger>
-					{hasModels ? <TabsTrigger value="models">Models</TabsTrigger> : null}
+					<TabsTrigger value="effects">
+						<Text messageKey="uiEffects" />
+					</TabsTrigger>
+					{hasModels ? (
+						<TabsTrigger value="models">
+							<Text messageKey="uiModels" />
+						</TabsTrigger>
+					) : null}
 				</TabsList>
 				<TabsContent value="effects" className="mt-4 space-y-4">
 					{/* Effects Description */}
 					<div>
 						<Card className="gap-2">
 							<CardHeader>
-								<CardTitle>Effects</CardTitle>
+								<CardTitle>
+									<Text messageKey="uiEffects" />
+								</CardTitle>
 							</CardHeader>
 							<CardContent>
 								<div className="text-lg">
 									<GearEnhancement
-										key={artifactData.name}
+										key={artifactData.id}
 										name={artifactData.name}
 										description={artifactData.description}
+										descriptionByStar={artifactData.descriptionByStar}
 										values={enhancementValues}
 									/>
 								</div>
@@ -188,10 +206,14 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 					<div>
 						<Card className="gap-2">
 							<CardHeader>
-								<CardTitle>Story</CardTitle>
+								<CardTitle>
+									<Text messageKey="uiStory" />
+								</CardTitle>
 							</CardHeader>
 							<CardContent>
-								<div className="whitespace-pre-wrap">{artifactData.story}</div>
+								<div className="whitespace-pre-wrap">
+									<Text>{artifactData.story}</Text>
+								</div>
 							</CardContent>
 						</Card>
 					</div>
@@ -199,7 +221,7 @@ export default function ArtifactClient({ artifactData, sortedArtifactSlugs, arti
 				{hasModels ? (
 					<TabsContent value="models" className="mt-4">
 						<ArtifactModels
-							key={artifactData.name}
+							key={artifactData.id}
 							modelFiles={artifactModels}
 							artifactName={artifactData.name}
 						/>

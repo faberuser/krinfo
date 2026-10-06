@@ -1,4 +1,5 @@
 export interface HeroData {
+	id: string
 	profile: {
 		name: string
 		title: string
@@ -11,7 +12,7 @@ export interface HeroData {
 		height: string
 		race: string
 		constellation: string
-		birth_of_month: string
+		birth: { month: number; day: number; monthName: string }
 		like: string
 		dislike: string
 		story: string
@@ -58,6 +59,7 @@ export interface HeroData {
 		}
 	}
 	uw: {
+		descriptionByStar?: Record<string, string>
 		name: string
 		description: string
 		value: {
@@ -71,6 +73,7 @@ export interface HeroData {
 	uts: {
 		[key: string]: {
 			name: string
+			descriptionByStar?: Record<string, string>
 			description: string
 			value: {
 				[key: string]: {
@@ -96,4 +99,10 @@ export interface HeroData {
 	costumes: string
 	visual?: string | null
 	aliases?: string[] | null
+	_localization?: {
+		locale: string
+		sourceBuild?: number
+		version?: string
+		englishFallbackFields: string[]
+	}
 }

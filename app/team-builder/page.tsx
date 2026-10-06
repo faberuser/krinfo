@@ -19,11 +19,11 @@ interface ClassPerksData {
 	}
 }
 
-async function getClassPerks(): Promise<{
+async function getClassPerks(version: string): Promise<{
 	general: ClassPerksData
 	classes: Record<string, ClassPerksData>
 }> {
-	const classesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", "legacy", "classes")
+	const classesDir = path.join(process.cwd(), "public", "kingsraid-data", "table-data", version, "en", "classes")
 	const result: {
 		general: ClassPerksData
 		classes: Record<string, ClassPerksData>
@@ -58,7 +58,7 @@ async function getClassPerks(): Promise<{
 
 export default async function TeamBuilderPage() {
 	// Fetch all independent data in parallel
-	const [heroesMap, artifactsLegacy, saReverse, releaseOrderMap, artifactReleaseOrder, classPerks] =
+	const [heroesMap, artifactsLegacy, saReverse, releaseOrderMap, artifactReleaseOrder, classPerksMap] =
 		await Promise.all([
 			fetchAllVersions<HeroData[]>(
 				(version) => getData("heroes", { dataVersion: version }) as Promise<HeroData[]>,
@@ -67,7 +67,7 @@ export default async function TeamBuilderPage() {
 			getJsonDataList("table-data/sa_reverse.json") as Promise<string[]>,
 			fetchAllVersions<Record<string, string>>((version) => getHeroReleaseOrder(version)),
 			getArtifactReleaseOrder("legacy"),
-			getClassPerks(),
+			fetchAllVersions(getClassPerks),
 		])
 
 	return (
@@ -76,7 +76,7 @@ export default async function TeamBuilderPage() {
 			artifacts={artifactsLegacy}
 			artifactReleaseOrder={artifactReleaseOrder}
 			saReverse={saReverse}
-			classPerks={classPerks}
+			classPerksMap={classPerksMap}
 			heroClasses={HERO_CLASSES}
 			releaseOrderMap={releaseOrderMap}
 		/>

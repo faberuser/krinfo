@@ -6,7 +6,9 @@ export interface OffsetConfig {
 
 export interface BossOffsetConfig {
 	scene?: OffsetConfig
+	scenes?: Record<string, OffsetConfig>
 	model?: OffsetConfig
+	recalculateBoneInverses?: boolean
 	weapon_default?: boolean
 	weapon?: OffsetConfig // Optional weapon-specific transforms
 }

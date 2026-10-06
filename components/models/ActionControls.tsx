@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
@@ -90,16 +91,28 @@ export function ActionControls({
 						</TooltipTrigger>
 						<TooltipContent className="space-y-1">
 							<div>
-								<Kbd>Left Click</Kbd> Rotate
+								<Kbd>
+									<Text messageKey="uiLeftClick" />
+								</Kbd>{" "}
+								<Text messageKey="uiRotate" />
 							</div>
 							<div>
-								<Kbd>Right Click</Kbd> Move
+								<Kbd>
+									<Text messageKey="uiRightClick" />
+								</Kbd>{" "}
+								<Text messageKey="uiMove" />
 							</div>
 							<div>
-								<Kbd>Scroll</Kbd> Zoom
+								<Kbd>
+									<Text messageKey="uiScroll" />
+								</Kbd>{" "}
+								<Text messageKey="uiZoom" />
 							</div>
 							<div>
-								<Kbd>Space</Kbd> Play/Pause Animation
+								<Kbd>
+									<Text messageKey="uiSpace" />
+								</Kbd>{" "}
+								<Text messageKey="uiPlayPauseAnimation" />
 							</div>
 						</TooltipContent>
 					</Tooltip>
@@ -111,7 +124,9 @@ export function ActionControls({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							<div>{isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}</div>
+							<div>
+								<Text>{isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}</Text>
+							</div>
 						</TooltipContent>
 					</Tooltip>
 
@@ -122,7 +137,9 @@ export function ActionControls({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							<div>Reset Camera</div>
+							<div>
+								<Text messageKey="uiResetCamera" />
+							</div>
 						</TooltipContent>
 					</Tooltip>
 
@@ -138,7 +155,9 @@ export function ActionControls({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							<div>{isDownloading ? "Downloading..." : "Download Models"}</div>
+							<div>
+								<Text>{isDownloading ? "Downloading..." : "Download Models"}</Text>
+							</div>
 						</TooltipContent>
 					</Tooltip>
 
@@ -157,7 +176,9 @@ export function ActionControls({
 									</Button>
 								</TooltipTrigger>
 								<TooltipContent>
-									<div>{isMuted ? "Unmute Voice" : "Mute Voice"}</div>
+									<div>
+										<Text>{isMuted ? "Unmute Voice" : "Mute Voice"}</Text>
+									</div>
 								</TooltipContent>
 							</Tooltip>
 
@@ -170,17 +191,27 @@ export function ActionControls({
 											disabled={isLoading}
 										>
 											<SelectTrigger className="w-10 h-9 px-0 justify-center text-xs font-medium bg-secondary! hover:bg-secondary/80! border-0 [&>svg]:hidden">
-												<SelectValue>{languageLabels[voiceLanguage]}</SelectValue>
+												<SelectValue>
+													<Text>{languageLabels[voiceLanguage]}</Text>
+												</SelectValue>
 											</SelectTrigger>
 											<SelectContent align="center">
-												<SelectItem value="en">English</SelectItem>
-												<SelectItem value="jp">Japanese</SelectItem>
-												<SelectItem value="kr">Korean</SelectItem>
+												<SelectItem value="en">
+													<Text messageKey="uiEnglish" />
+												</SelectItem>
+												<SelectItem value="jp">
+													<Text messageKey="uiJapanese" />
+												</SelectItem>
+												<SelectItem value="kr">
+													<Text messageKey="uiKorean" />
+												</SelectItem>
 											</SelectContent>
 										</Select>
 									</TooltipTrigger>
 									<TooltipContent>
-										<div>Select Voice Language</div>
+										<div>
+											<Text messageKey="uiSelectVoiceLanguage" />
+										</div>
 									</TooltipContent>
 								</Tooltip>
 							)}
@@ -194,7 +225,9 @@ export function ActionControls({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							<div>Take Screenshot</div>
+							<div>
+								<Text messageKey="uiTakeScreenshot" />
+							</div>
 						</TooltipContent>
 					</Tooltip>
 
@@ -214,7 +247,9 @@ export function ActionControls({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							<div>{isRecording && !isExportingAnimation ? "Stop Recording" : "Record Video"}</div>
+							<div>
+								<Text>{isRecording && !isExportingAnimation ? "Stop Recording" : "Record Video"}</Text>
+							</div>
 						</TooltipContent>
 					</Tooltip>
 					<Tooltip>
@@ -230,11 +265,13 @@ export function ActionControls({
 						</TooltipTrigger>
 						<TooltipContent>
 							<div>
-								{isExportingAnimation
-									? "Exporting..."
-									: selectedAnimation
-										? `Export Animation (${animationDuration.toFixed(1)}s)`
-										: "Select an animation first"}
+								<Text>
+									{isExportingAnimation
+										? "Exporting..."
+										: selectedAnimation
+											? `Export Animation (${animationDuration.toFixed(1)}s)`
+											: "Select an animation first"}
+								</Text>
 							</div>
 						</TooltipContent>
 					</Tooltip>

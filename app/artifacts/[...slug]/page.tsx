@@ -8,22 +8,22 @@ import { SlugPageProps, findData, fetchAllVersions, getArtifactNamesForVersion }
 
 const isStaticExport = process.env.NEXT_STATIC_EXPORT === "true"
 
-export async function generateStaticParams() {
+async function staticParams() {
 	// Only generate static params when building for static export (GitHub Pages)
 	if (!isStaticExport) {
 		return []
 	}
 
-	const artifactsPath = path.join(process.cwd(), "public", "kingsraid-data", "table-data", "legacy", "artifacts.json")
+	const artifactsPath = path.join(process.cwd(), "public", "kingsraid-data", "table-data", "legacy", "en", "artifacts.json")
 	const slugs: string[] = []
 
 	if (fs.existsSync(artifactsPath)) {
 		const fileContent = fs.readFileSync(artifactsPath, "utf-8")
 		const data: ArtifactData[] = JSON.parse(fileContent)
 		for (const artifact of data) {
-			if (artifact.name) {
+			if (artifact.id) {
 				// Convert to slug format (lowercase with hyphens)
-				const slug = artifact.name.toLowerCase().replace(/\s+/g, "-")
+				const slug = artifact.id.toLowerCase().replace(/\s+/g, "-")
 				slugs.push(slug)
 			}
 			// Also generate slugs for aliases
@@ -71,7 +71,7 @@ export default async function SlugPage({ params }: SlugPageProps) {
 		.sort((a, b) => a.localeCompare(b))
 		.map((name) => name.toLowerCase().replace(/\s+/g, "-"))
 
-	const artifactModels = await getArtifactModels(artifactDataLegacy.name)
+	const artifactModels = await getArtifactModels(artifactDataLegacy.id)
 	return (
 		<ArtifactPageWrapper
 			artifactsMap={artifactsMap}
@@ -80,3 +80,6 @@ export default async function SlugPage({ params }: SlugPageProps) {
 		/>
 	)
 }
+
+// Cookie-based locales require request-time rendering on server deployments.
+export const generateStaticParams = isStaticExport ? staticParams : undefined

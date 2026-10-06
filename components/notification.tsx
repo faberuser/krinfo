@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { useSyncExternalStore, useCallback } from "react"
 import { X } from "lucide-react"
 
@@ -33,16 +34,18 @@ export default function Notification() {
 	return (
 		<div className="relative w-full border-b border-primary/30 px-4 py-2 text-sm text-center flex items-center justify-center gap-2">
 			<span>
-				We have a new domain!{" "}
+				<Text messageKey="uiWeHaveANewDomain" />
+				<Text> </Text>
 				<a
 					href="https://krinfo.net/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="underline font-semibold hover:opacity-80 transition-opacity"
 				>
-					krinfo.net
-				</a>{" "}
-				- you can still use both domains.
+					<Text>krinfo.net</Text>
+				</a>
+				<Text> </Text>
+				<Text messageKey="uiYouCanStillUseBothDomains" />
 			</span>
 			<button
 				onClick={dismiss}

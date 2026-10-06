@@ -1,5 +1,6 @@
 export interface BossInfo {
 	name: string
+	recommendedHeroNames?: string[]
 	title: string
 	type: string[]
 	race: string
@@ -17,6 +18,7 @@ export interface Skill {
 }
 
 export interface BossData {
+	id: string
 	profile: BossInfo
 	skills: {
 		[skillId: string]: Skill

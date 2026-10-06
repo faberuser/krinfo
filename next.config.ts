@@ -1,4 +1,5 @@
 import type { NextConfig } from "next"
+import createNextIntlPlugin from "next-intl/plugin"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 const isStaticExport = process.env.NEXT_STATIC_EXPORT === "true"
@@ -8,6 +9,10 @@ const nextConfig: NextConfig = {
 	basePath: basePath || undefined,
 	images: {
 		unoptimized: isStaticExport,
+		localPatterns: [
+			{ pathname: "/**", search: "" },
+			{ pathname: `${basePath}/api/steam-image` },
+		],
 		remotePatterns: [
 			{
 				protocol: "https",
@@ -18,4 +23,4 @@ const nextConfig: NextConfig = {
 	},
 }
 
-export default nextConfig
+export default createNextIntlPlugin("./i18n/request.ts")(nextConfig)

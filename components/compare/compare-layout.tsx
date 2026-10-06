@@ -1,5 +1,7 @@
 "use client"
 
+import { GameLanguageScope } from "@/components/i18n/language-provider"
+import { Text } from "@/components/i18n/language-provider"
 import { ReactNode, useEffect, useRef } from "react"
 import { DataVersionLabels } from "@/hooks/use-data-version"
 import { DataVersion } from "@/lib/constants"
@@ -90,7 +92,7 @@ export default function CompareLayout({
 				<div className="flex-1 min-w-0 flex flex-col">
 					<div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 pb-2 mb-2 shrink-0">
 						<Badge variant="secondary" className="text-sm font-medium">
-							{DataVersionLabels[leftVersion]}
+							<Text>{DataVersionLabels[leftVersion]}</Text>
 						</Badge>
 					</div>
 					{leftAvailable ? (
@@ -100,11 +102,12 @@ export default function CompareLayout({
 								panelsRef.current[0] = el
 							}}
 						>
-							{leftContent}
+							<GameLanguageScope version={leftVersion}>{leftContent}</GameLanguageScope>
 						</div>
 					) : (
 						<div className="flex items-center justify-center h-48 text-muted-foreground border rounded-lg bg-muted/50">
-							Not available in {DataVersionLabels[leftVersion]}
+							<Text messageKey="uiNotAvailableIn" suffix=" " />
+							<Text>{DataVersionLabels[leftVersion]}</Text>
 						</div>
 					)}
 				</div>
@@ -113,7 +116,7 @@ export default function CompareLayout({
 				<div className="flex-1 min-w-0 flex flex-col">
 					<div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 pb-2 mb-2 shrink-0">
 						<Badge variant="secondary" className="text-sm font-medium">
-							{DataVersionLabels[rightVersion]}
+							<Text>{DataVersionLabels[rightVersion]}</Text>
 						</Badge>
 					</div>
 					{rightAvailable ? (
@@ -123,11 +126,12 @@ export default function CompareLayout({
 								panelsRef.current[1] = el
 							}}
 						>
-							{rightContent}
+							<GameLanguageScope version={rightVersion}>{rightContent}</GameLanguageScope>
 						</div>
 					) : (
 						<div className="flex items-center justify-center h-48 text-muted-foreground border rounded-lg bg-muted/50">
-							Not available in {DataVersionLabels[rightVersion]}
+							<Text messageKey="uiNotAvailableIn" suffix=" " />
+							<Text>{DataVersionLabels[rightVersion]}</Text>
 						</div>
 					)}
 				</div>
@@ -145,7 +149,7 @@ export default function CompareLayout({
 					<div key={version} className="flex-1 min-w-0 flex flex-col">
 						<div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 pb-2 mb-2 shrink-0">
 							<Badge variant="secondary" className="text-sm font-medium">
-								{DataVersionLabels[version]}
+								<Text>{DataVersionLabels[version]}</Text>
 							</Badge>
 						</div>
 						{isAvailable ? (
@@ -155,11 +159,12 @@ export default function CompareLayout({
 									panelsRef.current[index] = el
 								}}
 							>
-								{renderContent(version)}
+								<GameLanguageScope version={version}>{renderContent(version)}</GameLanguageScope>
 							</div>
 						) : (
 							<div className="flex items-center justify-center h-48 text-muted-foreground border rounded-lg bg-muted/50">
-								Not available in {DataVersionLabels[version]}
+								<Text messageKey="uiNotAvailableIn" suffix=" " />
+								<Text>{DataVersionLabels[version]}</Text>
 							</div>
 						)}
 					</div>

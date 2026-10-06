@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect, useMemo, useRef } from "react"
+import { Text, useTranslation, useHeroIndex } from "@/components/i18n/language-provider"
+import { useState, useEffect, useMemo } from "react"
 import Fuse from "fuse.js"
+import { ListPageHeader, ListPageSearch, type ListSortType } from "@/components/list-page-header"
 import { SearchableFilter } from "@/components/searchable-filter"
-import { Input } from "@/components/ui/input"
 import type { HeroListItem } from "@/lib/list-data"
 import { Button } from "@/components/ui/button"
-import { Search, X, ChevronDown, ChevronUp, Image as ImageIcon, Grid2x2 } from "lucide-react"
+import { Image as ImageIcon, Grid2x2, Swords, UsersRound } from "lucide-react"
 import HeroCard, { ViewMode } from "@/app/heroes/components/card"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -33,18 +34,31 @@ interface HeroesClientProps {
 }
 
 export default function HeroesClient({
-	heroes,
+	heroes: sourceHeroes,
 	heroClasses,
 	releaseOrder,
 	saReverse,
 	// blurDataURLMap,
 }: HeroesClientProps) {
+	const { locale } = useTranslation()
+	const heroIndex = useHeroIndex()
+	const heroes = useMemo(
+		() =>
+			sourceHeroes.map((hero) => ({
+				...hero,
+				profile: {
+					...hero.profile,
+					name: heroIndex[hero.id]?.name ?? hero.profile.name,
+					title: heroIndex[hero.id]?.title ?? hero.profile.title,
+				},
+			})),
+		[sourceHeroes, heroIndex],
+	)
 	const [searchQuery, setSearchQuery] = useState("")
-	const searchInputRef = useRef<HTMLInputElement>(null)
 	const [selectedClass, setSelectedClass] = useState("all")
 	const [selectedDamageType, setSelectedDamageType] = useState("all")
 	// Lazy state initializers: read from localStorage only once
-	const [sortType, setSortType] = useState<"alphabetical" | "release">(() => {
+	const [sortType, setSortType] = useState<ListSortType>(() => {
 		if (typeof window === "undefined") return "release"
 		const stored = localStorage.getItem("heroesSortType")
 		return stored === "alphabetical" || stored === "release" ? stored : "release"
@@ -81,7 +95,7 @@ export default function HeroesClient({
 		return new Fuse(
 			heroes.filter((hero) => hero.splashart),
 			{
-				keys: ["profile.name", "profile.title", "aliases"],
+				keys: ["profile.name", "id", "profile.title", "aliases"],
 				threshold: 0.3,
 				includeScore: true,
 			},
@@ -116,12 +130,12 @@ export default function HeroesClient({
 		// Sort by selected sort type
 		if (sortType === "release") {
 			result = [...result].sort((a, b) => {
-				const aOrder = parseInt(releaseOrder[a.profile.name] ?? "9999", 10)
-				const bOrder = parseInt(releaseOrder[b.profile.name] ?? "9999", 10)
+				const aOrder = parseInt(releaseOrder[a.id] ?? "9999", 10)
+				const bOrder = parseInt(releaseOrder[b.id] ?? "9999", 10)
 				return aOrder - bOrder
 			})
 		} else {
-			result = [...result].sort((a, b) => a.profile.name.localeCompare(b.profile.name))
+			result = [...result].sort((a, b) => a.profile.name.localeCompare(b.profile.name, locale))
 		}
 
 		// Reverse if needed
@@ -130,11 +144,11 @@ export default function HeroesClient({
 		}
 
 		return result
-	}, [heroes, searchQuery, fuse, selectedClass, selectedDamageType, sortType, reverseSort, releaseOrder])
+	}, [heroes, searchQuery, fuse, selectedClass, selectedDamageType, sortType, reverseSort, releaseOrder, locale])
 
 	// Persist only committed results for next/previous navigation.
 	useEffect(() => {
-		const slugs = filteredHeroes.map((hero) => hero.profile.name.toLowerCase().replace(SLUG_REGEXP, "-"))
+		const slugs = filteredHeroes.map((hero) => hero.id.toLowerCase().replace(SLUG_REGEXP, "-"))
 		sessionStorage.setItem("currentHeroList", JSON.stringify(slugs))
 	}, [filteredHeroes])
 
@@ -149,158 +163,80 @@ export default function HeroesClient({
 
 	return (
 		<div>
-			<div className="space-y-2 mb-4">
-				<div className="flex flex-row justify-between items-center">
-					<div className="flex flex-row gap-2 items-baseline">
-						<div className="text-xl font-bold">Heroes</div>
-						<div className="text-muted-foreground text-sm">
-							<span className="hidden sm:inline">Showing </span>
-							{filteredHeroes.length}
-							<span> heroes</span>
-						</div>
-					</div>
-					<div className="flex flex-row">
-						{/* Alphabetical Sort */}
-						<Button
-							variant={`${sortType === "alphabetical" ? "outline" : "ghost"}`}
-							onClick={() => {
-								if (sortType === "alphabetical") {
-									setReverseSort((prev) => !prev)
-								} else {
-									setSortType("alphabetical")
-									setReverseSort(false)
-								}
-							}}
-						>
-							{sortType === "alphabetical" && reverseSort && <ChevronDown />}
-							{sortType === "alphabetical" && !reverseSort && <ChevronUp />}
-							{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}
-						</Button>
-
-						{/* Release Sort */}
-						<Button
-							variant={`${sortType === "release" ? "outline" : "ghost"}`}
-							onClick={() => {
-								if (sortType === "release") {
-									setReverseSort((prev) => !prev)
-								} else {
-									setSortType("release")
-									setReverseSort(true)
-								}
-							}}
-						>
-							{sortType === "release" && reverseSort && <ChevronUp />}
-							{sortType === "release" && !reverseSort && <ChevronDown />}
-							Release
-						</Button>
-					</div>
-				</div>
-
-				<div className="flex flex-col items-center justify-between xl:flex-row">
-					<div className="flex flex-wrap items-center gap-2 w-full">
-						{/* Search Input */}
-						<div className="w-full sm:max-w-sm relative">
-							<span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-								<Search className="h-4 w-4" />
-							</span>
-							<Input
-								ref={searchInputRef}
-								type="text"
-								placeholder="Search for heroes..."
-								value={searchQuery}
-								onChange={(e) => setSearchQuery(e.target.value)}
-								className="w-full pl-10 pr-10"
-							/>
-							{searchQuery.length > 0 ? (
-								<Button
-									type="button"
-									variant="ghost"
-									size="icon-sm"
-									className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground"
-									aria-label="Clear search"
-									onClick={() => {
-										setSearchQuery("")
-										searchInputRef.current?.focus()
-									}}
-								>
-									<X className="h-4 w-4" aria-hidden="true" />
-								</Button>
-							) : null}
-						</div>
-
-						<div className="flex w-full sm:w-auto items-center gap-2">
-							<div className="min-w-0 flex-1 sm:flex-none">
-								{/* Class Filter */}
-								<SearchableFilter
-									label="Filter by class"
-									searchPlaceholder="Search classes..."
-									value={selectedClass}
-									onValueChange={setSelectedClass}
-									options={heroClasses.map((heroClass) => ({
-										value: heroClass.value,
-										label: heroClass.value === "all" ? "All classes" : heroClass.name,
-										icon: heroClass.value === "all" ? undefined : heroClass.icon,
-									}))}
-								/>
-							</div>
-
-							<div className="contents sm:flex sm:items-center sm:gap-2">
-								{/* Damage Type Filter */}
-								<div className="min-w-0 flex-1 sm:flex-none">
-									<SearchableFilter
-										label="Filter by damage type"
-										searchPlaceholder="Search damage types..."
-										value={selectedDamageType}
-										onValueChange={setSelectedDamageType}
-										options={damageTypes.map((type) => ({
-											value: type.value,
-											label: type.value === "all" ? "All damage types" : type.name,
-										}))}
-									/>
-								</div>
-
-								{/* View Mode Toggle (mobile) */}
-								<Button
-									variant="ghost"
-									size="icon"
-									onClick={() => setViewMode(viewMode === "splashart" ? "icon" : "splashart")}
-									title={
-										viewMode === "splashart" ? "Switch to icon view" : "Switch to splashart view"
-									}
-									className="inline-flex shrink-0 xl:hidden"
-								>
-									{viewMode === "splashart" ? (
-										<Grid2x2 className="h-4 w-4" />
-									) : (
-										<ImageIcon className="h-4 w-4" />
-									)}
-								</Button>
-							</div>
-						</div>
-					</div>
-
-					{/* View Mode Toggle */}
+			<ListPageHeader
+				title={<Text messageKey="uiHeroes" />}
+				count={filteredHeroes.length}
+				countLabel={<Text messageKey="uiHeroes_8172f9d4" />}
+				sortType={sortType}
+				reverseSort={reverseSort}
+				onSortChange={(nextSortType, nextReverseSort) => {
+					setSortType(nextSortType)
+					setReverseSort(nextReverseSort)
+				}}
+				actions={
 					<Button
+						type="button"
 						variant="ghost"
 						size="icon"
 						onClick={() => setViewMode(viewMode === "splashart" ? "icon" : "splashart")}
 						title={viewMode === "splashart" ? "Switch to icon view" : "Switch to splashart view"}
-						className="hidden xl:inline-flex"
+						aria-label={viewMode === "splashart" ? "Switch to icon view" : "Switch to splashart view"}
 					>
 						{viewMode === "splashart" ? <Grid2x2 className="h-4 w-4" /> : <ImageIcon className="h-4 w-4" />}
 					</Button>
+				}
+				search={
+					<ListPageSearch
+						value={searchQuery}
+						onValueChange={setSearchQuery}
+						placeholder="Search for heroes..."
+						aria-label="Search heroes"
+					/>
+				}
+			>
+				<div className="flex w-full sm:w-auto items-center gap-2">
+					<div className="min-w-0 flex-1 sm:flex-none">
+						{/* Class Filter */}
+						<SearchableFilter
+							label="Filter by class"
+							icon={<UsersRound className="size-4" aria-hidden="true" />}
+							searchPlaceholder="Search classes..."
+							value={selectedClass}
+							onValueChange={setSelectedClass}
+							options={heroClasses.map((heroClass) => ({
+								value: heroClass.value,
+								label: heroClass.value === "all" ? "All classes" : heroClass.name,
+								icon: heroClass.value === "all" ? undefined : heroClass.icon,
+							}))}
+						/>
+					</div>
+
+					<div className="min-w-0 flex-1 sm:flex-none">
+						{/* Damage Type Filter */}
+						<SearchableFilter
+							label="Filter by damage type"
+							icon={<Swords className="size-4" aria-hidden="true" />}
+							searchPlaceholder="Search damage types..."
+							value={selectedDamageType}
+							onValueChange={setSelectedDamageType}
+							options={damageTypes.map((type) => ({
+								value: type.value,
+								label: type.value === "all" ? "All damage types" : type.name,
+							}))}
+						/>
+					</div>
 				</div>
-			</div>
+			</ListPageHeader>
 
 			<div className="flex flex-row gap-2 sm:gap-4 flex-wrap w-full justify-center mt-4">
 				{filteredHeroes.map(
 					(hero) =>
 						hero.splashart && (
 							<HeroCard
-								key={hero.profile.name}
-								name={hero.profile.name}
+								key={hero.id}
+								name={hero.id}
 								splashart={hero.splashart}
-								reverseSA={saReverse.includes(hero.profile.name)}
+								reverseSA={saReverse.includes(hero.id)}
 								viewMode={viewMode}
 								// blurDataURLMap={blurDataURLMap}
 							/>
@@ -310,7 +246,9 @@ export default function HeroesClient({
 
 			{/* No results message */}
 			{filteredHeroes.length === 0 && (
-				<div className="text-center text-muted-foreground mt-8">No heroes found matching your criteria.</div>
+				<div className="text-center text-muted-foreground mt-8">
+					<Text messageKey="uiNoHeroesFoundMatchingYourCriteria" />
+				</div>
 			)}
 		</div>
 	)

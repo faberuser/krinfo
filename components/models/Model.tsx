@@ -15,6 +15,7 @@ import { loadFacialAnimation } from "@/components/models/facialAnimation"
 import { modelTextureOverrides, modelTransformOverrides, loadModelConfig } from "@/components/models/modelConfig"
 import { repairEyebrowTextures } from "./repairEyebrowTextures"
 import { advanceAnimationFrame, type SequencePlayback } from "@/components/models/advanceAnimationFrame"
+import { startModelAnimation } from "@/components/models/startModelAnimation"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
@@ -163,6 +164,8 @@ export function Model({
 
 				const modelWithAnimations = fbx as HeroModel
 				if (loadGeneration !== loadGenerationRef.current) return
+				const bossConfig = modelType === "bosses" && bossName ? await loadBossOffsetConfig(bossName) : null
+				if (loadGeneration !== loadGenerationRef.current) return
 				modelWithAnimations.animations = fbx.animations || []
 				if (modelType === "heroes" && modelFile.facialMetadataPath) {
 					try {
@@ -202,11 +205,16 @@ export function Model({
 				if (modelType === "heroes") {
 					bindHeroSkeletons(fbx, getHeroWeaponConfig(modelFile)?.recalculateBoneInverses)
 				} else {
+					if (bossConfig?.recalculateBoneInverses === false) fbx.updateMatrixWorld(true)
 					fbx.traverse((child) => {
 						if ((child as THREE.SkinnedMesh).isSkinnedMesh) {
 							const skinnedMesh = child as THREE.SkinnedMesh
 							if (skinnedMesh.skeleton) {
-								skinnedMesh.bind(skinnedMesh.skeleton)
+								// Preserve authored bind poses for rigs that cannot be rebound from their resting transforms.
+								skinnedMesh.bind(
+									skinnedMesh.skeleton,
+									bossConfig?.recalculateBoneInverses === false ? skinnedMesh.matrixWorld : undefined,
+								)
 							}
 						}
 					})
@@ -320,8 +328,7 @@ export function Model({
 
 					// Apply boss model offsets if available
 					if (modelType === "bosses" && bossName) {
-						const config = await loadBossOffsetConfig(bossName)
-						const modelOffset = config?.model
+						const modelOffset = bossConfig?.model
 
 						// Apply scale (default 1 for boss models, or from config)
 						const scaleValue = modelOffset?.scale || { x: 1, y: 1, z: 1 }
@@ -354,15 +361,14 @@ export function Model({
 						// Check if weapon has defaultPosition set (from getBossModels)
 						if (modelFile.defaultPosition) {
 							// Apply the same scale as the body model from offset.json
-							const config = await loadBossOffsetConfig(bossName)
-							const modelOffset = config?.model
+							const modelOffset = bossConfig?.model
 							const scaleValue = modelOffset?.scale || { x: 1, y: 1, z: 1 }
 
 							// Apply body's scale to weapon so they match
 							fbx.scale.set(scaleValue.x ?? 1, scaleValue.y ?? 1, scaleValue.z ?? 1)
 
 							// Apply weapon rotation correction from offset.json if provided
-							const weaponOffset = config?.weapon
+							const weaponOffset = bossConfig?.weapon
 							if (weaponOffset?.rotation) {
 								fbx.rotation.set(
 									weaponOffset.rotation.x ?? fbx.rotation.x,
@@ -378,8 +384,7 @@ export function Model({
 							fbx.visible = false
 
 							// Load config for weapons that need hand attachment
-							const config = await loadBossOffsetConfig(bossName)
-							const modelOffset = config?.model
+							const modelOffset = bossConfig?.model
 							const scaleValue = modelOffset?.scale || { x: 1, y: 1, z: 1 }
 							fbx.scale.set(scaleValue.x ?? 1, scaleValue.y ?? 1, scaleValue.z ?? 1)
 							// Keep at origin for hand attachment
@@ -575,6 +580,8 @@ export function Model({
 	useEffect(() => {
 		function playAnimation(animationName: string | null, continuous = false) {
 			const alreadyPlaying = playingAnimationRef.current === animationName && !continuous
+			const bodyName = modelFiles.find((file) => file.type === "body")?.name
+			const referenceAction = alreadyPlaying && bodyName ? activeActionsRef.current.get(bodyName) : undefined
 			sequencePlaybackRef.current = null
 			// Check if current animation has a next in sequence
 			const nextAnimation = animationName ? findNextInSequence(animationName, availableAnimations) : null
@@ -648,16 +655,6 @@ export function Model({
 					const clip = animations.find((c) => c.name === animationToPlay)
 					if (clip) {
 						const action = mixer.clipAction(clip)
-						// React echoes automatic selection changes back through this effect.
-						// Keep already-started actions at their current time on that render.
-						if (!alreadyPlaying || currentAction !== action) {
-							action.reset()
-							if (continuous) action.setEffectiveWeight(1)
-							else action.fadeIn(0.3)
-							action.play()
-							model.facial?.play(action)
-						}
-
 						// If part of a sequence, play once without looping
 						if (isPartOfSequence) {
 							action.setLoop(THREE.LoopOnce, 1)
@@ -665,6 +662,14 @@ export function Model({
 						} else {
 							action.setLoop(THREE.LoopRepeat, Infinity)
 							action.clampWhenFinished = false
+						}
+						// Preserve playing actions on React updates; newly loaded hair and
+						// weapons join the body's current pose instead of starting at zero.
+						if (!alreadyPlaying || currentAction !== action) {
+							startModelAnimation(action, referenceAction, !continuous)
+							model.facial?.play(action)
+							mixer.update(0)
+							model.facial?.update()
 						}
 						activeActionsRef.current.set(modelName, action)
 

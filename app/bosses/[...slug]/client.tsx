@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, BossLanguageScope } from "@/components/i18n/language-provider"
 import { useEffect, useState, useCallback, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -35,7 +36,15 @@ interface BossClientProps {
 	sortedBossSlugs: string[]
 }
 
-export default function BossClient({
+export default function BossClient(props: BossClientProps) {
+	return (
+		<BossLanguageScope boss={props.bossData}>
+			{(bossData) => <BossContent {...props} bossData={bossData} />}
+		</BossLanguageScope>
+	)
+}
+
+function BossContent({
 	bossData,
 	bossModels,
 	bossScenes = [],
@@ -62,7 +71,7 @@ export default function BossClient({
 			}
 
 			if (!slugs || slugs.length === 0) return
-			const currentSlug = profile.name.toLowerCase().replace(/\s+/g, "-")
+			const currentSlug = bossData.id.toLowerCase().replace(/\s+/g, "-")
 			const currentIndex = slugs.indexOf(currentSlug)
 			if (currentIndex === -1) return
 
@@ -74,7 +83,7 @@ export default function BossClient({
 				router.replace(`/bosses/${slugs[targetIndex]}${window.location.hash}`)
 			})
 		},
-		[sortedBossSlugs, profile.name, router],
+		[sortedBossSlugs, bossData.id, router],
 	)
 
 	useEffect(() => {
@@ -165,16 +174,22 @@ export default function BossClient({
 				{/* Boss Name & Info */}
 				<div className="grow min-w-0">
 					<div className="flex flex-col">
-						<h1 className="text-2xl md:text-3xl font-bold truncate">{profile.name}</h1>
-						<span className="text-sm md:text-base text-muted-foreground">{profile.title}</span>
+						<h1 className="text-2xl md:text-3xl font-bold truncate">
+							<Text>{profile.name}</Text>
+						</h1>
+						<span className="text-sm md:text-base text-muted-foreground">
+							<Text>{profile.title}</Text>
+						</span>
 					</div>
 					<div className="flex flex-wrap gap-2 mt-2">
 						{bossData.profile.type.map((type) => (
 							<Badge key={type} variant="default">
-								{type}
+								<Text>{type}</Text>
 							</Badge>
 						))}
-						<Badge variant="secondary">{profile.race}</Badge>
+						<Badge variant="secondary">
+							<Text>{profile.race}</Text>
+						</Badge>
 						<Badge
 							variant="default"
 							className={
@@ -185,7 +200,7 @@ export default function BossClient({
 										: "bg-yellow-300"
 							}
 						>
-							{profile.damage_type}
+							<Text>{profile.damage_type}</Text>
 						</Badge>
 					</div>
 				</div>
@@ -194,9 +209,13 @@ export default function BossClient({
 			{/* Tabs Section */}
 			<Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mt-2">
 				<TabsList className="w-full overflow-x-auto overflow-y-hidden flex-nowrap justify-start">
-					<TabsTrigger value="profile_skills">Profile & Skills</TabsTrigger>
+					<TabsTrigger value="profile_skills">
+						<Text messageKey="uiProfileSkills" />
+					</TabsTrigger>
 					{enableModelsVoices && bossModels && Object.keys(bossModels).length > 0 && (
-						<TabsTrigger value="models">Models</TabsTrigger>
+						<TabsTrigger value="models">
+							<Text messageKey="uiModels" />
+						</TabsTrigger>
 					)}
 				</TabsList>
 
@@ -205,19 +224,27 @@ export default function BossClient({
 						<div className="grid md:grid-cols-2 gap-6">
 							<Card className="gap-2">
 								<CardHeader>
-									<CardTitle>Characteristics</CardTitle>
+									<CardTitle>
+										<Text messageKey="uiCharacteristics" />
+									</CardTitle>
 								</CardHeader>
 								<CardContent>
-									<div className="text-sm">{profile.characteristics}</div>
+									<div className="text-sm">
+										<Text>{profile.characteristics}</Text>
+									</div>
 								</CardContent>
 							</Card>
 
 							<Card className="gap-2">
 								<CardHeader>
-									<CardTitle>Recommended Heroes</CardTitle>
+									<CardTitle>
+										<Text messageKey="uiRecommendedHeroes" />
+									</CardTitle>
 								</CardHeader>
 								<CardContent>
-									<div className="text-sm">{profile.recommended_heroes}</div>
+									<div className="text-sm">
+										<Text>{profile.recommended_heroes}</Text>
+									</div>
 								</CardContent>
 							</Card>
 						</div>
@@ -236,7 +263,7 @@ export default function BossClient({
 															: "text-yellow-400"
 												}`}
 											>
-												{skill.name}
+												<Text>{skill.name}</Text>
 											</CardTitle>
 											<div className="flex gap-2">
 												{skill.cost && (
@@ -244,7 +271,8 @@ export default function BossClient({
 														variant="default"
 														className="bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-900"
 													>
-														Cost: {skill.cost}
+														<Text messageKey="uiCost_97c94eff" suffix=" " />
+														<Text>{skill.cost}</Text>
 													</Badge>
 												)}
 												{skill.cooldown && (
@@ -252,16 +280,21 @@ export default function BossClient({
 														variant="default"
 														className="bg-orange-100 text-orange-800 dark:bg-orange-200 dark:text-orange-900"
 													>
-														Cooldown: {skill.cooldown}s
+														<Text messageKey="uiCooldown_48ced960" suffix=" " />
+														<Text>{skill.cooldown}</Text>s
 													</Badge>
 												)}
 											</div>
 										</div>
-										<Badge variant="secondary">#{skillId}</Badge>
+										<Badge variant="secondary">
+											#<Text>{skillId}</Text>
+										</Badge>
 									</div>
 								</CardHeader>
 								<CardContent>
-									<div className="text-sm">{skill.description}</div>
+									<div className="text-sm">
+										<Text>{skill.description}</Text>
+									</div>
 								</CardContent>
 							</Card>
 						))}
@@ -278,7 +311,7 @@ export default function BossClient({
 								key={profile.name}
 								bossModels={bossModels}
 								bossScenes={bossScenes}
-								bossName={profile.name}
+								bossName={bossData.id}
 							/>
 						</DataHeavyContent>
 					</TabsContent>

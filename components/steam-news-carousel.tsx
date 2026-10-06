@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, LocalizedDate } from "@/components/i18n/language-provider"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Card, CardDescription, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import Image from "@/components/next-image"
@@ -24,7 +25,9 @@ export default function SteamRSS({ news }: SteamRSSProps) {
 	if (news.length === 0) {
 		return (
 			<div className="text-center py-8">
-				<div className="text-muted-foreground">No news available</div>
+				<div className="text-muted-foreground">
+					<Text messageKey="uiNoNewsAvailable" />
+				</div>
 			</div>
 		)
 	}
@@ -40,15 +43,23 @@ export default function SteamRSS({ news }: SteamRSSProps) {
 						return (
 							<CarouselItem key={index} className="flex md:basis-1/2 xl:basis-1/3">
 								<Card
-									className="h-full w-full gap-2 overflow-hidden cursor-pointer"
+									className="h-full w-full gap-4 overflow-hidden cursor-pointer"
 									onClick={() => handleNewsClick(item)}
 								>
-									<CardHeader className="h-24 shrink-0">
-										<CardTitle className="flex items-start justify-between gap-2">
-											<span className="line-clamp-2">{item.title}</span>
-											{item.isNew ? <Badge className="shrink-0 text-xs">New</Badge> : null}
+									<CardHeader className="shrink-0 grid-rows-[1fr_auto]">
+										<CardTitle className="h-10 flex items-start justify-between gap-2">
+											<span className="line-clamp-2">
+												<Text>{item.title}</Text>
+											</span>
+											{item.isNew ? (
+												<Badge className="shrink-0 text-xs">
+													<Text messageKey="uiNew" />
+												</Badge>
+											) : null}
 										</CardTitle>
-										<CardDescription>{item.formattedDate}</CardDescription>
+										<CardDescription>
+											<LocalizedDate date={item.date} />
+										</CardDescription>
 									</CardHeader>
 									<CardContent className="flex flex-col gap-4 overflow-hidden">
 										<div className="flex aspect-video w-full shrink-0 items-center justify-center overflow-hidden rounded-md bg-muted/20">
@@ -63,7 +74,9 @@ export default function SteamRSS({ news }: SteamRSSProps) {
 												/>
 											) : null}
 										</div>
-										<div className="line-clamp-5 text-sm text-muted-foreground">{previewText}</div>
+										<div className="line-clamp-5 text-sm text-muted-foreground">
+											<Text>{previewText}</Text>
+										</div>
 									</CardContent>
 								</Card>
 							</CarouselItem>
@@ -85,4 +98,3 @@ export default function SteamRSS({ news }: SteamRSSProps) {
 		</>
 	)
 }
-

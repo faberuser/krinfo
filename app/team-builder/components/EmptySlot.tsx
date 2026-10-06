@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Plus } from "lucide-react"
@@ -34,8 +35,13 @@ export function EmptySlot({ index, onOpenDialog, isDragOver, onDragOver, onDragL
 				>
 					<Plus className="h-8 w-8" />
 				</Button>
-				<p className="text-sm text-muted-foreground mt-3">Add Hero</p>
-				<p className="text-xs text-muted-foreground">Slot {index + 1}</p>
+				<p className="text-sm text-muted-foreground mt-3">
+					<Text messageKey="uiAddHero" />
+				</p>
+				<p className="text-xs text-muted-foreground">
+					<Text messageKey="uiSlot" suffix=" " />
+					{index + 1}
+				</p>
 			</CardContent>
 		</Card>
 	)

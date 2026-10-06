@@ -1,5 +1,7 @@
 "use client"
 
+import { Text, useTranslation } from "@/components/i18n/language-provider"
+
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
 import { SearchIcon } from "lucide-react"
@@ -45,8 +47,8 @@ function CommandDialog({
   return (
     <Dialog {...props}>
       <DialogHeader className="sr-only">
-        <DialogTitle>{title}</DialogTitle>
-        <DialogDescription>{description}</DialogDescription>
+        <DialogTitle><Text>{title}</Text></DialogTitle>
+        <DialogDescription><Text>{description}</Text></DialogDescription>
       </DialogHeader>
       <DialogContent
         className={cn("overflow-hidden p-0", className)}
@@ -64,6 +66,7 @@ function CommandInput({
   className,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
+  const { t } = useTranslation()
   return (
     <div
       data-slot="command-input-wrapper"
@@ -77,6 +80,8 @@ function CommandInput({
           className
         )}
         {...props}
+        placeholder={props.placeholder ? t(props.placeholder) : undefined}
+        aria-label={props["aria-label"] ? t(props["aria-label"]) : undefined}
       />
     </div>
   )

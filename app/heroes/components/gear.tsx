@@ -1,3 +1,5 @@
+
+import { Text } from "@/components/i18n/language-provider"
 import { HeroData } from "@/model/Hero"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "@/components/next-image"
@@ -16,7 +18,7 @@ export default function Gear({ heroData }: GearProps) {
 			{heroData.uw && (
 				<div>
 					<div className="flex items-center gap-2 mb-2">
-						<div className="text-lg font-bold">Unique Weapon</div>
+						<div className="text-lg font-bold"><Text messageKey="uiUniqueWeapon" /></div>
 					</div>
 
 					<Card>
@@ -50,24 +52,25 @@ export default function Gear({ heroData }: GearProps) {
 												heroData.profile.class,
 											)}`}
 										>
-											{heroData.uw.name}
+											<Text fieldKey={`heroes/${heroData.id}/uw/name`}>{heroData.uw.name}</Text>
 										</div>
 									</div>
 
 									<GearEnhancement
-										key={heroData.uw.name}
+										key={`${heroData.id}/uw`}
 										name={heroData.uw.name}
 										description={heroData.uw.description}
+										descriptionByStar={heroData.uw.descriptionByStar}
+										fieldKey={`heroes/${heroData.id}/uw/description`}
 										values={heroData.uw.value}
 									/>
 
 									{/* UW Story */}
 									<details className="cursor-pointer">
 										<summary className="font-medium text-sm text-muted-foreground hover:text-gray-800 dark:hover:text-gray-200">
-											Weapon Story
-										</summary>
+											<Text messageKey="uiWeaponStory" /></summary>
 										<div className="mt-2 p-3 bg-gray-50 rounded text-sm dark:bg-gray-900/10">
-											{parseColoredText(heroData.uw.story)}
+											{parseColoredText(heroData.uw.story, `heroes/${heroData.id}/uw/story`)}
 										</div>
 									</details>
 								</div>
@@ -81,7 +84,7 @@ export default function Gear({ heroData }: GearProps) {
 			{heroData.uts && (
 				<>
 					<div className="flex items-center gap-2 mb-2">
-						<div className="text-lg font-bold">Unique Treasures</div>
+						<div className="text-lg font-bold"><Text messageKey="uiUniqueTreasures" /></div>
 					</div>
 
 					<div className="grid gap-4">
@@ -117,24 +120,25 @@ export default function Gear({ heroData }: GearProps) {
 														heroData.profile.class,
 													)}`}
 												>
-													Skill {utKey}: {ut.name}
+													<Text messageKey="uiSkill" suffix=" " /><Text>{utKey}</Text>: <Text fieldKey={`heroes/${heroData.id}/uts/${utKey}/name`}>{ut.name}</Text>
 												</div>
 											</div>
 
 											<GearEnhancement
-												key={ut.name}
+												key={`${heroData.id}/uts/${utKey}`}
 												name={ut.name}
 												description={ut.description}
+												descriptionByStar={ut.descriptionByStar}
+										fieldKey={`heroes/${heroData.id}/uts/${utKey}/description`}
 												values={ut.value}
 											/>
 
 											{/* UT Story */}
 											<details className="cursor-pointer">
 												<summary className="font-medium text-sm text-muted-foreground hover:text-gray-800 dark:hover:text-gray-200">
-													Treasure Story
-												</summary>
+													<Text messageKey="uiTreasureStory" /></summary>
 												<div className="mt-2 p-3 bg-gray-50 rounded text-sm dark:bg-gray-900/10">
-													{parseColoredText(ut.story)}
+													{parseColoredText(ut.story, `heroes/${heroData.id}/uts/${utKey}/story`)}
 												</div>
 											</details>
 										</div>
@@ -150,7 +154,7 @@ export default function Gear({ heroData }: GearProps) {
 			{heroData.sw && (
 				<div>
 					<div className="flex items-center gap-2 mb-2">
-						<div className="text-lg font-bold">Soul Weapon</div>
+						<div className="text-lg font-bold"><Text messageKey="uiSoulWeapon" /></div>
 					</div>
 
 					<Card>
@@ -185,7 +189,7 @@ export default function Gear({ heroData }: GearProps) {
 													heroData.profile.class,
 												)}`}
 											>
-												{heroData.uw.name}
+												<Text fieldKey={`heroes/${heroData.id}/uw/name`}>{heroData.uw.name}</Text>
 											</div>
 										</div>
 
@@ -195,34 +199,33 @@ export default function Gear({ heroData }: GearProps) {
 												variant="default"
 												className="bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-900"
 											>
-												Uses: {heroData.sw.uses}
+												<Text messageKey="uiUses_8317ac96" suffix=" " /><Text>{heroData.sw.uses}</Text>
 											</Badge>
 											<Badge
 												variant="default"
 												className="bg-orange-100 text-orange-800 dark:bg-orange-200 dark:text-orange-900"
 											>
-												Cooldown: {heroData.sw.cooldown}s
+												<Text messageKey="uiCooldown_48ced960" suffix=" " /><Text>{heroData.sw.cooldown}</Text>s
 											</Badge>
 										</div>
 									</div>
 
 									<div className="space-y-3">
 										<div>
-											<div className="font-medium">Requirement</div>
-											<div>{parseColoredText(heroData.sw.requirement)}</div>
+											<div className="font-medium"><Text messageKey="uiRequirement" /></div>
+											<div>{parseColoredText(heroData.sw.requirement, `heroes/${heroData.id}/sw/requirement`)}</div>
 										</div>
 
 										<div>
-											<div className="font-medium ">Effect</div>
-											<div>{parseColoredText(heroData.sw.description)}</div>
+											<div className="font-medium "><Text messageKey="uiEffect" /></div>
+											<div>{parseColoredText(heroData.sw.description, `heroes/${heroData.id}/sw/description`)}</div>
 										</div>
 
 										{/* SW Advancement */}
 										{heroData.sw.advancement && (
 											<div>
 												<div className="font-medium text-sm text-muted-foreground mb-2">
-													Advancements
-												</div>
+													<Text messageKey="uiAdvancements" /></div>
 												<div className="space-y-2">
 													{Object.entries(heroData.sw.advancement).map(([level, effect]) => (
 														<div
@@ -236,9 +239,9 @@ export default function Gear({ heroData }: GearProps) {
 																	heroData.profile.class,
 																)}`}
 															>
-																Stage {level}
+																<Text messageKey="uiStage" suffix=" " /><Text>{level}</Text>
 															</div>
-															<div>{parseColoredText(effect)}</div>
+															<div>{parseColoredText(effect, `heroes/${heroData.id}/sw/advancement/${level}`)}</div>
 														</div>
 													))}
 												</div>
@@ -248,10 +251,9 @@ export default function Gear({ heroData }: GearProps) {
 										{/* SW Story */}
 										<details className="cursor-pointer">
 											<summary className="font-medium text-sm text-muted-foreground hover:text-gray-800 dark:hover:text-gray-200">
-												Soul Weapon Story
-											</summary>
+												<Text messageKey="uiSoulWeaponStory" /></summary>
 											<div className="mt-2 p-3 bg-gray-50 rounded text-sm dark:bg-gray-900/10">
-												{parseColoredText(heroData.sw.story)}
+												{parseColoredText(heroData.sw.story, `heroes/${heroData.id}/sw/story`)}
 											</div>
 										</details>
 									</div>
@@ -263,7 +265,7 @@ export default function Gear({ heroData }: GearProps) {
 			)}
 
 			{!heroData.uw && !heroData.uts && !heroData.sw && (
-				<div className="text-center text-gray-500 py-8">No gear data available</div>
+				<div className="text-center text-gray-500 py-8"><Text messageKey="uiNoGearDataAvailable" /></div>
 			)}
 		</div>
 	)

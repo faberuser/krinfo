@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { HeroData } from "@/model/Hero"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -68,7 +69,7 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 
 	const formatVoiceName = (name: string) => {
 		// Remove hero name prefix and file extension
-		const heroName = heroData.profile.name
+		const heroName = heroData.id
 		let displayName = name.replace(`${heroName}-`, "").replace(/\.(wav|mp3|ogg)$/i, "")
 
 		// Format the voice type
@@ -85,7 +86,9 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 	const renderVoiceList = (voices: VoiceFile[]) => {
 		if (voices.length === 0) {
 			return (
-				<div className="text-center py-8 text-muted-foreground">No voice files available for this language</div>
+				<div className="text-center py-8 text-muted-foreground">
+					<Text messageKey="uiNoVoiceFilesAvailableForThisLanguage" />
+				</div>
 			)
 		}
 
@@ -111,7 +114,7 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 									<div className="flex items-center gap-2 min-w-0">
 										<Volume2 className="h-4 w-4 text-muted-foreground shrink-0" />
 										<span className="text-sm font-medium truncate">
-											{formatVoiceName(voice.name)}
+											<Text>{formatVoiceName(voice.name)}</Text>
 										</span>
 									</div>
 								</div>
@@ -129,8 +132,12 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 		return (
 			<Card>
 				<CardHeader>
-					<CardTitle>Voice Lines</CardTitle>
-					<CardDescription>Hero voice lines are not available</CardDescription>
+					<CardTitle>
+						<Text messageKey="uiVoiceLines" />
+					</CardTitle>
+					<CardDescription>
+						<Text messageKey="uiHeroVoiceLinesAreNotAvailable" />
+					</CardDescription>
 				</CardHeader>
 			</Card>
 		)
@@ -140,10 +147,11 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 		<Card>
 			<CardHeader>
 				<CardTitle>
-					Voice Lines{" "}
+					<Text messageKey="uiVoiceLines" />
+					<Text> </Text>
 					{voiceFiles[currentLanguage].length > 0 && (
 						<span>
-							({voiceFiles[currentLanguage].length} {currentLanguage.toUpperCase()})
+							({voiceFiles[currentLanguage].length} <Text>{currentLanguage.toUpperCase()}</Text>)
 						</span>
 					)}
 				</CardTitle>
@@ -154,9 +162,21 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 					onValueChange={(value) => setCurrentLanguage(value as "en" | "jp" | "kr")}
 				>
 					<TabsList className="w-full mb-4">
-						{voiceFiles.en.length > 0 && <TabsTrigger value="en">English</TabsTrigger>}
-						{voiceFiles.jp.length > 0 && <TabsTrigger value="jp">Japanese</TabsTrigger>}
-						{voiceFiles.kr.length > 0 && <TabsTrigger value="kr">Korean</TabsTrigger>}
+						{voiceFiles.en.length > 0 && (
+							<TabsTrigger value="en">
+								<Text messageKey="uiEnglish" />
+							</TabsTrigger>
+						)}
+						{voiceFiles.jp.length > 0 && (
+							<TabsTrigger value="jp">
+								<Text messageKey="uiJapanese" />
+							</TabsTrigger>
+						)}
+						{voiceFiles.kr.length > 0 && (
+							<TabsTrigger value="kr">
+								<Text messageKey="uiKorean" />
+							</TabsTrigger>
+						)}
 					</TabsList>
 
 					<TabsContent value="en" className="mt-0 max-h-180 overflow-y-auto custom-scrollbar pr-1">

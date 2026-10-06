@@ -79,6 +79,7 @@ export default function HeroPageWrapper({
 			availableScenes={availableScenes}
 			enableModelsVoices={enableModelsVoices}
 			classPerks={classPerks}
+			classPerksMap={classPerksMap}
 			sortedHeroSlugs={sortedHeroSlugs}
 		/>
 	)

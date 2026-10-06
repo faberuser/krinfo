@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface ModelSelectorProps {
@@ -29,7 +30,9 @@ export function ModelSelector({
 		<Card className="gap-4">
 			<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 				<CardTitle>
-					Models ({modelOptions.length} variant{modelOptions.length !== 1 ? "s" : ""})
+					<Text messageKey="uiModels_e27b9664" />
+					{modelOptions.length} <Text messageKey="uiVariant_cb7bf562" />
+					<Text>{modelOptions.length !== 1 ? "s" : ""}</Text>)
 				</CardTitle>
 			</CardHeader>
 			<CardContent className="overflow-y-auto custom-scrollbar">
@@ -56,12 +59,16 @@ export function ModelSelector({
 								} ${isLoadingModels ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
 								onClick={() => !isLoadingModels && setSelectedModel(modelVariant)}
 							>
-								<div className="font-medium">{formatName(modelVariant)}</div>
+								<div className="font-medium">
+									<Text>{formatName(modelVariant)}</Text>
+								</div>
 								<div className="text-xs text-muted-foreground mt-1">
-									{models[modelVariant]
-										.map((m) => m.type)
-										.sort((a, b) => a.localeCompare(b))
-										.join(", ")}
+									<Text>
+										{models[modelVariant]
+											.map((m) => m.type)
+											.sort((a, b) => a.localeCompare(b))
+											.join(", ")}
+									</Text>
 								</div>
 							</div>
 						))}

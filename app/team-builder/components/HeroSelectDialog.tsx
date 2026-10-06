@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { HeroData } from "@/model/Hero"
 import Image from "@/components/next-image"
 import { Button } from "@/components/ui/button"
@@ -74,13 +75,18 @@ export function HeroSelectDialog({
 			<DialogContent className="sm:max-w-6xl max-h-[85vh] overflow-hidden flex flex-col bg-background/70 backdrop-blur-sm">
 				<DialogHeader>
 					<DialogTitle className="flex items-baseline gap-4">
-						<span>Select Heroes</span>
+						<span>
+							<Text messageKey="uiSelectHeroes" />
+						</span>
 						<span className="text-sm font-normal text-muted-foreground">
-							{availableSlots} {availableSlots === 1 ? "slot" : "slots"} available
+							{availableSlots} <Text>{availableSlots === 1 ? "slot" : "slots"}</Text>{" "}
+							<Text messageKey="uiAvailable_ddd9818a" />
 						</span>
 					</DialogTitle>
 				</DialogHeader>
-				<DialogDescription className="sr-only">Select a hero from the list below.</DialogDescription>
+				<DialogDescription className="sr-only">
+					<Text messageKey="uiSelectAHeroFromTheListBelow" />
+				</DialogDescription>
 
 				{/* Filters and Search */}
 				<div className="space-y-3">
@@ -113,7 +119,7 @@ export function HeroSelectDialog({
 							>
 								{sortType === "alphabetical" && reverseSort && <ChevronDown className="h-4 w-4" />}
 								{sortType === "alphabetical" && !reverseSort && <ChevronUp className="h-4 w-4" />}
-								{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}
+								<Text>{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}</Text>
 							</Button>
 							<Button
 								variant={sortType === "release" ? "outline" : "ghost"}
@@ -129,7 +135,7 @@ export function HeroSelectDialog({
 							>
 								{sortType === "release" && reverseSort && <ChevronUp className="h-4 w-4" />}
 								{sortType === "release" && !reverseSort && <ChevronDown className="h-4 w-4" />}
-								Release
+								<Text messageKey="uiRelease" />
 							</Button>
 						</div>
 					</div>
@@ -158,7 +164,9 @@ export function HeroSelectDialog({
 											className="object-cover"
 										/>
 									) : (
-										<span className="text-xs font-medium">All</span>
+										<span className="text-xs font-medium">
+											<Text messageKey="uiAll" />
+										</span>
 									)}
 								</label>
 							))}
@@ -177,14 +185,16 @@ export function HeroSelectDialog({
 									className="flex items-center space-x-1 md:space-x-2 cursor-pointer"
 								>
 									<RadioGroupItem value={damageType.value} id={`dialog-dmg-${damageType.value}`} />
-									<span className="text-xs">{damageType.name}</span>
+									<span className="text-xs">
+										<Text>{damageType.name}</Text>
+									</span>
 								</label>
 							))}
 						</RadioGroup>
 
 						{/* Results count */}
 						<div className="hidden md:block text-sm text-muted-foreground ml-auto">
-							{filteredHeroes.length} heroes
+							{filteredHeroes.length} <Text messageKey="uiHeroes_8172f9d4" />
 						</div>
 					</div>
 				</div>
@@ -194,10 +204,10 @@ export function HeroSelectDialog({
 					<div className="flex flex-wrap justify-center gap-3 px-2 py-1">
 						{filteredHeroes.map((hero) => {
 							if (!hero.profile.thumbnail) return null
-							const alreadyInTeam = team.some((m) => m.hero?.profile.name === hero.profile.name)
+							const alreadyInTeam = team.some((m) => m.hero?.id === hero.id)
 							return (
 								<button
-									key={hero.profile.name}
+									key={hero.id}
 									onClick={() => onSelectHero(hero)}
 									disabled={!alreadyInTeam && allSlotsFilled}
 									className={cn(
@@ -220,7 +230,7 @@ export function HeroSelectDialog({
 									/>
 									<div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-1.5">
 										<div className="text-xs text-white truncate text-center font-medium">
-											{hero.profile.name}
+											<Text>{hero.profile.name}</Text>
 										</div>
 									</div>
 									{alreadyInTeam && (

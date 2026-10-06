@@ -1,3 +1,7 @@
+import { connection } from "next/server"
+import { getSteamProxyOptions } from "@/lib/steam-proxy"
+import { proxySteamImages } from "@/lib/steam-images"
+
 export interface NewsItem {
 	title: string
 	url: string
@@ -137,6 +141,7 @@ async function fetchSteam(url: string, accept: string): Promise<Response> {
 
 	try {
 		const response = await fetch(url, {
+			...getSteamProxyOptions(),
 			headers: {
 				Accept: accept,
 				"User-Agent": "krinfo/1.0 (Steam news reader)",
@@ -163,6 +168,9 @@ async function fetchApi(): Promise<NewsItem[]> {
 }
 
 export async function getSteamNews(limit?: number): Promise<NewsItem[]> {
+	// Docker supplies the proxy at runtime. Static exports fetch during the build.
+	if (process.env.NEXT_STATIC_EXPORT !== "true") await connection()
+
 	try {
 		let items: NewsItem[]
 
@@ -173,7 +181,13 @@ export async function getSteamNews(limit?: number): Promise<NewsItem[]> {
 			items = await fetchApi()
 		}
 
-		return limit === undefined ? items : items.slice(0, Math.max(0, limit))
+		const selected = limit === undefined ? items : items.slice(0, Math.max(0, limit))
+		// Static hosting has no server image endpoint; retain CDN URLs in exports.
+		if (process.env.NEXT_STATIC_EXPORT === "true") return selected
+		return selected.map((item) => ({
+			...item,
+			contents: proxySteamImages(item.contents, process.env.NEXT_PUBLIC_BASE_PATH || ""),
+		}))
 	} catch (error) {
 		console.error("Error fetching Steam news from every source:", error)
 		return []

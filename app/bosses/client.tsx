@@ -1,16 +1,16 @@
 "use client"
 
-import { useState, useEffect, useMemo, useRef, startTransition } from "react"
+import { Text, useTranslation, useSharedRecords } from "@/components/i18n/language-provider"
+import { useState, useEffect, useMemo, startTransition } from "react"
 import Fuse from "fuse.js"
+import { ShieldHalf } from "lucide-react"
+import { ListPageHeader, ListPageSearch, type ListSortType } from "@/components/list-page-header"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
 import Image from "@/components/next-image"
 import { BossData } from "@/model/Boss"
-import { Button } from "@/components/ui/button"
-import { Search, X, ChevronDown, ChevronUp } from "lucide-react"
 import { SearchableFilter } from "@/components/searchable-filter"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -20,9 +20,14 @@ interface BossesClientProps {
 	releaseOrder: Record<string, string>
 }
 
-export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: BossesClientProps) {
+export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releaseOrder }: BossesClientProps) {
+	const { locale } = useTranslation()
+	const shared = useSharedRecords()
+	const bosses = useMemo(
+		() => sourceBosses.map((boss) => ({ ...boss, profile: shared.bosses?.[boss.id] ?? boss.profile })),
+		[sourceBosses, shared.bosses],
+	)
 	const [searchQuery, setSearchQuery] = useState("")
-	const searchInputRef = useRef<HTMLInputElement>(null)
 	const [selectedType, setSelectedType] = useState("all")
 	const [loadingSlug, setLoadingSlug] = useState<string | null>(null)
 	const pathname = usePathname()
@@ -33,7 +38,7 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 	}, [pathname])
 
 	// Lazy state initializers: read from localStorage only once
-	const [sortType, setSortType] = useState<"alphabetical" | "release">(() => {
+	const [sortType, setSortType] = useState<ListSortType>(() => {
 		if (typeof window === "undefined") return "release"
 		const stored = localStorage.getItem("bossesSortType")
 		return stored === "alphabetical" || stored === "release" ? stored : "release"
@@ -62,7 +67,7 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 	// Configure Fuse.js for fuzzy search
 	const fuse = useMemo(() => {
 		return new Fuse(bosses, {
-			keys: ["profile.name", "profile.title", "aliases"],
+			keys: ["profile.name", "id", "profile.title", "aliases"],
 			threshold: 0.3,
 			includeScore: true,
 		})
@@ -103,12 +108,12 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 		// Sort by selected sort type
 		if (sortType === "release") {
 			result = [...result].sort((a, b) => {
-				const aOrder = parseInt(releaseOrder[a.profile.name] ?? "9999", 10)
-				const bOrder = parseInt(releaseOrder[b.profile.name] ?? "9999", 10)
+				const aOrder = parseInt(releaseOrder[a.id] ?? "9999", 10)
+				const bOrder = parseInt(releaseOrder[b.id] ?? "9999", 10)
 				return aOrder - bOrder
 			})
 		} else {
-			result = [...result].sort((a, b) => a.profile.name.localeCompare(b.profile.name))
+			result = [...result].sort((a, b) => a.profile.name.localeCompare(b.profile.name, locale))
 		}
 
 		// Reverse if needed
@@ -118,12 +123,12 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 
 		// Save the sorted/filtered list of boss slugs to sessionStorage for next/prev navigation
 		if (typeof window !== "undefined") {
-			const slugs = result.map((b) => b.profile.name.toLowerCase().replace(/\s+/g, "-"))
+			const slugs = result.map((b) => b.id.toLowerCase().replace(/\s+/g, "-"))
 			sessionStorage.setItem("currentBossList", JSON.stringify(slugs))
 		}
 
 		return result
-	}, [bosses, searchQuery, fuse, selectedType, sortType, reverseSort, releaseOrder])
+	}, [bosses, searchQuery, fuse, selectedType, sortType, reverseSort, releaseOrder, locale])
 
 	// Show loading spinner until hydrated
 	if (!mounted) {
@@ -141,13 +146,19 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 				<div className="space-y-2 mb-4">
 					<div className="flex flex-row justify-between items-center">
 						<div className="flex flex-row gap-2 items-baseline">
-							<div className="text-xl font-bold">Bosses</div>
+							<div className="text-xl font-bold">
+								<Text messageKey="uiBosses" />
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className="text-center py-12 text-muted-foreground">
-					<p className="text-lg">No boss data available for this data version.</p>
-					<p className="text-sm mt-2">Try switching to another version.</p>
+					<p className="text-lg">
+						<Text messageKey="uiNoBossDataAvailableForThisDataVersion" />
+					</p>
+					<p className="text-sm mt-2">
+						<Text messageKey="uiTrySwitchingToAnotherVersion" />
+					</p>
 				</div>
 			</div>
 		)
@@ -155,106 +166,47 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 
 	return (
 		<div>
-			<div className="space-y-2 mb-4">
-				<div className="flex flex-row justify-between items-center">
-					<div className="flex flex-row gap-2 items-baseline">
-						<div className="text-xl font-bold">Bosses</div>
-						<div className="text-muted-foreground text-sm">
-							<span className="hidden sm:inline">Showing </span>
-							{filteredBosses.length}
-							<span> bosses</span>
-						</div>
-					</div>
-					<div className="flex flex-row">
-						{/* Alphabetical Sort */}
-						<Button
-							variant={`${sortType === "alphabetical" ? "outline" : "ghost"}`}
-							onClick={() => {
-								if (sortType === "alphabetical") {
-									setReverseSort((prev) => !prev)
-								} else {
-									setSortType("alphabetical")
-									setReverseSort(false)
-								}
-							}}
-						>
-							{sortType === "alphabetical" && reverseSort && <ChevronDown />}
-							{sortType === "alphabetical" && !reverseSort && <ChevronUp />}
-							{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}
-						</Button>
-
-						{/* Release Sort */}
-						<Button
-							variant={`${sortType === "release" ? "outline" : "ghost"}`}
-							onClick={() => {
-								if (sortType === "release") {
-									setReverseSort((prev) => !prev)
-								} else {
-									setSortType("release")
-									setReverseSort(true)
-								}
-							}}
-						>
-							{sortType === "release" && reverseSort && <ChevronUp />}
-							{sortType === "release" && !reverseSort && <ChevronDown />}
-							Release
-						</Button>
-					</div>
+			<ListPageHeader
+				title={<Text messageKey="uiBosses" />}
+				count={filteredBosses.length}
+				countLabel={<Text messageKey="uiBosses_091dc8ec" />}
+				sortType={sortType}
+				reverseSort={reverseSort}
+				onSortChange={(nextSortType, nextReverseSort) => {
+					setSortType(nextSortType)
+					setReverseSort(nextReverseSort)
+				}}
+				search={
+					<ListPageSearch
+						value={searchQuery}
+						onValueChange={setSearchQuery}
+						placeholder="Search for bosses..."
+						aria-label="Search bosses"
+					/>
+				}
+			>
+				{/* Boss Type Filter */}
+				<div className="w-full sm:w-auto">
+					<SearchableFilter
+						label="Filter by boss type"
+						icon={<ShieldHalf className="size-4" aria-hidden="true" />}
+						searchPlaceholder="Search boss types..."
+						value={selectedType}
+						onValueChange={setSelectedType}
+						options={[
+							{ value: "all", label: "All boss types" },
+							...bossTypes.map((type) => ({ value: type, label: bossTypeLabels[type] ?? type })),
+						]}
+					/>
 				</div>
-
-				<div className="flex flex-col items-start sm:flex-row sm:items-center gap-2">
-					{/* Search Input */}
-					<div className="w-full sm:max-w-sm relative">
-						<span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-							<Search className="h-4 w-4" />
-						</span>
-						<Input
-							ref={searchInputRef}
-							type="text"
-							placeholder="Search for bosses..."
-							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
-							className="w-full pl-10 pr-10"
-						/>
-						{searchQuery.length > 0 ? (
-							<Button
-								type="button"
-								variant="ghost"
-								size="icon-sm"
-								className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground"
-								aria-label="Clear search"
-								onClick={() => {
-									setSearchQuery("")
-									searchInputRef.current?.focus()
-								}}
-							>
-								<X className="h-4 w-4" aria-hidden="true" />
-							</Button>
-						) : null}
-					</div>
-
-					{/* Boss Type Filter */}
-					<div className="w-full sm:w-auto">
-						<SearchableFilter
-							label="Filter by boss type"
-							searchPlaceholder="Search boss types..."
-							value={selectedType}
-							onValueChange={setSelectedType}
-							options={[
-								{ value: "all", label: "All boss types" },
-								...bossTypes.map((type) => ({ value: type, label: bossTypeLabels[type] ?? type })),
-							]}
-						/>
-					</div>
-				</div>
-			</div>
+			</ListPageHeader>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{filteredBosses.map((boss) => {
-					const slug = boss.profile.name.toLowerCase().replace(/\s+/g, "-")
+					const slug = boss.id.toLowerCase().replace(/\s+/g, "-")
 					return (
 						<Link
-							key={boss.profile.name}
+							key={boss.id}
 							href={`/bosses/${encodeURIComponent(slug)}`}
 							className="hover:scale-105 transition-transform duration-300 grid-item-lazy"
 							onClick={() => setLoadingSlug(slug)}
@@ -272,8 +224,12 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 											/>
 										</div>
 										<div className="min-w-0 flex-1">
-											<CardTitle className="text-lg">{boss.profile.name}</CardTitle>
-											<CardDescription className="text-sm">{boss.profile.title}</CardDescription>
+											<CardTitle className="text-lg">
+												<Text>{boss.profile.name}</Text>
+											</CardTitle>
+											<CardDescription className="text-sm">
+												<Text>{boss.profile.title}</Text>
+											</CardDescription>
 										</div>
 									</div>
 								</CardHeader>
@@ -282,10 +238,12 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 										<div className="flex flex-wrap gap-2">
 											{boss.profile.type.map((type) => (
 												<Badge key={type} variant="default">
-													{type}
+													<Text>{type}</Text>
 												</Badge>
 											))}
-											<Badge variant="secondary">{boss.profile.race}</Badge>
+											<Badge variant="secondary">
+												<Text>{boss.profile.race}</Text>
+											</Badge>
 											<Badge
 												variant="default"
 												className={
@@ -296,11 +254,11 @@ export default function BossesClient({ bosses, bossTypeMap, releaseOrder }: Boss
 															: "bg-yellow-400"
 												}
 											>
-												{boss.profile.damage_type}
+												<Text>{boss.profile.damage_type}</Text>
 											</Badge>
 										</div>
 										<div className="text-sm text-muted-foreground line-clamp-3">
-											{boss.profile.characteristics}
+											<Text>{boss.profile.characteristics}</Text>
 										</div>
 									</div>
 								</CardContent>
