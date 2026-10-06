@@ -1,6 +1,8 @@
 "use client"
 
-import { ArrowLeftRight, Plus, X, Link, Unlink } from "lucide-react"
+import { Text } from "@/components/i18n/language-provider"
+
+import { ArrowLeftRight, Columns2, Layers, Plus, X, Link, Unlink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { DataVersionLabels } from "@/hooks/use-data-version"
@@ -42,7 +44,7 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 				<MobileTooltip
 					content={
 						<div className="text-sm">
-							{syncScroll ? "Disable synchronized scrolling" : "Enable synchronized scrolling"}
+							<Text>{syncScroll ? "Disable synchronized scrolling" : "Enable synchronized scrolling"}</Text>
 						</div>
 					}
 				>
@@ -60,12 +62,13 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 			<MobileTooltip
 				content={
 					<div className="text-sm">
-						{isCompareMode ? "Exit compare mode" : "Compare versions side-by-side"}
+						<Text>{isCompareMode ? "Exit compare mode" : "Compare versions side-by-side"}</Text>
 					</div>
 				}
 			>
 				<Button variant={isCompareMode ? "default" : "outline"} onClick={toggleCompareMode}>
-					<span className="hidden sm:inline">Compare</span>
+					<Columns2 className="size-4" aria-hidden="true" />
+					<span className="hidden sm:inline"><Text messageKey="uiCompare" /></span>
 				</Button>
 			</MobileTooltip>
 
@@ -74,7 +77,7 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 					{compareVersions.map((version, index) => (
 						<div key={index} className="flex items-center gap-0.5">
 							{index > 0 && (
-								<MobileTooltip content={<div className="text-sm">Swap with previous</div>}>
+								<MobileTooltip content={<div className="text-sm"><Text messageKey="uiSwapWithPrevious" /></div>}>
 									<Button
 										variant="ghost"
 										size="icon"
@@ -91,18 +94,19 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 									onValueChange={(value) => setVersionAtIndex(index, value as DataVersion)}
 								>
 									<SelectTrigger>
+										<Layers className="size-4" aria-hidden="true" />
 										<SelectValue placeholder="Version" />
 									</SelectTrigger>
 									<SelectContent>
 										{availableVersions.map((opt) => (
 											<SelectItem key={opt} value={opt}>
-												{DataVersionLabels[opt]}
+												<Text>{DataVersionLabels[opt]}</Text>
 											</SelectItem>
 										))}
 									</SelectContent>
 								</Select>
 								{canRemove && (
-									<MobileTooltip content={<div className="text-sm">Remove version</div>}>
+									<MobileTooltip content={<div className="text-sm"><Text messageKey="uiRemoveVersion" /></div>}>
 										<Button
 											variant="ghost"
 											size="icon"
@@ -125,7 +129,7 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 							<SelectContent>
 								{versionsToAdd.map((opt) => (
 									<SelectItem key={opt} value={opt}>
-										{DataVersionLabels[opt]}
+										<Text>{DataVersionLabels[opt]}</Text>
 									</SelectItem>
 								))}
 							</SelectContent>

@@ -1,3 +1,4 @@
+import { SourceGameLanguage } from "@/components/i18n/language-provider"
 import { readFile, readdir } from "fs/promises"
 import path from "path"
 import { DATA_VERSIONS } from "@/lib/constants"
@@ -5,6 +6,7 @@ import StatsClient from "@/app/stats/client"
 import type { HeroData } from "@/model/Hero"
 import type { ClassesComparison, HeroComparison, HeroDiffSummary } from "@/app/stats/types"
 import { computeHeroesDiff } from "@/app/stats/diff-utils"
+import { comparisonFromSourceDiff } from "@/app/stats/source-comparison"
 
 const TABLE_DATA = path.join(process.cwd(), "public", "kingsraid-data", "table-data")
 const STATS_DIR = path.join(process.cwd(), "public", "kingsraid-stats")
@@ -57,9 +59,9 @@ export default async function StatsPage() {
 		readJson<{ data_versions: Record<string, { label: string }> }>(path.join(TABLE_DATA, "description.json")),
 		Promise.all(DATA_VERSIONS.map(async (version) => {
 			const [runes, classes, heroes] = await Promise.all([
-				readJson<RuneEntry[]>(path.join(TABLE_DATA, version, "runes.json")),
-				readDirectory<ClassData>(path.join(TABLE_DATA, version, "classes")),
-				readDirectory<HeroData>(path.join(TABLE_DATA, version, "heroes")),
+				readJson<RuneEntry[]>(path.join(TABLE_DATA, `${version}/en`, "runes.json")),
+				readDirectory<ClassData>(path.join(TABLE_DATA, `${version}/en`, "classes")),
+				readDirectory<HeroData>(path.join(TABLE_DATA, `${version}/en`, "heroes")),
 			])
 			return { version, runes: runes ?? [], classes, heroes }
 		})),
@@ -85,7 +87,17 @@ export default async function StatsPage() {
 	for (const from of versions) {
 		for (const to of versions) {
 			if (from.version === to.version) continue
-			heroSummaries[`${from.version}_vs_${to.version}`] = computeHeroesDiff(from.heroes, to.heroes).map(({ changes, ...hero }) => ({
+			const key = `${from.version}_vs_${to.version}`
+			const diffs = computeHeroesDiff(from.heroes, to.heroes)
+			// Existing enriched comparisons describe the previous Legacy dataset.
+			// Rebuild these pairs directly from the current records, without stale text.
+			if (from.version === "legacy" || to.version === "legacy") {
+				// Let the class panel display its freshly computed source diff too.
+				delete classesPairMap[key]
+				heroPairMap[key] = Object.fromEntries(diffs.filter(diff => diff.status === "changed")
+					.map(diff => [diff.heroName, comparisonFromSourceDiff(diff, from.version, to.version)]))
+			}
+			heroSummaries[key] = diffs.map(({ changes, ...hero }) => ({
 				...hero,
 				changeCount: changes.reduce((count, section) => count + section.items.length, 0),
 			}))
@@ -93,7 +105,7 @@ export default async function StatsPage() {
 	}
 
 	return (
-		<StatsClient
+		<SourceGameLanguage><StatsClient
 			versionLabels={versionLabels}
 			availableVersions={[...DATA_VERSIONS]}
 			runesMap={runesMap}
@@ -101,6 +113,6 @@ export default async function StatsPage() {
 			heroSummaries={heroSummaries}
 			classesPairMap={classesPairMap}
 			heroPairMap={heroPairMap}
-		/>
+		/></SourceGameLanguage>
 	)
 }

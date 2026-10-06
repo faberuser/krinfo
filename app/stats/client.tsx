@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import { useState, useMemo } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
@@ -180,7 +182,7 @@ export default function StatsClient({
 		<div>
 			<div className="space-y-2 mb-4">
 				<div className="items-baseline">
-					<div className="text-xl font-bold">Version Stats</div>
+					<div className="text-xl font-bold"><Text messageKey="uiVersionStats" /></div>
 				</div>
 			</div>
 
@@ -192,7 +194,7 @@ export default function StatsClient({
 							{i > 0 && <ArrowRight className="w-4 h-4 mt-5 text-muted-foreground shrink-0" />}
 							<div className="flex flex-col gap-1">
 								<label className="text-xs font-medium text-muted-foreground">
-									{i === 0 ? "From" : "To"}
+									<Text>{i === 0 ? "From" : "To"}</Text>
 								</label>
 								<Select value={v} onValueChange={(val) => updateVersion(i, val)}>
 									<SelectTrigger className="w-40">
@@ -201,7 +203,7 @@ export default function StatsClient({
 									<SelectContent>
 										{availableVersions.map((av) => (
 											<SelectItem key={av} value={av}>
-												{versionLabels[av] ?? av}
+												<Text>{versionLabels[av] ?? av}</Text>
 											</SelectItem>
 										))}
 									</SelectContent>
@@ -213,36 +215,32 @@ export default function StatsClient({
 
 				{!hasInvalidSegment && (
 					<div className="flex gap-2 flex-wrap pt-1">
-						<Badge variant="outline">{generalChangeCount} general changes</Badge>
+						<Badge variant="outline">{generalChangeCount} <Text messageKey="uiGeneralChanges" /></Badge>
 						<Badge variant="outline">
-							{allHeroEntries.filter((h) => h.overallStatus === "changed").length} hero changes
-						</Badge>
+							{allHeroEntries.filter((h) => h.overallStatus === "changed").length} <Text messageKey="uiHeroChanges" /></Badge>
 						{allHeroEntries.filter((h) => h.overallStatus === "added").length > 0 && (
 							<Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border border-green-500/30">
-								+{allHeroEntries.filter((h) => h.overallStatus === "added").length} heroes
-							</Badge>
-						)}{" "}
+								+{allHeroEntries.filter((h) => h.overallStatus === "added").length} <Text messageKey="uiHeroes_8172f9d4" /></Badge>
+						)}<Text>{" "}</Text>
 						{allHeroEntries.filter((h) => h.overallStatus === "removed").length > 0 && (
 							<Badge className="bg-red-500/20 text-red-700 dark:text-red-400 border border-red-500/30">
-								-{allHeroEntries.filter((h) => h.overallStatus === "removed").length} heroes
-							</Badge>
-						)}{" "}
+								-{allHeroEntries.filter((h) => h.overallStatus === "removed").length} <Text messageKey="uiHeroes_8172f9d4" /></Badge>
+						)}<Text>{" "}</Text>
 					</div>
 				)}
 			</div>
 
 			{hasInvalidSegment && (
 				<div className="text-center text-muted-foreground py-16 border rounded-lg">
-					Each step must be a different version than the one before it.
-				</div>
+					<Text messageKey="uiEachStepMustBeADifferentVersionThanTheOneBeforeIt" /></div>
 			)}
 
 			{!hasInvalidSegment && (
 				<Tabs defaultValue="heroes">
 					<TabsList className="mb-2">
-						<TabsTrigger value="heroes">Heroes ({allHeroEntries.length})</TabsTrigger>
-						<TabsTrigger value="class-perks">T2 Perks ({classesChangeCount})</TabsTrigger>
-						<TabsTrigger value="runes">Runes ({runesChangeCount})</TabsTrigger>
+						<TabsTrigger value="heroes"><Text messageKey="uiHeroes_27d617e0" />{allHeroEntries.length})</TabsTrigger>
+						<TabsTrigger value="class-perks"><Text messageKey="uiT2Perks_93fabbf4" />{classesChangeCount})</TabsTrigger>
+						<TabsTrigger value="runes"><Text messageKey="uiRunes_6da8332c" />{runesChangeCount})</TabsTrigger>
 					</TabsList>
 
 					{/* ── Runes Tab ── */}
@@ -256,7 +254,7 @@ export default function StatsClient({
 							/>
 							{runeSearch && (
 								<span className="text-sm text-muted-foreground">
-									{filteredRuneCount} result{filteredRuneCount !== 1 ? "s" : ""}
+									{filteredRuneCount} <Text messageKey="uiResult_f6a214f7" /><Text>{filteredRuneCount !== 1 ? "s" : ""}</Text>
 								</span>
 							)}
 						</div>
@@ -268,7 +266,7 @@ export default function StatsClient({
 									<div key={`${seg.versionA}_${seg.versionB}`} className="space-y-3">
 										{segments.length > 1 && (
 											<div className="text-sm font-bold uppercase tracking-wide text-muted-foreground border-b pb-1">
-												{segLabel}
+												<Text>{segLabel}</Text>
 											</div>
 										)}
 										{seg.runesDiff.map((rd) => (
@@ -286,16 +284,14 @@ export default function StatsClient({
 																"none"
 														}}
 													/>
-													<span className="font-medium text-sm">{rd.runeName}</span>
+													<span className="font-medium text-sm"><Text>{rd.runeName}</Text></span>
 													{rd.status === "added" && (
 														<Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border border-green-500/30 text-xs">
-															Added
-														</Badge>
+															<Text messageKey="uiAdded" /></Badge>
 													)}
 													{rd.status === "removed" && (
 														<Badge className="bg-red-500/20 text-red-700 dark:text-red-400 border border-red-500/30 text-xs">
-															Removed
-														</Badge>
+															<Text messageKey="uiRemoved" /></Badge>
 													)}
 												</div>
 												{rd.status === "changed" &&
@@ -311,13 +307,11 @@ export default function StatsClient({
 							})}
 							{runesChangeCount === 0 && (
 								<div className="text-center text-muted-foreground py-16 border rounded-lg">
-									No rune changes across the selected versions.
-								</div>
+									<Text messageKey="uiNoRuneChangesAcrossTheSelectedVersions" /></div>
 							)}
 							{runesChangeCount > 0 && runeSearch && filteredRuneCount === 0 && (
 								<div className="text-center text-muted-foreground py-16 border rounded-lg">
-									No runes match &ldquo;{runeSearch}&rdquo;.
-								</div>
+									<Text messageKey="uiNoRunesMatch" /><Text>{runeSearch}</Text><Text>&rdquo;.</Text></div>
 							)}
 						</div>
 					</TabsContent>
@@ -333,7 +327,7 @@ export default function StatsClient({
 							/>
 							{perkSearch && (
 								<span className="text-sm text-muted-foreground">
-									{filteredPerkCount} result{filteredPerkCount !== 1 ? "s" : ""}
+									{filteredPerkCount} <Text messageKey="uiResult_f6a214f7" /><Text>{filteredPerkCount !== 1 ? "s" : ""}</Text>
 								</span>
 							)}
 						</div>
@@ -345,7 +339,7 @@ export default function StatsClient({
 									<div key={`${seg.versionA}_${seg.versionB}`} className="space-y-4">
 										{segments.length > 1 && (
 											<h2 className="text-sm font-bold uppercase tracking-wide text-muted-foreground border-b pb-1">
-												{segLabel}
+												<Text>{segLabel}</Text>
 											</h2>
 										)}
 										{seg.classesDiff.map((cd) => {
@@ -355,7 +349,7 @@ export default function StatsClient({
 											return (
 												<div key={cd.className}>
 													<h4 className="font-semibold text-sm mb-2 text-foreground">
-														{cd.className}
+														<Text>{cd.className}</Text>
 													</h4>
 													<div className="space-y-3">
 														{cd.changes.map((c, i) => {
@@ -377,7 +371,7 @@ export default function StatsClient({
 																			}}
 																		/>
 																		<div className="text-xs font-medium text-foreground">
-																			{c.perkName}
+																			<Text>{c.perkName}</Text>
 																		</div>
 																	</div>
 																	{enrichedPerk?.description ? (
@@ -401,13 +395,11 @@ export default function StatsClient({
 							})}
 							{classesChangeCount === 0 && (
 								<div className="text-center text-muted-foreground py-16 border rounded-lg">
-									No class perk changes across the selected versions.
-								</div>
+									<Text messageKey="uiNoClassPerkChangesAcrossTheSelectedVersions" /></div>
 							)}
 							{classesChangeCount > 0 && perkSearch && filteredPerkCount === 0 && (
 								<div className="text-center text-muted-foreground py-16 border rounded-lg">
-									No perks match &ldquo;{perkSearch}&rdquo;.
-								</div>
+									<Text messageKey="uiNoPerksMatch" /><Text>{perkSearch}</Text><Text>&rdquo;.</Text></div>
 							)}
 						</div>
 					</TabsContent>
@@ -423,14 +415,13 @@ export default function StatsClient({
 							/>
 							{heroSearch && (
 								<span className="text-sm text-muted-foreground">
-									{filteredHeroes.length} result{filteredHeroes.length !== 1 ? "s" : ""}
+									{filteredHeroes.length} <Text messageKey="uiResult_f6a214f7" /><Text>{filteredHeroes.length !== 1 ? "s" : ""}</Text>
 								</span>
 							)}
 						</div>
 						{heroCardData.length === 0 && (
 							<div className="text-center text-muted-foreground py-16 border rounded-lg">
-								No hero changes across the selected versions.
-							</div>
+								<Text messageKey="uiNoHeroChangesAcrossTheSelectedVersions" /></div>
 						)}
 
 						{/* Changed heroes */}
@@ -462,8 +453,7 @@ export default function StatsClient({
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 pt-2">
 									<span className="text-xs font-bold uppercase tracking-wide text-green-600 dark:text-green-400">
-										Added Heroes
-									</span>
+										<Text messageKey="uiAddedHeroes" /></span>
 									<div className="flex-1 border-t border-green-500/30" />
 								</div>
 								{heroCardData
@@ -496,8 +486,7 @@ export default function StatsClient({
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 pt-2">
 									<span className="text-xs font-bold uppercase tracking-wide text-red-600 dark:text-red-400">
-										Removed Heroes
-									</span>
+										<Text messageKey="uiRemovedHeroes" /></span>
 									<div className="flex-1 border-t border-red-500/30" />
 								</div>
 								{heroCardData

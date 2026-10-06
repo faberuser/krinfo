@@ -1,3 +1,5 @@
+
+import { Text } from "@/components/i18n/language-provider"
 import Image from "@/components/next-image"
 import { DiffText, NumericChange, ValueRow, TierChange } from "./diff-primitives"
 import type { HeroComparison } from "@/app/stats/types"
@@ -29,15 +31,15 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 				<div className="flex items-center gap-2 font-medium text-sm mb-2">
 					<HeroIcon src={`${heroAssetBase}/skills/${slot}.png`} alt={`Skill ${slot}`} />
 					<span>
-						Skill {slot}
+						<Text messageKey="uiSkill" suffix=" " /><Text>{slot}</Text>
 						{skillData.name ? (
 							<>
 								:
 								<span className="text-red-600 dark:text-red-400 line-through ml-1">
-									{skillData.name.from}
+									<Text>{skillData.name.from}</Text>
 								</span>
 								<span className="text-muted-foreground mx-1 text-[10px]">→</span>
-								<span className="text-green-600 dark:text-green-400">{skillData.name.to}</span>
+								<span className="text-green-600 dark:text-green-400"><Text>{skillData.name.to}</Text></span>
 							</>
 						) : null}
 					</span>
@@ -69,7 +71,7 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 				<div className="flex items-center gap-2 font-medium text-sm mb-2">
 					<HeroIcon src={`${heroAssetBase}/skills/${slot}.png`} alt={`Skill ${slot}`} />
 					<span>
-						Books - Skill {slot}: {bookData.skillName}
+						<Text messageKey="uiBooksSkill" suffix=" " /><Text>{slot}</Text>: <Text>{bookData.skillName}</Text>
 					</span>
 				</div>
 				{bookData.II && (
@@ -103,7 +105,7 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 					{perkData.dark && (
 						<HeroIcon src={`${heroAssetBase}/perks/s${slot}d.png`} alt={`T3 Skill ${slot} Dark`} />
 					)}
-					<span>T3 Perk - Skill {slot}</span>
+					<span><Text messageKey="uiT3PerkSkill" suffix=" " /><Text>{slot}</Text></span>
 				</div>
 				{perkData.light && (
 					<ValueRow label="Light">
@@ -126,7 +128,7 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 				<div className="flex items-center gap-2 font-medium text-sm mb-2">
 					{comparison.perks_t5.light && <HeroIcon src={`${heroAssetBase}/perks/light.png`} alt="T5 Light" />}
 					{comparison.perks_t5.dark && <HeroIcon src={`${heroAssetBase}/perks/dark.png`} alt="T5 Dark" />}
-					<span>T5 Perk</span>
+					<span><Text messageKey="uiT5Perk" /></span>
 				</div>
 				{comparison.perks_t5.light && (
 					<ValueRow label="Light">
@@ -148,7 +150,7 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 			<div key="uw" className="border rounded-md p-3 space-y-1">
 				<div className="flex items-center gap-2 font-medium text-sm mb-2">
 					<HeroIcon src={`${heroAssetBase}/uw.png`} alt="Unique Weapon" />
-					<span>Unique Weapon</span>
+					<span><Text messageKey="uiUniqueWeapon" /></span>
 				</div>
 				{comparison.uw.description && (
 					<ValueRow label="Description">
@@ -172,7 +174,7 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 				<div className="flex items-center gap-2 font-medium text-sm mb-2">
 					<HeroIcon src={`${heroAssetBase}/ut/${slot}.png`} alt={`UT ${slot}`} />
 					<span>
-						UT {slot}: {utData.name}
+						<Text>UT </Text><Text>{slot}</Text>: <Text>{utData.name}</Text>
 					</span>
 				</div>
 				{utData.description && (
@@ -195,7 +197,7 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 			<div key="sw" className="border rounded-md p-3 space-y-1">
 				<div className="flex items-center gap-2 font-medium text-sm mb-2">
 					<HeroIcon src={`${heroAssetBase}/sw.png`} alt="Soul Weapon" />
-					<span>Soul Weapon</span>
+					<span><Text messageKey="uiSoulWeapon" /></span>
 				</div>
 				{comparison.sw.cooldown && (
 					<ValueRow label="Cooldown">
@@ -222,6 +224,6 @@ export function ComparisonContent({ comparison }: { comparison: HeroComparison }
 	}
 
 	if (sections.length === 0)
-		return <div className="text-sm text-muted-foreground">No detailed changes available.</div>
+		return <div className="text-sm text-muted-foreground"><Text messageKey="uiNoDetailedChangesAvailable" /></div>
 	return <div className="space-y-3">{sections}</div>
 }

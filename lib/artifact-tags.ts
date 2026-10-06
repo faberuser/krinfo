@@ -147,6 +147,6 @@ const tagsByName: Record<string, readonly ArtifactEffectTag[]> = {
 	"Apocalypsion's Tear": ["ATK Boost", "Crit DMG"],
 }
 
-export function getArtifactEffectTags(artifact: Pick<ArtifactData, "name">): readonly ArtifactEffectTag[] {
-	return tagsByName[artifact.name.trim().replace(/[â€˜â€™]/g, "'")] ?? []
+export function getArtifactEffectTags(artifact: Pick<ArtifactData, "id">): readonly ArtifactEffectTag[] {
+	return tagsByName[artifact.id.trim().replace(/[â€˜â€™]/g, "'")] ?? []
 }

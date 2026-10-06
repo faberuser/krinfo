@@ -1,5 +1,8 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+import LanguageSelector from "@/components/i18n/language-selector"
+
 import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -68,16 +71,17 @@ export default function MobileMenu() {
 									}`}
 								>
 									<item.icon />
-									<div className="text-xl">{item.title}</div>
+									<div className="text-xl"><Text>{item.title}</Text></div>
 								</Link>
 							</DropdownMenuItem>
 						)
 					})}
 				</div>
-				<div className="flex flex-row justify-between px-5 py-3 border-t items-center">
+				<div className="flex flex-row justify-between gap-2 px-5 py-3 border-t items-center">
 					<DropdownMenuItem asChild>
 						<ModeToggle />
 					</DropdownMenuItem>
+					<LanguageSelector />
 					<DropdownMenuItem asChild>
 						<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/krinfo">
 							<Button variant="outline" size="icon" className="bg-background">
@@ -90,7 +94,7 @@ export default function MobileMenu() {
 										className="h-[1.2rem] w-[1.2rem]"
 									/>
 								)}
-								<div className="sr-only">GitHub</div>
+								<div className="sr-only"><Text>GitHub</Text></div>
 							</Button>
 						</Link>
 					</DropdownMenuItem>

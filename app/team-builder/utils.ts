@@ -117,7 +117,7 @@ const VERSION_REVERSE: Record<number, DataVersion> = Object.fromEntries(
 // Per hero: heroIdx(7) + uw(1) + ut(3) + maxPts(2) + t1(5) + t2(5) + t3(8) + t5(2) = 33 bits
 export function encodeTeam(team: TeamMember[], allHeroes: HeroData[] = [], version: string = "legacy"): string {
 	const heroIndex = new Map<string, number>()
-	allHeroes.forEach((h, i) => heroIndex.set(h.profile.name, i))
+	allHeroes.forEach((h, i) => heroIndex.set(h.id, i))
 
 	const writer = new BitWriter()
 
@@ -131,7 +131,7 @@ export function encodeTeam(team: TeamMember[], allHeroes: HeroData[] = [], versi
 	for (const member of team) {
 		if (!member.hero) continue
 
-		const idx = heroIndex.get(member.hero.profile.name) ?? 0
+		const idx = heroIndex.get(member.hero.id) ?? 0
 
 		// Hero index: 7 bits (0-127)
 		writer.write(idx, 7)

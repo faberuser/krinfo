@@ -1,6 +1,8 @@
-// Taken from https://github.com/duckness/NotCleo/blob/master/krmath/krmath.py
-
 "use client"
+
+
+import { Text } from "@/components/i18n/language-provider"
+// Taken from https://github.com/duckness/NotCleo/blob/master/krmath/krmath.py
 
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -86,21 +88,21 @@ export default function SoftcapClient({ softcapData }: SoftcapClientProps) {
 		<div>
 			<div className="space-y-2 mb-4">
 				<div className="items-baseline">
-					<div className="text-xl font-bold">Softcap</div>
+					<div className="text-xl font-bold"><Text messageKey="uiSoftcap" /></div>
 				</div>
 			</div>
 
 			{!hasData ? (
 				<div className="text-center py-12 text-muted-foreground">
-					<p className="text-lg">No softcap data available for this data version.</p>
-					<p className="text-sm mt-2">Try switching to another version.</p>
+					<p className="text-lg"><Text messageKey="uiNoSoftcapDataAvailableForThisDataVersion" /></p>
+					<p className="text-sm mt-2"><Text messageKey="uiTrySwitchingToAnotherVersion" /></p>
 				</div>
 			) : (
 				<>
 					{/* Input Section */}
 					<Card className="mb-6">
 						<CardHeader>
-							<CardTitle>Raw Stat Value</CardTitle>
+							<CardTitle><Text messageKey="uiRawStatValue" /></CardTitle>
 						</CardHeader>
 						<CardContent>
 							<div className="flex gap-4 items-center">
@@ -119,15 +121,15 @@ export default function SoftcapClient({ softcapData }: SoftcapClientProps) {
 					{/* Softcap Table */}
 					<Card>
 						<CardHeader>
-							<CardTitle>Softcap Table</CardTitle>
+							<CardTitle><Text messageKey="uiSoftcapTable" /></CardTitle>
 						</CardHeader>
 						<CardContent>
 							<Table>
 								<TableHeader>
 									<TableRow>
-										<TableHead className="text-left">Stat</TableHead>
-										<TableHead className="text-left">Softcap</TableHead>
-										<TableHead className="text-left">Value</TableHead>
+										<TableHead className="text-left"><Text messageKey="uiStat" /></TableHead>
+										<TableHead className="text-left"><Text messageKey="uiSoftcap" /></TableHead>
+										<TableHead className="text-left"><Text messageKey="uiValue" /></TableHead>
 									</TableRow>
 								</TableHeader>
 								<TableBody>
@@ -139,9 +141,9 @@ export default function SoftcapClient({ softcapData }: SoftcapClientProps) {
 
 										return (
 											<TableRow key={stat.name}>
-												<TableCell className="font-medium">{stat.name}</TableCell>
+												<TableCell className="font-medium"><Text>{stat.name}</Text></TableCell>
 												<TableCell className="text-left">{statData.X2}</TableCell>
-												<TableCell className="text-left">{actualValue}</TableCell>
+												<TableCell className="text-left"><Text>{actualValue}</Text></TableCell>
 											</TableRow>
 										)
 									})}

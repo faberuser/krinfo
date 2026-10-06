@@ -1,3 +1,5 @@
+
+import { Text } from "@/components/i18n/language-provider"
 import { HeroData } from "@/model/Hero"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -71,7 +73,7 @@ export default function Skills({ heroData }: SkillsProps) {
 									</div>
 									<div className="w-full flex flex-row justify-between md:justify-start items-center gap-2">
 										<div className="text-xl font-semibold flex items-center justify-center">
-											Skill {key}: {skill.name}
+											<Text messageKey="uiSkill" suffix=" " /><Text>{key}</Text>: <Text fieldKey={`heroes/${heroData.id}/skills/${key}/name`}>{skill.name}</Text>
 										</div>
 										<div className="flex flex-col md:flex-row gap-2 text-sm items-center justify-center">
 											{skill.cost && (
@@ -79,7 +81,7 @@ export default function Skills({ heroData }: SkillsProps) {
 													variant="default"
 													className="bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-900 h-fit"
 												>
-													Mana: {skill.cost}
+													<Text messageKey="uiMana_d0477b62" suffix=" " /><Text>{skill.cost}</Text>
 												</Badge>
 											)}
 											{skill.cooldown && (
@@ -87,26 +89,25 @@ export default function Skills({ heroData }: SkillsProps) {
 													variant="default"
 													className="bg-orange-100 text-orange-800 dark:bg-orange-200 dark:text-orange-900 h-fit"
 												>
-													Cooldown: {skill.cooldown}s
+													<Text messageKey="uiCooldown_48ced960" suffix=" " /><Text>{skill.cooldown}</Text>s
 												</Badge>
 											)}
 										</div>
 									</div>
 								</div>
 								<Separator className="mb-3" />
-								<div>{parseColoredText(skill.description)}</div>
+								<div>{parseColoredText(skill.description, `heroes/${heroData.id}/skills/${key}/description`)}</div>
 
 								{/* Skill Books if available */}
 								{heroData.books && heroData.books[baseNum] && (
 									<details className="mt-4 cursor-pointer">
 										<summary className="font-medium text-sm mb-2 text-muted-foreground">
-											Skill Books
-										</summary>
+											<Text messageKey="uiSkillBooks" /></summary>
 										<div className="flex flex-col gap-2 text-xs">
 											{Object.entries(heroData.books[baseNum]).map(([level, effect]) => (
 												<div key={level} className="px-2 py-1 border-l-2">
 													<div className="font-medium">
-														{level}: {parseColoredText(effect)}
+														<Text>{level}</Text>: {parseColoredText(effect, `heroes/${heroData.id}/books/${baseNum}/${level}`)}
 													</div>
 												</div>
 											))}
@@ -118,7 +119,7 @@ export default function Skills({ heroData }: SkillsProps) {
 					</Card>
 				))
 			) : (
-				<div className="text-center text-gray-500 py-8">No skill data available</div>
+				<div className="text-center text-gray-500 py-8"><Text messageKey="uiNoSkillDataAvailable" /></div>
 			)}
 		</div>
 	)

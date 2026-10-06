@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, GameLanguageScope } from "@/components/i18n/language-provider"
 import {
 	Sidebar,
 	SidebarContent,
@@ -67,7 +68,7 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 					{state === "collapsed" ? null : (
 						<Link href="/" className="flex items-center space-x-2 group-data-[collapsible=icon]:hidden">
 							<span style={{ fontFamily: "var(--font-comfortaa)", fontWeight: 700 }} className="text-xl">
-								krinfo
+								<Text>krinfo</Text>
 							</span>
 						</Link>
 					)}
@@ -81,7 +82,9 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 					<SidebarGroupContent
 						className={"px-2 mt-2 " + (state === "collapsed" ? "p-0 flex justify-center items-center" : "")}
 					>
-						<GlobalSearch searchData={searchData} state={state} />
+						<GameLanguageScope version="legacy">
+							<GlobalSearch searchData={searchData} state={state} />
+						</GameLanguageScope>
 					</SidebarGroupContent>
 				</SidebarGroup>
 
@@ -105,8 +108,12 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 													<Link
 														href={item.url}
 														prefetch={prefetchOnIntent ? false : undefined}
-														onMouseEnter={() => { if (prefetchOnIntent) router.prefetch(item.url) }}
-														onFocus={() => { if (prefetchOnIntent) router.prefetch(item.url) }}
+														onMouseEnter={() => {
+															if (prefetchOnIntent) router.prefetch(item.url)
+														}}
+														onFocus={() => {
+															if (prefetchOnIntent) router.prefetch(item.url)
+														}}
 														className={`flex items-center space-x-2 pl-5 py-6 rounded-md transition-colors ${
 															isActive
 																? "bg-gray-200 dark:bg-gray-800"
@@ -114,12 +121,14 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 														}`}
 													>
 														<item.icon />
-														<div className="text-lg">{item.title}</div>
+														<div className="text-lg">
+															<Text>{item.title}</Text>
+														</div>
 													</Link>
 												</SidebarMenuButton>
 											</TooltipTrigger>
 											<TooltipContent side="right" className="group-data-[state=expanded]:hidden">
-												{item.title}
+												<Text>{item.title}</Text>
 											</TooltipContent>
 										</Tooltip>
 									</SidebarMenuItem>
@@ -144,7 +153,9 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 							// eslint-disable-next-line @next/next/no-img-element
 							<img src={githubSrc} alt="GitHub Logo" className="h-[1.2rem] w-[1.2rem]" />
 						)}
-						<div className="sr-only">GitHub</div>
+						<div className="sr-only">
+							<Text>GitHub</Text>
+						</div>
 					</Button>
 				</Link>
 			</SidebarFooter>

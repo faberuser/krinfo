@@ -7,6 +7,7 @@ import { useEnableVersionToggle } from "@/contexts/version-toggle-context"
 import { useMemo } from "react"
 import { useDataVersion } from "@/hooks/use-data-version"
 import { DataVersion, DATA_VERSIONS } from "@/lib/constants"
+import { GameLanguageScope } from "@/components/i18n/language-provider"
 
 // Boss models are now organized by variant (similar to hero costumes)
 type BossModelData = Record<string, ModelFile[]>
@@ -39,11 +40,13 @@ export default function BossPageWrapper({
 	// Enable version toggle on mount
 	useEnableVersionToggle(availableVersions, showVersionToggle)
 
-	const bossData = bossDataMap[version] || bossDataMap.legacy || bossDataMap[availableVersions[0]]
+	const recordVersion = bossDataMap[version] ? version : bossDataMap.legacy ? "legacy" : availableVersions[0]
+	const bossData = bossDataMap[recordVersion]
 
 	if (!bossData) return null
 
 	return (
+		<GameLanguageScope version={recordVersion}>
 		<BossClient
 			bossData={bossData}
 			bossModels={bossModels}
@@ -51,5 +54,6 @@ export default function BossPageWrapper({
 			enableModelsVoices={enableModelsVoices}
 			sortedBossSlugs={sortedBossSlugs}
 		/>
+		</GameLanguageScope>
 	)
 }

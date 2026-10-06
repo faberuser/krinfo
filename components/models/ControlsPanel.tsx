@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import { useEffect, useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -94,7 +96,7 @@ export function ControlsPanel({
 		>
 			{/* Scene Selection */}
 			<div className="space-y-2">
-				<div className="text-sm font-semibold">Scene</div>
+				<div className="text-sm font-semibold"><Text messageKey="uiScene" /></div>
 				<Select value={selectedScene} onValueChange={setSelectedScene} disabled={isLoading}>
 					<SelectTrigger className="w-full">
 						<SelectValue placeholder="Select Scene" />
@@ -102,7 +104,7 @@ export function ControlsPanel({
 					<SelectContent>
 						{availableScenes.map((scene) => (
 							<SelectItem key={scene.value} value={scene.value}>
-								{scene.label}
+								<Text>{scene.label}</Text>
 							</SelectItem>
 						))}
 					</SelectContent>
@@ -113,7 +115,7 @@ export function ControlsPanel({
 
 			{/* Individual Model Toggles */}
 			<div className="space-y-2">
-				<div className="text-sm font-semibold">Parts ({modelFiles.length})</div>
+				<div className="text-sm font-semibold"><Text messageKey="uiParts_4d1038ae" />{modelFiles.length})</div>
 				<div className="flex flex-col items-center gap-2">
 					{Array.from(new Map(modelFiles.map((model) => [model.name, model])).values())
 						.sort((a, b) => a.name.localeCompare(b.name))
@@ -131,7 +133,7 @@ export function ControlsPanel({
 								) : (
 									<EyeOff className="h-3 w-3" />
 								)}
-								<span className="capitalize">{model.type}</span>
+								<span className="capitalize"><Text>{model.type}</Text></span>
 							</Button>
 						))}
 				</div>
@@ -144,7 +146,7 @@ export function ControlsPanel({
 
 					<div className="space-y-2 w-full flex-1 min-h-0 overflow-hidden flex flex-col">
 						<div className="flex items-center justify-between">
-							<div className="text-sm font-semibold">Animations ({availableAnimations.length})</div>
+							<div className="text-sm font-semibold"><Text messageKey="uiAnimations_cb5a7ed1" />{availableAnimations.length})</div>
 							<Button
 								size="sm"
 								variant="ghost"
@@ -194,14 +196,13 @@ export function ControlsPanel({
 										disabled={isLoading}
 									>
 										<span className="text-start text-xs truncate w-full">
-											{formatAnimationName(animName)}
+											<Text>{formatAnimationName(animName)}</Text>
 										</span>
 									</Button>
 								))
 							) : (
 								<div className="text-xs text-muted-foreground text-center py-4">
-									No animations found
-								</div>
+									<Text messageKey="uiNoAnimationsFound" /></div>
 							)}
 						</div>
 					</div>

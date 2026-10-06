@@ -1,5 +1,7 @@
 "use client"
 
+import { Text, useTranslation, useLocalizedArtifacts } from "@/components/i18n/language-provider"
+
 import { useState, useMemo } from "react"
 import Image from "@/components/next-image"
 import { Button } from "@/components/ui/button"
@@ -20,11 +22,14 @@ interface ArtifactSelectDialogProps {
 }
 
 export function ArtifactSelectDialog({
-	artifacts,
+	artifacts: sourceArtifacts,
 	artifactReleaseOrder,
-	selectedArtifact,
+	selectedArtifact: sourceSelectedArtifact,
 	onSelect,
 }: ArtifactSelectDialogProps) {
+	const { locale } = useTranslation()
+	const artifacts = useLocalizedArtifacts(sourceArtifacts)
+	const selectedArtifact = artifacts.find(record => record.id === sourceSelectedArtifact?.id) ?? sourceSelectedArtifact
 	const [isOpen, setIsOpen] = useState(false)
 	const [searchQuery, setSearchQuery] = useState("")
 	const [sortType, setSortType] = useState<"alphabetical" | "release">("release")
@@ -33,7 +38,7 @@ export function ArtifactSelectDialog({
 	// Fuse search for artifacts
 	const fuse = useMemo(() => {
 		return new Fuse(artifacts, {
-			keys: ["name", "description", "aliases"],
+				keys: ["name", "id", "description", "aliases"],
 			threshold: 0.3,
 		})
 	}, [artifacts])
@@ -49,12 +54,12 @@ export function ArtifactSelectDialog({
 		// Sort by selected sort type
 		if (sortType === "release") {
 			result = [...result].sort((a, b) => {
-				const aOrder = parseInt(artifactReleaseOrder[a.name] ?? "9999", 10)
-				const bOrder = parseInt(artifactReleaseOrder[b.name] ?? "9999", 10)
+				const aOrder = parseInt(artifactReleaseOrder[a.id] ?? "9999", 10)
+				const bOrder = parseInt(artifactReleaseOrder[b.id] ?? "9999", 10)
 				return aOrder - bOrder
 			})
 		} else {
-			result = [...result].sort((a, b) => a.name.localeCompare(b.name))
+			result = [...result].sort((a, b) => a.name.localeCompare(b.name, locale))
 		}
 
 		// Reverse if needed
@@ -63,7 +68,7 @@ export function ArtifactSelectDialog({
 		}
 
 		return result
-	}, [artifacts, searchQuery, fuse, sortType, reverseSort, artifactReleaseOrder])
+	}, [artifacts, searchQuery, fuse, sortType, reverseSort, artifactReleaseOrder, locale])
 
 	const handleSelect = (artifact: ArtifactData) => {
 		onSelect(artifact)
@@ -82,8 +87,8 @@ export function ArtifactSelectDialog({
 					<MobileTooltip
 						content={
 							<>
-								<div className="font-bold">{selectedArtifact.name}</div>
-								<div className="text-xs mt-1">{selectedArtifact.description}</div>
+								<div className="font-bold"><Text>{selectedArtifact.name}</Text></div>
+								<div className="text-xs mt-1"><Text>{selectedArtifact.descriptionByStar?.["0"] ?? selectedArtifact.description}</Text></div>
 							</>
 						}
 					>
@@ -100,7 +105,7 @@ export function ArtifactSelectDialog({
 											.split("/")
 											.map(encodeURIComponent)
 											.join("/")}`}
-										alt={selectedArtifact.name}
+										alt={selectedArtifact.id}
 										width={40}
 										height={40}
 										className="w-full h-full object-cover"
@@ -137,13 +142,12 @@ export function ArtifactSelectDialog({
 			<DialogContent className="sm:max-w-6xl max-h-[85vh] overflow-hidden flex flex-col bg-background/70 backdrop-blur-sm">
 				<DialogHeader>
 					<DialogTitle className="flex items-baseline gap-4">
-						<span>Select Artifact</span>
+						<span><Text messageKey="uiSelectArtifact" /></span>
 						<span className="text-sm font-normal text-muted-foreground">
-							{filteredArtifacts.length} artifacts
-						</span>
+							{filteredArtifacts.length} <Text messageKey="uiArtifacts_0f50505c" /></span>
 					</DialogTitle>
 				</DialogHeader>
-				<DialogDescription className="sr-only">Select an artifact from the list below.</DialogDescription>
+				<DialogDescription className="sr-only"><Text messageKey="uiSelectAnArtifactFromTheListBelow" /></DialogDescription>
 
 				{/* Search and Sort Row */}
 				<div className="flex flex-row gap-2 items-start sm:items-center justify-between">
@@ -174,7 +178,7 @@ export function ArtifactSelectDialog({
 						>
 							{sortType === "alphabetical" && reverseSort && <ChevronDown className="h-4 w-4" />}
 							{sortType === "alphabetical" && !reverseSort && <ChevronUp className="h-4 w-4" />}
-							{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}
+							<Text>{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}</Text>
 						</Button>
 						<Button
 							variant={sortType === "release" ? "outline" : "ghost"}
@@ -190,8 +194,7 @@ export function ArtifactSelectDialog({
 						>
 							{sortType === "release" && reverseSort && <ChevronUp className="h-4 w-4" />}
 							{sortType === "release" && !reverseSort && <ChevronDown className="h-4 w-4" />}
-							Release
-						</Button>
+							<Text messageKey="uiRelease" /></Button>
 					</div>
 				</div>
 
@@ -200,14 +203,14 @@ export function ArtifactSelectDialog({
 					<div className="flex flex-wrap justify-center gap-3 px-2 py-1">
 						{filteredArtifacts.map((artifact) => (
 							<div
-								key={artifact.name}
+								key={artifact.id}
 								className="relative w-[calc((100%-1.5rem)/3)] sm:w-[calc((100%-3rem)/5)] md:w-[calc((100%-4.5rem)/7)] lg:w-[calc((100%-6rem)/9)] aspect-square"
 							>
 								<MobileTooltip
 									content={
 										<>
-											<div className="font-bold">{artifact.name}</div>
-											<div className="text-xs mt-1 max-w-50">{artifact.description}</div>
+											<div className="font-bold"><Text>{artifact.name}</Text></div>
+											<div className="text-xs mt-1 max-w-50"><Text>{artifact.descriptionByStar?.["0"] ?? artifact.description}</Text></div>
 										</>
 									}
 								>
@@ -215,7 +218,7 @@ export function ArtifactSelectDialog({
 										onClick={() => handleSelect(artifact)}
 										className={cn(
 											"absolute inset-0 rounded border overflow-hidden transition-all",
-											selectedArtifact?.name === artifact.name
+											selectedArtifact?.id === artifact.id
 												? "ring-2 ring-orange-500"
 												: "hover:ring-2 hover:ring-primary active:scale-95",
 										)}
@@ -233,7 +236,7 @@ export function ArtifactSelectDialog({
 										/>
 										<div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-1.5 z-10">
 											<div className="text-xs text-white truncate text-center font-medium">
-												{artifact.name}
+												<Text>{artifact.name}</Text>
 											</div>
 										</div>
 									</button>
@@ -242,7 +245,7 @@ export function ArtifactSelectDialog({
 						))}
 					</div>
 					{filteredArtifacts.length === 0 && (
-						<div className="text-center text-muted-foreground py-8">No artifacts found</div>
+						<div className="text-center text-muted-foreground py-8"><Text messageKey="uiNoArtifactsFound" /></div>
 					)}
 				</div>
 
@@ -255,8 +258,7 @@ export function ArtifactSelectDialog({
 							setIsOpen(false)
 						}}
 					>
-						Clear Artifact
-					</Button>
+						<Text messageKey="uiClearArtifact" /></Button>
 				)}
 			</DialogContent>
 		</Dialog>

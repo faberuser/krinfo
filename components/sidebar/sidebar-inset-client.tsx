@@ -1,6 +1,8 @@
 "use client"
 
-import { ArrowLeft, Info } from "lucide-react"
+import LanguageSelector from "@/components/i18n/language-selector"
+import { Text } from "@/components/i18n/language-provider"
+import { ArrowLeft, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import MobileMenu from "@/components/mobile-menu"
 import { SidebarInset } from "@/components/ui/sidebar"
@@ -9,7 +11,6 @@ import { useDataVersion, DataVersionLabels, DataVersionDescriptions } from "@/ho
 import { DataVersion } from "@/lib/constants"
 import { useHeroToggle } from "@/contexts/version-toggle-context"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MobileTooltip } from "@/components/mobile-tooltip"
 import CompareToggle from "@/components/compare/compare-toggle"
 import { useCompareMode } from "@/hooks/use-compare-mode"
 import Notification from "@/components/notification"
@@ -30,50 +31,60 @@ export default function SidebarInsetClient({ children }: { children: React.React
 			<div className={`${pathname !== "/" && containerClass}`}>
 				{/* Back Button */}
 				<div
-					className={`mb-2 flex flex-row items-center gap-2 flex-wrap ${
-						pathname === "/" ? "p-4 pt-2.5 justify-end md:hidden" : "justify-between"
+					className={`mb-2 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 md:flex md:flex-row md:flex-wrap ${
+						pathname === "/" ? "p-4 pt-2.5 justify-end" : "justify-between"
 					}`}
 				>
 					{pathname !== "/" && (
-						<Button variant="ghost" className="gap-2 has-[>svg]:px-0 p-0" onClick={() => router.back()}>
+						<Button
+							variant="ghost"
+							className="col-start-1 row-start-1 justify-self-start gap-2"
+							onClick={() => router.back()}
+						>
 							<ArrowLeft className="h-4 w-4" />
-							Back
+							<Text messageKey="uiBack" />
 						</Button>
 					)}
-					{showToggle && availableVersions.length > 0 && (
-						<div className="flex items-center gap-2 flex-wrap">
-							{/* Compare Toggle - show when multiple versions available */}
-							{availableVersions.length > 1 && <CompareToggle availableVersions={availableVersions} />}
+					<div className="col-start-2 row-start-1 flex items-center gap-2 flex-wrap justify-center md:ml-auto md:justify-end">
+						{showToggle && availableVersions.length > 0 && (
+							<div className="flex items-center gap-2 flex-wrap">
+								{/* Compare Toggle - show when multiple versions available */}
+								{availableVersions.length > 1 && (
+									<CompareToggle availableVersions={availableVersions} />
+								)}
 
-							{/* Version Selector - hide when in compare mode */}
-							{!isCompareMode && (
-								<>
-									<Select
-										key={availableVersions.join(",")}
-										value={version}
-										onValueChange={(value) => setVersion(value as DataVersion)}
-									>
-										<SelectTrigger>
-											<SelectValue placeholder="Version" />
-										</SelectTrigger>
-										<SelectContent>
-											{availableVersions.map((opt) => (
-												<SelectItem key={opt} value={opt}>
-													{DataVersionLabels[opt]}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-									<MobileTooltip
-										content={<div className="text-sm">{DataVersionDescriptions[version]}</div>}
-									>
-										<Info className="h-4 w-4 text-muted-foreground" />
-									</MobileTooltip>
-								</>
-							)}
+								{/* Version Selector - hide when in compare mode */}
+								{!isCompareMode && (
+									<>
+										<Select
+											key={availableVersions.join(",")}
+											value={version}
+											onValueChange={(value) => setVersion(value as DataVersion)}
+										>
+											<SelectTrigger>
+												<Layers className="size-4" aria-hidden="true" />
+												<SelectValue placeholder="Version" />
+											</SelectTrigger>
+											<SelectContent>
+												{availableVersions.map((opt) => (
+													<SelectItem key={opt} value={opt}>
+														<Text>{DataVersionLabels[opt]}</Text>
+													</SelectItem>
+												))}
+												<div className="mt-1 flex max-w-xs items-start gap-2 border-t px-2 py-2 text-xs text-muted-foreground">
+													<div>{DataVersionDescriptions[version]}</div>
+												</div>
+											</SelectContent>
+										</Select>
+									</>
+								)}
+							</div>
+						)}
+						<div className="hidden md:block">
+							<LanguageSelector />
 						</div>
-					)}
-					<div className="md:hidden">
+					</div>
+					<div className="col-start-3 row-start-1 justify-self-end md:hidden">
 						<MobileMenu />
 					</div>
 				</div>

@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import { useState, useEffect, useRef } from "react"
 import { FBXLoader } from "three-stdlib"
 import { AnimationClip, Group } from "three"
@@ -127,7 +129,7 @@ export default function Models({ heroModels, availableScenes = [], voiceFiles }:
 		return (
 			<Card>
 				<CardContent>
-					<div className="text-center text-muted-foreground py-8">No 3D models available for this hero</div>
+					<div className="text-center text-muted-foreground py-8"><Text messageKey="uiNo3dModelsAvailableForThisHero" /></div>
 				</CardContent>
 			</Card>
 		)
@@ -138,8 +140,7 @@ export default function Models({ heroModels, availableScenes = [], voiceFiles }:
 			{/* Main content */}
 			{!selectedCostume ? (
 				<div className="justify-center items-center flex text-muted-foreground h-10 max-h-10 lg:h-200 lg:max-h-200 border rounded-lg">
-					Select a costume from the list to view 3D model
-				</div>
+					<Text messageKey="uiSelectACostumeFromTheListToView3dModel" /></div>
 			) : currentModels.length > 0 ? (
 				<ModelViewer
 					key="model-viewer-stable"
@@ -154,8 +155,7 @@ export default function Models({ heroModels, availableScenes = [], voiceFiles }:
 				/>
 			) : (
 				<div className="justify-center items-center flex text-muted-foreground lg:h-200 lg:max-h-200 border rounded-lg">
-					No models available for this costume
-				</div>
+					<Text messageKey="uiNoModelsAvailableForThisCostume" /></div>
 			)}
 
 			{/* Costume selection panel below */}

@@ -1,3 +1,5 @@
+
+import { Text } from "@/components/i18n/language-provider"
 import { useState, useRef, useEffect, useCallback } from "react"
 import {
 	Dialog,
@@ -197,7 +199,7 @@ export default function ImageZoomModal({
 			<DialogContent className="[&>button]:hidden p-0 max-w-screen md:max-w-fit sm:max-w-fit w-screen md:w-fit h-fit sm:h-fit focus:outline-none">
 				<DialogHeader className="p-4 pb-0">
 					<div className="flex items-center justify-between">
-						{title && <DialogTitle className="hidden md:block">{title}</DialogTitle>}
+						{title && <DialogTitle className="hidden md:block"><Text>{title}</Text></DialogTitle>}
 						<div className="flex items-center gap-2 w-full md:w-fit justify-end">
 							{/* Navigation controls */}
 							{showNavigation && onNavigate && (
@@ -266,7 +268,7 @@ export default function ImageZoomModal({
 						</div>
 					</div>
 				</DialogHeader>
-				<DialogDescription className="sr-only">Image</DialogDescription>
+				<DialogDescription className="sr-only"><Text messageKey="uiImage" /></DialogDescription>
 
 				<div className="overflow-hidden p-4 pt-0 h-full w-full" ref={imageContainerRef}>
 					<div

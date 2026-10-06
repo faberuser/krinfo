@@ -1,15 +1,17 @@
 "use client"
 
-import { useState, useEffect, useMemo, useRef, startTransition } from "react"
+import { Text, useTranslation, useLocalizedArtifacts } from "@/components/i18n/language-provider"
+
+import { useState, useEffect, useMemo, startTransition } from "react"
 import Fuse from "fuse.js"
+import { ListPageHeader, ListPageSearch, type ListSortType } from "@/components/list-page-header"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import Image from "@/components/next-image"
 import { ArtifactData } from "@/model/Artifact"
 import { Button } from "@/components/ui/button"
-import { Search, X, ChevronDown, ChevronUp, Check } from "lucide-react"
+import { ChevronDown, Check, Sparkles } from "lucide-react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command"
 import { Spinner } from "@/components/ui/spinner"
@@ -21,9 +23,10 @@ interface ArtifactsClientProps {
 	releaseOrder: Record<string, string>
 }
 
-export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsClientProps) {
+export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrder }: ArtifactsClientProps) {
+	const { locale } = useTranslation()
+	const artifacts = useLocalizedArtifacts(sourceArtifacts)
 	const [searchQuery, setSearchQuery] = useState("")
-	const searchInputRef = useRef<HTMLInputElement>(null)
 	const [effectFilterOpen, setEffectFilterOpen] = useState(false)
 	const [selectedEffect, setSelectedEffect] = useState<ArtifactEffectTag | "all">("all")
 	const taggedArtifacts = useMemo(
@@ -46,7 +49,7 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 	}, [pathname])
 
 	// Lazy state initializers: read from localStorage only once
-	const [sortType, setSortType] = useState<"alphabetical" | "release">(() => {
+	const [sortType, setSortType] = useState<ListSortType>(() => {
 		if (typeof window === "undefined") return "release"
 		const stored = localStorage.getItem("artifactsSortType")
 		return stored === "alphabetical" || stored === "release" ? stored : "release"
@@ -75,7 +78,7 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 	// Configure Fuse.js for fuzzy search
 	const fuse = useMemo(() => {
 		return new Fuse(taggedArtifacts, {
-			keys: ["name", "aliases", "effectTags"],
+				keys: ["name", "id", "aliases", "effectTags"],
 			threshold: 0.3,
 			includeScore: true,
 		})
@@ -97,12 +100,12 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 		// Sort by selected sort type
 		if (sortType === "release") {
 			result = [...result].sort((a, b) => {
-				const aOrder = parseInt(releaseOrder[a.name] ?? "9999", 10)
-				const bOrder = parseInt(releaseOrder[b.name] ?? "9999", 10)
+				const aOrder = parseInt(releaseOrder[a.id] ?? "9999", 10)
+				const bOrder = parseInt(releaseOrder[b.id] ?? "9999", 10)
 				return aOrder - bOrder
 			})
 		} else {
-			result = [...result].sort((a, b) => a.name.localeCompare(b.name))
+			result = [...result].sort((a, b) => a.name.localeCompare(b.name, locale))
 		}
 
 		// Reverse if needed
@@ -111,10 +114,10 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 		}
 
 		return result
-	}, [taggedArtifacts, searchQuery, fuse, sortType, reverseSort, releaseOrder, selectedEffect])
+	}, [taggedArtifacts, searchQuery, fuse, sortType, reverseSort, releaseOrder, selectedEffect, locale])
 
 	useEffect(() => {
-		const slugs = filteredArtifacts.map((a) => a.name.toLowerCase().replace(/\s+/g, "-"))
+		const slugs = filteredArtifacts.map((a) => a.id.toLowerCase().replace(/\s+/g, "-"))
 		sessionStorage.setItem("currentArtifactList", JSON.stringify(slugs))
 	}, [filteredArtifacts])
 
@@ -129,157 +132,98 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 
 	return (
 		<div>
-			<div className="space-y-2 mb-4">
-				<div className="flex flex-row justify-between items-center">
-					<div className="flex flex-row gap-2 items-baseline">
-						<div className="text-xl font-bold">Artifacts</div>
-						<div className="text-muted-foreground text-sm">
-							<span className="hidden sm:inline">Showing </span>
-							{filteredArtifacts.length}
-							<span> artifacts</span>
-						</div>
-					</div>
-					<div className="flex flex-row">
-						{/* Alphabetical Sort */}
-						<Button
-							variant={`${sortType === "alphabetical" ? "outline" : "ghost"}`}
-							onClick={() => {
-								if (sortType === "alphabetical") {
-									setReverseSort((prev) => !prev)
-								} else {
-									setSortType("alphabetical")
-									setReverseSort(false)
-								}
-							}}
-						>
-							{sortType === "alphabetical" && reverseSort && <ChevronDown />}
-							{sortType === "alphabetical" && !reverseSort && <ChevronUp />}
-							{sortType === "alphabetical" && reverseSort ? "Z → A" : "A → Z"}
-						</Button>
-
-						{/* Release Sort */}
-						<Button
-							variant={`${sortType === "release" ? "outline" : "ghost"}`}
-							onClick={() => {
-								if (sortType === "release") {
-									setReverseSort((prev) => !prev)
-								} else {
-									setSortType("release")
-									setReverseSort(true)
-								}
-							}}
-						>
-							{sortType === "release" && reverseSort && <ChevronUp />}
-							{sortType === "release" && !reverseSort && <ChevronDown />}
-							Release
-						</Button>
-					</div>
-				</div>
-
-				<div className="flex flex-col items-start sm:flex-row sm:items-center gap-2">
-					{/* Search Input */}
-					<div className="w-full sm:max-w-sm relative">
-						<span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-							<Search className="h-4 w-4" />
-						</span>
-						<Input
-							ref={searchInputRef}
-							type="text"
-							placeholder="Search names, aliases, or effects..."
-							aria-label="Search artifacts"
-							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
-							className="w-full pl-10 pr-10"
-						/>
-						{searchQuery.length > 0 ? (
+			<ListPageHeader
+				title={<Text messageKey="uiArtifacts" />}
+				count={filteredArtifacts.length}
+				countLabel={<Text messageKey="uiArtifacts_0f50505c" />}
+				sortType={sortType}
+				reverseSort={reverseSort}
+				onSortChange={(nextSortType, nextReverseSort) => {
+					setSortType(nextSortType)
+					setReverseSort(nextReverseSort)
+				}}
+				search={
+					<ListPageSearch
+						value={searchQuery}
+						onValueChange={setSearchQuery}
+						placeholder="Search names, aliases, or effects..."
+						aria-label="Search artifacts"
+					/>
+				}
+			>
+				<div className="flex w-full sm:w-auto flex-wrap items-center gap-2">
+					<Popover open={effectFilterOpen} onOpenChange={setEffectFilterOpen}>
+						<PopoverTrigger asChild>
 							<Button
-								type="button"
-								variant="ghost"
-								size="icon-sm"
-								className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground"
-								aria-label="Clear search"
-								onClick={() => {
-									setSearchQuery("")
-									searchInputRef.current?.focus()
-								}}
+								variant="outline"
+								role="combobox"
+								aria-label="Filter by effect"
+								aria-expanded={effectFilterOpen}
+								className="w-full sm:w-64 min-w-0 justify-between font-normal"
 							>
-								<X className="h-4 w-4" aria-hidden="true" />
-							</Button>
-						) : null}
-					</div>
-					<div className="flex w-full sm:w-auto flex-wrap items-center gap-2">
-						<Popover open={effectFilterOpen} onOpenChange={setEffectFilterOpen}>
-							<PopoverTrigger asChild>
-								<Button
-									variant="outline"
-									role="combobox"
-									aria-label="Filter by effect"
-									aria-expanded={effectFilterOpen}
-									className="w-full sm:w-64 min-w-0 justify-between font-normal"
-								>
+								<span className="flex min-w-0 items-center gap-2">
+									<Sparkles className="size-4" aria-hidden="true" />
 									<span className="truncate">
-										{selectedEffect === "all"
+										<Text>{selectedEffect === "all"
 											? "All effects"
-											: `${selectedEffect} (${effectCounts.get(selectedEffect) ?? 0})`}
+											: `${selectedEffect} (${effectCounts.get(selectedEffect) ?? 0})`}</Text>
 									</span>
-									<ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
-								</Button>
-							</PopoverTrigger>
-							<PopoverContent align="start" className="w-(--radix-popover-trigger-width) p-0">
-								<Command>
-									<CommandInput placeholder="Search effects..." aria-label="Search effects" />
-									<CommandList>
-										<CommandEmpty>No effects found.</CommandEmpty>
-										<CommandGroup>
+								</span>
+								<ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+							</Button>
+						</PopoverTrigger>
+						<PopoverContent align="start" className="w-(--radix-popover-trigger-width) p-0">
+							<Command>
+								<CommandInput placeholder="Search effects..." aria-label="Search effects" />
+								<CommandList>
+									<CommandEmpty><Text messageKey="uiNoEffectsFound" /></CommandEmpty>
+									<CommandGroup>
+										<CommandItem
+											value="All effects"
+											onSelect={() => {
+												setSelectedEffect("all")
+												setEffectFilterOpen(false)
+											}}
+										>
+											<Check
+												className={selectedEffect === "all" ? "opacity-100" : "opacity-0"}
+											/>
+											<Text messageKey="uiAllEffects" /></CommandItem>
+										{ARTIFACT_EFFECT_TAGS.filter(
+											(tag) => effectCounts.has(tag) || tag === selectedEffect,
+										).map((tag) => (
 											<CommandItem
-												value="All effects"
+												key={tag}
+												value={tag}
 												onSelect={() => {
-													setSelectedEffect("all")
+													setSelectedEffect(tag)
 													setEffectFilterOpen(false)
 												}}
 											>
 												<Check
-													className={selectedEffect === "all" ? "opacity-100" : "opacity-0"}
+													className={selectedEffect === tag ? "opacity-100" : "opacity-0"}
 												/>
-												All effects
+												<Text>{tag}</Text> ({effectCounts.get(tag) ?? 0})
 											</CommandItem>
-											{ARTIFACT_EFFECT_TAGS.filter(
-												(tag) => effectCounts.has(tag) || tag === selectedEffect,
-											).map((tag) => (
-												<CommandItem
-													key={tag}
-													value={tag}
-													onSelect={() => {
-														setSelectedEffect(tag)
-														setEffectFilterOpen(false)
-													}}
-												>
-													<Check
-														className={selectedEffect === tag ? "opacity-100" : "opacity-0"}
-													/>
-													{tag} ({effectCounts.get(tag) ?? 0})
-												</CommandItem>
-											))}
-										</CommandGroup>
-									</CommandList>
-								</Command>
-							</PopoverContent>
-						</Popover>
-					</div>
+										))}
+									</CommandGroup>
+								</CommandList>
+							</Command>
+						</PopoverContent>
+					</Popover>
 				</div>
-			</div>
+			</ListPageHeader>
 			{filteredArtifacts.length === 0 ? (
 				<p role="status" className="py-12 text-center text-muted-foreground">
-					No artifacts match these filters. Try another effect or clear the filters.
-				</p>
+					<Text messageKey="uiNoArtifactsMatchTheseFiltersTryAnotherEffectOrClearTheFilters" /></p>
 			) : null}
 
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{filteredArtifacts.map((artifact) => {
-					const slug = artifact.name.toLowerCase().replace(/\s+/g, "-")
+					const slug = artifact.id.toLowerCase().replace(/\s+/g, "-")
 					return (
 						<Link
-							key={artifact.name}
+							key={artifact.id}
 							href={`/artifacts/${encodeURIComponent(slug)}`}
 							className="hover:scale-105 transition-transform duration-300 grid-item-lazy"
 							onClick={() => setLoadingSlug(slug)}
@@ -303,7 +247,7 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 											</div>
 										)}
 										<div className="flex-1">
-											<CardTitle className="text-lg">{artifact.name}</CardTitle>
+											<CardTitle className="text-lg"><Text>{artifact.name}</Text></CardTitle>
 										</div>
 									</div>
 								</CardHeader>
@@ -312,7 +256,7 @@ export default function ArtifactsClient({ artifacts, releaseOrder }: ArtifactsCl
 										<ArtifactEffectBadges artifact={artifact} />
 										{artifact.description && (
 											<p className="text-sm text-muted-foreground line-clamp-3">
-												{artifact.description}
+												<Text>{artifact.descriptionByStar?.["0"] ?? artifact.description}</Text>
 											</p>
 										)}
 									</div>

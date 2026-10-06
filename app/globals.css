@@ -121,6 +121,20 @@
 	}
 }
 
+/* Prefer fonts appropriate to the selected script; keep Latin text in Geist. */
+html:lang(ja) body {
+	font-family: var(--font-geist-sans), "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+html:lang(ko) body {
+	font-family: var(--font-geist-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+html[lang="zh-Hans"] body {
+	font-family: var(--font-geist-sans), "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+html[lang="zh-Hant"] body {
+	font-family: var(--font-geist-sans), "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
 /* Hide the main content list ONLY on mobile when the intercepted dialog route is active */
 body.intercepted-mobile-open .main-content-list {
 	display: none !important;

@@ -40,6 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Python tooling caches
+__pycache__/
+*.py[cod]
+
 # Optional submodules (initialized by users who want models/voices)
 /public/kingsraid-models/
 /public/kingsraid-audio/

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 import type { SearchData } from "@/lib/list-data"
+import { Text } from "@/components/i18n/language-provider"
 
 const SearchDialog = dynamic(() => import("@/components/sidebar/search-dialog"))
 
@@ -68,9 +69,11 @@ export default function GlobalSearch({ searchData, state }: GlobalSearchProps) {
 				<Search className={`mr-1 h-4 w-4 ${state === "collapsed" ? "text-white" : "text-muted-foreground"}`} />
 				{state === "collapsed" ? null : (
 					<>
-						Search...
+						<Text messageKey="uiSearch_7f553822" />
 						<KbdGroup className="ml-auto">
-							<Kbd>Ctrl + K</Kbd>
+							<Kbd>
+								<Text>Ctrl + K</Text>
+							</Kbd>
 						</KbdGroup>
 					</>
 				)}

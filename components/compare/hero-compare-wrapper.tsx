@@ -20,6 +20,7 @@ interface HeroCompareWrapperProps {
 	availableScenes?: Array<{ value: string; label: string }>
 	enableModelsVoices?: boolean
 	classPerks: ClassPerksData
+	classPerksMap: Record<DataVersion, ClassPerksData>
 	sortedHeroSlugs: string[]
 }
 
@@ -33,6 +34,7 @@ export default function HeroCompareWrapper({
 	availableScenes = [],
 	enableModelsVoices = false,
 	classPerks,
+	classPerksMap,
 	sortedHeroSlugs,
 }: HeroCompareWrapperProps) {
 	const { isCompareMode, isHydrated } = useCompareMode()
@@ -51,12 +53,12 @@ export default function HeroCompareWrapper({
 					voiceFiles={voiceFiles}
 					availableScenes={availableScenes}
 					enableModelsVoices={enableModelsVoices}
-					classPerks={classPerks}
+					classPerks={classPerksMap[version]}
 					sortedHeroSlugs={sortedHeroSlugs}
 				/>
 			)
 		},
-		[heroDataMap, availableScenes, enableModelsVoices, sortedHeroSlugs, costumes, models, voiceFiles, classPerks],
+		[heroDataMap, availableScenes, enableModelsVoices, sortedHeroSlugs, costumes, models, voiceFiles, classPerksMap],
 	)
 
 	if (!isHydrated || !isCompareMode) {

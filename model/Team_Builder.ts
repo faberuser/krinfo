@@ -42,10 +42,10 @@ export interface TeamBuilderClientProps {
 	artifacts: ArtifactData[]
 	artifactReleaseOrder: Record<string, string>
 	saReverse: string[]
-	classPerks: {
+	classPerksMap: Record<DataVersion, {
 		general: ClassPerksData
 		classes: Record<string, ClassPerksData>
-	}
+	}>
 	heroClasses: readonly {
 		readonly value: string
 		readonly name: string

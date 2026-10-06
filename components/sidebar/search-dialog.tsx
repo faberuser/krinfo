@@ -1,5 +1,6 @@
 "use client"
 
+import { Text, useTranslation, useHeroIndex, useSharedRecords } from "@/components/i18n/language-provider"
 import { useState, useEffect, useRef, useMemo } from "react"
 import {
 	CommandDialog,
@@ -32,6 +33,9 @@ interface SearchDialogProps {
 }
 
 export default function SearchDialog({ searchData, open, onOpenChange, onSelect }: SearchDialogProps) {
+	const { t } = useTranslation()
+	const heroIndex = useHeroIndex()
+	const shared = useSharedRecords()
 	const [searchValue, setSearchValue] = useState("")
 	const listRef = useRef<HTMLDivElement>(null)
 
@@ -43,26 +47,27 @@ export default function SearchDialog({ searchData, open, onOpenChange, onSelect 
 			searchData.heroes.forEach((hero, index) => {
 				items.push({
 					id: `hero-${index}`,
-					title: hero.profile.name,
-					description: hero.profile.title,
+					title: heroIndex[hero.id]?.name ?? hero.id,
+					description: heroIndex[hero.id]?.title ?? hero.profile.title,
 					type: "hero",
-					url: `/heroes/${encodeURIComponent(hero.profile.name.toLowerCase().replace(/\s+/g, "-"))}`,
+					url: `/heroes/${encodeURIComponent(hero.id.toLowerCase().replace(/\s+/g, "-"))}`,
 					icon: UserRound,
-					aliases: hero.aliases || null,
+					aliases: [hero.id, ...(hero.aliases || [])],
 				})
 			})
 		}
 
 		if (searchData?.artifacts) {
 			searchData.artifacts.forEach((artifact, index) => {
+				const localized = shared.artifacts?.find((record) => record.id === artifact.id)
 				items.push({
 					id: `artifact-${index}`,
-					title: artifact.name,
-					description: artifact.description,
+					title: localized?.name ?? artifact.id,
+					description: localized?.descriptionByStar?.["0"] ?? localized?.description ?? artifact.description,
 					type: "artifact",
-					url: `/artifacts/${encodeURIComponent(artifact.name.toLowerCase().replace(/\s+/g, "-"))}`,
+					url: `/artifacts/${encodeURIComponent(artifact.id.toLowerCase().replace(/\s+/g, "-"))}`,
 					icon: Amphora,
-					aliases: artifact.aliases || null,
+					aliases: [artifact.id, ...(artifact.aliases || [])],
 				})
 			})
 		}
@@ -71,18 +76,18 @@ export default function SearchDialog({ searchData, open, onOpenChange, onSelect 
 			searchData.bosses.forEach((boss, index) => {
 				items.push({
 					id: `boss-${index}`,
-					title: boss.profile.name,
-					description: boss.profile.title,
+					title: shared.bosses?.[boss.id]?.name ?? boss.id,
+					description: shared.bosses?.[boss.id]?.title ?? boss.profile.title,
 					type: "boss",
-					url: `/bosses/${encodeURIComponent(boss.profile.name.toLowerCase().replace(/\s+/g, "-"))}`,
+					url: `/bosses/${encodeURIComponent(boss.id.toLowerCase().replace(/\s+/g, "-"))}`,
 					icon: ShieldHalf,
-					aliases: boss.aliases || null,
+					aliases: [boss.id, ...(boss.aliases || [])],
 				})
 			})
 		}
 
 		return items
-	}, [searchData])
+	}, [searchData, heroIndex, shared])
 
 	// Reset scroll position when search value changes
 	useEffect(() => {
@@ -106,14 +111,15 @@ export default function SearchDialog({ searchData, open, onOpenChange, onSelect 
 
 	// Group items by type
 	const groupedItems = useMemo(
-		() => searchItems.reduce(
-			(acc, item) => {
-				if (!acc[item.type]) acc[item.type] = []
-				acc[item.type].push(item)
-				return acc
-			},
-			{} as Record<string, SearchItem[]>,
-		),
+		() =>
+			searchItems.reduce(
+				(acc, item) => {
+					if (!acc[item.type]) acc[item.type] = []
+					acc[item.type].push(item)
+					return acc
+				},
+				{} as Record<string, SearchItem[]>,
+			),
 		[searchItems],
 	)
 
@@ -129,19 +135,23 @@ export default function SearchDialog({ searchData, open, onOpenChange, onSelect 
 
 	return (
 		<CommandDialog open={open} onOpenChange={handleOpenChange}>
-			<DialogTitle className="sr-only">Global Search</DialogTitle>
+			<DialogTitle className="sr-only">
+				<Text messageKey="uiGlobalSearch" />
+			</DialogTitle>
 			<CommandInput placeholder="Search globally..." value={searchValue} onValueChange={setSearchValue} />
 			<CommandList ref={listRef} className="max-h-100 overflow-y-auto custom-scrollbar">
-				<CommandEmpty>No results found.</CommandEmpty>
+				<CommandEmpty>
+					<Text messageKey="uiNoResultsFound" />
+				</CommandEmpty>
 
 				{Object.entries(groupedItems).map(([type, items]) => (
-					<CommandGroup key={type} heading={getGroupTitle(type)}>
+					<CommandGroup key={type} heading={t(getGroupTitle(type))}>
 						{items.map((item) => {
 							const Icon = item.icon
 							return (
 								<CommandItem
 									key={item.id}
-									value={`${item.title} ${item.description} ${
+									value={`${t(item.title)} ${t(item.description || "")} ${item.title} ${item.description} ${
 										item.aliases ? item.aliases.join(" ") : ""
 									}`}
 									onSelect={() => handleSelect(item.url)}
@@ -149,10 +159,12 @@ export default function SearchDialog({ searchData, open, onOpenChange, onSelect 
 								>
 									{Icon && <Icon className="h-4 w-4" />}
 									<div className="flex flex-col">
-										<span className="font-medium">{item.title}</span>
+										<span className="font-medium">
+											<Text>{item.title}</Text>
+										</span>
 										{item.description && (
 											<span className="text-xs text-muted-foreground">
-												{item.description}
+												<Text>{item.description}</Text>
 											</span>
 										)}
 									</div>

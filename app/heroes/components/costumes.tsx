@@ -1,8 +1,9 @@
+
+import { Text } from "@/components/i18n/language-provider"
 import { useEffect, useState } from "react"
 import { HeroData } from "@/model/Hero"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import Image from "@/components/next-image"
-import { capitalize } from "@/lib/utils"
 import { ZoomIn } from "lucide-react"
 import ImageZoomModal from "@/components/image-modal"
 
@@ -60,7 +61,7 @@ export default function Costumes({ heroData, costumes }: CostumesProps) {
 	if (!heroData.costumes) {
 		return (
 			<div className="text-center text-muted-foreground py-8">
-				No costume data available for {capitalize(heroData.profile.name)}
+				<Text messageKey="uiNoCostumeDataAvailableFor" suffix=" " /><Text>{(heroData.profile.name)}</Text>
 			</div>
 		)
 	}
@@ -75,7 +76,7 @@ export default function Costumes({ heroData, costumes }: CostumesProps) {
 				{/* Available Costumes - Left Side */}
 				<Card>
 					<CardHeader>
-						<CardTitle>Costumes ({costumes.length} variants)</CardTitle>
+						<CardTitle><Text messageKey="uiCostumes_4ca7fdb7" />{costumes.length} <Text messageKey="uiVariants_5432e2fa" /></CardTitle>
 					</CardHeader>
 					<CardContent className="h-200 custom-scrollbar overflow-y-auto overflow-x-hidden">
 						<div className="flex items-center justify-center">
@@ -94,7 +95,7 @@ export default function Costumes({ heroData, costumes }: CostumesProps) {
 
 						{costumes.length === 0 && (
 							<div className="text-center text-muted-foreground py-8">
-								<div>No costume images found</div>
+								<div><Text messageKey="uiNoCostumeImagesFound" /></div>
 							</div>
 						)}
 					</CardContent>
@@ -105,7 +106,7 @@ export default function Costumes({ heroData, costumes }: CostumesProps) {
 					{selectedCostume && selectedCostumeData ? (
 						<Card>
 							<CardHeader>
-								<CardTitle>{selectedCostumeData.displayName.replace("%", "?")}</CardTitle>
+								<CardTitle><Text>{selectedCostumeData.displayName.replace("%", "?")}</Text></CardTitle>
 							</CardHeader>
 							<CardContent>
 								<div className="flex justify-center">
@@ -133,10 +134,9 @@ export default function Costumes({ heroData, costumes }: CostumesProps) {
 							<CardContent>
 								<div className="flex items-center justify-center h-64 text-gray-500">
 									<div className="text-center">
-										<div className="text-lg">Select a costume to view</div>
+										<div className="text-lg"><Text messageKey="uiSelectACostumeToView" /></div>
 										<div className="text-sm mt-2">
-											Choose from the available costumes on the left
-										</div>
+											<Text messageKey="uiChooseFromTheAvailableCostumesOnTheLeft" /></div>
 									</div>
 								</div>
 							</CardContent>
@@ -152,7 +152,7 @@ export default function Costumes({ heroData, costumes }: CostumesProps) {
 					onOpenChange={setIsModalOpen}
 					imageSrc={`/kingsraid-data/assets/${selectedCostumeData.path}`}
 					imageAlt={`${heroData.profile.name} - ${selectedCostume}`}
-					title={`${capitalize(heroData.profile.name)} - ${selectedCostumeData.displayName}`}
+					title={`${(heroData.profile.name)} - ${selectedCostumeData.displayName}`}
 					showNavigation={costumes.length > 1}
 					currentIndex={currentCostumeIndex}
 					totalCount={costumes.length}
@@ -189,7 +189,7 @@ function CostumeCard({ costume, heroName, isSelected, onClick }: CostumeCardProp
 				className="w-full flex-1 hover:scale-110 transition-transform duration-300 object-contain"
 			/>
 			<div className="text-sm font-bold w-full text-center absolute bottom-0 h-12 bg-linear-to-t from-white dark:from-black/70 to-transparent dark:text-white py-2 flex items-center justify-center">
-				{costume.displayName.replace("%", "?")}
+				<Text>{costume.displayName.replace("%", "?")}</Text>
 			</div>
 		</div>
 	)

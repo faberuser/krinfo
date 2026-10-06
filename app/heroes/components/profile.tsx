@@ -1,3 +1,5 @@
+
+import { Text, useTranslation } from "@/components/i18n/language-provider"
 import { useState } from "react"
 import { HeroData } from "@/model/Hero"
 import Image from "@/components/next-image"
@@ -5,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import ImageZoomModal from "@/components/image-modal"
 import { ZoomIn } from "lucide-react"
-import { capitalize, parseColoredText } from "@/lib/utils"
+import { parseColoredText } from "@/lib/utils"
 
 interface ProfileProps {
 	heroData: HeroData
@@ -13,6 +15,7 @@ interface ProfileProps {
 
 export default function Profile({ heroData }: ProfileProps) {
 	const { profile } = heroData
+	const { locale } = useTranslation()
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const handleImageClick = () => {
@@ -24,37 +27,36 @@ export default function Profile({ heroData }: ProfileProps) {
 			{/* Hero Info - Consolidated */}
 			<Card>
 				<CardContent>
-					<div className="text-xl font-semibold pb-2">Hero Information</div>
+					<div className="text-xl font-semibold pb-2"><Text messageKey="uiHeroInformation" /></div>
 					<Separator className="mb-6" />
 
 					{/* Combat Stats Group */}
 					<div className="mb-6">
 						<h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
-							Combat Attributes
-						</h3>
+							<Text messageKey="uiCombatAttributes" /></h3>
 						<div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Class</div>
-									<div className="font-semibold">{profile.class}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiClass" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/class`}>{profile.class}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Position</div>
-									<div className="font-semibold">{profile.position}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiPosition" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/position`}>{profile.position}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Damage Type</div>
-									<div className="font-semibold">{profile.damage_type}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiDamageType" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/damage_type`}>{profile.damage_type}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Attack Range</div>
-									<div className="font-semibold">{profile.attack_range}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiAttackRange" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/attack_range`}>{profile.attack_range}</Text></div>
 								</div>
 							</div>
 						</div>
@@ -63,55 +65,54 @@ export default function Profile({ heroData }: ProfileProps) {
 					{/* Character Details Group */}
 					<div>
 						<h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider">
-							Character Details
-						</h3>
+							<Text messageKey="uiCharacterDetails" /></h3>
 						<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Gender</div>
-									<div className="font-semibold">{profile.gender}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiGender" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/gender`}>{profile.gender}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Race</div>
-									<div className="font-semibold">{profile.race}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiRace" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/race`}>{profile.race}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Age</div>
-									<div className="font-semibold">{profile.age}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiAge" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/age`}>{profile.age}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Height</div>
-									<div className="font-semibold">{profile.height} cm</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiHeight" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/height`}>{profile.height}</Text> <Text>cm</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Birthday</div>
-									<div className="font-semibold">{profile.birth_of_month}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiBirthday" /></div>
+									<div className="font-semibold">{`${new Intl.DateTimeFormat(locale, { month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(2000, profile.birth.month - 1, profile.birth.day)))}, ${profile.birth.monthName}`}</div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Constellation</div>
-									<div className="font-semibold">{profile.constellation}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiConstellation" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/constellation`}>{profile.constellation}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Likes</div>
-									<div className="font-semibold">{profile.like}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiLikes" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/like`}>{profile.like}</Text></div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
-									<div className="text-xs text-muted-foreground mb-0.5">Dislikes</div>
-									<div className="font-semibold">{profile.dislike}</div>
+									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiDislikes" /></div>
+									<div className="font-semibold"><Text fieldKey={`heroes/${profile.name}/profile/dislike`}>{profile.dislike}</Text></div>
 								</div>
 							</div>
 						</div>
@@ -124,10 +125,10 @@ export default function Profile({ heroData }: ProfileProps) {
 				{/* Story Section */}
 				<Card className="lg:col-span-1">
 					<CardContent>
-						<div className="text-xl font-semibold pb-2">Background Story</div>
+						<div className="text-xl font-semibold pb-2"><Text messageKey="uiBackgroundStory" /></div>
 						<Separator className="mb-4" />
 						<div className="prose max-w-none">
-							<div>{parseColoredText(profile.story)}</div>
+							<div>{parseColoredText(profile.story, `heroes/${profile.name}/profile/story`)}</div>
 						</div>
 					</CardContent>
 				</Card>
@@ -135,7 +136,7 @@ export default function Profile({ heroData }: ProfileProps) {
 				{/* Splash Art */}
 				<Card className="lg:col-span-2">
 					<CardContent>
-						<div className="text-xl font-semibold pb-2">Splashart</div>
+						<div className="text-xl font-semibold pb-2"><Text messageKey="uiSplashart" /></div>
 						<Separator className="mb-4" />
 						<div
 							className="relative w-full flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
@@ -159,7 +160,7 @@ export default function Profile({ heroData }: ProfileProps) {
 							onOpenChange={setIsModalOpen}
 							imageSrc={`/kingsraid-data/assets/${heroData.splashart}`}
 							imageAlt={`${heroData.profile.name} Splashart`}
-							title={`${capitalize(heroData.profile.name)} Splashart`}
+							title={`${heroData.profile.name} Splashart`}
 						/>
 					</CardContent>
 				</Card>

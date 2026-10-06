@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import { useState, useEffect, useRef } from "react"
 import { FBXLoader } from "three-stdlib"
 import { AnimationClip, Group } from "three"
@@ -141,7 +143,7 @@ export default function BossModels({ bossModels, bossScenes = [], bossName }: Bo
 		return (
 			<Card>
 				<CardContent>
-					<div className="text-center text-muted-foreground py-8">No 3D models available for this boss</div>
+					<div className="text-center text-muted-foreground py-8"><Text messageKey="uiNo3dModelsAvailableForThisBoss" /></div>
 				</CardContent>
 			</Card>
 		)
@@ -152,8 +154,7 @@ export default function BossModels({ bossModels, bossScenes = [], bossName }: Bo
 			{/* Main content */}
 			{!selectedModel ? (
 				<div className="justify-center items-center flex text-muted-foreground lg:h-200 lg:max-h-200 border rounded-lg">
-					Select a model from the list to view the 3D model
-				</div>
+					<Text messageKey="uiSelectAModelFromTheListToViewThe3dModel" /></div>
 			) : currentModels.length > 0 ? (
 				<ModelViewer
 					key="boss-model-viewer-stable"
@@ -169,8 +170,7 @@ export default function BossModels({ bossModels, bossScenes = [], bossName }: Bo
 				/>
 			) : (
 				<div className="justify-center items-center flex text-muted-foreground lg:h-200 lg:max-h-200 border rounded-lg">
-					No models available for this variant
-				</div>
+					<Text messageKey="uiNoModelsAvailableForThisVariant" /></div>
 			)}
 
 			{/* Model selection panel below */}

@@ -1,5 +1,7 @@
 "use client"
 
+import { Text, useHeroProfile } from "@/components/i18n/language-provider"
+
 import Image from "@/components/next-image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -23,6 +25,7 @@ export default function HeroCard({
 }) {
 	const [loading, setLoading] = useState(false)
 	const pathname = usePathname()
+	const localizedProfile = useHeroProfile(name)
 
 	// Reset spinner if navigation is cancelled or we return to the same page
 	useEffect(() => {
@@ -64,7 +67,7 @@ export default function HeroCard({
 					isIconView ? "text-xs h-6 py-1" : "text-xl h-12 py-2"
 				}`}
 			>
-				{name}
+				<Text>{localizedProfile?.name ?? name}</Text>
 			</div>
 			{loading && (
 				<div className="absolute inset-0 flex items-center justify-center bg-black/40 z-10">

@@ -1,3 +1,5 @@
+
+import { Text } from "@/components/i18n/language-provider"
 import SteamRSS from "@/components/steam-news-carousel"
 import Link from "next/link"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -39,22 +41,18 @@ export default function HomeContent({ steamNews }: HomeContentProps) {
 						className="text-3xl leading-[normal]"
 						style={{ fontFamily: "var(--font-comfortaa)", fontWeight: 700 }}
 					>
-						King&apos;s Raid Info
-					</div>
+						<Text messageKey="uiKingSRaidInfo" /></div>
 					<div className="text-lg text-muted-foreground max-w-2xl mx-auto">
-						King&apos;s Raid was originally released in 2016 by Vespa Inc (changed to Anic Inc), then End of
-						Service in 2025 and is undergoing a relaunch by Masangsoft in 2026.
-						<br />
-						This site aims to provide the latest resources for the game and its community.
-					</div>
+						<Text messageKey="uiKingSRaidWasOriginallyReleasedIn2016ByVespaIncChangedToAnicIncThenEndOfServ" /><br />
+						<Text messageKey="uiThisSiteAimsToProvideTheLatestResourcesForTheGameAndItsCommunity" /></div>
 				</div>
 
 				{/* News Section */}
 				{steamNews.length > 0 && (
 					<div className="space-y-4 p-2 md:p-0">
 						<div className="text-center">
-							<div className="text-2xl font-bold mb-2">Latest News</div>
-							<div className="text-muted-foreground">Steam Announcements</div>
+							<div className="text-2xl font-bold mb-2"><Text messageKey="uiLatestNews" /></div>
+							<div className="text-muted-foreground"><Text messageKey="uiSteamAnnouncements" /></div>
 						</div>
 						<SteamRSS news={steamNews} />
 					</div>
@@ -63,8 +61,8 @@ export default function HomeContent({ steamNews }: HomeContentProps) {
 				{/* Resources Grid */}
 				<div className="space-y-4">
 					<div className="text-center">
-						<div className="text-2xl font-bold mb-2">Resources</div>
-						<div className="text-muted-foreground">King&apos;s Raid Communities</div>
+						<div className="text-2xl font-bold mb-2"><Text messageKey="uiResources" /></div>
+						<div className="text-muted-foreground"><Text messageKey="uiKingSRaidCommunities" /></div>
 					</div>
 					<Communities />
 				</div>
@@ -92,9 +90,9 @@ function Communities() {
 										className="w-full h-auto object-cover"
 									/>
 								</div>
-								{community.name}
+								<Text>{community.name}</Text>
 							</CardTitle>
-							<CardDescription>{community.description}</CardDescription>
+							<CardDescription><Text>{community.description}</Text></CardDescription>
 						</CardHeader>
 					</Card>
 				</Link>

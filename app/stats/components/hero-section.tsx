@@ -1,5 +1,7 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
+
 import { useState, useCallback } from "react"
 import Image from "@/components/next-image"
 import { ArrowRight, ChevronDown } from "lucide-react"
@@ -39,16 +41,15 @@ export function HeroSection({
 	const statusBadge =
 		overallStatus === "added" ? (
 			<Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border border-green-500/30 text-xs">
-				Added in {lastSeg.versionBLabel}
+				<Text messageKey="uiAddedIn" suffix=" " /><Text>{lastSeg.versionBLabel}</Text>
 			</Badge>
 		) : overallStatus === "removed" ? (
 			<Badge className="bg-red-500/20 text-red-700 dark:text-red-400 border border-red-500/30 text-xs">
-				Removed in {lastSeg.versionBLabel}
+				<Text messageKey="uiRemovedIn" suffix=" " /><Text>{lastSeg.versionBLabel}</Text>
 			</Badge>
 		) : (
 			<Badge variant="secondary" className="text-xs">
-				{totalChanges} changes
-			</Badge>
+				{totalChanges} <Text messageKey="uiChanges_d0b4ba23" /></Badge>
 		)
 
 	return (
@@ -64,8 +65,8 @@ export function HeroSection({
 					style={{ width: 32, height: 32 }}
 				/>
 				<div className="flex flex-col min-w-0">
-					<span className="font-semibold text-sm">{heroName}</span>
-					<span className="text-xs text-muted-foreground">{heroClass}</span>
+					<span className="font-semibold text-sm"><Text>{heroName}</Text></span>
+					<span className="text-xs text-muted-foreground"><Text>{heroClass}</Text></span>
 				</div>
 				<div className="ml-auto">{statusBadge}</div>
 			</CollapsibleTrigger>
@@ -79,25 +80,25 @@ export function HeroSection({
 							<div key={key} className="px-4 py-3">
 								{segments.length > 1 && (
 									<div className="flex items-center gap-1 text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-										{seg.versionALabel}
+										<Text>{seg.versionALabel}</Text>
 										<ArrowRight className="w-3 h-3" />
-										{seg.versionBLabel}
+										<Text>{seg.versionBLabel}</Text>
 									</div>
 								)}
 								{!diff || diff.status === "added" ? (
 									<p className="text-sm text-muted-foreground">
-										{heroName} was added in {seg.versionBLabel}.
+										<Text>{heroName}</Text> <Text messageKey="uiWasAddedIn" suffix=" " /><Text>{seg.versionBLabel}</Text>.
 									</p>
 								) : diff.status === "removed" ? (
 									<p className="text-sm text-muted-foreground">
-										{heroName} was removed in {seg.versionBLabel}.
+										<Text>{heroName}</Text> <Text messageKey="uiWasRemovedIn" suffix=" " /><Text>{seg.versionBLabel}</Text>.
 									</p>
 								) : diff.changeCount === 0 ? (
-									<p className="text-sm text-muted-foreground">No changes in this segment.</p>
+									<p className="text-sm text-muted-foreground"><Text messageKey="uiNoChangesInThisSegment" /></p>
 								) : comparison ? (
 									<ComparisonContent comparison={comparison} />
 								) : (
-									<p className="text-sm text-muted-foreground">Comparison data unavailable.</p>
+									<p className="text-sm text-muted-foreground"><Text messageKey="uiComparisonDataUnavailable" /></p>
 								)}
 							</div>
 						)

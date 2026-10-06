@@ -419,7 +419,7 @@ function readJson<T>(filePath: string): T | null {
 }
 
 function loadClasses(version: string): Record<string, ClassDataInput> {
-	const dir = path.join(TABLE_DATA, version, "classes")
+	const dir = path.join(TABLE_DATA, `${version}/en`, "classes")
 	if (!fs.existsSync(dir)) return {}
 	const result: Record<string, ClassDataInput> = {}
 	for (const file of fs.readdirSync(dir)) {
@@ -436,7 +436,7 @@ function getVersions(): string[] {
 }
 
 function loadHeroes(version: string): Record<string, HeroData> {
-	const dir = path.join(TABLE_DATA, version, "heroes")
+	const dir = path.join(TABLE_DATA, `${version}/en`, "heroes")
 	if (!fs.existsSync(dir)) return {}
 	const result: Record<string, HeroData> = {}
 	for (const file of fs.readdirSync(dir)) {

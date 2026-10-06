@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import * as React from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog"
@@ -148,12 +149,16 @@ export function InterceptedDialog({ children, hasModal }: { children: React.Reac
 					ref={dialogContentRef}
 					className="max-w-[95vw] w-full max-h-[95vh] h-full overflow-y-auto custom-scrollbar sm:max-w-7xl bg-background/70 backdrop-blur-sm"
 				>
-					<DialogTitle className="sr-only">View Item</DialogTitle>
-					<DialogDescription className="sr-only">Item Details</DialogDescription>
+					<DialogTitle className="sr-only">
+						<Text messageKey="uiViewItem" />
+					</DialogTitle>
+					<DialogDescription className="sr-only">
+						<Text messageKey="uiItemDetails" />
+					</DialogDescription>
 					<div className="absolute left-4 top-4 z-50">
 						<Button variant="outline" size="sm" onClick={handleSetFullPage}>
 							<ExternalLink className="mr-1 h-4 w-4" />
-							Open Full Page
+							<Text messageKey="uiOpenFullPage" />
 						</Button>
 					</div>
 					<div className="pt-10">{children}</div>

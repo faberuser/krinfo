@@ -1,5 +1,7 @@
 "use client"
 
+import { Text, HeroLanguageScope, useSharedRecords } from "@/components/i18n/language-provider"
+
 import Image from "@/components/next-image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -41,7 +43,12 @@ interface HeroCardProps {
 	onDragEnd?: () => void
 }
 
-export function HeroCard({
+export function HeroCard(props: HeroCardProps) {
+	if (!props.member.hero) return null
+	return <HeroLanguageScope hero={props.member.hero}>{(hero) => <HeroCardContent {...props} member={{ ...props.member, hero }} />}</HeroLanguageScope>
+}
+
+function HeroCardContent({
 	member,
 	index,
 	perksDialogOpen,
@@ -55,8 +62,8 @@ export function HeroCard({
 	onPerksDialogChange,
 	onPerkToggle,
 	onMaxPointsUpdate,
-	t1Perks,
-	getT2Perks,
+	t1Perks: sourceT1Perks,
+	getT2Perks: sourceGetT2Perks,
 	isDragging,
 	isDragOver,
 	onDragStart,
@@ -66,6 +73,9 @@ export function HeroCard({
 	onDragEnd,
 }: HeroCardProps) {
 	const router = useRouter()
+	const shared = useSharedRecords()
+	const t1Perks = shared.classes?.General.perks.t1 ?? sourceT1Perks
+	const getT2Perks = (heroClass: string) => shared.classes?.[heroClass]?.perks.t2 ?? sourceGetT2Perks(heroClass)
 
 	if (!member.hero) return null
 
@@ -107,14 +117,14 @@ export function HeroCard({
 							</div>
 						</div>
 						<div className="flex-1 min-w-0">
-							<CardTitle className="text-base truncate">{member.hero.profile.name}</CardTitle>
+							<CardTitle className="text-base truncate"><Text>{member.hero.profile.name}</Text></CardTitle>
 							<Badge
 								variant="default"
 								className={
 									member.hero.profile.damage_type === "Physical" ? "bg-red-300" : "bg-blue-300"
 								}
 							>
-								{member.hero.profile.damage_type}
+								<Text>{member.hero.profile.damage_type}</Text>
 							</Badge>
 						</div>
 					</div>
@@ -129,14 +139,14 @@ export function HeroCard({
 									onClick={(e) => {
 										e.stopPropagation()
 										router.push(
-											`/heroes/${encodeURIComponent(member.hero!.profile.name.toLowerCase().replace(/\s+/g, "-"))}`,
+											`/heroes/${encodeURIComponent(member.hero!.id.toLowerCase().replace(/\s+/g, "-"))}`,
 										)
 									}}
 								>
 									<Eye className="h-4 w-4" />
 								</Button>
 							</TooltipTrigger>
-							<TooltipContent>View Hero Details</TooltipContent>
+							<TooltipContent><Text messageKey="uiViewHeroDetails" /></TooltipContent>
 						</Tooltip>
 						<Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => onRemove(index)}>
 							<X className="h-4 w-4" />
@@ -160,7 +170,7 @@ export function HeroCard({
 				{/* Perks Section */}
 				<div className="space-y-2">
 					<div className="flex justify-between items-center">
-						<div className="text-xs font-medium text-muted-foreground">Perks</div>
+						<div className="text-xs font-medium text-muted-foreground"><Text messageKey="uiPerks" /></div>
 						<div className="text-xs">
 							<span
 								className={cn(

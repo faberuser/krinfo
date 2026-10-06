@@ -1,5 +1,6 @@
 "use client"
 
+import { Text } from "@/components/i18n/language-provider"
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode, useRef, Fragment } from "react"
 import {
 	AlertDialog,
@@ -32,7 +33,7 @@ export const DataVersionDescriptions: Record<DataVersion, ReactNode> = Object.fr
 			<>
 				{desc.split("\n").map((line, i, arr) => (
 					<Fragment key={i}>
-						{line}
+						<Text>{line}</Text>
 						{i < arr.length - 1 && <br />}
 					</Fragment>
 				))}
@@ -156,15 +157,20 @@ export function DataVersionProvider({ children }: { children: ReactNode }) {
 			<AlertDialog open={dialogOpen} onOpenChange={(open) => !open && handleCancel()}>
 				<AlertDialogContent>
 					<AlertDialogHeader>
-						<AlertDialogTitle>Switch Data Version?</AlertDialogTitle>
+						<AlertDialogTitle>
+							<Text messageKey="uiSwitchDataVersion" />
+						</AlertDialogTitle>
 						<AlertDialogDescription>
-							You have a team saved in Team Builder. Switching data versions will clear your team because
-							heroes may not exist in the other version.
+							<Text messageKey="uiYouHaveATeamSavedInTeamBuilderSwitchingDataVersionsWillClearYourTeamBecause" />
 						</AlertDialogDescription>
 					</AlertDialogHeader>
 					<AlertDialogFooter>
-						<AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
-						<AlertDialogAction onClick={handleConfirm}>Switch & Clear Team</AlertDialogAction>
+						<AlertDialogCancel onClick={handleCancel}>
+							<Text messageKey="uiCancel" />
+						</AlertDialogCancel>
+						<AlertDialogAction onClick={handleConfirm}>
+							<Text messageKey="uiSwitchClearTeam" />
+						</AlertDialogAction>
 					</AlertDialogFooter>
 				</AlertDialogContent>
 			</AlertDialog>
