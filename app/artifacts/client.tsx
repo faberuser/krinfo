@@ -205,7 +205,7 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 												<Check
 													className={selectedEffect === tag ? "opacity-100" : "opacity-0"}
 												/>
-												<Text>{tag}</Text> ({effectCounts.get(tag) ?? 0})
+												<Text>{tag}</Text>
 											</CommandItem>
 										))}
 									</CommandGroup>

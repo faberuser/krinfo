@@ -153,6 +153,24 @@ docker-compose -f docker-compose.yml -f docker-compose.build.yml up -d --build
 
 The application will be available at [http://localhost:3000](http://localhost:3000) (or the port specified in your environment).
 
+### Steam Proxy
+
+If your server cannot access Steam, set this in the Compose `.env` file or
+Portainer stack environment variables, then recreate the container:
+
+```dotenv
+STEAM_NEWS_PROXY=http://192.168.1.9:1080
+```
+
+This runtime setting covers Steam RSS, the News API fallback, and news images.
+Both thumbnails and images inside articles load from our server through
+`/api/steam-image`. The endpoint uses the configured proxy and caches images for
+24 hours. Leave the setting empty for direct connections. Use an HTTP or HTTPS
+proxy URL; the proxy must be reachable from inside the container.
+
+Static exports such as GitHub Pages keep the original Steam image URLs because
+they have no server to run this endpoint.
+
 ## Environment Variables
 
 Create a `.env` file for local usage. See `.env.example` for all available options.
@@ -163,6 +181,7 @@ Create a `.env` file for local usage. See `.env.example` for all available optio
 - `NEXT_PUBLIC_BASE_PATH`: Base path for the application (e.g., "/krinfo" for GitHub Pages) (optional)
 - `NEXT_STATIC_EXPORT`: Set to "true" when building for static export (optional, default: false)
 - `NEXT_PUBLIC_SITE_URL`: Site URL for metadata (optional)
+- `STEAM_NEWS_PROXY`: Server-only HTTP/HTTPS proxy URL for Steam news and images (optional, empty connects directly; configurable at Docker runtime)
 - `DOCKER_IMAGE`: Docker Compose's image, mostly for custom registry in case you want full build (optional, default: "ghcr.io/faberuser/krinfo:latest")
 - `CONTAINER_NAME`: Docker Compose's container name (optional, default: "krinfo")
 - `DOCKER_PORT`: Docker Compose's container port (optional, default: 3000)

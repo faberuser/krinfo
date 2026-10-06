@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
 	basePath: basePath || undefined,
 	images: {
 		unoptimized: isStaticExport,
+		localPatterns: [
+			{ pathname: "/**", search: "" },
+			{ pathname: `${basePath}/api/steam-image` },
+		],
 		remotePatterns: [
 			{
 				protocol: "https",

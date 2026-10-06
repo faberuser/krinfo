@@ -1,6 +1,5 @@
 "use client"
 
-import LanguageSelector from "@/components/i18n/language-selector"
 import { Text } from "@/components/i18n/language-provider"
 import { ArrowLeft, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -28,11 +27,11 @@ export default function SidebarInsetClient({ children }: { children: React.React
 	return (
 		<SidebarInset>
 			<Notification />
-			<div className={`${pathname !== "/" && containerClass}`}>
+			<div className={pathname !== "/" ? containerClass : undefined}>
 				{/* Back Button */}
 				<div
 					className={`mb-2 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 md:flex md:flex-row md:flex-wrap ${
-						pathname === "/" ? "p-4 pt-2.5 justify-end" : "justify-between"
+						pathname === "/" ? "p-4 pt-2.5 justify-end md:hidden" : "justify-between"
 					}`}
 				>
 					{pathname !== "/" && (
@@ -80,9 +79,6 @@ export default function SidebarInsetClient({ children }: { children: React.React
 								)}
 							</div>
 						)}
-						<div className="hidden md:block">
-							<LanguageSelector />
-						</div>
 					</div>
 					<div className="col-start-3 row-start-1 justify-self-end md:hidden">
 						<MobileMenu />

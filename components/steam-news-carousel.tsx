@@ -43,11 +43,11 @@ export default function SteamRSS({ news }: SteamRSSProps) {
 						return (
 							<CarouselItem key={index} className="flex md:basis-1/2 xl:basis-1/3">
 								<Card
-									className="h-full w-full gap-2 overflow-hidden cursor-pointer"
+									className="h-full w-full gap-4 overflow-hidden cursor-pointer"
 									onClick={() => handleNewsClick(item)}
 								>
-									<CardHeader className="h-24 shrink-0">
-										<CardTitle className="flex items-start justify-between gap-2">
+									<CardHeader className="shrink-0 grid-rows-[1fr_auto]">
+										<CardTitle className="h-10 flex items-start justify-between gap-2">
 											<span className="line-clamp-2">
 												<Text>{item.title}</Text>
 											</span>

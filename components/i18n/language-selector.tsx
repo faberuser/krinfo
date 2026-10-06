@@ -5,10 +5,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { LANGUAGES, isLocale } from "@/lib/i18n/locales"
 import { useTranslation } from "./language-provider"
 
-export default function LanguageSelector() {
+export default function LanguageSelector({ compact = false }: { compact?: boolean }) {
 	const { locale, setLocale, t, loading } = useTranslation()
 	return (
-		<div className="flex items-center gap-1">
+		<div className="flex min-w-0 items-center justify-center gap-1">
 			<Select
 				value={locale}
 				onValueChange={(value) => {
@@ -17,7 +17,7 @@ export default function LanguageSelector() {
 			>
 				<SelectTrigger
 					aria-label={t("uiLanguage")}
-					className="max-w-40"
+					className={compact ? "size-9 justify-center p-0 [&>svg:last-child]:hidden" : "min-w-0 max-w-40"}
 					title={t("uiMissingTranslationsUseEnglishForTheSelectedGameVersion")}
 				>
 					{loading ? (
@@ -25,7 +25,7 @@ export default function LanguageSelector() {
 					) : (
 						<Languages className="size-4" aria-hidden="true" />
 					)}
-					<SelectValue />
+					{compact ? <span className="sr-only"><SelectValue /></span> : <SelectValue />}
 				</SelectTrigger>
 				<SelectContent>
 					{LANGUAGES.map(({ code, label }) => (

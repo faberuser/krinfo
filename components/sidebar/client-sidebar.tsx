@@ -1,6 +1,7 @@
 "use client"
 
 import { Text, GameLanguageScope } from "@/components/i18n/language-provider"
+import LanguageSelector from "@/components/i18n/language-selector"
 import {
 	Sidebar,
 	SidebarContent,
@@ -49,7 +50,8 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 	const router = useRouter()
 	const { resolvedTheme } = useTheme()
 	const [mounted, setMounted] = useState(false)
-	const { state } = useSidebar()
+	const { state, isMobile } = useSidebar()
+	const compactFooter = state === "collapsed" && !isMobile
 
 	useEffect(() => {
 		// Schedule the state update to avoid synchronous setState in effect
@@ -142,23 +144,24 @@ export default function ClientSidebar({ searchData }: ClientSidebarProps) {
 
 			<SidebarFooter
 				className={
-					state === "expanded"
-						? "px-5 py-4 border-t flex flex-row justify-between"
-						: "py-1 flex flex-column items-center"
+					compactFooter ? "py-2 items-center" : "px-5 py-4 border-t items-center gap-3"
 				}
 			>
-				<ModeToggle />
-				<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/krinfo">
-					<Button variant="outline" size="icon" className="bg-background">
-						{mounted && (
-							// eslint-disable-next-line @next/next/no-img-element
-							<img src={githubSrc} alt="GitHub Logo" className="h-[1.2rem] w-[1.2rem]" />
-						)}
-						<div className="sr-only">
-							<Text>GitHub</Text>
-						</div>
-					</Button>
-				</Link>
+				<div className={compactFooter ? "flex flex-col items-center gap-2" : "grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2"}>
+					<ModeToggle />
+					<LanguageSelector compact={compactFooter} />
+					<Link target="_blank" rel="noreferrer" href="https://github.com/faberuser/krinfo">
+						<Button variant="outline" size="icon" className="bg-background">
+							{mounted && (
+								// eslint-disable-next-line @next/next/no-img-element
+								<img src={githubSrc} alt="GitHub Logo" className="h-[1.2rem] w-[1.2rem]" />
+							)}
+							<div className="sr-only">
+								<Text>GitHub</Text>
+							</div>
+						</Button>
+					</Link>
+				</div>
 			</SidebarFooter>
 		</Sidebar>
 	)

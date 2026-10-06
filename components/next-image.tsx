@@ -13,7 +13,10 @@ export default function Image({ src, ...props }: CustomImageProps) {
 	const { t } = useTranslation()
 	// Only prepend basePath for local images (not external URLs)
 	if (!src.startsWith("http")) {
-		src = `${basePath}${src.startsWith("/") ? src : "/" + src}`
+		const localSrc = src.startsWith("/") ? src : "/" + src
+		src = basePath && (localSrc === basePath || localSrc.startsWith(`${basePath}/`))
+			? localSrc
+			: `${basePath}${localSrc}`
 	}
 
 	return <NextImage src={src} {...props} alt={t(props.alt)} />
