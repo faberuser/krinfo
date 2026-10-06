@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, HeroLanguageScope, useSharedRecords } from "@/components/i18n/language-provider"
-
 import Image from "@/components/next-image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -45,7 +44,11 @@ interface HeroCardProps {
 
 export function HeroCard(props: HeroCardProps) {
 	if (!props.member.hero) return null
-	return <HeroLanguageScope hero={props.member.hero}>{(hero) => <HeroCardContent {...props} member={{ ...props.member, hero }} />}</HeroLanguageScope>
+	return (
+		<HeroLanguageScope hero={props.member.hero}>
+			{(hero) => <HeroCardContent {...props} member={{ ...props.member, hero }} />}
+		</HeroLanguageScope>
+	)
 }
 
 function HeroCardContent({
@@ -117,7 +120,9 @@ function HeroCardContent({
 							</div>
 						</div>
 						<div className="flex-1 min-w-0">
-							<CardTitle className="text-base truncate"><Text>{member.hero.profile.name}</Text></CardTitle>
+							<CardTitle className="text-base truncate">
+								<Text>{member.hero.profile.name}</Text>
+							</CardTitle>
 							<Badge
 								variant="default"
 								className={
@@ -146,7 +151,9 @@ function HeroCardContent({
 									<Eye className="h-4 w-4" />
 								</Button>
 							</TooltipTrigger>
-							<TooltipContent><Text messageKey="uiViewHeroDetails" /></TooltipContent>
+							<TooltipContent>
+								<Text messageKey="uiViewHeroDetails" />
+							</TooltipContent>
 						</Tooltip>
 						<Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => onRemove(index)}>
 							<X className="h-4 w-4" />
@@ -170,7 +177,9 @@ function HeroCardContent({
 				{/* Perks Section */}
 				<div className="space-y-2">
 					<div className="flex justify-between items-center">
-						<div className="text-xs font-medium text-muted-foreground"><Text messageKey="uiPerks" /></div>
+						<div className="text-xs font-medium text-muted-foreground">
+							<Text messageKey="uiPerks" />
+						</div>
 						<div className="text-xs">
 							<span
 								className={cn(

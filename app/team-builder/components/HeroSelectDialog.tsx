@@ -1,7 +1,6 @@
 "use client"
 
 import { Text } from "@/components/i18n/language-provider"
-
 import { HeroData } from "@/model/Hero"
 import Image from "@/components/next-image"
 import { Button } from "@/components/ui/button"
@@ -76,12 +75,18 @@ export function HeroSelectDialog({
 			<DialogContent className="sm:max-w-6xl max-h-[85vh] overflow-hidden flex flex-col bg-background/70 backdrop-blur-sm">
 				<DialogHeader>
 					<DialogTitle className="flex items-baseline gap-4">
-						<span><Text messageKey="uiSelectHeroes" /></span>
+						<span>
+							<Text messageKey="uiSelectHeroes" />
+						</span>
 						<span className="text-sm font-normal text-muted-foreground">
-							{availableSlots} <Text>{availableSlots === 1 ? "slot" : "slots"}</Text> <Text messageKey="uiAvailable_ddd9818a" /></span>
+							{availableSlots} <Text>{availableSlots === 1 ? "slot" : "slots"}</Text>{" "}
+							<Text messageKey="uiAvailable_ddd9818a" />
+						</span>
 					</DialogTitle>
 				</DialogHeader>
-				<DialogDescription className="sr-only"><Text messageKey="uiSelectAHeroFromTheListBelow" /></DialogDescription>
+				<DialogDescription className="sr-only">
+					<Text messageKey="uiSelectAHeroFromTheListBelow" />
+				</DialogDescription>
 
 				{/* Filters and Search */}
 				<div className="space-y-3">
@@ -130,7 +135,8 @@ export function HeroSelectDialog({
 							>
 								{sortType === "release" && reverseSort && <ChevronUp className="h-4 w-4" />}
 								{sortType === "release" && !reverseSort && <ChevronDown className="h-4 w-4" />}
-								<Text messageKey="uiRelease" /></Button>
+								<Text messageKey="uiRelease" />
+							</Button>
 						</div>
 					</div>
 
@@ -158,7 +164,9 @@ export function HeroSelectDialog({
 											className="object-cover"
 										/>
 									) : (
-										<span className="text-xs font-medium"><Text messageKey="uiAll" /></span>
+										<span className="text-xs font-medium">
+											<Text messageKey="uiAll" />
+										</span>
 									)}
 								</label>
 							))}
@@ -177,14 +185,17 @@ export function HeroSelectDialog({
 									className="flex items-center space-x-1 md:space-x-2 cursor-pointer"
 								>
 									<RadioGroupItem value={damageType.value} id={`dialog-dmg-${damageType.value}`} />
-									<span className="text-xs"><Text>{damageType.name}</Text></span>
+									<span className="text-xs">
+										<Text>{damageType.name}</Text>
+									</span>
 								</label>
 							))}
 						</RadioGroup>
 
 						{/* Results count */}
 						<div className="hidden md:block text-sm text-muted-foreground ml-auto">
-							{filteredHeroes.length} <Text messageKey="uiHeroes_8172f9d4" /></div>
+							{filteredHeroes.length} <Text messageKey="uiHeroes_8172f9d4" />
+						</div>
 					</div>
 				</div>
 

@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useTranslation, useLocalizedArtifacts } from "@/components/i18n/language-provider"
-
 import { useState, useMemo } from "react"
 import Image from "@/components/next-image"
 import { Button } from "@/components/ui/button"
@@ -29,7 +28,8 @@ export function ArtifactSelectDialog({
 }: ArtifactSelectDialogProps) {
 	const { locale } = useTranslation()
 	const artifacts = useLocalizedArtifacts(sourceArtifacts)
-	const selectedArtifact = artifacts.find(record => record.id === sourceSelectedArtifact?.id) ?? sourceSelectedArtifact
+	const selectedArtifact =
+		artifacts.find((record) => record.id === sourceSelectedArtifact?.id) ?? sourceSelectedArtifact
 	const [isOpen, setIsOpen] = useState(false)
 	const [searchQuery, setSearchQuery] = useState("")
 	const [sortType, setSortType] = useState<"alphabetical" | "release">("release")
@@ -38,7 +38,7 @@ export function ArtifactSelectDialog({
 	// Fuse search for artifacts
 	const fuse = useMemo(() => {
 		return new Fuse(artifacts, {
-				keys: ["name", "id", "description", "aliases"],
+			keys: ["name", "id", "description", "aliases"],
 			threshold: 0.3,
 		})
 	}, [artifacts])
@@ -87,8 +87,14 @@ export function ArtifactSelectDialog({
 					<MobileTooltip
 						content={
 							<>
-								<div className="font-bold"><Text>{selectedArtifact.name}</Text></div>
-								<div className="text-xs mt-1"><Text>{selectedArtifact.descriptionByStar?.["0"] ?? selectedArtifact.description}</Text></div>
+								<div className="font-bold">
+									<Text>{selectedArtifact.name}</Text>
+								</div>
+								<div className="text-xs mt-1">
+									<Text>
+										{selectedArtifact.descriptionByStar?.["0"] ?? selectedArtifact.description}
+									</Text>
+								</div>
 							</>
 						}
 					>
@@ -142,12 +148,17 @@ export function ArtifactSelectDialog({
 			<DialogContent className="sm:max-w-6xl max-h-[85vh] overflow-hidden flex flex-col bg-background/70 backdrop-blur-sm">
 				<DialogHeader>
 					<DialogTitle className="flex items-baseline gap-4">
-						<span><Text messageKey="uiSelectArtifact" /></span>
+						<span>
+							<Text messageKey="uiSelectArtifact" />
+						</span>
 						<span className="text-sm font-normal text-muted-foreground">
-							{filteredArtifacts.length} <Text messageKey="uiArtifacts_0f50505c" /></span>
+							{filteredArtifacts.length} <Text messageKey="uiArtifacts_0f50505c" />
+						</span>
 					</DialogTitle>
 				</DialogHeader>
-				<DialogDescription className="sr-only"><Text messageKey="uiSelectAnArtifactFromTheListBelow" /></DialogDescription>
+				<DialogDescription className="sr-only">
+					<Text messageKey="uiSelectAnArtifactFromTheListBelow" />
+				</DialogDescription>
 
 				{/* Search and Sort Row */}
 				<div className="flex flex-row gap-2 items-start sm:items-center justify-between">
@@ -194,7 +205,8 @@ export function ArtifactSelectDialog({
 						>
 							{sortType === "release" && reverseSort && <ChevronUp className="h-4 w-4" />}
 							{sortType === "release" && !reverseSort && <ChevronDown className="h-4 w-4" />}
-							<Text messageKey="uiRelease" /></Button>
+							<Text messageKey="uiRelease" />
+						</Button>
 					</div>
 				</div>
 
@@ -209,8 +221,12 @@ export function ArtifactSelectDialog({
 								<MobileTooltip
 									content={
 										<>
-											<div className="font-bold"><Text>{artifact.name}</Text></div>
-											<div className="text-xs mt-1 max-w-50"><Text>{artifact.descriptionByStar?.["0"] ?? artifact.description}</Text></div>
+											<div className="font-bold">
+												<Text>{artifact.name}</Text>
+											</div>
+											<div className="text-xs mt-1 max-w-50">
+												<Text>{artifact.descriptionByStar?.["0"] ?? artifact.description}</Text>
+											</div>
 										</>
 									}
 								>
@@ -245,7 +261,9 @@ export function ArtifactSelectDialog({
 						))}
 					</div>
 					{filteredArtifacts.length === 0 && (
-						<div className="text-center text-muted-foreground py-8"><Text messageKey="uiNoArtifactsFound" /></div>
+						<div className="text-center text-muted-foreground py-8">
+							<Text messageKey="uiNoArtifactsFound" />
+						</div>
 					)}
 				</div>
 
@@ -258,7 +276,8 @@ export function ArtifactSelectDialog({
 							setIsOpen(false)
 						}}
 					>
-						<Text messageKey="uiClearArtifact" /></Button>
+						<Text messageKey="uiClearArtifact" />
+					</Button>
 				)}
 			</DialogContent>
 		</Dialog>

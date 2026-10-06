@@ -15,7 +15,8 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { Home, Newspaper, UserRound, Amphora, ShieldHalf, Calculator, Users, BarChart2 } from "lucide-react"
+import { Home, Newspaper, UserRound, Amphora, ShieldHalf, Calculator, Users } from "lucide-react"
+// import { BarChart2 } from "lucide-react"
 import Link from "next/link"
 import { ModeToggle } from "@/components/theme-toggle"
 import { usePathname, useRouter } from "next/navigation"
@@ -34,7 +35,7 @@ export const items = [
 	{ title: "Bosses", url: "/bosses", icon: ShieldHalf },
 	{ title: "Softcap", url: "/softcap", icon: Calculator },
 	{ title: "Team Builder", url: "/team-builder", icon: Users },
-	{ title: "Stats", url: "/stats", icon: BarChart2 },
+	// { title: "Stats", url: "/stats", icon: BarChart2 },
 ]
 
 interface ClientSidebarProps {

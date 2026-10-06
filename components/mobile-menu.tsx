@@ -2,7 +2,6 @@
 
 import { Text } from "@/components/i18n/language-provider"
 import LanguageSelector from "@/components/i18n/language-selector"
-
 import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -71,7 +70,9 @@ export default function MobileMenu() {
 									}`}
 								>
 									<item.icon />
-									<div className="text-xl"><Text>{item.title}</Text></div>
+									<div className="text-xl">
+										<Text>{item.title}</Text>
+									</div>
 								</Link>
 							</DropdownMenuItem>
 						)
@@ -94,7 +95,9 @@ export default function MobileMenu() {
 										className="h-[1.2rem] w-[1.2rem]"
 									/>
 								)}
-								<div className="sr-only"><Text>GitHub</Text></div>
+								<div className="sr-only">
+									<Text>GitHub</Text>
+								</div>
 							</Button>
 						</Link>
 					</DropdownMenuItem>

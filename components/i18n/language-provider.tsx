@@ -209,11 +209,6 @@ export function HeroLanguageScope({ hero, children }: { hero: HeroData; children
 	</GameContext.Provider>
 }
 
-/** Mixed-version generated diffs must not use a single version's game dictionary. */
-export function SourceGameLanguage({ children }: { children: ReactNode }) {
-	return <GameContext.Provider value={{ data: EMPTY, version: null, loading: false, error: false }}><SharedRecordsContext.Provider value={{}}><HeroIndexContext.Provider value={{}}>{children}</HeroIndexContext.Provider></SharedRecordsContext.Provider></GameContext.Provider>
-}
-
 export function useTranslation() {
 	const language = useContext(LanguageContext)
 	const game = useContext(GameContext)

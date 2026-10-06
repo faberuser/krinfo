@@ -1,7 +1,6 @@
 "use client"
 
 import { Text } from "@/components/i18n/language-provider"
-
 import { ArrowLeftRight, Columns2, Layers, Plus, X, Link, Unlink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -44,7 +43,9 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 				<MobileTooltip
 					content={
 						<div className="text-sm">
-							<Text>{syncScroll ? "Disable synchronized scrolling" : "Enable synchronized scrolling"}</Text>
+							<Text>
+								{syncScroll ? "Disable synchronized scrolling" : "Enable synchronized scrolling"}
+							</Text>
 						</div>
 					}
 				>
@@ -68,7 +69,9 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 			>
 				<Button variant={isCompareMode ? "default" : "outline"} onClick={toggleCompareMode}>
 					<Columns2 className="size-4" aria-hidden="true" />
-					<span className="hidden sm:inline"><Text messageKey="uiCompare" /></span>
+					<span className="hidden sm:inline">
+						<Text messageKey="uiCompare" />
+					</span>
 				</Button>
 			</MobileTooltip>
 
@@ -77,7 +80,13 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 					{compareVersions.map((version, index) => (
 						<div key={index} className="flex items-center gap-0.5">
 							{index > 0 && (
-								<MobileTooltip content={<div className="text-sm"><Text messageKey="uiSwapWithPrevious" /></div>}>
+								<MobileTooltip
+									content={
+										<div className="text-sm">
+											<Text messageKey="uiSwapWithPrevious" />
+										</div>
+									}
+								>
 									<Button
 										variant="ghost"
 										size="icon"
@@ -106,7 +115,13 @@ export default function CompareToggle({ availableVersions }: CompareToggleProps)
 									</SelectContent>
 								</Select>
 								{canRemove && (
-									<MobileTooltip content={<div className="text-sm"><Text messageKey="uiRemoveVersion" /></div>}>
+									<MobileTooltip
+										content={
+											<div className="text-sm">
+												<Text messageKey="uiRemoveVersion" />
+											</div>
+										}
+									>
 										<Button
 											variant="ghost"
 											size="icon"

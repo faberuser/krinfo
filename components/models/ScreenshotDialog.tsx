@@ -1,7 +1,6 @@
 "use client"
 
 import { Text } from "@/components/i18n/language-provider"
-
 import { Button } from "@/components/ui/button"
 import {
 	Dialog,
@@ -33,8 +32,12 @@ export function ScreenshotDialog({
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="max-h-[90vh] flex flex-col">
 				<DialogHeader>
-					<DialogTitle><Text messageKey="uiScreenshotCaptured" /></DialogTitle>
-					<DialogDescription><Text messageKey="uiChooseHowYouWantToSaveYourScreenshot" /></DialogDescription>
+					<DialogTitle>
+						<Text messageKey="uiScreenshotCaptured" />
+					</DialogTitle>
+					<DialogDescription>
+						<Text messageKey="uiChooseHowYouWantToSaveYourScreenshot" />
+					</DialogDescription>
 				</DialogHeader>
 				{screenshotUrl && (
 					<div className="flex justify-center overflow-y-auto flex-1 min-h-0">
@@ -48,10 +51,12 @@ export function ScreenshotDialog({
 				<DialogFooter className="flex gap-2">
 					<Button variant="outline" onClick={onCopyToClipboard}>
 						<Copy className="h-4 w-4" />
-						<Text messageKey="uiCopyToClipboard" /></Button>
+						<Text messageKey="uiCopyToClipboard" />
+					</Button>
 					<Button onClick={onDownload}>
 						<Download className="h-4 w-4" />
-						<Text messageKey="uiDownload" /></Button>
+						<Text messageKey="uiDownload" />
+					</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>

@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, BossLanguageScope } from "@/components/i18n/language-provider"
-
 import { useEffect, useState, useCallback, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -38,7 +37,11 @@ interface BossClientProps {
 }
 
 export default function BossClient(props: BossClientProps) {
-	return <BossLanguageScope boss={props.bossData}>{(bossData) => <BossContent {...props} bossData={bossData} />}</BossLanguageScope>
+	return (
+		<BossLanguageScope boss={props.bossData}>
+			{(bossData) => <BossContent {...props} bossData={bossData} />}
+		</BossLanguageScope>
+	)
 }
 
 function BossContent({
@@ -171,8 +174,12 @@ function BossContent({
 				{/* Boss Name & Info */}
 				<div className="grow min-w-0">
 					<div className="flex flex-col">
-						<h1 className="text-2xl md:text-3xl font-bold truncate"><Text>{profile.name}</Text></h1>
-						<span className="text-sm md:text-base text-muted-foreground"><Text>{profile.title}</Text></span>
+						<h1 className="text-2xl md:text-3xl font-bold truncate">
+							<Text>{profile.name}</Text>
+						</h1>
+						<span className="text-sm md:text-base text-muted-foreground">
+							<Text>{profile.title}</Text>
+						</span>
 					</div>
 					<div className="flex flex-wrap gap-2 mt-2">
 						{bossData.profile.type.map((type) => (
@@ -180,7 +187,9 @@ function BossContent({
 								<Text>{type}</Text>
 							</Badge>
 						))}
-						<Badge variant="secondary"><Text>{profile.race}</Text></Badge>
+						<Badge variant="secondary">
+							<Text>{profile.race}</Text>
+						</Badge>
 						<Badge
 							variant="default"
 							className={
@@ -200,9 +209,13 @@ function BossContent({
 			{/* Tabs Section */}
 			<Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mt-2">
 				<TabsList className="w-full overflow-x-auto overflow-y-hidden flex-nowrap justify-start">
-					<TabsTrigger value="profile_skills"><Text messageKey="uiProfileSkills" /></TabsTrigger>
+					<TabsTrigger value="profile_skills">
+						<Text messageKey="uiProfileSkills" />
+					</TabsTrigger>
 					{enableModelsVoices && bossModels && Object.keys(bossModels).length > 0 && (
-						<TabsTrigger value="models"><Text messageKey="uiModels" /></TabsTrigger>
+						<TabsTrigger value="models">
+							<Text messageKey="uiModels" />
+						</TabsTrigger>
 					)}
 				</TabsList>
 
@@ -211,19 +224,27 @@ function BossContent({
 						<div className="grid md:grid-cols-2 gap-6">
 							<Card className="gap-2">
 								<CardHeader>
-									<CardTitle><Text messageKey="uiCharacteristics" /></CardTitle>
+									<CardTitle>
+										<Text messageKey="uiCharacteristics" />
+									</CardTitle>
 								</CardHeader>
 								<CardContent>
-									<div className="text-sm"><Text>{profile.characteristics}</Text></div>
+									<div className="text-sm">
+										<Text>{profile.characteristics}</Text>
+									</div>
 								</CardContent>
 							</Card>
 
 							<Card className="gap-2">
 								<CardHeader>
-									<CardTitle><Text messageKey="uiRecommendedHeroes" /></CardTitle>
+									<CardTitle>
+										<Text messageKey="uiRecommendedHeroes" />
+									</CardTitle>
 								</CardHeader>
 								<CardContent>
-									<div className="text-sm"><Text>{profile.recommended_heroes}</Text></div>
+									<div className="text-sm">
+										<Text>{profile.recommended_heroes}</Text>
+									</div>
 								</CardContent>
 							</Card>
 						</div>
@@ -250,7 +271,8 @@ function BossContent({
 														variant="default"
 														className="bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-900"
 													>
-														<Text messageKey="uiCost_97c94eff" suffix=" " /><Text>{skill.cost}</Text>
+														<Text messageKey="uiCost_97c94eff" suffix=" " />
+														<Text>{skill.cost}</Text>
 													</Badge>
 												)}
 												{skill.cooldown && (
@@ -258,16 +280,21 @@ function BossContent({
 														variant="default"
 														className="bg-orange-100 text-orange-800 dark:bg-orange-200 dark:text-orange-900"
 													>
-														<Text messageKey="uiCooldown_48ced960" suffix=" " /><Text>{skill.cooldown}</Text>s
+														<Text messageKey="uiCooldown_48ced960" suffix=" " />
+														<Text>{skill.cooldown}</Text>s
 													</Badge>
 												)}
 											</div>
 										</div>
-										<Badge variant="secondary">#<Text>{skillId}</Text></Badge>
+										<Badge variant="secondary">
+											#<Text>{skillId}</Text>
+										</Badge>
 									</div>
 								</CardHeader>
 								<CardContent>
-									<div className="text-sm"><Text>{skill.description}</Text></div>
+									<div className="text-sm">
+										<Text>{skill.description}</Text>
+									</div>
 								</CardContent>
 							</Card>
 						))}

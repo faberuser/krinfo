@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "generate-stats": "npx tsx scripts/generate-stats.ts",
+    "test:stats": "bun test tests/stats.test.ts",
     "test:localization": "bun test tests/localization.test.ts tests/entity-identity.test.ts"
   },
   "dependencies": {

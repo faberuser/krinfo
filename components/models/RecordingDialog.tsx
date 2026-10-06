@@ -1,7 +1,6 @@
 "use client"
 
 import { Text } from "@/components/i18n/language-provider"
-
 import { Button } from "@/components/ui/button"
 import {
 	Dialog,
@@ -37,8 +36,12 @@ export function RecordingDialog({
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="max-h-[90vh] flex flex-col">
 				<DialogHeader className="shrink-0">
-					<DialogTitle><Text messageKey="uiRecordingComplete" /></DialogTitle>
-					<DialogDescription><Text messageKey="uiChooseYourPreferredFormatAndDownloadTheAnimation" /></DialogDescription>
+					<DialogTitle>
+						<Text messageKey="uiRecordingComplete" />
+					</DialogTitle>
+					<DialogDescription>
+						<Text messageKey="uiChooseYourPreferredFormatAndDownloadTheAnimation" />
+					</DialogDescription>
 				</DialogHeader>
 				<div className="overflow-y-auto flex-1 min-h-0 space-y-4">
 					{recordingUrl && (
@@ -53,7 +56,9 @@ export function RecordingDialog({
 						</div>
 					)}
 					<div className="space-y-2">
-						<label className="text-sm font-medium"><Text messageKey="uiDownloadFormat" /></label>
+						<label className="text-sm font-medium">
+							<Text messageKey="uiDownloadFormat" />
+						</label>
 						<RadioGroup
 							value={downloadFormat}
 							onValueChange={(value: "webm" | "mp4" | "gif") => setDownloadFormat(value)}
@@ -61,28 +66,33 @@ export function RecordingDialog({
 							<div className="flex items-center space-x-2">
 								<RadioGroupItem value="webm" id="webm" />
 								<label htmlFor="webm" className="text-sm cursor-pointer">
-									<Text messageKey="uiWebmBestQualitySmallestFileModernBrowsers" /></label>
+									<Text messageKey="uiWebmBestQualitySmallestFileModernBrowsers" />
+								</label>
 							</div>
 							<div className="flex items-center space-x-2">
 								<RadioGroupItem value="mp4" id="mp4" />
 								<label htmlFor="mp4" className="text-sm cursor-pointer">
-									<Text messageKey="uiMp4MostCompatibleWorksEverywhere" /></label>
+									<Text messageKey="uiMp4MostCompatibleWorksEverywhere" />
+								</label>
 							</div>
 							<div className="flex items-center space-x-2">
 								<RadioGroupItem value="gif" id="gif" />
 								<label htmlFor="gif" className="text-sm cursor-pointer">
-									<Text messageKey="uiGifAnimatedImageMayHaveQualityLimitations" /></label>
+									<Text messageKey="uiGifAnimatedImageMayHaveQualityLimitations" />
+								</label>
 							</div>
 						</RadioGroup>
 						{downloadFormat === "gif" && (
 							<p className="text-xs text-muted-foreground">
-								<Text messageKey="uiNoteGifMayResultInLargerFileSizesReducedQualityAndLongerConversionTimes" /></p>
+								<Text messageKey="uiNoteGifMayResultInLargerFileSizesReducedQualityAndLongerConversionTimes" />
+							</p>
 						)}
 					</div>
 				</div>
 				<DialogFooter className="flex gap-2 shrink-0">
 					<Button variant="outline" onClick={() => onOpenChange(false)} disabled={isConverting}>
-						<Text messageKey="uiClose" /></Button>
+						<Text messageKey="uiClose" />
+					</Button>
 					<Button onClick={onDownload} disabled={isConverting}>
 						<Download className="h-4 w-4" />
 						<Text>{isConverting ? "Converting..." : `Download as ${downloadFormat.toUpperCase()}`}</Text>

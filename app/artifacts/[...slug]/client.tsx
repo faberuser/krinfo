@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useSharedRecords } from "@/components/i18n/language-provider"
-
 import { useCallback, useEffect, useState, useTransition } from "react"
 import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
@@ -35,10 +34,14 @@ interface ArtifactClientProps {
 	artifactModels: ModelFile[]
 }
 
-export default function ArtifactClient({ artifactData: sourceArtifact, sortedArtifactSlugs, artifactModels }: ArtifactClientProps) {
+export default function ArtifactClient({
+	artifactData: sourceArtifact,
+	sortedArtifactSlugs,
+	artifactModels,
+}: ArtifactClientProps) {
 	const router = useRouter()
 	const shared = useSharedRecords()
-	const artifactData = shared.artifacts?.find(record => record.id === sourceArtifact.id) ?? sourceArtifact
+	const artifactData = shared.artifacts?.find((record) => record.id === sourceArtifact.id) ?? sourceArtifact
 	const [isNavigating, startTransition] = useTransition()
 	const [activeTab, setActiveTab] = useState(getTabFromHash)
 	const hasModels = artifactModels.length > 0
@@ -155,7 +158,9 @@ export default function ArtifactClient({ artifactData: sourceArtifact, sortedArt
 				</div>
 				<div className="grow min-w-0 self-start pr-18">
 					<div className="flex flex-col">
-						<h1 className="text-2xl md:text-3xl font-bold"><Text>{artifactData.name}</Text></h1>
+						<h1 className="text-2xl md:text-3xl font-bold">
+							<Text>{artifactData.name}</Text>
+						</h1>
 					</div>
 					<div className="mt-2">
 						<ArtifactEffectBadges artifact={artifactData} />
@@ -165,15 +170,23 @@ export default function ArtifactClient({ artifactData: sourceArtifact, sortedArt
 
 			<Tabs value={hasModels ? activeTab : "effects"} onValueChange={handleTabChange} className="w-full mt-2">
 				<TabsList className="w-full overflow-x-auto overflow-y-hidden flex-nowrap justify-start">
-					<TabsTrigger value="effects"><Text messageKey="uiEffects" /></TabsTrigger>
-					{hasModels ? <TabsTrigger value="models"><Text messageKey="uiModels" /></TabsTrigger> : null}
+					<TabsTrigger value="effects">
+						<Text messageKey="uiEffects" />
+					</TabsTrigger>
+					{hasModels ? (
+						<TabsTrigger value="models">
+							<Text messageKey="uiModels" />
+						</TabsTrigger>
+					) : null}
 				</TabsList>
 				<TabsContent value="effects" className="mt-4 space-y-4">
 					{/* Effects Description */}
 					<div>
 						<Card className="gap-2">
 							<CardHeader>
-								<CardTitle><Text messageKey="uiEffects" /></CardTitle>
+								<CardTitle>
+									<Text messageKey="uiEffects" />
+								</CardTitle>
 							</CardHeader>
 							<CardContent>
 								<div className="text-lg">
@@ -193,10 +206,14 @@ export default function ArtifactClient({ artifactData: sourceArtifact, sortedArt
 					<div>
 						<Card className="gap-2">
 							<CardHeader>
-								<CardTitle><Text messageKey="uiStory" /></CardTitle>
+								<CardTitle>
+									<Text messageKey="uiStory" />
+								</CardTitle>
 							</CardHeader>
 							<CardContent>
-								<div className="whitespace-pre-wrap"><Text>{artifactData.story}</Text></div>
+								<div className="whitespace-pre-wrap">
+									<Text>{artifactData.story}</Text>
+								</div>
 							</CardContent>
 						</Card>
 					</div>

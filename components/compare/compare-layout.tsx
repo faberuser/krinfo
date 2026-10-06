@@ -2,7 +2,6 @@
 
 import { GameLanguageScope } from "@/components/i18n/language-provider"
 import { Text } from "@/components/i18n/language-provider"
-
 import { ReactNode, useEffect, useRef } from "react"
 import { DataVersionLabels } from "@/hooks/use-data-version"
 import { DataVersion } from "@/lib/constants"
@@ -107,7 +106,8 @@ export default function CompareLayout({
 						</div>
 					) : (
 						<div className="flex items-center justify-center h-48 text-muted-foreground border rounded-lg bg-muted/50">
-							<Text messageKey="uiNotAvailableIn" suffix=" " /><Text>{DataVersionLabels[leftVersion]}</Text>
+							<Text messageKey="uiNotAvailableIn" suffix=" " />
+							<Text>{DataVersionLabels[leftVersion]}</Text>
 						</div>
 					)}
 				</div>
@@ -130,7 +130,8 @@ export default function CompareLayout({
 						</div>
 					) : (
 						<div className="flex items-center justify-center h-48 text-muted-foreground border rounded-lg bg-muted/50">
-							<Text messageKey="uiNotAvailableIn" suffix=" " /><Text>{DataVersionLabels[rightVersion]}</Text>
+							<Text messageKey="uiNotAvailableIn" suffix=" " />
+							<Text>{DataVersionLabels[rightVersion]}</Text>
 						</div>
 					)}
 				</div>
@@ -162,7 +163,8 @@ export default function CompareLayout({
 							</div>
 						) : (
 							<div className="flex items-center justify-center h-48 text-muted-foreground border rounded-lg bg-muted/50">
-								<Text messageKey="uiNotAvailableIn" suffix=" " /><Text>{DataVersionLabels[version]}</Text>
+								<Text messageKey="uiNotAvailableIn" suffix=" " />
+								<Text>{DataVersionLabels[version]}</Text>
 							</div>
 						)}
 					</div>

@@ -1,7 +1,6 @@
 "use client"
 
 import { Text } from "@/components/i18n/language-provider"
-
 import { useState } from "react"
 import { ModelViewer } from "@/components/models/ModelViewer"
 import { ModelSelector } from "@/components/models/ModelSelector"
@@ -37,7 +36,8 @@ export default function ArtifactModels({
 				/>
 			) : (
 				<div className="flex items-center justify-center text-muted-foreground h-120 lg:h-200 border rounded-lg">
-					<Text messageKey="uiSelectAModelFromTheListToViewThe3dModel" /></div>
+					<Text messageKey="uiSelectAModelFromTheListToViewThe3dModel" />
+				</div>
 			)}
 			<ModelSelector
 				modelOptions={modelOptions}

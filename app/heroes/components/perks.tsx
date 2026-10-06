@@ -1,7 +1,6 @@
 "use client"
 
 import { PerkName, Text, useSharedRecords } from "@/components/i18n/language-provider"
-
 import { HeroData } from "@/model/Hero"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "@/components/next-image"
@@ -61,11 +60,13 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 				{viewMode === "list" ? (
 					<>
 						<LayoutGrid className="w-4 h-4" />
-						<Text messageKey="uiTranscends" /></>
+						<Text messageKey="uiTranscends" />
+					</>
 				) : (
 					<>
 						<LayoutList className="w-4 h-4" />
-						<Text messageKey="uiDescriptions" /></>
+						<Text messageKey="uiDescriptions" />
+					</>
 				)}
 			</Button>
 		</div>
@@ -74,7 +75,13 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 	return (
 		<div className="space-y-4">
 			{viewMode === "builder" ? (
-				<Suspense fallback={<div><Text messageKey="uiLoadingPerksBuilder" /></div>}>
+				<Suspense
+					fallback={
+						<div>
+							<Text messageKey="uiLoadingPerksBuilder" />
+						</div>
+					}
+				>
 					<PerksBuilder
 						heroData={heroData}
 						heroClass={heroClass}
@@ -89,7 +96,9 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 					<Collapsible open={t1Open} onOpenChange={setT1Open}>
 						<div className="flex items-center gap-4 mb-2">
 							<CollapsibleTrigger className="flex flex-1 items-center justify-between text-lg font-bold hover:opacity-80 transition-opacity">
-								<span><Text messageKey="uiT1Perks" /></span>
+								<span>
+									<Text messageKey="uiT1Perks" />
+								</span>
 								<ChevronDown
 									className={`h-6 w-6 transition-transform duration-200 ${t1Open ? "rotate-180" : ""}`}
 								/>
@@ -110,9 +119,13 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 													sizes="5vw"
 													className="w-10 h-10 rounded"
 												/>
-												<div className="font-medium"><PerkName name={perkName} /></div>
+												<div className="font-medium">
+													<PerkName name={perkName} />
+												</div>
 											</div>
-											<div className="text-sm"><Text>{effect}</Text></div>
+											<div className="text-sm">
+												<Text>{effect}</Text>
+											</div>
 										</CardContent>
 									</Card>
 								))}
@@ -123,7 +136,9 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 					{/* T2 Perks */}
 					<Collapsible open={t2Open} onOpenChange={setT2Open}>
 						<CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-bold mb-2 hover:opacity-80 transition-opacity">
-							<span><Text messageKey="uiT2Perks" /></span>
+							<span>
+								<Text messageKey="uiT2Perks" />
+							</span>
 							<ChevronDown
 								className={`h-6 w-6 transition-transform duration-200 ${t2Open ? "rotate-180" : ""}`}
 							/>
@@ -142,9 +157,13 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 													sizes="5vw"
 													className="w-10 h-10 rounded"
 												/>
-												<div className="font-medium"><PerkName name={perkName} /></div>
+												<div className="font-medium">
+													<PerkName name={perkName} />
+												</div>
 											</div>
-											<div className="text-sm"><Text>{effect}</Text></div>
+											<div className="text-sm">
+												<Text>{effect}</Text>
+											</div>
 										</CardContent>
 									</Card>
 								))}
@@ -161,7 +180,9 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 								onOpenChange={(open) => setHeroPerksOpen((prev) => ({ ...prev, [perkCategory]: open }))}
 							>
 								<CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-bold mb-2 hover:opacity-80 transition-opacity">
-									<span><Text>{perkCategory.toUpperCase()}</Text> <Text messageKey="uiPerks" /></span>
+									<span>
+										<Text>{perkCategory.toUpperCase()}</Text> <Text messageKey="uiPerks" />
+									</span>
 									<ChevronDown
 										className={`h-6 w-6 transition-transform duration-200 ${heroPerksOpen[perkCategory] ? "rotate-180" : ""}`}
 									/>
@@ -174,7 +195,8 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 												<CardContent className="px-0">
 													{perkCategory === "t3" && (
 														<div className="text-lg font-semibold mb-3">
-															<Text messageKey="uiSkill" suffix=" " /><Text>{perkKey}</Text>
+															<Text messageKey="uiSkill" suffix=" " />
+															<Text>{perkKey}</Text>
 														</div>
 													)}
 
@@ -203,7 +225,12 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 																</div>
 															)}
 															<div className="grow flex items-center">
-																<div>{parseColoredText(perk.effect, `heroes/${heroData.id}/perks/${perkCategory}/${perkKey}/effect`)}</div>
+																<div>
+																	{parseColoredText(
+																		perk.effect,
+																		`heroes/${heroData.id}/perks/${perkCategory}/${perkKey}/effect`,
+																	)}
+																</div>
 															</div>
 														</div>
 													) : (
@@ -221,10 +248,14 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 																			className="w-10 h-10 rounded"
 																		/>
 																		<div className="font-medium text-yellow-800">
-																			<Text messageKey="uiLight_dbcd5e7b" /></div>
+																			<Text messageKey="uiLight_dbcd5e7b" />
+																		</div>
 																	</div>
 																	<div className="text-sm">
-																		{parseColoredText(perk.light.effect, `heroes/${heroData.id}/perks/${perkCategory}/${perkKey}/light/effect`)}
+																		{parseColoredText(
+																			perk.light.effect,
+																			`heroes/${heroData.id}/perks/${perkCategory}/${perkKey}/light/effect`,
+																		)}
 																	</div>
 																</div>
 															)}
@@ -241,10 +272,14 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 																			className="w-10 h-10 rounded"
 																		/>
 																		<div className="font-medium text-purple-800">
-																			<Text messageKey="uiDark_60acc53f" /></div>
+																			<Text messageKey="uiDark_60acc53f" />
+																		</div>
 																	</div>
 																	<div className="text-sm">
-																		{parseColoredText(perk.dark.effect, `heroes/${heroData.id}/perks/${perkCategory}/${perkKey}/dark/effect`)}
+																		{parseColoredText(
+																			perk.dark.effect,
+																			`heroes/${heroData.id}/perks/${perkCategory}/${perkKey}/dark/effect`,
+																		)}
 																	</div>
 																</div>
 															)}
@@ -257,7 +292,9 @@ export default function Perks({ heroData, classPerks }: PerksProps) {
 							</Collapsible>
 						))
 					) : (
-						<div className="text-center text-gray-500 py-8"><Text messageKey="uiNoPerkDataAvailable" /></div>
+						<div className="text-center text-gray-500 py-8">
+							<Text messageKey="uiNoPerkDataAvailable" />
+						</div>
 					)}
 				</>
 			)}

@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, HeroLanguageScope } from "@/components/i18n/language-provider"
-
 import { useEffect, useState, Suspense, useCallback, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -45,7 +44,11 @@ interface HeroClientProps {
 }
 
 export default function HeroClient(props: HeroClientProps) {
-	return <HeroLanguageScope hero={props.heroData}>{(heroData) => <HeroContent {...props} heroData={heroData} />}</HeroLanguageScope>
+	return (
+		<HeroLanguageScope hero={props.heroData}>
+			{(heroData) => <HeroContent {...props} heroData={heroData} />}
+		</HeroLanguageScope>
+	)
 }
 
 function HeroContent({
@@ -201,14 +204,20 @@ function HeroContent({
 				{/* Hero Name & Key Stats */}
 				<div className="grow min-w-0">
 					<div className="flex flex-col">
-						<h1 className="text-2xl md:text-3xl font-bold truncate"><Text>{heroData.profile.name}</Text></h1>
-						<span className="text-sm md:text-base text-muted-foreground"><Text fieldKey={`heroes/${heroData.id}/profile/title`}>{heroData.profile.title}</Text></span>
+						<h1 className="text-2xl md:text-3xl font-bold truncate">
+							<Text>{heroData.profile.name}</Text>
+						</h1>
+						<span className="text-sm md:text-base text-muted-foreground">
+							<Text fieldKey={`heroes/${heroData.id}/profile/title`}>{heroData.profile.title}</Text>
+						</span>
 					</div>
 					<div className="flex flex-wrap gap-2 mt-2">
 						<Badge variant="default" className={classColorMapBadge(heroData.profile.class)}>
 							<Text>{heroData.profile.class}</Text>
 						</Badge>
-						<Badge variant="secondary"><Text>{heroData.profile.position}</Text></Badge>
+						<Badge variant="secondary">
+							<Text>{heroData.profile.position}</Text>
+						</Badge>
 						<Badge
 							variant="default"
 							className={heroData.profile.damage_type === "Physical" ? "bg-red-300" : "bg-blue-300"}
@@ -221,15 +230,29 @@ function HeroContent({
 
 			<Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mt-2">
 				<TabsList className="w-full overflow-x-auto overflow-y-hidden flex-nowrap justify-start">
-					<TabsTrigger value="skills"><Text messageKey="uiSkills" /></TabsTrigger>
-					<TabsTrigger value="perks"><Text messageKey="uiPerks" /></TabsTrigger>
-					<TabsTrigger value="gear"><Text messageKey="uiGear" /></TabsTrigger>
-					<TabsTrigger value="profile"><Text messageKey="uiProfile" /></TabsTrigger>
-					<TabsTrigger value="costumes"><Text messageKey="uiCostumes" /></TabsTrigger>
+					<TabsTrigger value="skills">
+						<Text messageKey="uiSkills" />
+					</TabsTrigger>
+					<TabsTrigger value="perks">
+						<Text messageKey="uiPerks" />
+					</TabsTrigger>
+					<TabsTrigger value="gear">
+						<Text messageKey="uiGear" />
+					</TabsTrigger>
+					<TabsTrigger value="profile">
+						<Text messageKey="uiProfile" />
+					</TabsTrigger>
+					<TabsTrigger value="costumes">
+						<Text messageKey="uiCostumes" />
+					</TabsTrigger>
 					{enableModelsVoices && (
 						<>
-							<TabsTrigger value="models"><Text messageKey="uiModels" /></TabsTrigger>
-							<TabsTrigger value="voices"><Text messageKey="uiVoices" /></TabsTrigger>
+							<TabsTrigger value="models">
+								<Text messageKey="uiModels" />
+							</TabsTrigger>
+							<TabsTrigger value="voices">
+								<Text messageKey="uiVoices" />
+							</TabsTrigger>
 						</>
 					)}
 				</TabsList>
@@ -241,7 +264,13 @@ function HeroContent({
 					<Skills heroData={heroData} />
 				</TabsContent>
 				<TabsContent value="perks" className="mt-4">
-					<Suspense fallback={<div><Text messageKey="uiLoadingPerks" /></div>}>
+					<Suspense
+						fallback={
+							<div>
+								<Text messageKey="uiLoadingPerks" />
+							</div>
+						}
+					>
 						<Perks heroData={heroData} classPerks={classPerks} />
 					</Suspense>
 				</TabsContent>

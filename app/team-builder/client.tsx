@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useTranslation, useLocalizedHeroes } from "@/components/i18n/language-provider"
-
 import { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import { HeroData } from "@/model/Hero"
 import { Button } from "@/components/ui/button"
@@ -630,7 +629,9 @@ function TeamBuilderContent({
 				<div className="space-y-4 mb-6">
 					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
 						<div className="flex flex-row gap-4 items-center">
-							<div className="text-xl font-bold"><Text messageKey="uiTeamBuilder" /></div>
+							<div className="text-xl font-bold">
+								<Text messageKey="uiTeamBuilder" />
+							</div>
 							<div className="flex items-center gap-2">
 								<span className="text-muted-foreground text-sm">{activeCount} /</span>
 								<Select
@@ -643,7 +644,8 @@ function TeamBuilderContent({
 									<SelectContent>
 										{[...Array(8)].map((_, i) => (
 											<SelectItem key={i + 1} value={(i + 1).toString()}>
-												{i + 1} <Text messageKey="uiHeroes_8172f9d4" /></SelectItem>
+												{i + 1} <Text messageKey="uiHeroes_8172f9d4" />
+											</SelectItem>
 										))}
 									</SelectContent>
 								</Select>
@@ -666,7 +668,8 @@ function TeamBuilderContent({
 								disabled={activeCount === 0}
 							>
 								<Trash2 className="h-4 w-4" />
-								<Text messageKey="uiClear" /></Button>
+								<Text messageKey="uiClear" />
+							</Button>
 						</div>
 					</div>
 				</div>

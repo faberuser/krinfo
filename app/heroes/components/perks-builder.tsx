@@ -1,7 +1,6 @@
 "use client"
 
 import { PerkName, Text } from "@/components/i18n/language-provider"
-
 import { HeroData } from "@/model/Hero"
 import Image from "@/components/next-image"
 import { parseColoredText } from "@/lib/utils"
@@ -135,7 +134,9 @@ export default function PerksBuilder({
 			<div className="grid grid-cols-[1fr_minmax(0,var(--perk-builder-width))_1fr] items-start gap-y-4">
 				<div className="col-start-2 row-start-2 @min-[56rem]:row-start-1 flex flex-wrap items-center justify-between gap-2 p-3 bg-muted rounded">
 					<div className="flex items-center gap-1 sm:gap-4">
-						<span className="text-sm"><Text messageKey="uiPoints_0ed46a6c" /></span>
+						<span className="text-sm">
+							<Text messageKey="uiPoints_0ed46a6c" />
+						</span>
 						<span className="font-medium">{calculateUsedPoints(selectedPerks)}</span>
 						<span className="text-muted-foreground">/</span>
 						<div className="flex items-center gap-1">
@@ -189,8 +190,12 @@ export default function PerksBuilder({
 								disabled={!canSelect && !isSelected}
 								content={
 									<>
-										<div className="font-bold"><PerkName name={perkName} /></div>
-										<div className="text-xs mt-1"><Text>{effect}</Text></div>
+										<div className="font-bold">
+											<PerkName name={perkName} />
+										</div>
+										<div className="text-xs mt-1">
+											<Text>{effect}</Text>
+										</div>
 									</>
 								}
 							>
@@ -230,8 +235,12 @@ export default function PerksBuilder({
 								disabled={!canSelect && !isSelected}
 								content={
 									<>
-										<div className="font-bold"><PerkName name={perkName} /></div>
-										<div className="text-xs mt-1"><Text>{effect}</Text></div>
+										<div className="font-bold">
+											<PerkName name={perkName} />
+										</div>
+										<div className="text-xs mt-1">
+											<Text>{effect}</Text>
+										</div>
 									</>
 								}
 							>
@@ -281,9 +290,15 @@ export default function PerksBuilder({
 												}
 												content={
 													<>
-														<div className="font-bold"><Text messageKey="uiSkill" suffix=" " /><Text>{skillNum}</Text> <Text messageKey="uiLight" /></div>
+														<div className="font-bold">
+															<Text messageKey="uiSkill" suffix=" " />
+															<Text>{skillNum}</Text> <Text messageKey="uiLight" />
+														</div>
 														<div className="text-xs mt-1">
-															{parseColoredText(skillPerks.light.effect, `heroes/${heroData.id}/perks/t3/${skillNum}/light/effect`)}
+															{parseColoredText(
+																skillPerks.light.effect,
+																`heroes/${heroData.id}/perks/t3/${skillNum}/light/effect`,
+															)}
 														</div>
 													</>
 												}
@@ -330,9 +345,15 @@ export default function PerksBuilder({
 												}
 												content={
 													<>
-														<div className="font-bold"><Text messageKey="uiSkill" suffix=" " /><Text>{skillNum}</Text> <Text messageKey="uiDark" /></div>
+														<div className="font-bold">
+															<Text messageKey="uiSkill" suffix=" " />
+															<Text>{skillNum}</Text> <Text messageKey="uiDark" />
+														</div>
 														<div className="text-xs mt-1">
-															{parseColoredText(skillPerks.dark.effect, `heroes/${heroData.id}/perks/t3/${skillNum}/dark/effect`)}
+															{parseColoredText(
+																skillPerks.dark.effect,
+																`heroes/${heroData.id}/perks/t3/${skillNum}/dark/effect`,
+															)}
 														</div>
 													</>
 												}
@@ -392,9 +413,15 @@ export default function PerksBuilder({
 												}
 												content={
 													<>
-														<div className="font-bold"><Text messageKey="uiSkill" suffix=" " /><Text>{skillNum}</Text> <Text messageKey="uiLight" /></div>
+														<div className="font-bold">
+															<Text messageKey="uiSkill" suffix=" " />
+															<Text>{skillNum}</Text> <Text messageKey="uiLight" />
+														</div>
 														<div className="text-xs mt-1">
-															{parseColoredText(skillPerks.light.effect, `heroes/${heroData.id}/perks/t3/${skillNum}/light/effect`)}
+															{parseColoredText(
+																skillPerks.light.effect,
+																`heroes/${heroData.id}/perks/t3/${skillNum}/light/effect`,
+															)}
 														</div>
 													</>
 												}
@@ -441,9 +468,15 @@ export default function PerksBuilder({
 												}
 												content={
 													<>
-														<div className="font-bold"><Text messageKey="uiSkill" suffix=" " /><Text>{skillNum}</Text> <Text messageKey="uiDark" /></div>
+														<div className="font-bold">
+															<Text messageKey="uiSkill" suffix=" " />
+															<Text>{skillNum}</Text> <Text messageKey="uiDark" />
+														</div>
 														<div className="text-xs mt-1">
-															{parseColoredText(skillPerks.dark.effect, `heroes/${heroData.id}/perks/t3/${skillNum}/dark/effect`)}
+															{parseColoredText(
+																skillPerks.dark.effect,
+																`heroes/${heroData.id}/perks/t3/${skillNum}/dark/effect`,
+															)}
 														</div>
 													</>
 												}
@@ -502,7 +535,9 @@ export default function PerksBuilder({
 								}
 								content={
 									<>
-										<div className="font-bold"><Text messageKey="uiLight_dbcd5e7b" /></div>
+										<div className="font-bold">
+											<Text messageKey="uiLight_dbcd5e7b" />
+										</div>
 										<div className="text-xs mt-1">
 											{parseColoredText(
 												(
@@ -553,7 +588,9 @@ export default function PerksBuilder({
 								}
 								content={
 									<>
-										<div className="font-bold"><Text messageKey="uiDark_60acc53f" /></div>
+										<div className="font-bold">
+											<Text messageKey="uiDark_60acc53f" />
+										</div>
 										<div className="text-xs mt-1">
 											{parseColoredText(
 												(

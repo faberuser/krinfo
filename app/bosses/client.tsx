@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useTranslation, useSharedRecords } from "@/components/i18n/language-provider"
-
 import { useState, useEffect, useMemo, startTransition } from "react"
 import Fuse from "fuse.js"
 import { Skull } from "lucide-react"
@@ -24,7 +23,10 @@ interface BossesClientProps {
 export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releaseOrder }: BossesClientProps) {
 	const { locale } = useTranslation()
 	const shared = useSharedRecords()
-	const bosses = useMemo(() => sourceBosses.map(boss => ({ ...boss, profile: shared.bosses?.[boss.id] ?? boss.profile })), [sourceBosses, shared.bosses])
+	const bosses = useMemo(
+		() => sourceBosses.map((boss) => ({ ...boss, profile: shared.bosses?.[boss.id] ?? boss.profile })),
+		[sourceBosses, shared.bosses],
+	)
 	const [searchQuery, setSearchQuery] = useState("")
 	const [selectedType, setSelectedType] = useState("all")
 	const [loadingSlug, setLoadingSlug] = useState<string | null>(null)
@@ -65,7 +67,7 @@ export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releas
 	// Configure Fuse.js for fuzzy search
 	const fuse = useMemo(() => {
 		return new Fuse(bosses, {
-				keys: ["profile.name", "id", "profile.title", "aliases"],
+			keys: ["profile.name", "id", "profile.title", "aliases"],
 			threshold: 0.3,
 			includeScore: true,
 		})
@@ -144,13 +146,19 @@ export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releas
 				<div className="space-y-2 mb-4">
 					<div className="flex flex-row justify-between items-center">
 						<div className="flex flex-row gap-2 items-baseline">
-							<div className="text-xl font-bold"><Text messageKey="uiBosses" /></div>
+							<div className="text-xl font-bold">
+								<Text messageKey="uiBosses" />
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className="text-center py-12 text-muted-foreground">
-					<p className="text-lg"><Text messageKey="uiNoBossDataAvailableForThisDataVersion" /></p>
-					<p className="text-sm mt-2"><Text messageKey="uiTrySwitchingToAnotherVersion" /></p>
+					<p className="text-lg">
+						<Text messageKey="uiNoBossDataAvailableForThisDataVersion" />
+					</p>
+					<p className="text-sm mt-2">
+						<Text messageKey="uiTrySwitchingToAnotherVersion" />
+					</p>
 				</div>
 			</div>
 		)
@@ -177,7 +185,6 @@ export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releas
 					/>
 				}
 			>
-
 				{/* Boss Type Filter */}
 				<div className="w-full sm:w-auto">
 					<SearchableFilter
@@ -217,8 +224,12 @@ export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releas
 											/>
 										</div>
 										<div className="min-w-0 flex-1">
-											<CardTitle className="text-lg"><Text>{boss.profile.name}</Text></CardTitle>
-											<CardDescription className="text-sm"><Text>{boss.profile.title}</Text></CardDescription>
+											<CardTitle className="text-lg">
+												<Text>{boss.profile.name}</Text>
+											</CardTitle>
+											<CardDescription className="text-sm">
+												<Text>{boss.profile.title}</Text>
+											</CardDescription>
 										</div>
 									</div>
 								</CardHeader>
@@ -230,7 +241,9 @@ export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releas
 													<Text>{type}</Text>
 												</Badge>
 											))}
-											<Badge variant="secondary"><Text>{boss.profile.race}</Text></Badge>
+											<Badge variant="secondary">
+												<Text>{boss.profile.race}</Text>
+											</Badge>
 											<Badge
 												variant="default"
 												className={

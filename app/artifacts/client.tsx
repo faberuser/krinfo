@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useTranslation, useLocalizedArtifacts } from "@/components/i18n/language-provider"
-
 import { useState, useEffect, useMemo, startTransition } from "react"
 import Fuse from "fuse.js"
 import { ListPageHeader, ListPageSearch, type ListSortType } from "@/components/list-page-header"
@@ -78,7 +77,7 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 	// Configure Fuse.js for fuzzy search
 	const fuse = useMemo(() => {
 		return new Fuse(taggedArtifacts, {
-				keys: ["name", "id", "aliases", "effectTags"],
+			keys: ["name", "id", "aliases", "effectTags"],
 			threshold: 0.3,
 			includeScore: true,
 		})
@@ -164,9 +163,11 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 								<span className="flex min-w-0 items-center gap-2">
 									<Sparkles className="size-4" aria-hidden="true" />
 									<span className="truncate">
-										<Text>{selectedEffect === "all"
-											? "All effects"
-											: `${selectedEffect} (${effectCounts.get(selectedEffect) ?? 0})`}</Text>
+										<Text>
+											{selectedEffect === "all"
+												? "All effects"
+												: `${selectedEffect} (${effectCounts.get(selectedEffect) ?? 0})`}
+										</Text>
 									</span>
 								</span>
 								<ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
@@ -176,7 +177,9 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 							<Command>
 								<CommandInput placeholder="Search effects..." aria-label="Search effects" />
 								<CommandList>
-									<CommandEmpty><Text messageKey="uiNoEffectsFound" /></CommandEmpty>
+									<CommandEmpty>
+										<Text messageKey="uiNoEffectsFound" />
+									</CommandEmpty>
 									<CommandGroup>
 										<CommandItem
 											value="All effects"
@@ -185,10 +188,9 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 												setEffectFilterOpen(false)
 											}}
 										>
-											<Check
-												className={selectedEffect === "all" ? "opacity-100" : "opacity-0"}
-											/>
-											<Text messageKey="uiAllEffects" /></CommandItem>
+											<Check className={selectedEffect === "all" ? "opacity-100" : "opacity-0"} />
+											<Text messageKey="uiAllEffects" />
+										</CommandItem>
 										{ARTIFACT_EFFECT_TAGS.filter(
 											(tag) => effectCounts.has(tag) || tag === selectedEffect,
 										).map((tag) => (
@@ -215,7 +217,8 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 			</ListPageHeader>
 			{filteredArtifacts.length === 0 ? (
 				<p role="status" className="py-12 text-center text-muted-foreground">
-					<Text messageKey="uiNoArtifactsMatchTheseFiltersTryAnotherEffectOrClearTheFilters" /></p>
+					<Text messageKey="uiNoArtifactsMatchTheseFiltersTryAnotherEffectOrClearTheFilters" />
+				</p>
 			) : null}
 
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -247,7 +250,9 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 											</div>
 										)}
 										<div className="flex-1">
-											<CardTitle className="text-lg"><Text>{artifact.name}</Text></CardTitle>
+											<CardTitle className="text-lg">
+												<Text>{artifact.name}</Text>
+											</CardTitle>
 										</div>
 									</div>
 								</CardHeader>

@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useHeroProfile } from "@/components/i18n/language-provider"
-
 import Image from "@/components/next-image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"

@@ -1,7 +1,6 @@
 "use client"
 
 import { Text, useTranslation, useHeroIndex } from "@/components/i18n/language-provider"
-
 import { useState, useEffect, useMemo } from "react"
 import Fuse from "fuse.js"
 import { ListPageHeader, ListPageSearch, type ListSortType } from "@/components/list-page-header"
@@ -43,7 +42,18 @@ export default function HeroesClient({
 }: HeroesClientProps) {
 	const { locale } = useTranslation()
 	const heroIndex = useHeroIndex()
-	const heroes = useMemo(() => sourceHeroes.map(hero => ({ ...hero, profile: { ...hero.profile, name: heroIndex[hero.id]?.name ?? hero.profile.name, title: heroIndex[hero.id]?.title ?? hero.profile.title } })), [sourceHeroes, heroIndex])
+	const heroes = useMemo(
+		() =>
+			sourceHeroes.map((hero) => ({
+				...hero,
+				profile: {
+					...hero.profile,
+					name: heroIndex[hero.id]?.name ?? hero.profile.name,
+					title: heroIndex[hero.id]?.title ?? hero.profile.title,
+				},
+			})),
+		[sourceHeroes, heroIndex],
+	)
 	const [searchQuery, setSearchQuery] = useState("")
 	const [selectedClass, setSelectedClass] = useState("all")
 	const [selectedDamageType, setSelectedDamageType] = useState("all")
@@ -184,7 +194,6 @@ export default function HeroesClient({
 					/>
 				}
 			>
-
 				<div className="flex w-full sm:w-auto items-center gap-2">
 					<div className="min-w-0 flex-1 sm:flex-none">
 						{/* Class Filter */}
@@ -237,7 +246,9 @@ export default function HeroesClient({
 
 			{/* No results message */}
 			{filteredHeroes.length === 0 && (
-				<div className="text-center text-muted-foreground mt-8"><Text messageKey="uiNoHeroesFoundMatchingYourCriteria" /></div>
+				<div className="text-center text-muted-foreground mt-8">
+					<Text messageKey="uiNoHeroesFoundMatchingYourCriteria" />
+				</div>
 			)}
 		</div>
 	)

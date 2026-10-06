@@ -1,229 +1,62 @@
+"use client"
 
-import { Text } from "@/components/i18n/language-provider"
-import Image from "@/components/next-image"
-import { DiffText, NumericChange, ValueRow, TierChange } from "./diff-primitives"
-import type { HeroComparison } from "@/app/stats/types"
+import { useMemo } from "react"
+import { useTranslation } from "@/components/i18n/language-provider"
+import { displayValue, fieldValue, pathParts, STAT_NAMES, type EntityKind } from "@/lib/stats/comparison"
+import { diffText } from "@/lib/stats/text-diff"
 
-function HeroIcon({ src, alt, size = 24 }: { src: string; alt: string; size?: number }) {
-	return (
-		<Image
-			src={src}
-			alt={alt}
-			width={size}
-			height={size}
-			className="rounded shrink-0 object-contain"
-			onError={(e) => {
-				;(e.currentTarget as HTMLImageElement).style.display = "none"
-			}}
-		/>
-	)
+function ChangedText({ from, to }: { from: unknown; to: unknown }) {
+	const { locale } = useTranslation()
+	const a = displayValue(from), b = displayValue(to)
+	const parts = useMemo(() => diffText(a, b, locale), [a, b, locale])
+	return <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">{parts.map((part, index) =>
+		part.kind === "removed" ? <del key={index} className="text-red-600 dark:text-red-400 bg-red-500/10">{part.text}</del>
+			: part.kind === "added" ? <ins key={index} className="text-green-700 dark:text-green-400 bg-green-500/10 no-underline font-medium">{part.text}</ins>
+				: <span key={index}>{part.text}</span>)}</p>
 }
 
-export function ComparisonContent({ comparison }: { comparison: HeroComparison }) {
-	const sections: React.ReactNode[] = []
-	const heroAssetBase = `/kingsraid-data/assets/heroes/${comparison.heroName}`
-
-	// Skills
-	for (const [slot, skillData] of Object.entries(comparison.skills)) {
-		if (!skillData.hasChanges) continue
-		sections.push(
-			<div key={`skill-${slot}`} className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					<HeroIcon src={`${heroAssetBase}/skills/${slot}.png`} alt={`Skill ${slot}`} />
-					<span>
-						<Text messageKey="uiSkill" suffix=" " /><Text>{slot}</Text>
-						{skillData.name ? (
-							<>
-								:
-								<span className="text-red-600 dark:text-red-400 line-through ml-1">
-									<Text>{skillData.name.from}</Text>
-								</span>
-								<span className="text-muted-foreground mx-1 text-[10px]">→</span>
-								<span className="text-green-600 dark:text-green-400"><Text>{skillData.name.to}</Text></span>
-							</>
-						) : null}
-					</span>
-				</div>
-				{skillData.cooldown && (
-					<ValueRow label="Cooldown">
-						<NumericChange from={skillData.cooldown.from} to={skillData.cooldown.to} />
-					</ValueRow>
-				)}
-				{skillData.mana_cost && (
-					<ValueRow label="Mana Cost">
-						<NumericChange from={skillData.mana_cost.from} to={skillData.mana_cost.to} />
-					</ValueRow>
-				)}
-				{skillData.description && (
-					<ValueRow label="Description">
-						<DiffText diff={skillData.description} />
-					</ValueRow>
-				)}
-			</div>,
-		)
+export function ComparisonContent({ kind, paths, from, to, fromLabel, toLabel }: {
+	kind: EntityKind; paths: string[]; from: unknown; to: unknown; fromLabel: string; toLabel: string
+}) {
+	const { t } = useTranslation()
+	const groups = new Map<string, string[]>()
+	for (const path of paths) {
+		const parts = pathParts(path)
+		const count = kind === "classes" ? 3 : ["skills", "books", "uts", "perks"].includes(parts[0]) ? (parts[0] === "perks" && parts[1] === "t3" ? 3 : 2) : 1
+		const group = parts.slice(0, count).map(part => part.replace(/~/g, "~0").replace(/\//g, "~1")).join("/")
+		groups.set(group, [...(groups.get(group) ?? []), path])
 	}
-
-	// Books
-	for (const [slot, bookData] of Object.entries(comparison.books)) {
-		if (!bookData.hasChanges) continue
-		sections.push(
-			<div key={`book-${slot}`} className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					<HeroIcon src={`${heroAssetBase}/skills/${slot}.png`} alt={`Skill ${slot}`} />
-					<span>
-						<Text messageKey="uiBooksSkill" suffix=" " /><Text>{slot}</Text>: <Text>{bookData.skillName}</Text>
-					</span>
-				</div>
-				{bookData.II && (
-					<ValueRow label="Rank II">
-						<DiffText diff={bookData.II} />
-					</ValueRow>
-				)}
-				{bookData.III && (
-					<ValueRow label="Rank III">
-						<DiffText diff={bookData.III} />
-					</ValueRow>
-				)}
-				{bookData.IV && (
-					<ValueRow label="Rank IV">
-						<DiffText diff={bookData.IV} />
-					</ValueRow>
-				)}
-			</div>,
-		)
+	const localizedName = (parts: string[]) => {
+		const path = parts.map(part => part.replace(/~/g, "~0").replace(/\//g, "~1")).join("/")
+		return displayValue(fieldValue(to, path) ?? fieldValue(from, path))
 	}
-
-	// Perks T3
-	for (const [slot, perkData] of Object.entries(comparison.perks_t3)) {
-		if (!perkData.hasChanges) continue
-		sections.push(
-			<div key={`t3-${slot}`} className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					{perkData.light && (
-						<HeroIcon src={`${heroAssetBase}/perks/s${slot}l.png`} alt={`T3 Skill ${slot} Light`} />
-					)}
-					{perkData.dark && (
-						<HeroIcon src={`${heroAssetBase}/perks/s${slot}d.png`} alt={`T3 Skill ${slot} Dark`} />
-					)}
-					<span><Text messageKey="uiT3PerkSkill" suffix=" " /><Text>{slot}</Text></span>
-				</div>
-				{perkData.light && (
-					<ValueRow label="Light">
-						<DiffText diff={perkData.light} />
-					</ValueRow>
-				)}
-				{perkData.dark && (
-					<ValueRow label="Dark">
-						<DiffText diff={perkData.dark} />
-					</ValueRow>
-				)}
-			</div>,
-		)
+	const title = (path: string) => {
+		const p = pathParts(path)
+		if (kind === "classes") return `${p[1].toUpperCase()} · ${localizedName(["perkNames", p[2]]) === "—" ? p[2] : localizedName(["perkNames", p[2]])}`
+		if (kind === "runes") return t(p[0] === "stats" ? "Stats" : "Grade")
+		if (p[0] === "skills" || p[0] === "books") return `${t(p[0] === "skills" ? "Skill" : "Books - Skill")} ${p[1]} · ${localizedName(["skills", p[1], "name"])}`
+		if (p[0] === "perks") return `${p[1].toUpperCase()} · ${t("Perks")}${p[1] === "t3" ? ` ${p[2]}` : ""}`
+		return `${t(p[0] === "uw" ? "Unique Weapon" : p[0] === "uts" ? "Unique Treasures" : "Soul Weapon")}${p[0] === "uts" ? ` ${p[1]}` : ""}`
 	}
-
-	// Perks T5
-	if (comparison.perks_t5?.hasChanges) {
-		sections.push(
-			<div key="t5" className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					{comparison.perks_t5.light && <HeroIcon src={`${heroAssetBase}/perks/light.png`} alt="T5 Light" />}
-					{comparison.perks_t5.dark && <HeroIcon src={`${heroAssetBase}/perks/dark.png`} alt="T5 Dark" />}
-					<span><Text messageKey="uiT5Perk" /></span>
-				</div>
-				{comparison.perks_t5.light && (
-					<ValueRow label="Light">
-						<DiffText diff={comparison.perks_t5.light} />
-					</ValueRow>
-				)}
-				{comparison.perks_t5.dark && (
-					<ValueRow label="Dark">
-						<DiffText diff={comparison.perks_t5.dark} />
-					</ValueRow>
-				)}
-			</div>,
-		)
+	const label = (path: string) => {
+		const p = pathParts(path), last = p[p.length - 1]
+		if (kind === "classes") return t("Description")
+		if (kind === "runes") return t(STAT_NAMES[last] ?? (last === "grade" ? "Grade" : last))
+		if (p.includes("descriptionByStar")) return `${t("Description")} · ★${last}`
+		if (p.includes("value")) return `{${p[p.length - 2]}} · ★${last}`
+		if (p.includes("advancement")) return `${t("Advancements")} ${last}`
+		if (p[0] === "books") return t(`Rank ${last}`)
+		if (p[0] === "perks") return t(p[p.length - 2] === "light" ? "Light" : "Dark")
+		return t(({ name: "Name", cost: "Mana Cost", cooldown: "Cooldown", description: "Description", uses: "Uses", requirement: "Requirement" } as Record<string, string>)[last] ?? last)
 	}
-
-	// UW
-	if (comparison.uw?.hasChanges) {
-		sections.push(
-			<div key="uw" className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					<HeroIcon src={`${heroAssetBase}/uw.png`} alt="Unique Weapon" />
-					<span><Text messageKey="uiUniqueWeapon" /></span>
-				</div>
-				{comparison.uw.description && (
-					<ValueRow label="Description">
-						<DiffText diff={comparison.uw.description} />
-					</ValueRow>
-				)}
-				{Object.entries(comparison.uw.values).map(([param, val]) => (
-					<ValueRow key={param} label={`{${param}}`}>
-						<TierChange from={val.from} to={val.to} />
-					</ValueRow>
-				))}
-			</div>,
-		)
-	}
-
-	// UTs
-	for (const [slot, utData] of Object.entries(comparison.uts)) {
-		if (!utData.hasChanges) continue
-		sections.push(
-			<div key={`ut-${slot}`} className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					<HeroIcon src={`${heroAssetBase}/ut/${slot}.png`} alt={`UT ${slot}`} />
-					<span>
-						<Text>UT </Text><Text>{slot}</Text>: <Text>{utData.name}</Text>
-					</span>
-				</div>
-				{utData.description && (
-					<ValueRow label="Description">
-						<DiffText diff={utData.description} />
-					</ValueRow>
-				)}
-				{Object.entries(utData.values).map(([param, val]) => (
-					<ValueRow key={param} label={`{${param}}`}>
-						<TierChange from={val.from} to={val.to} />
-					</ValueRow>
-				))}
-			</div>,
-		)
-	}
-
-	// SW
-	if (comparison.sw?.hasChanges) {
-		sections.push(
-			<div key="sw" className="border rounded-md p-3 space-y-1">
-				<div className="flex items-center gap-2 font-medium text-sm mb-2">
-					<HeroIcon src={`${heroAssetBase}/sw.png`} alt="Soul Weapon" />
-					<span><Text messageKey="uiSoulWeapon" /></span>
-				</div>
-				{comparison.sw.cooldown && (
-					<ValueRow label="Cooldown">
-						<NumericChange from={comparison.sw.cooldown.from} to={comparison.sw.cooldown.to} />
-					</ValueRow>
-				)}
-				{comparison.sw.uses && (
-					<ValueRow label="Uses">
-						<NumericChange from={comparison.sw.uses.from} to={comparison.sw.uses.to} />
-					</ValueRow>
-				)}
-				{comparison.sw.description && (
-					<ValueRow label="Description">
-						<DiffText diff={comparison.sw.description} />
-					</ValueRow>
-				)}
-				{Object.entries(comparison.sw.advancement).map(([key, diff]) => (
-					<ValueRow key={key} label={`Advancement ${key}`}>
-						<DiffText diff={diff} />
-					</ValueRow>
-				))}
-			</div>,
-		)
-	}
-
-	if (sections.length === 0)
-		return <div className="text-sm text-muted-foreground"><Text messageKey="uiNoDetailedChangesAvailable" /></div>
-	return <div className="space-y-3">{sections}</div>
+	return <div className="space-y-4">
+		<p className="text-xs text-muted-foreground">{fromLabel} → {toLabel}</p>
+		{[...groups.entries()].map(([key, fields]) => <section key={key} className="border rounded-md p-3 space-y-3">
+			<h3 className="font-semibold text-sm">{title(fields[0])}</h3>
+			{fields.map(path => <div key={path} className="space-y-1">
+				<div className="text-xs text-muted-foreground">{label(path)}</div>
+				<ChangedText from={fieldValue(from, path)} to={fieldValue(to, path)} />
+			</div>)}
+		</section>)}
+	</div>
 }

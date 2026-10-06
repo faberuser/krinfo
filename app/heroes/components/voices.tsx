@@ -1,7 +1,6 @@
 "use client"
 
 import { Text } from "@/components/i18n/language-provider"
-
 import { HeroData } from "@/model/Hero"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -87,7 +86,9 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 	const renderVoiceList = (voices: VoiceFile[]) => {
 		if (voices.length === 0) {
 			return (
-				<div className="text-center py-8 text-muted-foreground"><Text messageKey="uiNoVoiceFilesAvailableForThisLanguage" /></div>
+				<div className="text-center py-8 text-muted-foreground">
+					<Text messageKey="uiNoVoiceFilesAvailableForThisLanguage" />
+				</div>
 			)
 		}
 
@@ -131,8 +132,12 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 		return (
 			<Card>
 				<CardHeader>
-					<CardTitle><Text messageKey="uiVoiceLines" /></CardTitle>
-					<CardDescription><Text messageKey="uiHeroVoiceLinesAreNotAvailable" /></CardDescription>
+					<CardTitle>
+						<Text messageKey="uiVoiceLines" />
+					</CardTitle>
+					<CardDescription>
+						<Text messageKey="uiHeroVoiceLinesAreNotAvailable" />
+					</CardDescription>
 				</CardHeader>
 			</Card>
 		)
@@ -142,7 +147,8 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 		<Card>
 			<CardHeader>
 				<CardTitle>
-					<Text messageKey="uiVoiceLines" /><Text>{" "}</Text>
+					<Text messageKey="uiVoiceLines" />
+					<Text> </Text>
 					{voiceFiles[currentLanguage].length > 0 && (
 						<span>
 							({voiceFiles[currentLanguage].length} <Text>{currentLanguage.toUpperCase()}</Text>)
@@ -156,9 +162,21 @@ export default function Voices({ heroData, voiceFiles }: VoicesProps) {
 					onValueChange={(value) => setCurrentLanguage(value as "en" | "jp" | "kr")}
 				>
 					<TabsList className="w-full mb-4">
-						{voiceFiles.en.length > 0 && <TabsTrigger value="en"><Text messageKey="uiEnglish" /></TabsTrigger>}
-						{voiceFiles.jp.length > 0 && <TabsTrigger value="jp"><Text messageKey="uiJapanese" /></TabsTrigger>}
-						{voiceFiles.kr.length > 0 && <TabsTrigger value="kr"><Text messageKey="uiKorean" /></TabsTrigger>}
+						{voiceFiles.en.length > 0 && (
+							<TabsTrigger value="en">
+								<Text messageKey="uiEnglish" />
+							</TabsTrigger>
+						)}
+						{voiceFiles.jp.length > 0 && (
+							<TabsTrigger value="jp">
+								<Text messageKey="uiJapanese" />
+							</TabsTrigger>
+						)}
+						{voiceFiles.kr.length > 0 && (
+							<TabsTrigger value="kr">
+								<Text messageKey="uiKorean" />
+							</TabsTrigger>
+						)}
 					</TabsList>
 
 					<TabsContent value="en" className="mt-0 max-h-180 overflow-y-auto custom-scrollbar pr-1">

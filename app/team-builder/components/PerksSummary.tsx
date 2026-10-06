@@ -1,7 +1,6 @@
 "use client"
 
 import { PerkName, Text } from "@/components/i18n/language-provider"
-
 import Image from "@/components/next-image"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn, parseColoredText } from "@/lib/utils"
@@ -36,8 +35,12 @@ export function PerksSummary({ member, t1Perks, getT2Perks }: PerksSummaryProps)
 							</div>
 						</TooltipTrigger>
 						<TooltipContent>
-							<p className="font-medium"><PerkName name={perkName} /></p>
-							<p className="text-xs"><Text>{effect}</Text></p>
+							<p className="font-medium">
+								<PerkName name={perkName} />
+							</p>
+							<p className="text-xs">
+								<Text>{effect}</Text>
+							</p>
 						</TooltipContent>
 					</Tooltip>
 				)
@@ -64,8 +67,12 @@ export function PerksSummary({ member, t1Perks, getT2Perks }: PerksSummaryProps)
 							</div>
 						</TooltipTrigger>
 						<TooltipContent>
-							<p className="font-medium"><PerkName name={perkName} /></p>
-							<p className="text-xs"><Text>{effect}</Text></p>
+							<p className="font-medium">
+								<PerkName name={perkName} />
+							</p>
+							<p className="text-xs">
+								<Text>{effect}</Text>
+							</p>
 						</TooltipContent>
 					</Tooltip>
 				)
@@ -88,7 +95,8 @@ export function PerksSummary({ member, t1Perks, getT2Perks }: PerksSummaryProps)
 					</TooltipTrigger>
 					<TooltipContent>
 						<p className="font-medium">
-							<Text messageKey="uiSkill" suffix=" " /><Text>{p.skill}</Text> <Text>{p.type === "light" ? "Light" : "Dark"}</Text>
+							<Text messageKey="uiSkill" suffix=" " />
+							<Text>{p.skill}</Text> <Text>{p.type === "light" ? "Light" : "Dark"}</Text>
 						</p>
 					</TooltipContent>
 				</Tooltip>
@@ -110,7 +118,9 @@ export function PerksSummary({ member, t1Perks, getT2Perks }: PerksSummaryProps)
 						</div>
 					</TooltipTrigger>
 					<TooltipContent>
-						<p className="font-medium">T5 <Text>{p === "light" ? "Light" : "Dark"}</Text></p>
+						<p className="font-medium">
+							T5 <Text>{p === "light" ? "Light" : "Dark"}</Text>
+						</p>
 					</TooltipContent>
 				</Tooltip>
 			))}
@@ -120,7 +130,9 @@ export function PerksSummary({ member, t1Perks, getT2Perks }: PerksSummaryProps)
 				member.perks.t2.length === 0 &&
 				member.perks.t3.length === 0 &&
 				member.perks.t5.length === 0 && (
-					<span className="text-xs text-muted-foreground"><Text messageKey="uiNoPerksSelected" /></span>
+					<span className="text-xs text-muted-foreground">
+						<Text messageKey="uiNoPerksSelected" />
+					</span>
 				)}
 		</div>
 	)
@@ -152,8 +164,12 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 								key={perkName}
 								content={
 									<>
-										<div className="font-bold"><PerkName name={perkName} /></div>
-										<div className="text-xs mt-1"><Text>{t1Perks[perkName]}</Text></div>
+										<div className="font-bold">
+											<PerkName name={perkName} />
+										</div>
+										<div className="text-xs mt-1">
+											<Text>{t1Perks[perkName]}</Text>
+										</div>
 									</>
 								}
 							>
@@ -188,8 +204,12 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 								key={perkName}
 								content={
 									<>
-										<div className="font-bold"><PerkName name={perkName} /></div>
-										<div className="text-xs mt-1"><Text>{t2Perks[perkName]}</Text></div>
+										<div className="font-bold">
+											<PerkName name={perkName} />
+										</div>
+										<div className="text-xs mt-1">
+											<Text>{t2Perks[perkName]}</Text>
+										</div>
 									</>
 								}
 							>
@@ -231,9 +251,14 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 										<MobileTooltip
 											content={
 												<>
-													<div className="font-bold">S<Text>{skillNum}</Text> <Text messageKey="uiLight_dbcd5e7b" /></div>
+													<div className="font-bold">
+														S<Text>{skillNum}</Text> <Text messageKey="uiLight_dbcd5e7b" />
+													</div>
 													<div className="text-xs mt-1">
-														{parseColoredText(skillPerks.light.effect, `heroes/${member.hero!.id}/perks/t3/${skillNum}/light/effect`)}
+														{parseColoredText(
+															skillPerks.light.effect,
+															`heroes/${member.hero!.id}/perks/t3/${skillNum}/light/effect`,
+														)}
 													</div>
 												</>
 											}
@@ -261,9 +286,14 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 										<MobileTooltip
 											content={
 												<>
-													<div className="font-bold">S<Text>{skillNum}</Text> <Text messageKey="uiDark_60acc53f" /></div>
+													<div className="font-bold">
+														S<Text>{skillNum}</Text> <Text messageKey="uiDark_60acc53f" />
+													</div>
 													<div className="text-xs mt-1">
-														{parseColoredText(skillPerks.dark.effect, `heroes/${member.hero!.id}/perks/t3/${skillNum}/dark/effect`)}
+														{parseColoredText(
+															skillPerks.dark.effect,
+															`heroes/${member.hero!.id}/perks/t3/${skillNum}/dark/effect`,
+														)}
 													</div>
 												</>
 											}
@@ -311,9 +341,14 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 										<MobileTooltip
 											content={
 												<>
-													<div className="font-bold">S<Text>{skillNum}</Text> <Text messageKey="uiLight_dbcd5e7b" /></div>
+													<div className="font-bold">
+														S<Text>{skillNum}</Text> <Text messageKey="uiLight_dbcd5e7b" />
+													</div>
 													<div className="text-xs mt-1">
-														{parseColoredText(skillPerks.light.effect, `heroes/${member.hero!.id}/perks/t3/${skillNum}/light/effect`)}
+														{parseColoredText(
+															skillPerks.light.effect,
+															`heroes/${member.hero!.id}/perks/t3/${skillNum}/light/effect`,
+														)}
 													</div>
 												</>
 											}
@@ -341,9 +376,14 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 										<MobileTooltip
 											content={
 												<>
-													<div className="font-bold">S<Text>{skillNum}</Text> <Text messageKey="uiDark_60acc53f" /></div>
+													<div className="font-bold">
+														S<Text>{skillNum}</Text> <Text messageKey="uiDark_60acc53f" />
+													</div>
 													<div className="text-xs mt-1">
-														{parseColoredText(skillPerks.dark.effect, `heroes/${member.hero!.id}/perks/t3/${skillNum}/dark/effect`)}
+														{parseColoredText(
+															skillPerks.dark.effect,
+															`heroes/${member.hero!.id}/perks/t3/${skillNum}/dark/effect`,
+														)}
 													</div>
 												</>
 											}
@@ -382,9 +422,14 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 							<MobileTooltip
 								content={
 									<>
-										<div className="font-bold"><Text messageKey="uiT5Light" /></div>
+										<div className="font-bold">
+											<Text messageKey="uiT5Light" />
+										</div>
 										<div className="text-xs mt-1">
-											{parseColoredText(member.hero.perks.t5.light.effect, `heroes/${member.hero.id}/perks/t5/light/effect`)}
+											{parseColoredText(
+												member.hero.perks.t5.light.effect,
+												`heroes/${member.hero.id}/perks/t5/light/effect`,
+											)}
 										</div>
 									</>
 								}
@@ -411,9 +456,14 @@ export function PerksCompactSummary({ member, t1Perks, getT2Perks }: PerksCompac
 							<MobileTooltip
 								content={
 									<>
-										<div className="font-bold"><Text messageKey="uiT5Dark" /></div>
+										<div className="font-bold">
+											<Text messageKey="uiT5Dark" />
+										</div>
 										<div className="text-xs mt-1">
-											{parseColoredText(member.hero.perks.t5.dark.effect, `heroes/${member.hero.id}/perks/t5/dark/effect`)}
+											{parseColoredText(
+												member.hero.perks.t5.dark.effect,
+												`heroes/${member.hero.id}/perks/t5/dark/effect`,
+											)}
 										</div>
 									</>
 								}
