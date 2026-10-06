@@ -3,7 +3,7 @@
 import { Text, useTranslation, useSharedRecords } from "@/components/i18n/language-provider"
 import { useState, useEffect, useMemo, startTransition } from "react"
 import Fuse from "fuse.js"
-import { Skull } from "lucide-react"
+import { ShieldHalf } from "lucide-react"
 import { ListPageHeader, ListPageSearch, type ListSortType } from "@/components/list-page-header"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -189,7 +189,7 @@ export default function BossesClient({ bosses: sourceBosses, bossTypeMap, releas
 				<div className="w-full sm:w-auto">
 					<SearchableFilter
 						label="Filter by boss type"
-						icon={<Skull className="size-4" aria-hidden="true" />}
+						icon={<ShieldHalf className="size-4" aria-hidden="true" />}
 						searchPlaceholder="Search boss types..."
 						value={selectedType}
 						onValueChange={setSelectedType}

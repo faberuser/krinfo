@@ -3,6 +3,7 @@
 import { Text, useTranslation } from "@/components/i18n/language-provider"
 import { Children, cloneElement, isValidElement, useId, useState, type ReactNode } from "react"
 import { renderColoredText } from "@/lib/i18n/colored-text"
+import { getEnhancementDescription } from "@/lib/gear-enhancement"
 
 interface GearEnhancementProps {
 	name: string
@@ -25,14 +26,19 @@ export default function GearEnhancement({
 	const hasValues =
 		(values && Object.keys(values).length > 0) ||
 		(descriptionByStar && new Set(Object.values(descriptionByStar)).size > 1)
-	const currentDescription = descriptionByStar?.[level] ?? description
-	// Resolve placeholders after parsing colors so highlights also work inside colored text.
+	const { text: currentDescription, highlights } = getEnhancementDescription(
+		description,
+		descriptionByStar,
+		values,
+		level,
+	)
+	// Parse colors first so enhancement highlights also work inside colored text.
 	const highlightValues = (nodes: ReactNode): ReactNode =>
 		Children.map(nodes, (node) => {
 			if (typeof node === "string") {
-				return node.split(/(\{\d+\})/g).map((part, index) => {
-					const statKey = /^\{(\d+)\}$/.exec(part)?.[1]
-					const value = statKey === undefined ? undefined : values?.[statKey]?.[level]
+				return node.split(/(\{enhancement:\d+\})/g).map((part, index) => {
+					const highlightIndex = /^\{enhancement:(\d+)\}$/.exec(part)?.[1]
+					const value = highlightIndex === undefined ? undefined : highlights[Number(highlightIndex)]
 					if (value === undefined) return part
 					return (
 						<mark

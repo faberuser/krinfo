@@ -13,6 +13,13 @@ import { formatModelName } from "@/components/models/utils"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
+function findIdleAnimation(animations: string[]) {
+	return (
+		animations.find((name) => /@Idle(?:UI)?_/i.test(name)) ||
+		animations.find((name) => /idle/i.test(name)) || animations[0] || null
+	)
+}
+
 // Boss models are now organized by variant (similar to hero costumes)
 type BossModelData = Record<string, ModelFile[]>
 
@@ -40,10 +47,7 @@ export default function BossModels({ bossModels, bossScenes = [], bossName }: Bo
 			const cachedAnimations = animationsCacheRef.current.get(selectedModel)!
 			setAvailableAnimations(cachedAnimations)
 			// Set first animation or idle as default
-			const defaultAnimation =
-				cachedAnimations.find((name) => name.includes("Idle") || name.includes("idle")) ||
-				cachedAnimations[0] ||
-				null
+			const defaultAnimation = findIdleAnimation(cachedAnimations)
 			setSelectedAnimation(defaultAnimation)
 			return
 		}
@@ -99,9 +103,8 @@ export default function BossModels({ bossModels, bossScenes = [], bossName }: Bo
 						})
 
 						// Move idle animation to the top if it exists
-						const idleIndex = sortedAnimNames.findIndex(
-							(name) => name.includes("Idle") || name.includes("idle"),
-						)
+						const idleAnimation = findIdleAnimation(sortedAnimNames)
+						const idleIndex = idleAnimation ? sortedAnimNames.indexOf(idleAnimation) : -1
 						if (idleIndex > 0) {
 							const idle = sortedAnimNames.splice(idleIndex, 1)[0]
 							sortedAnimNames.unshift(idle)
@@ -113,9 +116,7 @@ export default function BossModels({ bossModels, bossScenes = [], bossName }: Bo
 							animationsCacheRef.current.set(selectedModel, sortedAnimNames)
 							setAvailableAnimations(sortedAnimNames)
 							// Set idle or first animation as default
-							const defaultAnimation =
-								sortedAnimNames.find((name) => name.includes("Idle") || name.includes("idle")) ||
-								sortedAnimNames[0]
+							const defaultAnimation = findIdleAnimation(sortedAnimNames)
 							setSelectedAnimation(defaultAnimation)
 						})
 					} else {
