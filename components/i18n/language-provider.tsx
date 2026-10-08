@@ -196,14 +196,12 @@ export function HeroLanguageScope({ hero, children }: { hero: HeroData; children
 	const record = useDictionary<HeroData>(game.version
 		? `/kingsraid-data/table-data/${game.version}/${locale}/heroes/${encodeURIComponent(hero.id)}.json` : null)
 	const localized = record.data?.id === hero.id ? record.data : hero
-	const partialTranslation = locale !== "en" && localized !== hero && Boolean(localized._localization?.englishFallbackFields.length)
 	const value = useMemo(() => resolved
 		? { ...game, loading: game.loading || record.loading, error: game.error || record.error }
 		: game, [resolved, game, record.loading, record.error])
 	return <GameContext.Provider value={value}>
 		
 			{resolved && record.error && <p role="status" className="text-sm text-muted-foreground"><Text messageKey="uiTranslationUnavailableShowingEnglish" /></p>}
-			{partialTranslation && <p role="status" className="text-sm text-muted-foreground"><Text messageKey="uiSomeDescriptionsAreStillInEnglish" /></p>}
 			<LoadingBoundary loading={record.loading}>{children(resolved ? localized : hero)}</LoadingBoundary>
 		
 	</GameContext.Provider>

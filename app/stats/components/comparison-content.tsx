@@ -42,7 +42,6 @@ export function ComparisonContent({ kind, paths, from, to, fromLabel, toLabel }:
 		const p = pathParts(path), last = p[p.length - 1]
 		if (kind === "classes") return t("Description")
 		if (kind === "runes") return t(STAT_NAMES[last] ?? (last === "grade" ? "Grade" : last))
-		if (p.includes("descriptionByStar")) return `${t("Description")} · ★${last}`
 		if (p.includes("value")) return `{${p[p.length - 2]}} · ★${last}`
 		if (p.includes("advancement")) return `${t("Advancements")} ${last}`
 		if (p[0] === "books") return t(`Rank ${last}`)

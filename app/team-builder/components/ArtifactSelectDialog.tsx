@@ -12,6 +12,7 @@ import { ArtifactData } from "@/model/Artifact"
 import { MobileTooltip } from "@/components/mobile-tooltip"
 import Fuse from "fuse.js"
 import { DialogDescription } from "@radix-ui/react-dialog"
+import { resolveEnhancementDescription } from "@/lib/gear-enhancement"
 
 interface ArtifactSelectDialogProps {
 	artifacts: ArtifactData[]
@@ -92,7 +93,7 @@ export function ArtifactSelectDialog({
 								</div>
 								<div className="text-xs mt-1">
 									<Text>
-										{selectedArtifact.descriptionByStar?.["0"] ?? selectedArtifact.description}
+										{resolveEnhancementDescription(selectedArtifact.description, selectedArtifact.value)}
 									</Text>
 								</div>
 							</>
@@ -225,7 +226,7 @@ export function ArtifactSelectDialog({
 												<Text>{artifact.name}</Text>
 											</div>
 											<div className="text-xs mt-1 max-w-50">
-												<Text>{artifact.descriptionByStar?.["0"] ?? artifact.description}</Text>
+												<Text>{resolveEnhancementDescription(artifact.description, artifact.value)}</Text>
 											</div>
 										</>
 									}

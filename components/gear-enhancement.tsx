@@ -3,32 +3,27 @@
 import { Text, useTranslation } from "@/components/i18n/language-provider"
 import { Children, cloneElement, isValidElement, useId, useState, type ReactNode } from "react"
 import { renderColoredText } from "@/lib/i18n/colored-text"
-import { getEnhancementDescription } from "@/lib/gear-enhancement"
+import { getEnhancementDescription, type EnhancementValues } from "@/lib/gear-enhancement"
 
 interface GearEnhancementProps {
 	name: string
 	description: string
-	descriptionByStar?: Record<string, string>
-	values?: Record<string, Record<string, string>>
+	values?: EnhancementValues
 	fieldKey?: string
 }
 
 export default function GearEnhancement({
 	name,
 	description,
-	descriptionByStar,
 	values,
 	fieldKey,
 }: GearEnhancementProps) {
 	const { t, field } = useTranslation()
 	const [level, setLevel] = useState("0")
 	const groupName = useId()
-	const hasValues =
-		(values && Object.keys(values).length > 0) ||
-		(descriptionByStar && new Set(Object.values(descriptionByStar)).size > 1)
+	const hasValues = values && Object.keys(values).length > 0
 	const { text: currentDescription, highlights } = getEnhancementDescription(
 		description,
-		descriptionByStar,
 		values,
 		level,
 	)

@@ -60,7 +60,6 @@ export default function Gear({ heroData }: GearProps) {
 										key={`${heroData.id}/uw`}
 										name={heroData.uw.name}
 										description={heroData.uw.description}
-										descriptionByStar={heroData.uw.descriptionByStar}
 										fieldKey={`heroes/${heroData.id}/uw/description`}
 										values={heroData.uw.value}
 									/>
@@ -128,7 +127,6 @@ export default function Gear({ heroData }: GearProps) {
 												key={`${heroData.id}/uts/${utKey}`}
 												name={ut.name}
 												description={ut.description}
-												descriptionByStar={ut.descriptionByStar}
 										fieldKey={`heroes/${heroData.id}/uts/${utKey}/description`}
 												values={ut.value}
 											/>

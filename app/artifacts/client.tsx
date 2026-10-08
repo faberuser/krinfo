@@ -16,6 +16,7 @@ import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, Command
 import { Spinner } from "@/components/ui/spinner"
 import { ArtifactEffectBadges } from "@/components/artifact-effect-badges"
 import { ARTIFACT_EFFECT_TAGS, getArtifactEffectTags, type ArtifactEffectTag } from "@/lib/artifact-tags"
+import { resolveEnhancementDescription } from "@/lib/gear-enhancement"
 
 interface ArtifactsClientProps {
 	artifacts: ArtifactData[]
@@ -261,7 +262,7 @@ export default function ArtifactsClient({ artifacts: sourceArtifacts, releaseOrd
 										<ArtifactEffectBadges artifact={artifact} />
 										{artifact.description && (
 											<p className="text-sm text-muted-foreground line-clamp-3">
-												<Text>{artifact.descriptionByStar?.["0"] ?? artifact.description}</Text>
+												<Text>{resolveEnhancementDescription(artifact.description, artifact.value)}</Text>
 											</p>
 										)}
 									</div>

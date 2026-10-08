@@ -13,6 +13,7 @@ import {
 import { UserRound, Amphora, ShieldHalf } from "lucide-react"
 import { DialogTitle } from "@/components/ui/dialog"
 import type { SearchData } from "@/lib/list-data"
+import { resolveEnhancementDescription } from "@/lib/gear-enhancement"
 
 // Types for search data
 interface SearchItem {
@@ -63,7 +64,7 @@ export default function SearchDialog({ searchData, open, onOpenChange, onSelect 
 				items.push({
 					id: `artifact-${index}`,
 					title: localized?.name ?? artifact.id,
-					description: localized?.descriptionByStar?.["0"] ?? localized?.description ?? artifact.description,
+					description: localized ? resolveEnhancementDescription(localized.description, localized.value) : artifact.description,
 					type: "artifact",
 					url: `/artifacts/${encodeURIComponent(artifact.id.toLowerCase().replace(/\s+/g, "-"))}`,
 					icon: Amphora,
