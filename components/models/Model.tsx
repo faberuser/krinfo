@@ -16,6 +16,7 @@ import { modelTextureOverrides, modelTransformOverrides, loadModelConfig } from 
 import { repairEyebrowTextures } from "./repairEyebrowTextures"
 import { advanceAnimationFrame, type SequencePlayback } from "@/components/models/advanceAnimationFrame"
 import { startModelAnimation } from "@/components/models/startModelAnimation"
+import { createHeroHandGrips } from "@/components/models/heroHandGrip"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
@@ -28,6 +29,7 @@ type HeroModel = THREE.Group & {
 	animations?: THREE.AnimationClip[]
 	handPointR?: THREE.Object3D
 	handPointL?: THREE.Object3D
+	handGrip?: ReturnType<typeof createHeroHandGrips>
 	facial?: Awaited<ReturnType<typeof loadFacialAnimation>>
 }
 
@@ -204,6 +206,11 @@ export function Model({
 				// Bind skeleton for skinned meshes (crucial for AssetStudio FBX files)
 				if (modelType === "heroes") {
 					bindHeroSkeletons(fbx, getHeroWeaponConfig(modelFile)?.recalculateBoneInverses)
+					if (modelFile.type === "body") {
+						modelWithAnimations.handGrip = createHeroHandGrips(fbx)
+						if (modelWithAnimations.handGrip?.left) modelWithAnimations.handPointL = modelWithAnimations.handGrip.left
+						if (modelWithAnimations.handGrip?.right) modelWithAnimations.handPointR = modelWithAnimations.handGrip.right
+					}
 				} else {
 					if (bossConfig?.recalculateBoneInverses === false) fbx.updateMatrixWorld(true)
 					fbx.traverse((child) => {
@@ -654,6 +661,7 @@ export function Model({
 
 					const clip = animations.find((c) => c.name === animationToPlay)
 					if (clip) {
+						model.handGrip?.prepare(clip)
 						const action = mixer.clipAction(clip)
 						// If part of a sequence, play once without looping
 						if (isPartOfSequence) {
@@ -710,6 +718,9 @@ export function Model({
 			advanceAnimationFrame(mixersRef.current.values(), delta, () => sequencePlaybackRef.current)
 			loadedModels.forEach((model) => model.facial?.update())
 		}
+		loadedModels.forEach((model) => {
+			if (model.mixer) model.handGrip?.update(model.mixer)
+		})
 
 		// Reattach weapons to hand points for the first 10 frames to ensure skeleton stability
 		const FRAMES_TO_REATTACH = 10
@@ -770,6 +781,7 @@ export function Model({
 						if (!handPoint && !heroWeaponConfig?.socket) {
 							handPoint = isLeftHand ? bodyModel.handPointR : bodyModel.handPointL
 						}
+						if (handPoint) handPoint = bodyModel.handGrip?.resolveSocket(handPoint) ?? handPoint
 
 						if (handPoint) {
 							// Remove from current parent if attached

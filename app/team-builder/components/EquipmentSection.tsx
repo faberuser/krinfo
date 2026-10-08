@@ -7,6 +7,7 @@ import { TeamMember } from "@/model/Team_Builder"
 import { ArtifactData } from "@/model/Artifact"
 import { MobileTooltip } from "@/components/mobile-tooltip"
 import { ArtifactSelectDialog } from "@/app/team-builder/components/ArtifactSelectDialog"
+import { resolveEnhancementDescription } from "@/lib/gear-enhancement"
 
 interface EquipmentSectionProps {
 	member: TeamMember
@@ -45,7 +46,7 @@ export function EquipmentSection({
 							</div>
 							<div className="text-xs mt-1">
 								<Text fieldKey={`heroes/${heroName}/uw/description`}>
-									{member.hero.uw?.descriptionByStar?.["0"] ?? member.hero.uw?.description}
+									{resolveEnhancementDescription(member.hero.uw?.description ?? "", member.hero.uw?.value)}
 								</Text>
 							</div>
 						</>
@@ -85,7 +86,7 @@ export function EquipmentSection({
 								</div>
 								<div className="text-xs mt-1">
 									<Text fieldKey={`heroes/${heroName}/uts/${utKey}/description`}>
-										{ut.descriptionByStar?.["0"] ?? ut.description}
+										{resolveEnhancementDescription(ut.description, ut.value)}
 									</Text>
 								</div>
 							</>

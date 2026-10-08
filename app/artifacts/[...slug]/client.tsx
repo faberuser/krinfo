@@ -56,12 +56,6 @@ export default function ArtifactClient({
 		setActiveTab(value)
 		window.history.replaceState(window.history.state, "", `#${value}`)
 	}
-	const enhancementValues = Object.fromEntries(
-		Object.entries(artifactData.value ?? {}).map(([statKey, values]) => [
-			statKey,
-			Object.fromEntries(values.split(",").map((value, level) => [String(level), value.trim()])),
-		]),
-	)
 
 	const handleNavigate = useCallback(
 		(direction: "prev" | "next") => {
@@ -194,8 +188,7 @@ export default function ArtifactClient({
 										key={artifactData.id}
 										name={artifactData.name}
 										description={artifactData.description}
-										descriptionByStar={artifactData.descriptionByStar}
-										values={enhancementValues}
+											values={artifactData.value}
 									/>
 								</div>
 							</CardContent>

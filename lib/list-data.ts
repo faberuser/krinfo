@@ -1,6 +1,7 @@
 import type { HeroData } from "@/model/Hero"
 import type { BossData } from "@/model/Boss"
 import type { ArtifactData } from "@/model/Artifact"
+import { resolveEnhancementDescription } from "@/lib/gear-enhancement"
 
 // Keep detail records on the server when a list only needs summary fields.
 export type HeroListItem = Pick<HeroData, "id" | "aliases" | "splashart"> & {
@@ -30,7 +31,7 @@ export interface SearchData {
 export function toSearchData(heroes: HeroData[], artifacts: ArtifactData[], bosses: BossData[]): SearchData {
 	return {
 		heroes: heroes.map(({ id, profile: { name, title }, aliases }) => ({ id, profile: { name, title }, aliases })),
-		artifacts: artifacts.map(({ id, name, description, descriptionByStar, aliases }) => ({ id, name, description: descriptionByStar?.["0"] ?? description, aliases })),
+		artifacts: artifacts.map(({ id, name, description, value, aliases }) => ({ id, name, description: resolveEnhancementDescription(description, value), aliases })),
 		bosses: bosses.map(({ id, profile: { name, title }, aliases }) => ({ id, profile: { name, title }, aliases })),
 	}
 }
