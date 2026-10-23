@@ -26,7 +26,7 @@
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.6.1",
+    "@react-three/fiber": "^9.8.2",
     "@types/three": "^0.180.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -38,13 +38,13 @@
     "gif.js": "^0.2.0",
     "jszip": "^3.10.1",
     "lucide-react": "^1.16.0",
-    "next": "16.3.4",
+    "next": "16.4.2",
     "next-intl": "^4.14.9",
     "next-themes": "^0.4.6",
     "plaiceholder": "^3.0.0",
     "radix-ui": "^1.4.3",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.6.0",
     "three": "^0.180.0",
@@ -55,19 +55,19 @@
     "@tailwindcss/postcss": "^4.3.0",
     "@types/jszip": "^3.4.1",
     "@types/node": "^20.19.41",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "baseline-browser-mapping": "^2.11.21",
     "eslint": "9.39.5",
-    "eslint-config-next": "16.3.4",
+    "eslint-config-next": "16.4.2",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3"
   },
   "patchedDependencies": {
-    "next@16.3.4": "patches/next@16.3.4.patch"
+    "next@16.4.2": "patches/next@16.4.2.patch"
   },
   "overrides": {
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7"
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   }
 }
