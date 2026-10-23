@@ -1,10 +1,10 @@
 diff --git a/dist/server/lib/router-utils/setup-dev-bundler.js b/dist/server/lib/router-utils/setup-dev-bundler.js
 --- a/dist/server/lib/router-utils/setup-dev-bundler.js
 +++ b/dist/server/lib/router-utils/setup-dev-bundler.js
-@@ -141,1 +141,2 @@
+@@ -155,1 +155,2 @@
  async function startWatcher(opts) {
 +    const previousInterceptionRoutes = new Set();
-@@ -711,1 +712,5 @@
+@@ -892,1 +893,5 @@
 +            // Replace generated rewrites on HMR instead of accumulating stale routes.
 +            opts.fsChecker.rewrites.beforeFiles = opts.fsChecker.rewrites.beforeFiles.filter((route)=>!previousInterceptionRoutes.has(route));
 +            previousInterceptionRoutes.clear();
@@ -13,10 +13,10 @@ diff --git a/dist/server/lib/router-utils/setup-dev-bundler.js b/dist/server/lib
 diff --git a/dist/esm/server/lib/router-utils/setup-dev-bundler.js b/dist/esm/server/lib/router-utils/setup-dev-bundler.js
 --- a/dist/esm/server/lib/router-utils/setup-dev-bundler.js
 +++ b/dist/esm/server/lib/router-utils/setup-dev-bundler.js
-@@ -73,1 +73,2 @@
+@@ -87,1 +87,2 @@
  async function startWatcher(opts) {
 +    const previousInterceptionRoutes = new Set();
-@@ -643,1 +644,5 @@
+@@ -824,1 +825,5 @@
 +            // Replace generated rewrites on HMR instead of accumulating stale routes.
 +            opts.fsChecker.rewrites.beforeFiles = opts.fsChecker.rewrites.beforeFiles.filter((route)=>!previousInterceptionRoutes.has(route));
 +            previousInterceptionRoutes.clear();

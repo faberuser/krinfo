@@ -1,6 +1,6 @@
 # Next.js development refresh patch
 
-`next@16.3.4.patch` fixes stale interception rewrites accumulating across dev-server
+`next@16.4.2.patch` fixes stale interception rewrites accumulating across dev-server
 file updates. Without it, editing a file while a hero modal is open can display a
 404 and leave subsequent client navigations broken until a full browser reload.
 
