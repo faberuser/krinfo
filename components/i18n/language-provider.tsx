@@ -32,7 +32,7 @@ function loadDictionary<T>(url: string): Promise<T> {
 	return pending as Promise<T>
 }
 
-function useDictionary<T = Dictionary>(url: string | null) {
+export function useDictionary<T = Dictionary>(url: string | null) {
 	const [loaded, setLoaded] = useState<{ url: string; data: T } | null>(null)
 	const [failed, setFailed] = useState<string | null>(null)
 	useEffect(() => {
@@ -146,6 +146,7 @@ export function GameLanguageScope({ version, children }: { version: DataVersion;
 }
 
 export function useSharedRecords() { return useContext(SharedRecordsContext) }
+export function useGameVersion() { return useContext(GameContext).version }
 
 export function useLocalizedArtifacts(artifacts: ArtifactData[]) {
 	const shared = useSharedRecords()

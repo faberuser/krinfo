@@ -44,11 +44,12 @@ export default function HeroPageWrapper({
 	useEnableVersionToggle(availableVersions, showVersionToggle)
 
 	useEffect(() => {
+		if (!isHydrated) return
 		// If user selects a version that doesn't have this hero, fallback to another version
 		if (!heroDataMap[version] && availableVersions.length > 0) {
 			setVersion(availableVersions[0])
 		}
-	}, [version, heroDataMap, availableVersions, setVersion])
+	}, [isHydrated, version, heroDataMap, availableVersions, setVersion])
 
 	// Show loading while hydrating
 	if (!isHydrated) {
