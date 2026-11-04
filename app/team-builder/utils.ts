@@ -102,11 +102,12 @@ export function calculateUsedPoints(perks: SelectedPerks): number {
 	return t1Points + t2Points + t3Points + t5Points
 }
 
-import { DataVersion, DATA_VERSIONS } from "@/lib/constants"
+import { DataVersion } from "@/lib/constants"
 
 // Version mapping for URL encoding (3 bits = 0-7)
 
-const reversedVersions = [...DATA_VERSIONS].reverse()
+// Persisted link IDs must not change when versions are added to the switcher.
+const reversedVersions: DataVersion[] = ["legacy", "ccbt", "cbt-phase-1", "cbt-phase-2", "sprk"]
 const VERSION_MAP: Record<string, number> = Object.fromEntries(reversedVersions.map((v, i) => [v, i]))
 const VERSION_REVERSE: Record<number, DataVersion> = Object.fromEntries(
 	reversedVersions.map((v, i) => [i, v as DataVersion]),

@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import Image from "@/components/next-image"
 import { parseColoredText } from "@/lib/utils"
+import SkillFormulaNote from "@/app/heroes/components/skill-formula-note"
 
 interface SkillsProps {
 	heroData: HeroData
@@ -41,6 +42,7 @@ export default function Skills({ heroData }: SkillsProps) {
 
 	return (
 		<div className="space-y-4 skills-section">
+			<SkillFormulaNote />
 			{skillsArr.length > 0 ? (
 				skillsArr.map(({ key, skill, baseNum }) => (
 					<Card key={key}>
