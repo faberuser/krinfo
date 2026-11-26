@@ -94,7 +94,7 @@ export default function Profile({ heroData }: ProfileProps) {
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
 								<div className="flex-1">
 									<div className="text-xs text-muted-foreground mb-0.5"><Text messageKey="uiBirthday" /></div>
-									<div className="font-semibold">{`${new Intl.DateTimeFormat(locale, { month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(2000, profile.birth.month - 1, profile.birth.day)))}, ${profile.birth.monthName}`}</div>
+									<div className="font-semibold">{profile.birth.month < 1 ? "???" : `${new Intl.DateTimeFormat(locale, { month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(2000, profile.birth.month - 1, profile.birth.day)))}, ${profile.birth.monthName}`}</div>
 								</div>
 							</div>
 							<div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
